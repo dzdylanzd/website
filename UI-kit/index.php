@@ -16,7 +16,7 @@
         <div class="uk-navbar-left">
 
             <div class="uk-navbar-nav">
-            <a class="uk-navbar-item uk-logo" href="#">logo</a>
+            <a class=" uk-logo uk-navbar-item " href="#"><img src="media\logo.png" alt="logo" width=20% ></a>
             <div class="uk-navbar-item " >
             <form action="javascript:void(0)">
                 <input class="uk-input uk-form-width-small" type="text" placeholder="search">
