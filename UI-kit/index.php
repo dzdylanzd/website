@@ -5,10 +5,49 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/uikit.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
         <script src="js/uikit.min.js"></script>
         <script src="js/uikit-icons.min.js"></script>
     </head>
     <body>
+      
+    <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+    <nav class="uk-navbar-container" uk-navbar style="position: relative; z-index: 980;">
+        <div class="uk-navbar-left">
+
+            <div class="uk-navbar-nav">
+            <a class="uk-navbar-item uk-logo" href="#">logo</a>
+            <div class="uk-navbar-item " >
+            <form action="javascript:void(0)">
+                <input class="uk-input uk-form-width-small" type="text" placeholder="search">
+                <input class="uk-button uk-button-default" type="Submit" value="search">
+            </form>
+        </div>
+</div></div>
+
+
+        <div class="uk-navbar-right">
+        <div class="uk-navbar-item " >
+            <form action="javascript:void(0)">
+            <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: user"></span>
+            <input class="uk-input" type="email" placeholder="email">
+        </div>
+                <div class="uk-inline">
+            <span class="uk-form-icon " uk-icon="icon: lock"></span>
+            <input class="uk-input" type="password" placeholder="password">
+        </div>
+            
+        
+    
+                <input class="uk-button uk-button-default" type="Submit" value="login">
+
+            </form>
+        </div>
+    </div>
+        
+    </nav>
+</div>
     
     <div uk-slider="center: true">
 
@@ -85,7 +124,9 @@
 
 </div>
 
-
+<div class="footer">
+  <p>Footer</p>
+</div>
 
     </body>
 </html>
