@@ -69,18 +69,18 @@
             <div class="uk-navbar">
                 <div class="uk-navbar-item ">
                     <form action="javascript:void(0)">
-                        <div class="uk-inline">
+                        <div class="uk-width-1-4 uk-inline">
                             <span class="uk-form-icon" uk-icon="icon: user"></span>
-                            <input class="uk-input uk-width-1-3" type="email" placeholder="email">
+                            <input class=" uk-input " type="email" placeholder="email">
                         </div>
-                        <div class="uk-inline">
+                        <div class=" uk-width-1-4 uk-inline">
                             <span class="uk-form-icon " uk-icon="icon: lock"></span>
-                            <input class="uk-width-1-3 uk-input " type="password" placeholder="password">
+                            <input class=" uk-input " type="password" placeholder="password">
                         </div>
 
 
 
-                        <input class=" uk-width-1-3 uk-button uk-button-default " type="Submit" value="login">
+                        <input class=" uk-width-1-4 uk-button uk-button-default " type="Submit" value="login">
 
                     </form>
                 </div>
