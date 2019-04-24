@@ -25,6 +25,10 @@
         </div>
 </div></div>
 
+    <ul class="uk-nav-center ">
+        test
+    </ul>
+
 
         <div class="uk-navbar-right">
         <div class="uk-navbar-item " >
