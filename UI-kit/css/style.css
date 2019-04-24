@@ -1,14 +1,17 @@
 .footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-  }
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
 
-  .main-titel{
+.main-titel {
+  padding: 20px;
+  text-align: center;
+  background-color: antiquewhite;
+}
 
-padding: 20px;
-    text-align: center;
-    background-color: antiquewhite;
-  }
+h1 {
+  font-family: "Century Gothic", sans-serif;
+}
