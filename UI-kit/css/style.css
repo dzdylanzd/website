@@ -15,3 +15,8 @@
 h1 {
   font-family: "Century Gothic", sans-serif;
 }
+
+.imagePrevieuw img{
+height: 50px;
+width: 50px;
+}

@@ -1326,19 +1326,19 @@ select.uk-form-width-xsmall {
 }
 
 .uk-button-primary {
-    background-color: #1e87f0;
-    color: #fffbec;
+    background-color: #c6ae91;
+    color: #fff;
     border: 1px solid transparent
 }
 
 .uk-button-primary:focus, .uk-button-primary:hover {
-    background-color: #0f7ae5;
-    color: #fffbec
+    background-color: #ddc8af;
+    color: #fff
 }
 
 .uk-button-primary.uk-active, .uk-button-primary:active {
-    background-color: #0e6dcd;
-    color: #fffbec
+    background-color: #ddc8af;
+    color: #fff
 }
 
 .uk-button-secondary {
