@@ -47,4 +47,9 @@ width: 50px;
   background: #d1b697;  
   }
   
- 
+ .streepje{
+   background-color: black;
+   padding: 1px;
+   margin-left: 2px;
+   margin-right: 2px;
+ }

@@ -12,6 +12,9 @@
 </head>
 
 <body>
+<?php include 'includes\nav-L-M.php'; ?>
+
+
 <div class="uk-hidden@s">
 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
     <nav class="uk-navbar-container" uk-navbar style="position: relative; z-index: 980;">
@@ -26,6 +29,12 @@
        
     </nav>
 </div>
+</div>
+
+<div class="uk-flex">
+    <div class="uk-card uk-card-default uk-card-body uk-width-1-4">Item 1</div>
+    <div class="streepje"></div>
+    <div class="uk-card uk-card-default uk-card-body uk-width-3-4">Item 2</div>
 </div>
 
 </body>
