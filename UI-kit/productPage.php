@@ -32,9 +32,38 @@
 </div>
 
 <div class="uk-flex">
-    <div class="uk-card uk-card-default uk-card-body uk-width-1-4">Item 1</div>
+    <div class="uk-card uk-card-default uk-card-body uk-width-1-3">  <!-- presentatie ding -->
+    <div class="uk-position-relative uk-visible-toggle uk-light  uk-width-4-4" tabindex="-1" uk-slideshow>
+
+        <ul class="uk-slideshow-items">
+            <li>
+                <img src="https://via.placeholder.com/150" alt="" uk-cover>
+            </li>
+            <li>
+                <img src="https://via.placeholder.com/350" alt="" uk-cover>
+            </li>
+            <li>
+                <img src="https://via.placeholder.com/450" alt="" uk-cover>
+            </li>
+            <li>
+                <img src="https://via.placeholder.com/950" alt="" uk-cover>
+            </li>
+        </ul>
+
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+    </div>
+
+    <div class="imagePrevieuw uk-flex  ">
+        <img src="https://via.placeholder.com/150" class="uk-width-1-4 " alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(0);">
+        <img src="https://via.placeholder.com/350" class="uk-width-1-4 "  alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(1);">
+        <img src="https://via.placeholder.com/450" class="uk-width-1-4 " alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(2);">
+        <img src="https://via.placeholder.com/950" class="uk-width-1-4 "  alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(3);">
+
+    </div></div>
     <div class="streepje"></div>
-    <div class="uk-card uk-card-default uk-card-body uk-width-3-4">Item 2</div>
+    <div class="uk-card uk-card-default uk-card-body uk-width-2-3">Item 2</div>
 </div>
 
 </body>

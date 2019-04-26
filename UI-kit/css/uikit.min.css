@@ -6167,7 +6167,7 @@ iframe.uk-cover {
 }
 
 .uk-flex-around {
-    justify-content: space-around
+    justify-content: stretch
 }
 
 @media (min-width:640px) {
@@ -6184,7 +6184,7 @@ iframe.uk-cover {
         justify-content: space-between
     }
     .uk-flex-around\@s {
-        justify-content: space-around
+        justify-content: stretch
     }
 }
 
@@ -6202,7 +6202,7 @@ iframe.uk-cover {
         justify-content: space-between
     }
     .uk-flex-around\@m {
-        justify-content: space-around
+        justify-content: stretch
     }
 }
 
@@ -6220,7 +6220,7 @@ iframe.uk-cover {
         justify-content: space-between
     }
     .uk-flex-around\@l {
-        justify-content: space-around
+        justify-content: stretch
     }
 }
 
@@ -6238,7 +6238,7 @@ iframe.uk-cover {
         justify-content: space-between
     }
     .uk-flex-around\@xl {
-        justify-content: space-around
+        justify-content: stretch
     }
 }
 

@@ -12,11 +12,11 @@
 </head>
 
 <body>
-<?php include 'includes\nav-L-M.php'; ?>
+    <?php include 'includes\nav-L-M.php'; ?>
 
-    
 
-<!-- navigatie balk S -->
+
+    <!-- navigatie balk S -->
     <div class="uk-hidden@s">
         <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
 
@@ -39,39 +39,39 @@
             </div>
 
 
-           
+
 
         </nav>
     </div>
 
 
-    
+
 
 
     <!-- presentatie ding -->
     <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
 
-<ul class="uk-slideshow-items">
-    <li>
-        <img src="https://via.placeholder.com/150" alt="" uk-cover>
-    </li>
-    <li>
-        <img src="https://via.placeholder.com/350" alt="" uk-cover>
-    </li>
-    <li>
-        <img src="https://via.placeholder.com/450" alt="" uk-cover>
-    </li>
-    <li>
-        <img src="https://via.placeholder.com/950" alt="" uk-cover>
-    </li>
-</ul>
+        <ul class="uk-slideshow-items">
+            <li>
+                <img src="https://via.placeholder.com/150" alt="" uk-cover>
+            </li>
+            <li>
+                <img src="https://via.placeholder.com/350" alt="" uk-cover>
+            </li>
+            <li>
+                <img src="https://via.placeholder.com/450" alt="" uk-cover>
+            </li>
+            <li>
+                <img src="https://via.placeholder.com/950" alt="" uk-cover>
+            </li>
+        </ul>
 
-<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 
-</div>
+    </div>
 
-    <div class="imagePrevieuw uk-flex uk-flex-center ">
+    <div class="imagePrevieuw uk-flex uk-flex-center  ">
         <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(0);">
         <img src="https://via.placeholder.com/350" alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(1);">
         <img src="https://via.placeholder.com/450" alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(2);">
@@ -79,20 +79,18 @@
 
     </div>
 
-    </div>
     <script>
-        
         UIkit.slider('.uk-slider').show(2)
     </script>
 
-<div  class="scrollbox">
-Efficient honorificabilitudinitatibus 
-cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-Efficient honorificabilitudinitatibus 
-cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-Efficient honorificabilitudinitatibus 
-cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-</div>
+    <div class="scrollbox">
+        Efficient honorificabilitudinitatibus
+        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
+        Efficient honorificabilitudinitatibus
+        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
+        Efficient honorificabilitudinitatibus
+        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
+    </div>
 
     <div class="footer">
         <p>Footer</p>

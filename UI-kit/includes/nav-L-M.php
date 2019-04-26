@@ -17,7 +17,7 @@
 
                                 <div class="uk-inline">
                                     <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                                    <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
+                                    <input class="uk-input uk-form-width-large " type="text" name="search" placeholder="Waar bent u naar op zoek?">
                                 </div>
                             </form>
                         </div>
@@ -52,7 +52,7 @@
 
                             <div class="uk-inline">
                                 <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                                <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
+                                <input class="uk-input uk-form-width-medium" type="text" name="search" placeholder="Waar bent u naar op zoek?">
                             </div>
                         </form>
                     </div>
