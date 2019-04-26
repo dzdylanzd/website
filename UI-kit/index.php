@@ -49,60 +49,30 @@
 
 
     <!-- presentatie ding -->
-    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="center: true">
+    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
 
-        <ul class="uk-slider-items uk-grid">
-            <li class="uk-width-4-4">
-                <div class="uk-panel">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <div class="uk-position-center uk-panel">
-                        <h1>1</h1>
-                    </div>
-                </div>
-            </li>
-            <li class="uk-width-4-4">
-                <div class="uk-panel">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <div class="uk-position-center uk-panel">
-                        <h1>2</h1>
-                    </div>
-                </div>
-            </li>
-            <li class="uk-width-4-4">
-                <div class="uk-panel">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <div class="uk-position-center uk-panel">
-                        <h1>3</h1>
-                    </div>
-                </div>
-            </li>
-            <li class="uk-width-4-4">
-                <div class="uk-panel">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <div class="uk-position-center uk-panel">
-                        <h1>4</h1>
-                    </div>
-                </div>
-            </li>
-            <li class="uk-width-4-4">
-                <div class="uk-panel">
-                    <img src="https://via.placeholder.com/150" alt="">
-                    <div class="uk-position-center uk-panel">
-                        <h1>5</h1>
-                    </div>
-                </div>
-            </li>
-        </ul>
+<ul class="uk-slideshow-items">
+    <li>
+        <img src="https://via.placeholder.com/150" alt="" uk-cover>
+    </li>
+    <li>
+        <img src="https://via.placeholder.com/350" alt="" uk-cover>
+    </li>
+    <li>
+        <img src="https://via.placeholder.com/450" alt="" uk-cover>
+    </li>
+</ul>
 
-        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slider-item="next"></a>
-    </div>
+<a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+<a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+
+</div>
 
     <div class="imagePrevieuw uk-flex uk-flex-center ">
-        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slider').show(0);">
-        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slider').show(1);">
-        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slider').show(2);">
-        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slider').show(3);">
+        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slideshow').show(0);">
+        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slideshow').show(1);">
+        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slideshow').show(2);">
+        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slideshow').show(0);">
 
     </div>
 
