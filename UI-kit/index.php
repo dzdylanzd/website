@@ -61,6 +61,9 @@
     <li>
         <img src="https://via.placeholder.com/450" alt="" uk-cover>
     </li>
+    <li>
+        <img src="https://via.placeholder.com/950" alt="" uk-cover>
+    </li>
 </ul>
 
 <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
@@ -69,10 +72,10 @@
 </div>
 
     <div class="imagePrevieuw uk-flex uk-flex-center ">
-        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slideshow').show(0);">
-        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slideshow').show(1);">
-        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slideshow').show(2);">
-        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slider('.uk-slideshow').show(0);">
+        <img src="https://via.placeholder.com/150" alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(0);">
+        <img src="https://via.placeholder.com/350" alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(1);">
+        <img src="https://via.placeholder.com/450" alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(2);">
+        <img src="https://via.placeholder.com/950" alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(3);">
 
     </div>
 
