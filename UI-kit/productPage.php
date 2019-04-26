@@ -34,14 +34,20 @@
     <div class="uk-flex">
         <div class="uk-width-1-3 Card-Empty">
             <!-- presentatie ding -->
-            <div class="uk-position-relative uk-visible-toggle uk-light  uk-width-4-4	uk-margin-bottom" tabindex="-1" uk-slideshow>
+            <div id="imageprevieuw-detailpage" class="uk-position-relative uk-visible-toggle uk-light  uk-width-4-4	uk-margin-bottom" tabindex="-1" uk-slideshow>
 
                 <ul class="uk-slideshow-items ">
                     <li class="Image-Border">
                         <img src="https://via.placeholder.com/150" alt="" uk-cover>
+                        <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
+                <h3 class="uk-margin-remove">jan</h3>
+                <p class="uk-margin-remove">$10</p>
+            </div>
                     </li>
                     <li class="Image-Border">
-                        <img  src="https://via.placeholder.com/350" alt="" uk-cover>
+                        <img  src="https://via.placeholder.com/700x40" alt="" uk-cover>
+                       
+              
                     </li>
                     <li class="Image-Border">
                         <img src="https://via.placeholder.com/450" alt="" uk-cover>

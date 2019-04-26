@@ -19,10 +19,17 @@ h1 {
 .imagePrevieuw img{
 height: 100%;
 border: 2px solid #43464B;
+
 }
+
+
 
 .Image-Border{
   border: 3px solid #43464B;
+}
+
+#imageprevieuw-detailpage{
+margin-left: 2px;
 }
 
 .scrollbox {
@@ -61,8 +68,11 @@ border: 2px solid #43464B;
 
  .Bieding{
   background-color: green;
+  border-radius: 5px;
+  padding: 10px;
  }
 
  .Card-Empty{
    margin: 10px;
+ 
  }

@@ -6,14 +6,14 @@
             <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar-left">
                     <div class="uk-navbar-nav">
-                        <a class=" uk-logo uk-navbar-item " href="#"><img src="media\logo.png" alt="logo" width=100em></a>
+                        <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
 
                     </div>
                 </div>
                 <div class="uk-navbar-center">
                     <div class="uk-navbar-nav">
                         <div class="uk-navbar-item ">
-                            <form action="index.php">
+                            <form action="productpage.php">
 
                                 <div class="uk-inline">
                                     <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
@@ -41,14 +41,14 @@
             <nav class="uk-navbar-container" uk-navbar>
 
                 <div class="uk-navbar-nav">
-                    <a class=" uk-logo uk-navbar-item " href="#"><img src="media\logo.png" alt="logo" width=100em></a>
+                    <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
 
                 </div>
 
 
                 <div class="uk-navbar-nav">
                     <div class="uk-navbar-item ">
-                        <form action="index.php">
+                        <form action="productpage.php">
 
                             <div class="uk-inline">
                                 <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
