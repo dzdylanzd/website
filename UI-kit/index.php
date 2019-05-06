@@ -35,7 +35,9 @@
                             <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
                         </div>
                     </form>
+                    <a class="uk-margin-left" href="index.php" uk-icon="icon: user" ></a>
                 </div>
+                
             </div>
 
 
@@ -45,21 +47,21 @@
     </div>
 
     <div class="uk-flex">
-    <div class="uk-width-1-4">Item 1</div>
-    <div class="uk-width-3-4">Item 2</div>
+    <div class="uk-width-1-5"> <div class="scrollbox">
+        Efficient honorificabilitudinitatibus
+        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
+        Efficient honorificabilitudinitatibus
+        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
+        Efficient honorificabilitudinitatibus
+        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
+    </div></div>
+    <div class="uk-width-4-5">Item 2</div>
 
 </div>
 
 
 
-    <div class="scrollbox">
-        Efficient honorificabilitudinitatibus
-        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-        Efficient honorificabilitudinitatibus
-        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-        Efficient honorificabilitudinitatibus
-        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-    </div>
+   
 
     <div class="footer">
         <p>Footer</p>
