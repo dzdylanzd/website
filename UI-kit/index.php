@@ -70,7 +70,7 @@ if ($stmt->execute(array($_GET["root"]))) {
     
         
         while ($row = $stmt->fetch()) {   
-            echo"$row[Name] <br><br><br>";
+            echo"<br><br><br> <h1> $row[Name]</h1> <br> ";
           
             $TITELS = $dbh->prepare("SELECT Titel from items where Categorie = ?");
 
