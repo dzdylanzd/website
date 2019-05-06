@@ -100,20 +100,24 @@
                     <h2>Verkoper</h2>
                 </div>
                 <div class="uk-width-1-2 Bod-Plaatsen">
-                    <div class="uk-width-1-2">
-                    <form>
-                    <input class="uk-input" type="text" placeholder="Input">
-                    </form>
+                    <div class="uk-width-1-3">
+                        <form action="ProductPage.php">
+                            <input class="uk-input Bieden" type="text" placeholder="Input">
                     </div>
-                    <div class="uk-width-1-2">
-                    
+
+                    <div class="uk-width-1-3">
+                        <button class="uk-button uk-button-primary Plaats-Bod" type="Submit">Plaats bod</button>
+                        </form>
                     </div>
+
                 </div>
+
+                <div></div>
             </div>
 
         </div>
 
-    <?php include 'includes/footer.inc.php'; ?>
+        <?php include 'includes/footer.inc.php'; ?>
 
 </body>
 
