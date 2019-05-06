@@ -1,19 +1,29 @@
-.footer {
+footer {
+  display: block;
   position: fixed;
+  background-color: #c6ae91;
   left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
+  padding: 1.5em;
+  font-family: "Century Gothic", sans-serif;
+  font-size: 1em;
+  color: #fffbec;
 }
 
 .main-titel {
   padding: 20px;
   text-align: center;
-  background-color: antiquewhite;
+  background-color: #fffbec;
 }
 
 h1 {
   font-family: "Century Gothic", sans-serif;
+}
+
+h4 {
+  
 }
 
 .imagePrevieuw img{
