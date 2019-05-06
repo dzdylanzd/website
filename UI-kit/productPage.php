@@ -101,15 +101,13 @@
                     <h2>Verkoper</h2>
                 </div>
                 <div class="uk-width-1-2 Bod-Plaatsen">
-                    <div class="uk-width-1-3">
-                        <form action="ProductPage.php">
-                            <input class="uk-input Bieden" type="text" placeholder="Input">
-                    </div>
+                <form class="bieden" action="productpage.php">
 
-                    <div class="uk-width-1-3">
-                        <button class="uk-button uk-button-primary Plaats-Bod" type="Submit">Plaats bod</button>
-                        </form>
-                    </div>
+<div class="uk-inline uk-width-1-1">
+    <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: cart" type="Submit"></button>
+    <input class="uk-input" type="text" name="bod" placeholder="bod .....">
+</div>
+</form>
 
                 </div>
 
