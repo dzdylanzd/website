@@ -68,18 +68,12 @@
         <div class="uk-width-4-5">Item 2
 
             <?php
+            include 'includes/display_product.php';
             $stmt = $dbh->prepare("SELECT * from Categorieen where ID = ?");
             if ($stmt->execute(array($_GET["root"]))) {
-
-
-
                 while ($row = $stmt->fetch()) {
-
-
                     $TITELS = $dbh->prepare("SELECT Titel from items where Categorie = ?");
-
                     if ($TITELS->execute(array($row["ID"]))) {
-
                         $row2 = $TITELS->fetch();
                         if ($row2  > 0) {
                             echo "<br><br><br> <h1> $row[Name]</h1> <br> ";
@@ -93,39 +87,13 @@
             $stmt = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
 
             if ($stmt->execute(array($_GET["root"]))) {
-
-
-
                 while ($row = $stmt->fetch()) {
-
-
-                    $TITELS = $dbh->prepare("SELECT Titel from items where Categorie = ?");
-
-                    if ($TITELS->execute(array($row["ID"]))) {
-
-                        $row2 = $TITELS->fetch();
-                        if ($row2  > 0) {
-                            echo "<br><br><br> <h1> $row[Name]</h1> <br> ";
-                            while ($row2 = $TITELS->fetch()) {
-                                echo "$row2[Titel] <br>";
-                            }
-                        }
-                    }
+                    echo "<h1> $row[Name] </h1>";
+                    if (displayCatogorie($row["ID"], $dbh)) { }
                 }
             }
+            ?>
 
-
-        
-
-
-
-
-
-
-                ?>
-
-
-            </div>
 
         </div>
 
