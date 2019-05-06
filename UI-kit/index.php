@@ -93,9 +93,7 @@ echo"$row2[Titel] <br>";
 
    
 
-    <div class="footer">
-        <p>Footer</p>
-    </div>
+<?php include 'includes/footer.inc.php'; ?>
 
 </body>
 
