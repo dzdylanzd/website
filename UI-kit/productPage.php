@@ -40,14 +40,14 @@
                     <li class="Image-Border">
                         <img src="https://via.placeholder.com/150" alt="" uk-cover>
                         <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
-                <h3 class="uk-margin-remove">jan</h3>
-                <p class="uk-margin-remove">$10</p>
-            </div>
+                            <h3 class="uk-margin-remove">jan</h3>
+                            <p class="uk-margin-remove">$10</p>
+                        </div>
                     </li>
                     <li class="Image-Border">
-                        <img  src="https://via.placeholder.com/700x40" alt="" uk-cover>
-                       
-              
+                        <img src="https://via.placeholder.com/700x40" alt="" uk-cover>
+
+
                     </li>
                     <li class="Image-Border">
                         <img src="https://via.placeholder.com/450" alt="" uk-cover>
@@ -72,14 +72,45 @@
         </div>
         <div class="Vertical_Line"></div>
         <div class="uk-width-2-3 Card-Empty">
+            <h2>Bieding</h2>
             <div class="uk-flex Bieding">
                 <div class="uk-width-1-2">
-                    <h1>tekstjes</h1>
+                    <h3>Tijd resterend</h3>
                 </div>
                 <div class="uk-width-1-2">
-                    <h1>tekstjejhkgs</h1>
+                    <h3>Huidig bod: </h3>
                 </div>
             </div>
+
+            <h2>Vorige biedingen</h2>
+            <div class="uk-flex Vorige-Bieder">
+                <div class="uk-width-1-3">
+                    <h3>Naam bieder</h3>
+                </div>
+                <div class="uk-width-1-3">
+                    <h3>Bod</h3>
+                </div>
+                <div class="uk-width-1-3">
+                    <h3>Datum en tijd van bieding</h3>
+                </div>
+            </div>
+
+            <div class="uk-flex Verkoper">
+                <div class="uk-width-1-2">
+                    <h2>Verkoper</h2>
+                </div>
+                <div class="uk-width-1-2 Bod-Plaatsen">
+                    <div class="uk-width-1-2">
+                    <form>
+                    <input class="uk-input" type="text" placeholder="Input">
+                    </form>
+                    </div>
+                    <div class="uk-width-1-2">
+                    
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     <?php include 'includes/footer.inc.php'; ?>
