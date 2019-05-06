@@ -66,6 +66,7 @@
         <div class="uk-width-4-5">Item 2
 
             <?php
+            if(isset($_GET["root"])){
             include 'includes/display_product.php';
             $stmt = $dbh->prepare("SELECT * from Categorieen where ID = ?");
             if ($stmt->execute(array($_GET["root"]))) {
@@ -90,6 +91,7 @@
                     if (displayCatogorie($row["ID"], $dbh)) { }
                 }
             }
+        }
             ?>
 
 
