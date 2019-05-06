@@ -1,6 +1,6 @@
 footer {
   display: block;
-  position: fixed;
+  position: absolute;
   background-color: #c6ae91;
   left: 0;
   bottom: 0;
@@ -12,19 +12,29 @@ footer {
   color: #fffbec;
 }
 
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  padding-bottom: 2.5rem;
+}
+
 .main-titel {
   padding: 20px;
   text-align: center;
   background-color: #fffbec;
 }
 
-h1 {
+h1, h2, h3 {
   font-family: "Century Gothic", sans-serif;
 }
 
-h4 {
+h2 {
   
 }
+
 
 .imagePrevieuw img{
 height: 100%;

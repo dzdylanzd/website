@@ -13,6 +13,10 @@
 
 <body>
     <?php include 'includes\nav-L-M.php'; ?>
+    <?php header('Refresh: 10'); ?>
+    <div class="page-container">
+    <div class="content-wrap">
+
 
 
 
@@ -64,37 +68,39 @@
         <div class="uk-width-4-5">Item 2
 
             <?php
-            $stmt = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
-
+            if(isset($_GET["root"])){
+            include 'includes/display_product.php';
+            $stmt = $dbh->prepare("SELECT * from Categorieen where ID = ?");
             if ($stmt->execute(array($_GET["root"]))) {
-
-
-
                 while ($row = $stmt->fetch()) {
-                    echo "<br><br><br> <h1> $row[Name]</h1> <br> ";
-
                     $TITELS = $dbh->prepare("SELECT Titel from items where Categorie = ?");
-
                     if ($TITELS->execute(array($row["ID"]))) {
-                        while ($row2 = $TITELS->fetch()) {
-                            echo "$row2[Titel] <br>";
+                        $row2 = $TITELS->fetch();
+                        if ($row2  > 0) {
+                            echo "<br><br><br> <h1> $row[Name]</h1> <br> ";
+                            while ($row2 = $TITELS->fetch()) {
+                                echo "$row2[Titel] <br>";
+                            }
                         }
                     }
                 }
             }
+            $stmt = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
+
+            if ($stmt->execute(array($_GET["root"]))) {
+                while ($row = $stmt->fetch()) {
+                    echo "<h1> $row[Name] </h1>";
+                    if (displayCatogorie($row["ID"], $dbh)) { }
+                }
+            }
+        }
             ?>
 
 
         </div>
 
-    </div>
-
-
-
-
-
-    <?php include 'includes/footer.inc.php'; ?>
-
-</body>
-
-</html>
+        </div>
+        </div>
+        <?php include 'includes/footer.inc.php'; ?>
+    </body>
+    </html>
