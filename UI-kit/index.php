@@ -57,10 +57,35 @@
     </div>
 
 
-    <?php require_once('includes\catogorie_nav.php'); ?>
+    <?php require_once('includes\catogorie _nav.php'); ?>
 
 </div>
-    <div class="uk-width-4-5">Item 2</div>
+    <div class="uk-width-4-5">Item 2
+
+<?php
+$stmt = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
+
+if ($stmt->execute(array($_GET["root"]))) {
+    
+    
+        
+        while ($row = $stmt->fetch()) {   
+            echo"$row[Name] <br><br><br>";
+          
+            $TITELS = $dbh->prepare("SELECT Titel from items where Categorie = ?");
+
+            if ($TITELS->execute(array($row["ID"]))) {
+                while ($row2 = $TITELS->fetch()){
+echo"$row2[Titel] <br>";
+                }
+            }
+        }
+         
+    }
+?>
+
+
+    </div>
 
 </div>
 
