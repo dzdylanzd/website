@@ -13,6 +13,8 @@
 
 <body>
     <?php include 'includes\nav-L-M.php'; ?>
+    <?php header('Refresh: 10'); ?>
+
 
 
 
@@ -35,9 +37,9 @@
                             <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
                         </div>
                     </form>
-                    <a class="uk-margin-left" href="index.php" uk-icon="icon: user" ></a>
+                    <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
                 </div>
-                
+
             </div>
 
 
@@ -47,54 +49,90 @@
     </div>
 
     <div class="uk-flex">
-    <div class="uk-width-1-5"> <div class="scrollbox">
-        Efficient honorificabilitudinitatibus
-        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-        Efficient honorificabilitudinitatibus
-        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-        Efficient honorificabilitudinitatibus
-        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-    </div>
+        <div class="uk-width-1-5">
+            <div class="scrollbox">
+                Efficient honorificabilitudinitatibus
+                cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
+                Efficient honorificabilitudinitatibus
+                cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
+                Efficient honorificabilitudinitatibus
+                cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
+            </div>
 
 
-    <?php require_once('includes\catogorie _nav.php'); ?>
+            <?php require_once('includes\catogorie _nav.php'); ?>
 
-</div>
-    <div class="uk-width-4-5">Item 2
+        </div>
+        <div class="uk-width-4-5">Item 2
 
-<?php
-$stmt = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
+            <?php
+            $stmt = $dbh->prepare("SELECT * from Categorieen where ID = ?");
+            if ($stmt->execute(array($_GET["root"]))) {
 
-if ($stmt->execute(array($_GET["root"]))) {
-    
-    
-        
-        while ($row = $stmt->fetch()) {   
-            echo"<br><br><br> <h1> $row[Name]</h1> <br> ";
-          
-            $TITELS = $dbh->prepare("SELECT Titel from items where Categorie = ?");
 
-            if ($TITELS->execute(array($row["ID"]))) {
-                while ($row2 = $TITELS->fetch()){
-echo"$row2[Titel] <br>";
+
+                while ($row = $stmt->fetch()) {
+
+
+                    $TITELS = $dbh->prepare("SELECT Titel from items where Categorie = ?");
+
+                    if ($TITELS->execute(array($row["ID"]))) {
+
+                        $row2 = $TITELS->fetch();
+                        if ($row2  > 0) {
+                            echo "<br><br><br> <h1> $row[Name]</h1> <br> ";
+                            while ($row2 = $TITELS->fetch()) {
+                                echo "$row2[Titel] <br>";
+                            }
+                        }
+                    }
                 }
             }
-        }
-         
-    }
-?>
+            $stmt = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
 
-
-    </div>
-
-</div>
+            if ($stmt->execute(array($_GET["root"]))) {
 
 
 
-   
+                while ($row = $stmt->fetch()) {
 
-<?php include 'includes/footer.inc.php'; ?>
 
-</body>
+                    $TITELS = $dbh->prepare("SELECT Titel from items where Categorie = ?");
 
-</html>
+                    if ($TITELS->execute(array($row["ID"]))) {
+
+                        $row2 = $TITELS->fetch();
+                        if ($row2  > 0) {
+                            echo "<br><br><br> <h1> $row[Name]</h1> <br> ";
+                            while ($row2 = $TITELS->fetch()) {
+                                echo "$row2[Titel] <br>";
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        
+
+
+
+
+
+
+                ?>
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <?php include 'includes/footer.inc.php'; ?>
+
+    </body>
+
+    </html>
