@@ -54,7 +54,53 @@
         cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
         Efficient honorificabilitudinitatibus
         cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-    </div></div>
+    </div>
+
+
+    <?php
+    require_once('includes\database.php');
+   if(!isset($_GET["root"])){
+        $stmt = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
+
+        if ($stmt->execute(array(-1))) {
+            echo "<ul>";
+            while ($row = $stmt->fetch()) {   
+              echo "<li> <a href=\"index.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
+            }
+            echo "</ul>";
+          }
+    }else{
+        $stmt = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
+
+        if ($stmt->execute(array($_GET["root"]))) {
+            
+            if($row = $stmt->fetch() >0){
+                echo "<ul>";
+                while ($row = $stmt->fetch()) {   
+                    echo "<li> <a href=\"index.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
+                  }
+                  echo "</ul>";
+            }else{
+                $stmt = $dbh->prepare("SELECT * from Categorieen where ID = ?");
+
+                if ($stmt->execute(array($_GET["root"]))) {
+                    echo "<ul>";
+                    while ($row = $stmt->fetch()) {   
+                        echo "<li> <a href=\"index.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
+                      }
+                      echo "</ul>";
+            
+            
+          }
+        }
+    }
+}  
+    
+ 
+ 
+?>
+
+</div>
     <div class="uk-width-4-5">Item 2</div>
 
 </div>
