@@ -14,6 +14,8 @@
 <body>
     <?php include 'includes\nav-L-M.php'; ?>
     <?php header('Refresh: 10'); ?>
+    <div class="page-container">
+    <div class="content-wrap">
 
 
 
@@ -127,12 +129,8 @@
 
         </div>
 
-
-
-
-
+        </div>
+        </div>
         <?php include 'includes/footer.inc.php'; ?>
-
     </body>
-
     </html>
