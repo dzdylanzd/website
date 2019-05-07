@@ -3921,6 +3921,10 @@ ul.uk-nav-sub {
     animation-duration: .2s
 }
 
+.uk-sticky{
+    margin: 10px;
+}
+
 .uk-offcanvas {
     display: none;
     position: fixed;
@@ -6269,6 +6273,7 @@ iframe.uk-cover {
 .uk-flex-column {
     flex-direction: column
 }
+
 
 .uk-flex-column-reverse {
     flex-direction: column-reverse
