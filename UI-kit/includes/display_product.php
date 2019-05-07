@@ -55,7 +55,7 @@ function displayCatogorie($nummer, $dbh){
 
 $sth = $dbh->prepare($sql);
 if($sth->execute(array())){
-echo'<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="clsActivated: uk-transition-active; center: true">
+echo'<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="clsActivated: uk-transition-active; ">
 
 <ul class="uk-slider-items uk-grid">';
 while ($alles = $sth->fetch()) {
