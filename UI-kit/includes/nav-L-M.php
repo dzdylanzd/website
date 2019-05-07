@@ -1,11 +1,11 @@
 <!-- navigatiebalk L -->
 
-<div class="uk-visible@m">
-        <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+<div class="uk-visible@m sticky">
+        <div class="catogorieNav">
             </nav>
-            <nav class="uk-navbar-container" uk-navbar>
+            <nav class="catogorieNav uk-navbar-container  " uk-navbar>
                 <div class="uk-navbar-left">
-                    <div class="uk-navbar-nav">
+                    <div class="uk-navbar-nav catogorieNav">
                         <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
 
                     </div>
