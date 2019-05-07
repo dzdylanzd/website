@@ -69,16 +69,23 @@ margin-left: 2px;
   .catogorieNav{
     margin: 15px;
     background-color: #c6ae91;
-    top: 150px;
+    top: 130px;
     position: sticky;
   }
   .sticky{
     position: sticky;
     top: 0;
+    width: 100%;
+    z-index:1;
+   
   }
+
 
   .flex-column-phone{
     display: flex
+  }
+  .marginRemove{
+    margin: -15px;
   }
 
   .noDots{
