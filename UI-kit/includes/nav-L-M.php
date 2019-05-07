@@ -1,9 +1,9 @@
 <!-- navigatiebalk L -->
 
-<div class="uk-visible@m sticky ">
-      
-            
-            <nav class="uk-navbar-container marginRemove" uk-navbar>
+<div class="uk-visible@m">
+        <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
+            </nav>
+            <nav class="uk-navbar-container" uk-navbar>
                 <div class="uk-navbar-left">
                     <div class="uk-navbar-nav">
                         <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
@@ -32,12 +32,12 @@
                     </div>
                 </div>
             </nav>
-        
+        </div>
     </div>
     <!-- navigatiebalk M -->
     <div class="uk-visible@s uk-hidden@m">
         <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
-            
+            </nav>
             <nav class="uk-navbar-container" uk-navbar>
 
                 <div class="uk-navbar-nav">
