@@ -59,7 +59,7 @@
 </div>
                 </div>
                 <div class="uk-width-4-5@m ">
-
+<div class="margin" ><div>
                     <?php
                     if (!isset($_GET["root"])) {
                         include 'includes/display_product.php';
