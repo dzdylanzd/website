@@ -75,9 +75,9 @@ margin-left: 2px;
   .sticky{
     position: sticky;
     top: 0;
-    width: 100%;
+    
     z-index:1;
-   
+   margin-bottom: 60px;
   }
 
 
