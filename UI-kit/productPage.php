@@ -68,6 +68,7 @@
                     ?>
 
                     <!-- Beschrijving -->
+                    <h1> Beschrijving </h1>
                     <?php
                         $sql = "SELECT Titel, Beschrijving, Prijs FROM Items WHERE ID = ? ";
                         $sth = $dbh->prepare($sql);
@@ -75,7 +76,7 @@
                             while ($alles = $sth->fetch()) {
                                 $beschrijving = $alles['Beschrijving'];
                                 $beschrijving = strip_tags($beschrijving,"<style>");
-                                $substring = substr($beschrijving,strpos($beschrijving,"<style"),strpos($beschrijving,"</style>")+2);
+                                $substring = substr($beschrijving,strpos($beschrijving,"<style"),strpos($beschrijving,"</style>"));
                                 $beschrijving = str_replace($substring,"",$beschrijving);
                                 $beschrijving = str_replace(array("\t","\r","\n"),"",$beschrijving);
                                 $beschrijving = trim($beschrijving);
