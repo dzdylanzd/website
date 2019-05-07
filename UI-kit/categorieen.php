@@ -52,21 +52,15 @@
 
             <div class="uk-flex">
                 <div class="uk-width-1-5">
-                    <div class="scrollbox">
-                        Efficient honorificabilitudinitatibus
-                        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-                        Efficient honorificabilitudinitatibus
-                        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-                        Efficient honorificabilitudinitatibus
-                        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
+                    <div class="scrollbox catogorieNav">
+                    <?php require_once('includes\catogorie _nav.php'); ?>
                     </div>
 
 
-                    <?php require_once('includes\catogorie _nav.php'); ?>
+                  
 
                 </div>
-                <div class="uk-width-4-5">Item 2
-
+                <div class="uk-width-4-5">
                     <?php
                     if (isset($_GET["root"])) {
                         include 'includes/display_product.php';
@@ -89,8 +83,10 @@
 
                         if ($stmt->execute(array($_GET["root"]))) {
                             while ($row = $stmt->fetch()) {
+                                echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
                                 displayCatogorie($row["ID"], $dbh);
+                               echo' </div>';
                             }
                         }
                     }

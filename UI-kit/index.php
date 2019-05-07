@@ -50,22 +50,15 @@
                 </nav>
             </div>
 
-            <div class="uk-flex">
-                <div class="uk-width-1-5">
-                    <div class="scrollbox">
-                        Efficient honorificabilitudinitatibus
-                        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-                        Efficient honorificabilitudinitatibus
-                        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-                        Efficient honorificabilitudinitatibus
-                        cross-media information without floccinaucinihilipilification cross-media value. Quickly maximize timely deliverables for real-time schemas plenipotentiary.
-                    </div>
+            <div class="  flex-column-phone">
+                <div class="uk-width-1-5@m uk-text-center@s uk-text-left@m ">
 
 
+<div class="catogorieNav"  >
                     <?php require_once('includes\catogorie _nav.php'); ?>
-
+</div>
                 </div>
-                <div class="uk-width-4-5">Item 2
+                <div class="uk-width-4-5@m ">
 
                     <?php
                     if (!isset($_GET["root"])) {
@@ -89,8 +82,10 @@
 
                         if ($stmt->execute(array(-1))) {
                             while ($row = $stmt->fetch()) {
+                                echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
                                 displayCatogorie($row["ID"], $dbh);
+                               echo' </div>';
                             }
                         }
                     }
@@ -115,8 +110,10 @@
 
                         if ($stmt->execute(array($_GET["root"]))) {
                             while ($row = $stmt->fetch()) {
+                                echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
                                 displayCatogorie($row["ID"], $dbh);
+                               echo' </div>';
                             }
                         }
                     }
@@ -126,9 +123,10 @@
                 </div>
 
             </div>
-        </div></div>
-        <?php include 'includes/footer.inc.php'; ?>
-                
+        </div>
+    </div>
+    <?php include 'includes/footer.inc.php'; ?>
+
 </body>
 
 </html>
