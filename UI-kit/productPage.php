@@ -39,7 +39,7 @@
                         }
                     }
 
-                    // presentatie ding
+                    // foto slideshow
                     $sql = "SELECT TOP 4 IllustratieFile FROM Illustraties WHERE ItemID = ? ";
                     $sth = $dbh->prepare($sql);
                     if ($sth->execute(array($_GET["ID"]))) {
@@ -69,12 +69,12 @@
 
                     <!-- Beschrijving -->
                     <?php
-                        $beschrijving = ($alles["Beschrijving"]);
-                        $strippedBeschrijving = strip_tags($beschrijving);
+                        $sql = "SELECT Titel, Beschrijving, Prijs FROM Items WHERE ID = ? ";
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
                             while ($alles = $sth->fetch()) {
-                                echo "<p>$strippedBeschrijving</p>";
+                                $beschrijving = strip_tags($alles['Beschrijving']);
+                                echo $beschrijving;
                             }
                         }
                     ?>
