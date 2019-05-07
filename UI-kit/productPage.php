@@ -12,7 +12,16 @@
 </head>
 
 <body>
-    <?php include 'includes\nav-L-M.php'; ?>
+    <?php include 'includes\nav-L-M.php';
+    require 'includes/database.php';
+    $sql = "SELECT Titel, Beschrijving, Prijs FROM Items WHERE ID = ? ";
+    $sth = $dbh->prepare($sql);
+    if ($sth->execute(array($_GET["ID"]))) {
+        while ($alles = $sth->fetch()) {
+            echo "$alles[Titel]";
+        }
+    }
+    ?>
     <div class="page-container">
         <div class="content-wrap">
 

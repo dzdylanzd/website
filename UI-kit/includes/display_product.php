@@ -67,11 +67,6 @@ if($sthImage->execute(array($alles["ID"]))){
   
 }
     echo "
-            
-            
-            
-            
-            
             <li class=\"uk-width-1-4\">
             <div class=\"uk-panel\">
                <a href=\"productPage.php?ID=$alles[ID]\" > <img  class=\"image-square\" src=\"http://iproject5.icasites.nl/pics/$image[IllustratieFile]\" alt=\"\"> </a>
@@ -94,4 +89,3 @@ echo'</ul>
 
 
 }
-?>
