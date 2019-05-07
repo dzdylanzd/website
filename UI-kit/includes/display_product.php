@@ -64,7 +64,6 @@ while ($alles = $sth->fetch()) {
 if($sthImage->execute(array($alles["ID"]))){
     $image = $sthImage->fetch();
     $titel = substr($alles["Titel"],6);
-  
 }
     echo "
             <li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">
