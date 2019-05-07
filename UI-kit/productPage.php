@@ -13,7 +13,7 @@
 
 <body>
     <?php include 'includes\nav-L-M.php';
-          require 'includes/database.php'; ?>
+          require_once('includes/database.php'); ?>
     <div class="page-container">
         <div class="content-wrap">
 
@@ -38,46 +38,43 @@
                             echo "<h1>$alles[Titel]</h1>";
                         }
                     }
-                    ?>
-                    <!-- presentatie ding -->
-                    <div id="imageprevieuw-detailpage" class="uk-position-relative uk-visible-toggle uk-light  uk-width-4-4	uk-margin-bottom" tabindex="-1" uk-slideshow>
 
-                        <ul class="uk-slideshow-items ">
-                            <li class="Image-Border">
-                                <img src="https://via.placeholder.com/150" alt="" uk-cover>
-                                <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom">
-                                    <h3 class="uk-margin-remove">jan</h3>
-                                    <p class="uk-margin-remove">$10</p>
-                                </div>
-                            </li>
-                            <li class="Image-Border">
-                                <img src="https://via.placeholder.com/700x40" alt="" uk-cover>
-                            </li>
-                            <li class="Image-Border">
-                                <img src="https://via.placeholder.com/450" alt="" uk-cover>
-                            </li>
-                            <li class="Image-Border">
-                                <img src="https://via.placeholder.com/950" alt="" uk-cover>
-                            </li>
-                        </ul>
+                    // presentatie ding
+                    $sql = "SELECT TOP 4 IllustratieFile FROM Illustraties WHERE ItemID = ? ";
+                    $sth = $dbh->prepare($sql);
+                    if ($sth->execute(array($_GET["ID"]))) {
+                        $sliderFotos = '<div id="imageprevieuw-detailpage" class="uk-position-relative uk-visible-toggle uk-light  uk-width-4-4	uk-margin-bottom" tabindex="-1" uk-slideshow>
+
+                        <ul class="uk-slideshow-items ">';
+                        $knoppenFotos = '<div class="imagePrevieuw uk-flex">';
+                        $index = 0;
+                        while ($alles = $sth->fetch()) {
+                            $image = "src=\"http://iproject5.icasites.nl/pics/$alles[IllustratieFile]\" ";
+                            $sliderFotos = "$sliderFotos <li class=\"Image-Border\">
+                            <img $image alt=\"\" uk-cover>
+                        </li>";
+                         $knoppenFotos = "$knoppenFotos <img $image class=\"uk-width-1-4 \" alt=\"D\" onclick=\"UIkit.slideshow('.uk-slideshow').show($index);\">";
+                         $index++;
+                        }
+                        $sliderFotos = $sliderFotos .' </ul>
 
                         <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
                         <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-                    </div>
+                    </div>';
+                        $knoppenFotos = $knoppenFotos .' </div>';
+                        echo $sliderFotos;
+                        echo $knoppenFotos;
+                    }
+                    ?>
 
-                    <div class="imagePrevieuw uk-flex">
-                        <img src="https://via.placeholder.com/150" class="uk-width-1-4 " alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(0);">
-                        <img src="https://via.placeholder.com/350" class="uk-width-1-4 " alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(1);">
-                        <img src="https://via.placeholder.com/450" class="uk-width-1-4 " alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(2);">
-                        <img src="https://via.placeholder.com/950" class="uk-width-1-4 " alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(3);">
-                    </div>
                     <!-- Beschrijving -->
                     <?php
-                        $beschrijving = htmlspecialchars($alles["Beschrijving"]);
+                        $beschrijving = ($alles["Beschrijving"]);
+                        $strippedBeschrijving = strip_tags($beschrijving);
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
                             while ($alles = $sth->fetch()) {
-                                echo "<p>$beschrijving</p>";
+                                echo "<p>$strippedBeschrijving</p>";
                             }
                         }
                     ?>
