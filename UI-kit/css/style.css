@@ -11,6 +11,9 @@ p {
   font-family: "Calibri", sans-serif;
 }
 
+.logo{
+  margin-left: 50px;
+}
 .image-square {
   width:500px;
   height:300px;
