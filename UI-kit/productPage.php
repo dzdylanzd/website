@@ -73,7 +73,13 @@
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
                             while ($alles = $sth->fetch()) {
-                                $beschrijving = strip_tags($alles['Beschrijving']);
+                                $beschrijving = $alles['Beschrijving'];
+                                $beschrijving = strip_tags($beschrijving,"<style>");
+                                $substring = substr($beschrijving,strpos($beschrijving,"<style"),strpos($beschrijving,"</style>")+2);
+                                $beschrijving = str_replace($substring,"",$beschrijving);
+                                $beschrijving = str_replace(array("\t","\r","\n"),"",$beschrijving);
+                                $beschrijving = trim($beschrijving);
+
                                 echo $beschrijving;
                             }
                         }
