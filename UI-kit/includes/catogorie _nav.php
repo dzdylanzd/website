@@ -6,7 +6,7 @@
     if ($stmt->execute(array(-1))) {
       echo "<ul>";
       while ($row = $stmt->fetch()) {
-        echo "<li> <a href=\"index.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
+        echo "<li> <a href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
       }
       echo "</ul>";
     }
@@ -49,7 +49,7 @@
       if ($stmt->execute(array($_GET["root"]))) {
 
         while ($row = $stmt->fetch()) {
-          echo "<li> <a href=\"index.php?root=$row[Parent]\">  terug </a> </li>  ";
+          echo "<li> <a href=\"categorieen.php?root=$row[Parent]\">  terug </a> </li>  ";
         }
       }
     }
@@ -60,7 +60,7 @@
       if ($row = $stmt->fetch() > 0) {
 
         while ($row = $stmt->fetch()) {
-          echo "<li> <a href=\"index.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
+          echo "<li> <a href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
         }
         echo "</ul>";
       } else {
@@ -69,7 +69,7 @@
         if ($stmt->execute(array($_GET["root"]))) {
 
           while ($row = $stmt->fetch()) {
-            echo "<li> <a href=\"index.php?root=$row[Parent]\">  $row[Name] </a> </li>  ";
+            echo "<li> <a href=\"categorieen.php?root=$row[Parent]\">  $row[Name] </a> </li>  ";
           }
           echo "</ul>";
         }
