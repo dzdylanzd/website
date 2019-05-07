@@ -31,9 +31,6 @@ h1, h2, h3 {
   font-family: "Century Gothic", sans-serif;
 }
 
-
-
-
 .imagePrevieuw img{
 height: 100%;
 border: 2px solid #43464B;
@@ -101,16 +98,24 @@ margin-left: 2px;
  }
 
  .Bieden{
-width: 100%;
-background-color: black;
+  width: 100%;
+  background-color: 43464B;
+  margin: 10px;
  }
-
- .Bieden{
-   margin: 10px;
+ .Bod-Plaatsen{
+  background-color: #43464B;
+  color: white;
+  padding: 10px;
+    width: 100%;
+    height: 100px;
+    margin: 10px;
  }
 .Plaats-Bod{
   margin: 10px;
-  background-color: #43464B;
+  background-color: #C6AE91;
+}
+.Bod-Veld{
+  height: 100px;
 }
  .Card-Empty{
    margin: 10px;
