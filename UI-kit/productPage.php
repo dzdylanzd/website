@@ -12,22 +12,25 @@
 </head>
 
 <body>
-    <?php include 'includes\nav-L-M.php'; ?>
+    <?php include 'includes\nav-L-M.php';
+    require 'includes/database.php';
+    $sql = "SELECT Titel, Beschrijving, Prijs FROM Items WHERE ID = ? ";
+    $sth = $dbh->prepare($sql);
+    if ($sth->execute(array($_GET["ID"]))) {
+        while ($alles = $sth->fetch()) {
+            echo "$alles[Titel]";
+        }
+    }
+    ?>
     <div class="page-container">
         <div class="content-wrap">
 
             <div class="uk-hidden@s">
                 <div uk-sticky="sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; bottom: #transparent-sticky-navbar">
                     <nav class="uk-navbar-container" uk-navbar style="position: relative; z-index: 980;">
-
-
                         <ul class="uk-navbar-nav">
-
                             <li><a href="index.php" uk-icon="icon: triangle-left; ratio: 3"></a></li>
-
                         </ul>
-
-
                     </nav>
                 </div>
             </div>
@@ -47,8 +50,6 @@
                             </li>
                             <li class="Image-Border">
                                 <img src="https://via.placeholder.com/700x40" alt="" uk-cover>
-
-
                             </li>
                             <li class="Image-Border">
                                 <img src="https://via.placeholder.com/450" alt="" uk-cover>
@@ -68,10 +69,11 @@
                         <img src="https://via.placeholder.com/350" class="uk-width-1-4 " alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(1);">
                         <img src="https://via.placeholder.com/450" class="uk-width-1-4 " alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(2);">
                         <img src="https://via.placeholder.com/950" class="uk-width-1-4 " alt="D" onclick="UIkit.slideshow('.uk-slideshow').show(3);">
-
                     </div>
                 </div>
+
                 <div class="Vertical_Line"></div>
+
                 <div class="uk-width-2-3 Card-Empty">
                     <h2>Bieding</h2>
                     <div class="uk-flex Bieding">
@@ -108,9 +110,7 @@
                                 </div>
                                 <div class="uk-button uk-width-1-3">
                                     <input type="submit" class="Bod-Plaatsen" value="Plaats bod">
-
                                 </div>
-
                                 </form>
                             </div>
                         </div>
