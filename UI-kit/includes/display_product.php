@@ -49,7 +49,7 @@ function displayCategorie($nummer, $dbh) {
             SELECT id FROM Categorieen WHERE Parent= $nummer or id = $nummer ) or id = any(
             
             SELECT id FROM Categorieen WHERE Parent= $nummer or id = $nummer ))))
-            )";
+            ) order by newid()";
 
 $sth = $dbh->prepare($sql);
 if($sth->execute(array())){
