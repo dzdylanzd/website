@@ -61,7 +61,7 @@ echo'<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" 
 
 <ul class="uk-slider-items uk-grid">';
 while ($alles = $sth->fetch()) {
-    $sqlImage = "select top 1 * from Illustraties where ItemID = ? ";
+    $sqlImage = "SELECT TOP 1 * FROM Illustraties WHERE ItemID = ? ";
     $sthImage = $dbh->prepare($sqlImage);
 if($sthImage->execute(array($alles["ID"]))){
     $image = $sthImage->fetch();

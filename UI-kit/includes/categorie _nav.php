@@ -4,9 +4,9 @@
     $stmt = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
 
     if ($stmt->execute(array(-1))) {
-      echo "<ul class=\"noDots\" >";
+      echo "<ul class=\"noDots\">";
       while ($row = $stmt->fetch()) {
-        echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
+        echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>";
       }
       echo "</ul>";
     }
@@ -21,22 +21,18 @@
         $text =  "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a>";
         $parent = $row["Parent"];
        
-         while($parent > 0){
-          $stmt2 = $dbh->prepare("SELECT * from Categorieen where ID = ?");
+          while($parent > 0){
+            $stmt2 = $dbh->prepare("SELECT * from Categorieen where ID = ?");
 
           if ($stmt2->execute(array($parent))) {
             while ($row2 = $stmt2->fetch()) { 
              $text =  " <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row2[ID]\">  $row2[Name] </a> /  $text";
               $parent = $row2["Parent"];
+              }
             }
           }
-        }
         echo $text;
-      }
-         
-
-         
-        
+        }        
       }
     }
 
@@ -49,7 +45,7 @@
       if ($stmt->execute(array($_GET["root"]))) {
 
         while ($row = $stmt->fetch()) {
-          echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Parent]\">  terug </a> </li>  ";
+          echo "<li> <a class=\"categorie-terug\" href=\"categorieen.php?root=$row[Parent]\"> <span uk-icon=\"icon: arrow-left\"></span>terug</a></li>  ";
         }
       }
     }
@@ -76,7 +72,4 @@
       }
     }
   }
-
-
-
   ?>

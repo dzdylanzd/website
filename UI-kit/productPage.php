@@ -35,7 +35,7 @@
                     $sth = $dbh->prepare($sql);
                     if ($sth->execute(array($_GET["ID"]))) {
                         while ($alles = $sth->fetch()) {
-                            echo "<h1>$alles[Titel]</h1>";
+                            echo "<h2>$alles[Titel]</h2>";
                         }
                     }
 
@@ -68,7 +68,7 @@
                     ?>
 
                     <!-- Beschrijving -->
-                    <h1> Beschrijving </h1>
+                    <h2> Beschrijving </h2>
                     <?php
                         $sql = "SELECT Titel, Beschrijving, Prijs FROM Items WHERE ID = ? ";
                         $sth = $dbh->prepare($sql);

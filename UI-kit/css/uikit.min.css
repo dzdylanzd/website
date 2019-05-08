@@ -8,30 +8,30 @@ html {
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
     background: #fffbec;
-    color: #666
+    color: #666;
 }
 
 body {
-    margin: 0
+    margin: 0;
 }
 
 a {
-    -webkit-text-decoration-skip: objects
+    -webkit-text-decoration-skip: objects;
 }
 
 a:active, a:hover {
-    outline: 0
+    outline: 0;
 }
 
 .uk-link, a {
-    color: #1e87f0;
+    color: #ebdac6;
     text-decoration: none;
-    cursor: pointer
+    cursor: pointer;
 }
 
 .uk-link:hover, a:hover {
-    color: #0f6ecd;
-    text-decoration: underline
+    color: #ebdac6;
+    text-decoration: underline;
 }
 
 abbr[title] {
@@ -319,7 +319,7 @@ template {
 }
 
 .uk-link-heading a:hover, a.uk-link-heading:hover {
-    color: #1e87f0;
+    color: #ebdac6;
     text-decoration: none
 }
 

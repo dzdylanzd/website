@@ -45,24 +45,30 @@
                     </div>
 
 
-
-
                 </nav>
             </div>
 
             <div class="uk-flex">
-                <div class="uk-width-1-5">
-                    <div class="scrollbox catogorieNav">
-                    <?php require_once('includes\catogorie _nav.php'); ?>
+                <div class="uk-width-1-3 ">
+                    <div class=" CategorieNavigatie">
+                    <h1>Rubrieken</h1>
+                        <div class="scrollbox categorieNav ">
+                            <?php require_once('includes\categorie _nav.php'); ?>
+                           
+                        </div>
+                        <h3> Staat</h3>
+                        <form action="categorieen.php" method="post">
+                            <input type="checkbox">
                     </div>
 
 
-                  
+
 
                 </div>
-                <div class="uk-width-4-5">
-                <?php
-                    if (!isset($_GET["root"])) {
+                <div class="uk-width-5-5">
+                    <?php
+                    "<h1> Rubrieken <h1>";
+                    if (isset($_GET["root"])) {
                         include 'includes/display_product.php';
                         $sth = $dbh->prepare("SELECT * from Categorieen where ID = ?");
                         if ($sth->execute(array(-1))) {
@@ -115,7 +121,7 @@
                                 echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
                                 displayCatogorie($row["ID"], $dbh);
-                               echo' </div>';
+                                echo ' </div>';
                             }
                         }
                     }
@@ -125,9 +131,10 @@
                 </div>
 
             </div>
-        </div></div>
-        <?php include 'includes/footer.inc.php'; ?>
-                
+        </div>
+    </div>
+    <?php include 'includes/footer.inc.php'; ?>
+
 </body>
 
 </html>

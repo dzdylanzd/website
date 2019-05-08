@@ -17,18 +17,12 @@
     <div class="page-container">
         <div class="content-wrap">
 
-
-
-
             <!-- navigatie balk S -->
             <div class="uk-hidden@s">
                 <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
-
                     <div class="uk-navbar-nav  uk-flex-center">
                         <a class=" uk-logo uk-navbar-item " href="#"><img src="media\logo.png" alt="logo" width=100em></a>
-
                     </div>
-
 
                     <div class="uk-navbar-nav  uk-flex-center">
                         <div class="uk-navbar-item ">
@@ -52,21 +46,20 @@
 
             <div class="  flex-column-phone">
                 <div class="uk-width-1-5@m uk-text-center@s uk-text-left@m ">
-
-
-<div class="catogorieNav"  >
-                    <?php require_once('includes\catogorie _nav.php'); ?>
-</div>
+                <div class="catogorieNav"> 
+                    <h1>Rubrieken</h1>
+                    <?php require_once('includes\categorie _nav.php'); ?>
+                </div>
                 </div>
                 <div class="uk-width-4-5@m ">
-<div class="margin" ><div>
+                    <div class="margin"> </div>
                     <?php
                     if (!isset($_GET["root"])) {
                         include 'includes/display_product.php';
-                        $sth = $dbh->prepare("SELECT * from Categorieen where ID = ?");
+                        $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE ID = ?");
                         if ($sth->execute(array(-1))) {
                             while ($row = $sth->fetch()) {
-                                $TITELS = $dbh->prepare("SELECT Titel from items where Categorie = ?");
+                                $TITELS = $dbh->prepare("SELECT Titel FROM items WHERE Categorie = ?");
                                 if ($TITELS->execute(array($row["ID"]))) {
                                     $row2 = $TITELS->fetch();
                                     if ($row2  > 0) {
@@ -78,7 +71,7 @@
                                 }
                             }
                         }
-                        $sth = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
+                        $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE Parent = ?");
 
                         if ($sth->execute(array(-1))) {
                             while ($row = $sth->fetch()) {
@@ -91,10 +84,10 @@
                     }
                     if (isset($_GET["root"])) {
                         include 'includes/display_product.php';
-                        $sth = $dbh->prepare("SELECT * from Categorieen where ID = ?");
+                        $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE ID = ?");
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
-                                $TITELS = $dbh->prepare("SELECT * from items where Categorie = ?");
+                                $TITELS = $dbh->prepare("SELECT Titel FROM items WHERE Categorie = ?");
                                 if ($TITELS->execute(array($row["ID"]))) {
                                     $row2 = $TITELS->fetch();
                                     if ($row2  > 0) {
@@ -109,7 +102,7 @@
                                 }
                             }
                         }
-                        $sth = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
+                        $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE Parent = ?");
 
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
@@ -124,7 +117,6 @@
 
 
                 </div>
-
             </div>
         </div>
     </div>
