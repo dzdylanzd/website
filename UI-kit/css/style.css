@@ -34,14 +34,19 @@ p {
   background-color: #fffbec;
 }
 
-h1, h2, h3 {
+h1, h3, h4 {
   font-family: "Century Gothic", sans-serif;
+  color: #fffbec;
+}
+
+h2 {
+  font-family: "Century Gothic", sans-serif;
+  color: #43464B;
 }
 
 .imagePrevieuw img{
-height: 100%;
-border: 2px solid #43464B;
-
+  height: 100%;
+  border: 2px solid #43464B;
 }
 
 .Image-Border{
@@ -49,7 +54,7 @@ border: 2px solid #43464B;
 }
 
 #imageprevieuw-detailpage{
-margin-left: 2px;
+  margin-left: 2px;
 }
 
 .scrollbox {
@@ -60,90 +65,97 @@ margin-left: 2px;
   height: 500px;
   overflow-y: scroll;
   overflow-x: hidden;
-  }
+}
   
-  .ItemsSlider{
+.ItemsSlider{
   background-color: #ddc8af;
   border-radius: 5px;
   margin: 15px;
- padding: 15px;
-  }
+  padding: 15px;
+}
 
-  .catogorieNav{
-    margin: 15px;
-    background-color: #c6ae91;
-    top: 130px;
-    position: sticky;
-  }
-  .sticky{
-    position: sticky;
-    top: 0;
-    width: 99%;
-    z-index:1;
-   margin-bottom: 60px;
-  }
+.catogorieNav{
+  margin: 15px;
+  padding: 15px;
+  background-color: #c6ae91;
+  top: 130px;
+  position: sticky;
+  color: #fffbec;
+}
 
+.sticky{
+  position: sticky;
+  top: 0;
+  width: 99%;
+  z-index:1;
+  margin-bottom: 60px;
+}
 
-  .flex-column-phone{
-    display: flex
-  }
-  .marginRemove{
-    margin: -15px;
-  }
+.flex-column-phone{
+  display: flex
+}
 
-  .noDots{
-    list-style-type: none;
-  }
-  
-  /* Scrollbar styles */
+.marginRemove{
+  margin: -15px;
+}
+
+.noDots{
+  list-style-type: none;
+}
+
+/* Scrollbar styles */
   ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
-  }
+}
   
-  ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: #ebdac6;
   border-radius: 10px;
-  }
+}
   
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   border-radius: 10px;
   background: #d1b697;  
-  }
-  
- .Vertical_Line{
-   background-color: #43464B;
-   padding: 0.5px;
-   margin-left: 2px;
-   margin-right: 2px;
-   margin-top: 10px;
-   margin-bottom: 10px;
- }
+}
 
- .Bieding{
+.categorie-terug {
+  color: #ebdac6;
+}
+  
+.Vertical_Line{
+  background-color: #43464B;
+  padding: 0.5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.Bieding{
   background-color: #739F65;
   border-radius: 5px;
   padding: 15px;
- }
+}
 
- .Vorige-Bieder{
+.Vorige-Bieder{
   background-color: #C6AE91;
   border-radius: 5px;
   padding: 15px;
- }
+}
 
- .Verkoper{
+.Verkoper{
   padding-left: 0px;
   padding-top: 40px;
- }
+}
 
- .Bieden{
+.Bieden{
   width: 100%;
   background-color: #fffbec;
   margin: 15px;
- }
+}
 
- .Bod-Plaatsen{
+.Bod-Plaatsen{
   background-color: #43464B;
   border: none;
   border-radius: 5px;
@@ -151,22 +163,24 @@ margin-left: 2px;
   width: 100%;
   height: 100px;
   margin: 15px;
- }
+}
 
 .Plaats-Bod{
   margin: 10px;
   background-color: #C6AE91;
   border-radius: 5px;
 }
+
 .Bod-Veld{
   height: 100px;
 }
- .Card-Empty{
+
+.Card-Empty{
    margin: 10px;
  
- } 
+} 
 
- @media only screen and (max-width: 960px) {
+@media only screen and (max-width: 960px) {
   .flex-column-phone {
     flex-direction: column
   }
