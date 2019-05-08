@@ -55,7 +55,7 @@
 
 
 <div class="catogorieNav"  >
-                    <?php require_once('includes\catogorie _nav.php'); ?>
+                    <?php require_once('includes\categorie _nav.php'); ?>
 </div>
                 </div>
                 <div class="uk-width-4-5@m ">

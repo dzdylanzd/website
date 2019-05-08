@@ -4,7 +4,7 @@
     $stmt = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
 
     if ($stmt->execute(array(-1))) {
-      echo "<ul class=\"noDots\" >";
+      echo "<ul class=\"noDots\">";
       while ($row = $stmt->fetch()) {
         echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
       }

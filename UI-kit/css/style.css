@@ -69,11 +69,19 @@ margin-left: 2px;
  padding: 15px;
   }
 
-  .catogorieNav{
-    margin: 15px;
-    background-color: #c6ae91;
+  .categorieNav{
+    background-color: #ddc8af;
     top: 130px;
+    height: 250px;
     position: sticky;
+    width: 96%;
+  }
+
+  .CategorieNavigatie{
+    position: sticky;
+    top: 150px;
+    background-color:#C6AE91;
+    padding: 15px;
   }
   .sticky{
     position: sticky;
