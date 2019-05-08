@@ -46,7 +46,7 @@
 
             <div class="  flex-column-phone">
                 <div class="uk-width-1-5@m uk-text-center@s uk-text-left@m ">
-                <div class="categorieNavHomepagina"> 
+                <div class="catogorieNav"> 
                     <h1>Rubrieken</h1>
                     <?php require_once('includes\categorie _nav.php'); ?>
                 </div>
@@ -77,7 +77,7 @@
                             while ($row = $sth->fetch()) {
                                 echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh);
+                                displayCatogorie($row["ID"], $dbh);
                                echo' </div>';
                             }
                         }
@@ -95,7 +95,7 @@
                                         while ($row2 = $TITELS->fetch()) {
                                             echo'<div class="ItemsSlider">';
                                             echo "<h1> $row2[Name] </h1>";
-                                            displayCategorie($row2["ID"], $dbh);
+                                            displayCatogorie($row2["ID"], $dbh);
                                            echo' </div>';
                                         }
                                     }
@@ -108,7 +108,7 @@
                             while ($row = $sth->fetch()) {
                                 echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh);
+                                displayCatogorie($row["ID"], $dbh);
                                echo' </div>';
                             }
                         }

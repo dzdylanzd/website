@@ -50,9 +50,9 @@
 
             <div class="uk-flex">
                 <div class="uk-width-1-3 ">
-                    <div class=" CategorieNavigatieBox">
+                    <div class=" CategorieNavigatie">
                     <h1>Rubrieken</h1>
-                        <div class="scrollbox categorieNav">
+                        <div class="scrollbox categorieNav ">
                             <?php require_once('includes\categorie _nav.php'); ?>
                            
                         </div>
@@ -91,7 +91,7 @@
                             while ($row = $sth->fetch()) {
                                 echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh);
+                                displayCatogorie($row["ID"], $dbh);
                                echo' </div>';
                             }
                         }
@@ -108,7 +108,7 @@
                                        
                                         echo'<div class="ItemsSlider">';
                                             echo "<h1> $row[Name] </h1>";
-                                            displayCategorie($row["ID"], $dbh);
+                                            displayCatogorie($row["ID"], $dbh);
                                            echo' </div>';
                                         
                                     }else{
@@ -123,7 +123,7 @@
                             while ($row = $sth->fetch()) {
                                 echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh);
+                                displayCatogorie($row["ID"], $dbh);
                                 echo ' </div>';
                             }
                         }

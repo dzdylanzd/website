@@ -49,16 +49,16 @@ h2 {
   color: #43464B;
 }
 
-.imagePrevieuw img {
+.imagePrevieuw img{
   height: 100%;
   border: 2px solid #43464B;
 }
 
-.Image-Border {
+.Image-Border{
   border: 3px solid #43464B;
 }
 
-#imageprevieuw-detailpage {
+#imageprevieuw-detailpage{
   margin-left: 2px;
 }
 
@@ -72,47 +72,36 @@ h2 {
   overflow-x: hidden;
 }
   
-.ItemsSlider {
+.ItemsSlider{
   background-color: #ddc8af;
   border-radius: 5px;
   margin: 15px;
   padding: 15px;
 }
 
-.categorieNav {
-  background-color: #ddc8af;
-  top: 130px;
-  height: 250px;
-  position: sticky;
-  width: 96%;
-  color: #fffbec;
-}
+  .categorieNav{
+    background-color: #c6ae91;
+    top: 130px;
+    height: 250px;
+    position: sticky;
+    width: 96%;
+    color: #fffbec;
+    /* padding: 15px; */
+  }
 
-.categorieNavHomepagina {
-  background-color: #c6ae91;
-  top: 130px;
-  margin: 15px;
-  margin-right: 0px;
-  padding: 15px;
-  position: sticky;
-  color: #fffbec;
-}
-
-.CategorieNavigatieBox{
-  position: sticky;
-  top: 150px;
-  background-color:#C6AE91;
-  padding: 15px;
-  margin-left: 15px;
-}
-
-.sticky{
-  position: sticky;
-  top: 0;
-  width: 99%;
-  z-index:1;
-  margin-bottom: 60px;
-}
+  .CategorieNavigatie{
+    position: sticky;
+    top: 150px;
+    background-color:#C6AE91;
+    padding: 15px;
+  }
+  .sticky{
+    position: sticky;
+    top: 0;
+    width: 99%;
+    z-index:1;
+   margin-bottom: 60px;
+  }
 
 .sticky{
   position: sticky;
@@ -151,7 +140,7 @@ h2 {
 }
 
 .categorie-terug {
-  color: #c6ae91;
+  color: #ebdac6;
 }
   
 .Vertical_Line{
