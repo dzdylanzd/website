@@ -1,7 +1,9 @@
 <?php
 
 function displayCatogorie($nummer, $dbh){
-    
+    if($nummer = -1){
+        return false;
+    }
 
         $sql= "SELECT top 10 * from items where Categorie in(
             SELECT id from Categorieen where parent = any(

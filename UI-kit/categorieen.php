@@ -93,21 +93,21 @@
                     if (isset($_GET["root"])) {
                         include 'includes/display_product.php';
                         $sth = $dbh->prepare("SELECT * from Categorieen where ID = ?");
-                        if ($sth->execute(array($_GET["root"]))) {
-                            while ($row = $sth->fetch()) {
-                                $TITELS = $dbh->prepare("SELECT * from items where Categorie = ?");
-                                if ($TITELS->execute(array($row["ID"]))) {
-                                                                      
+                        // if ($sth->execute(array($_GET["root"]))) {
+                        //     while ($row = $sth->fetch()) {
+                        //         $TITELS = $dbh->prepare("SELECT * from items where Categorie = ?");
+                        //         if ($TITELS->execute(array($row["ID"]))) {
+                        //             if($row["ID"] != -1) {                                 
                                        
-                                        echo'<div class="ItemsSlider">';
-                                            echo "<h1> $row[Name] </h1>";
-                                            displayCatogorie($row["ID"], $dbh);
-                                           echo' </div>';
-                                        
+                        //                 echo'<div class="ItemsSlider">';
+                        //                     echo "<h1> $row[Name] </h1>";
+                        //                     displayCatogorie($row["ID"], $dbh);
+                        //                    echo' </div>';
+                        //             }
                                     
-                                }
-                            }
-                        }
+                        //         }
+                        //     }
+                        // }
                         $sth = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
 
                         if ($sth->execute(array($_GET["root"]))) {

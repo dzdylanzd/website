@@ -18,7 +18,7 @@
 
       while ($row = $stmt->fetch()) {
         if($row["ID"] != -1){
-        $text =  "$row[Name] ";
+        $text =  "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a>";
         $parent = $row["Parent"];
        
          while($parent > 0){
@@ -26,7 +26,7 @@
 
           if ($stmt2->execute(array($parent))) {
             while ($row2 = $stmt2->fetch()) { 
-             $text =  "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row2[ID]\">  $row2[Name] </a> /  $text";
+             $text =  " <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row2[ID]\">  $row2[Name] </a> /  $text";
               $parent = $row2["Parent"];
             }
           }
@@ -58,7 +58,7 @@
     if ($stmt->execute(array($_GET["root"]))) {
 
       if ($row = $stmt->fetch() > 0) {
-
+        echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
         while ($row = $stmt->fetch()) {
           echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
         }
