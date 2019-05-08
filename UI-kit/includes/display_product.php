@@ -1,8 +1,7 @@
 <?php
 
-function displayCategorie($nummer, $dbh, $hoeveel) {
-    
-        $sql= "SELECT top $hoeveel * from items where Categorie in(
+function displayCategorie($nummer, $dbh) {
+        $sql= "SELECT top 10 * from items where Categorie in(
             SELECT id from Categorieen where parent = any(
             select id from Categorieen where parent = any(
             select id from Categorieen where parent = any(
@@ -50,7 +49,7 @@ function displayCategorie($nummer, $dbh, $hoeveel) {
             SELECT id FROM Categorieen WHERE Parent= $nummer or id = $nummer ) or id = any(
             
             SELECT id FROM Categorieen WHERE Parent= $nummer or id = $nummer ))))
-            ) order by newid()";
+            )";
 
 $sth = $dbh->prepare($sql);
 if($sth->execute(array())){
