@@ -26,7 +26,7 @@
 
             if ($stmt2->execute(array($parent))) {
               while ($row2 = $stmt2->fetch()) { 
-              $text =  "$row2[Name] /  $text";
+              $text =  "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row2[ID]\">  $row2[Name] </a> /  $text";
               $parent = $row2["Parent"];
               }
             }
