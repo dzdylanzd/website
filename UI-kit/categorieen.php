@@ -12,8 +12,7 @@
 </head>
 
 <body>
-    <?php include 'includes/display_product.php';
-    include 'includes\nav-L-M.php'; ?>
+    <?php  include 'includes/display_product.php'; include 'includes\nav-L-M.php'; ?>
     <?php header('Refresh: 100'); ?>
     <div class="page-container">
         <div class="content-wrap">
@@ -52,100 +51,47 @@
             <div class="uk-flex">
                 <div class="uk-width-1-3 ">
                     <div class=" CategorieNavigatieBox">
-                        <h1>Rubrieken</h1>
+                    <h1>Rubrieken</h1>
                         <div class="scrollbox categorieNav">
                             <?php require_once('includes\categorie _nav.php'); ?>
-
+                           
                         </div>
-                        <div>
-                            <h3> Staat</h3>
-                            <form class="FilterenStaat" action="categorieen.php" method="post">
-                                <input type="checkbox" name="nieuw" value="Nieuw"> Nieuw<br>
-                                <input type="checkbox" name="bijnaNieuw" value="bijnaNieuw"> Zo goed als nieuw<br>
-                                <input type="checkbox" name="gebruikt" value="Gebruikt"> Gebruikt<br>
-
-                                <h3> Prijs</h3>
-                                <form action="categorieen.php" method="post">
-                                    <label for="prijsVan"> Van</label>
-                                    <input class="FilterenPrijs" type="text" name="prijs" id="prijsVan">
-                                    <label for="prijsTot"> Tot</label>
-                                    <input class="FilterenPrijs" type="text" name="prijs" id="prijsTot">
-                                <h3> Locatie</h3>
-                                <form action="categorieen.php"  method="post">
-                                    <label for="afstand"> Binnen</label>
-                                    <select name="afstanden">
-                                        <option value="10km"> < 10 kilometer </option>
-                                        <option value="25km"> < 25 kilometer </option>
-                                        <option value="50km"> < 50 kilometer </option>
-                                        <option value="100km"> < 100 kilometer </option>
-                                        <option value="250km"> < 250 kilometer </option>
-                                        <option value="meer250km"> > 250 kilometer </option>
-                                </form>
-                                </div>
-
+                        <h3> Staat</h3>
+                        <form action="categorieen.php" method="post">
+                            <input type="checkbox">
                     </div>
+
 
 
 
                 </div>
                 <div class="uk-width-5-5">
                     <?php
-                    "<h1> Rubrieken <h1>";
+                    
                     if (isset($_GET["root"])) {
-
-                        $sth = $dbh->prepare("SELECT * from Categorieen where ID = ?");
-                        if ($sth->execute(array(-1))) {
-                            while ($row = $sth->fetch()) {
-                                $TITELS = $dbh->prepare("SELECT Titel from items where Categorie = ?");
-                                if ($TITELS->execute(array($row["ID"]))) {
-                                    $row2 = $TITELS->fetch();
-                                    if ($row2  > 0) {
-                                        while ($row2 = $TITELS->fetch()) {
-                                            echo "$row2[Titel] <br>";
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        $sth = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
-
-                        if ($sth->execute(array(-1))) {
-                            while ($row = $sth->fetch()) {
-                                echo '<div class="ItemsSlider">';
-                                echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh);
-                                echo ' </div>';
-                            }
-                        }
-                    }
-                    if (isset($_GET["root"])) {
-
-                        $sth = $dbh->prepare("SELECT * from Categorieen where ID = ?");
-                        if ($sth->execute(array($_GET["root"]))) {
-                            while ($row = $sth->fetch()) {
-                                $TITELS = $dbh->prepare("SELECT * from items where Categorie = ?");
-                                if ($TITELS->execute(array($row["ID"]))) {
-                                    $row2 = $TITELS->fetch();
-                                    if ($row2  > 0) {
-
-                                        echo '<div class="ItemsSlider">';
-                                        echo "<h1> $row[Name] </h1>";
-                                        displayCategorie($row["ID"], $dbh);
-                                        echo ' </div>';
-                                    } else {
-                                        echo " er is hier niks";
-                                    }
-                                }
-                            }
-                        }
-                        $sth = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
+                     
+                        $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE ID  = ? ");
 
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
-                                echo '<div class="ItemsSlider">';
+                                if($row["ID"] != -1){
+                                echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh);
-                                echo ' </div>';
+                                displayCategorie($row["ID"], $dbh,100);
+                               echo' </div>';
+                                }
+                            }
+                        }
+                        $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE Parent = ?");
+
+                        if ($sth->execute(array($_GET["root"]))) {
+                            while ($row = $sth->fetch()) {
+                                if($row["ID"] != -1){
+                                echo'<div class="ItemsSlider">';
+                                echo "<h2> $row[Name] </h2>";
+                                displayCategorie($row["ID"], $dbh,10);
+                               echo' </div>';
+                                }
                             }
                         }
                     }

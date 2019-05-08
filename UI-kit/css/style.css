@@ -49,11 +49,6 @@ h2 {
   color: #43464B;
 }
 
-h3{
-  margin-top: 10px;
-  margin-bottom: 5px;
-}
-
 .imagePrevieuw img {
   height: 100%;
   border: 2px solid #43464B;
@@ -214,15 +209,7 @@ h3{
 .Card-Empty{
    margin: 10px;
  
-}
-.FilterenStaat{
-  color: white;
-}
-
-.FilterenPrijs{
-  width: 80px;
-}
-
+} 
 
 @media only screen and (max-width: 960px) {
   .flex-column-phone {
