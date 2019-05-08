@@ -54,27 +54,22 @@
     if ($stmt->execute(array($_GET["root"]))) {
 
       if ($row = $stmt->fetch() > 0) {
-        $stmt->execute(array($_GET["root"]));
+        echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
         while ($row = $stmt->fetch()) {
-         
-      
-            echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
-        
-          
-        
-      }
-    }else{
-      $stmt = $dbh->prepare("SELECT * from Categorieen where ID = ?");
+          echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
+        }
+        echo "</ul >";
+      } else {
+        $stmt = $dbh->prepare("SELECT * from Categorieen where ID = ?");
 
         if ($stmt->execute(array($_GET["root"]))) {
 
           while ($row = $stmt->fetch()) {
             echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Parent]\">  $row[Name] </a> </li>  ";
           }
-    }
-  }
-        echo "</ul >";
-     
+          echo "</ul>";
+        }
+      }
     }
   }
   ?>

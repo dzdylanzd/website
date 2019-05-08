@@ -77,7 +77,7 @@
                             while ($row = $sth->fetch()) {
                                 echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh,10);
+                                displayCategorie($row["ID"], $dbh);
                                echo' </div>';
                             }
                         }
@@ -95,7 +95,7 @@
                                         while ($row2 = $TITELS->fetch()) {
                                             echo'<div class="ItemsSlider">';
                                             echo "<h1> $row2[Name] </h1>";
-                                            displayCategorie($row2["ID"], $dbh, 10);
+                                            displayCategorie($row2["ID"], $dbh);
                                            echo' </div>';
                                         }
                                     }
@@ -108,7 +108,7 @@
                             while ($row = $sth->fetch()) {
                                 echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh, 10);
+                                displayCategorie($row["ID"], $dbh);
                                echo' </div>';
                             }
                         }
