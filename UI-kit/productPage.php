@@ -31,18 +31,18 @@
                 <div class="uk-width-1-3 Card-Empty">
                     <!-- Titel -->
                     <?php
-                    $sql = "SELECT Titel, Beschrijving, Prijs FROM Items WHERE ID = ? ";
+                    $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
                     $sth = $dbh->prepare($sql);
-                    if ($sth->execute(array($_GET["ID"]))) {
+                    if ($sth->execute(array($_GET["Voorwerpnummer"]))) {
                         while ($alles = $sth->fetch()) {
                             echo "<h2>$alles[Titel]</h2>";
                         }
                     }
 
                     // foto slideshow
-                    $sql = "SELECT TOP 4 IllustratieFile FROM Illustraties WHERE ItemID = ? ";
+                    $sql = "SELECT TOP 4 IllustratieFile FROM Illustraties WHERE Voorwerpnummer = ? ";
                     $sth = $dbh->prepare($sql);
-                    if ($sth->execute(array($_GET["ID"]))) {
+                    if ($sth->execute(array($_GET["Voorwerpnummer"]))) {
                         $sliderFotos = '<div id="imageprevieuw-detailpage" class="uk-position-relative uk-visible-toggle uk-light  uk-width-4-4	uk-margin-bottom" tabindex="-1" uk-slideshow>
 
                         <ul class="uk-slideshow-items ">';
@@ -70,9 +70,9 @@
                     <!-- Beschrijving -->
                     <h2> Beschrijving </h2>
                     <?php
-                        $sql = "SELECT Titel, Beschrijving, Prijs FROM Items WHERE ID = ? ";
+                        $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
                         $sth = $dbh->prepare($sql);
-                        if ($sth->execute(array($_GET["ID"]))) {
+                        if ($sth->execute(array($_GET["Voorwerpnummer"]))) {
                             while ($alles = $sth->fetch()) {
                                 $beschrijving = $alles['Beschrijving'];
                                 $beschrijving = strip_tags($beschrijving,"<style>");

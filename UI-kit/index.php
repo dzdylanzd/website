@@ -56,14 +56,14 @@
                     <?php
                     if (!isset($_GET["root"])) {
                         include 'includes/display_product.php';
-                        $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE ID = ?");
+                        $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer = ?");
                         if ($sth->execute(array(-1))) {
                             while ($row = $sth->fetch()) {
-                                $TITELS = $dbh->prepare("SELECT Titel FROM items WHERE Categorie = ?");
-                                if ($TITELS->execute(array($row["ID"]))) {
+                                $TITELS = $dbh->prepare("SELECT Voorwerp.Titel FROM Voorwerp V LEFT JOIN Voorwerpinrubriek VR ON V.VoorwerpNummer = VR.Voorwerp WHERE Voorwerpinrubriek.Rubriekoplaagsteniveau = ?");
+                                if ($TITELS->execute(array($row["Voorwerpnummer"]))) {
                                     $row2 = $TITELS->fetch();
                                     if ($row2  > 0) {
-                                        echo "<br><br><br> <h1> $row[Name]</h1> <br> ";
+                                        echo "<br><br><br> <h1> $row[Rubrieknaam]</h1> <br> ";
                                         while ($row2 = $TITELS->fetch()) {
                                             echo "$row2[Titel] <br>";
                                         }
@@ -71,44 +71,44 @@
                                 }
                             }
                         }
-                        $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE Parent = ?");
+                        $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Volgnr = ?");
 
                         if ($sth->execute(array(-1))) {
                             while ($row = $sth->fetch()) {
                                 echo'<div class="ItemsSlider">';
-                                echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh,10);
+                                echo "<h1> $row[Rubrieknaam] </h1>";
+                                displayCategorie($row["Rubrieknummer"], $dbh,10);
                                echo' </div>';
                             }
                         }
                     }
                     if (isset($_GET["root"])) {
                         include 'includes/display_product.php';
-                        $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE ID = ?");
+                        $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE voorwerp = ?");
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
-                                $TITELS = $dbh->prepare("SELECT Titel FROM items WHERE Categorie = ?");
-                                if ($TITELS->execute(array($row["ID"]))) {
+                                $TITELS = $dbh->prepare("SELECT Titel FROM Voorwerp V LEFT JOIN Voorwerpinrubriek VR ON V.VoorwerpNummer = VR.Voorwerp WHERE Rubriekoplaagsteniveau  = ?");
+                                if ($TITELS->execute(array($row["Voorwerp"]))) {
                                     $row2 = $TITELS->fetch();
                                     if ($row2  > 0) {
-                                        // echo "<br><br><br> <h1> $row[Name]</h1> <br> ";
+                                        // echo "<br><br><br> <h1> $row[Rubrieknaam]</h1> <br> ";
                                         while ($row2 = $TITELS->fetch()) {
                                             echo'<div class="ItemsSlider">';
-                                            echo "<h1> $row2[Name] </h1>";
-                                            displayCategorie($row2["ID"], $dbh, 10);
+                                            echo "<h1> $row2[Rubrieknaam] </h1>";
+                                            displayCategorie($row2["Rubrieknummer"], $dbh, 10);
                                            echo' </div>';
                                         }
                                     }
                                 }
                             }
                         }
-                        $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE Parent = ?");
+                        $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE volgnr = ?");
 
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
                                 echo'<div class="ItemsSlider">';
-                                echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh, 10);
+                                echo "<h1> $row[Rubrieknaam] </h1>";
+                                displayCategorie($row["Rubrieknummer"], $dbh, 10);
                                echo' </div>';
                             }
                         }
