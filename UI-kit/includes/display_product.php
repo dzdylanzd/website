@@ -65,6 +65,13 @@ if($sthImage->execute(array($alles["ID"]))){
     $image = $sthImage->fetch();
     $titel = substr($alles["Titel"],6);
 }
+if($alles["Valuta"] = "EUR"){
+    $valutaTeken = "€";
+}else if($alles["Valuta"] = "USD"){
+    $valutaTeken = "$";
+}else if($alles["Valuta"] = "EUR"){
+    $valutaTeken = "£";
+}
     echo "
             <li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">
             <div class=\"uk-panel\">
@@ -73,7 +80,7 @@ if($sthImage->execute(array($alles["ID"]))){
                     <h3 class=\"uk-margin-remove\">";
                     echo substr($alles["Titel"],0,10);
                     echo "... </h3>
-                    <p class=\"uk-margin-remove\"> € $alles[Prijs]</p>
+                    <p class=\"uk-margin-remove\"> $valutaTeken $alles[Prijs]</p>
                 </div>
             </div>
         </li>";
