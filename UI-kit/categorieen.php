@@ -97,17 +97,14 @@
                             while ($row = $sth->fetch()) {
                                 $TITELS = $dbh->prepare("SELECT * from items where Categorie = ?");
                                 if ($TITELS->execute(array($row["ID"]))) {
-                                    $row2 = $TITELS->fetch();
-                                    if ($row2  > 0) {
+                                                                      
                                        
                                         echo'<div class="ItemsSlider">';
                                             echo "<h1> $row[Name] </h1>";
                                             displayCatogorie($row["ID"], $dbh);
                                            echo' </div>';
                                         
-                                    }else{
-                                       echo" er is hier niks";
-                                    }
+                                    
                                 }
                             }
                         }
