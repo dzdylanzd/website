@@ -74,20 +74,24 @@
 
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
+                                if($row["ID"] != -1){
                                 echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh);
+                                displayCategorie($row["ID"], $dbh,100);
                                echo' </div>';
+                                }
                             }
                         }
                         $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE Parent = ?");
 
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
+                                if($row["ID"] != -1){
                                 echo'<div class="ItemsSlider">';
-                                echo "<h1> $row[Name] </h1>";
-                                displayCategorie($row["ID"], $dbh);
+                                echo "<h2> $row[Name] </h2>";
+                                displayCategorie($row["ID"], $dbh,10);
                                echo' </div>';
+                                }
                             }
                         }
                     }

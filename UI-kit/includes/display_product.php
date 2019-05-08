@@ -1,7 +1,8 @@
 <?php
 
-function displayCategorie($nummer, $dbh) {
-        $sql= "SELECT top 10 * from items where Categorie in(
+function displayCategorie($nummer, $dbh, $hoeveel) {
+    
+        $sql= "SELECT top $hoeveel * from items where Categorie in(
             SELECT id from Categorieen where parent = any(
             select id from Categorieen where parent = any(
             select id from Categorieen where parent = any(
