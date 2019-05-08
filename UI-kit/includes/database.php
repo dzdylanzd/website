@@ -2,8 +2,8 @@
 
 $hostname = "(local)";
 $dbname = 'IProject';
-$username = 'iproject37';
-$pw = 'iproject2019';
+$username = 'sa';
+$pw = 'dbrules';
 try {
         $dbh = new PDO("sqlsrv:Server=$hostname;Database=$dbname;
     ConnectionPooling=0", "$username", "$pw");

@@ -59,8 +59,8 @@
                         $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer = ?");
                         if ($sth->execute(array(-1))) {
                             while ($row = $sth->fetch()) {
-                                $TITELS = $dbh->prepare("SELECT Voorwerp.Titel FROM Voorwerp V LEFT JOIN Voorwerpinrubriek VR ON V.VoorwerpNummer = VR.Voorwerp WHERE Voorwerpinrubriek.Rubriekoplaagsteniveau = ?");
-                                if ($TITELS->execute(array($row["Voorwerpnummer"]))) {
+                                $TITELS = $dbh->prepare("SELECT V.Titel FROM Voorwerp V LEFT JOIN Voorwerpinrubriek VR ON V.VoorwerpNummer = VR.Voorwerp WHERE VR.RubriekOpLaagsteNiveau = ?");
+                                if ($TITELS->execute(array($row["Rubrieknummer"]))) {
                                     $row2 = $TITELS->fetch();
                                     if ($row2  > 0) {
                                         echo "<br><br><br> <h1> $row[Rubrieknaam]</h1> <br> ";
