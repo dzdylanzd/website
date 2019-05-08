@@ -69,8 +69,10 @@ if($alles["Valuta"] = "EUR"){
     $valutaTeken = "€";
 }else if($alles["Valuta"] = "USD"){
     $valutaTeken = "$";
-}else if($alles["Valuta"] = "EUR"){
+}else if($alles["Valuta"] = "GBP"){
     $valutaTeken = "£";
+}else if($alles["Valuta"] = "AUD"){
+    $valutaTeken = "\$A";
 }
     echo "
             <li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">

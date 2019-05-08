@@ -61,12 +61,12 @@
 
                 </div>
                 <div class="uk-width-4-5">
-                    <?php
-                    if (isset($_GET["root"])) {
+                <?php
+                    if (!isset($_GET["root"])) {
                         include 'includes/display_product.php';
-                        $stmt = $dbh->prepare("SELECT * from Categorieen where ID = ?");
-                        if ($stmt->execute(array($_GET["root"]))) {
-                            while ($row = $stmt->fetch()) {
+                        $sth = $dbh->prepare("SELECT * from Categorieen where ID = ?");
+                        if ($sth->execute(array(-1))) {
+                            while ($row = $sth->fetch()) {
                                 $TITELS = $dbh->prepare("SELECT Titel from items where Categorie = ?");
                                 if ($TITELS->execute(array($row["ID"]))) {
                                     $row2 = $TITELS->fetch();
@@ -79,10 +79,40 @@
                                 }
                             }
                         }
-                        $stmt = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
+                        $sth = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
 
-                        if ($stmt->execute(array($_GET["root"]))) {
-                            while ($row = $stmt->fetch()) {
+                        if ($sth->execute(array(-1))) {
+                            while ($row = $sth->fetch()) {
+                                echo'<div class="ItemsSlider">';
+                                echo "<h1> $row[Name] </h1>";
+                                displayCatogorie($row["ID"], $dbh);
+                               echo' </div>';
+                            }
+                        }
+                    }
+                    if (isset($_GET["root"])) {
+                        include 'includes/display_product.php';
+                        $sth = $dbh->prepare("SELECT * from Categorieen where ID = ?");
+                        if ($sth->execute(array($_GET["root"]))) {
+                            while ($row = $sth->fetch()) {
+                                $TITELS = $dbh->prepare("SELECT * from items where Categorie = ?");
+                                if ($TITELS->execute(array($row["ID"]))) {
+                                    $row2 = $TITELS->fetch();
+                                    if ($row2  > 0) {
+                                       
+                                        echo'<div class="ItemsSlider">';
+                                            echo "<h1> $row[Name] </h1>";
+                                            displayCatogorie($row["ID"], $dbh);
+                                           echo' </div>';
+                                        
+                                    }
+                                }
+                            }
+                        }
+                        $sth = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
+
+                        if ($sth->execute(array($_GET["root"]))) {
+                            while ($row = $sth->fetch()) {
                                 echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Name] </h1>";
                                 displayCatogorie($row["ID"], $dbh);
