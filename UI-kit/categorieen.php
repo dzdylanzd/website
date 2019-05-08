@@ -17,13 +17,18 @@
     <div class="page-container">
         <div class="content-wrap">
 
+
+
+
             <!-- navigatie balk S -->
             <div class="uk-hidden@s">
                 <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
 
                     <div class="uk-navbar-nav  uk-flex-center">
                         <a class=" uk-logo uk-navbar-item " href="#"><img src="media\logo.png" alt="logo" width=100em></a>
+
                     </div>
+
 
                     <div class="uk-navbar-nav  uk-flex-center">
                         <div class="uk-navbar-item ">
@@ -36,7 +41,10 @@
                             </form>
                             <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
                         </div>
+
                     </div>
+
+
                 </nav>
             </div>
 
@@ -52,10 +60,16 @@
                         <form action="categorieen.php" method="post">
                             <input type="checkbox">
                     </div>
+
+
+
+
                 </div>
                 <div class="uk-width-5-5">
                     <?php
-                        if (isset($_GET["root"])) {
+                    
+                    if (isset($_GET["root"])) {
+                     
                         $sth = $dbh->prepare("SELECT * FROM Categorieen WHERE ID  = ? ");
 
                         if ($sth->execute(array($_GET["root"]))) {
@@ -82,10 +96,15 @@
                         }
                     }
                     ?>
+
+
                 </div>
+
             </div>
         </div>
     </div>
     <?php include 'includes/footer.inc.php'; ?>
+
 </body>
+
 </html>
