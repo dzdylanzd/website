@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <?php include 'includes\nav-L-M.php'; ?>
+    <?php  include 'includes/display_product.php'; include 'includes\nav-L-M.php'; ?>
     <?php header('Refresh: 100'); ?>
     <div class="page-container">
         <div class="content-wrap">
@@ -69,7 +69,7 @@
                     <?php
                     "<h1> Rubrieken <h1>";
                     if (isset($_GET["root"])) {
-                        include 'includes/display_product.php';
+                       
                         $sth = $dbh->prepare("SELECT * from Categorieen where ID = ?");
                         if ($sth->execute(array(-1))) {
                             while ($row = $sth->fetch()) {
@@ -77,7 +77,6 @@
                                 if ($TITELS->execute(array($row["ID"]))) {
                                     $row2 = $TITELS->fetch();
                                     if ($row2  > 0) {
-                                        echo "<br><br><br> <h1> $row[Name]</h1> <br> ";
                                         while ($row2 = $TITELS->fetch()) {
                                             echo "$row2[Titel] <br>";
                                         }
@@ -97,7 +96,7 @@
                         }
                     }
                     if (isset($_GET["root"])) {
-                        include 'includes/display_product.php';
+                     
                         $sth = $dbh->prepare("SELECT * from Categorieen where ID = ?");
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {

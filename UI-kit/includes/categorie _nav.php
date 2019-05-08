@@ -54,7 +54,7 @@
     if ($stmt->execute(array($_GET["root"]))) {
 
       if ($row = $stmt->fetch() > 0) {
-
+        echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
         while ($row = $stmt->fetch()) {
           echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[ID]\">  $row[Name] </a> </li>  ";
         }
