@@ -105,6 +105,8 @@
                                             displayCatogorie($row["ID"], $dbh);
                                            echo' </div>';
                                         
+                                    }else{
+                                       echo" er is hier niks";
                                     }
                                 }
                             }
