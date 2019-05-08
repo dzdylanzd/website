@@ -113,9 +113,9 @@
                                     }else{
                                        echo "Er zijn geen producten van deze categorie beschikbaar";
                                     }
-                                }
-                            }
-                        }
+                        //         }
+                        //     }
+                        // }
                         $sth = $dbh->prepare("SELECT * from Categorieen where Parent = ?");
 
                         if ($sth->execute(array($_GET["root"]))) {
@@ -126,7 +126,7 @@
                                 echo ' </div>';
                             }
                         }
-                    }
+                    // }
                     ?>
 
 
