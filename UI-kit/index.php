@@ -46,9 +46,9 @@
 
             <div class="  flex-column-phone">
                 <div class="uk-width-1-5@m uk-text-center@s uk-text-left@m ">
-                <div class="catogorieNav">
+                <div class="catogorieNav"> 
                     <h1>Rubrieken</h1>
-                    <?php require_once('includes\catogorie _nav.php'); ?>
+                    <?php require_once('includes\categorie _nav.php'); ?>
                 </div>
                 </div>
                 <div class="uk-width-4-5@m ">
@@ -91,9 +91,12 @@
                                 if ($TITELS->execute(array($row["ID"]))) {
                                     $row2 = $TITELS->fetch();
                                     if ($row2  > 0) {
-                                        echo "<br><br><br> <h1> $row[Name]</h1> <br> ";
+                                        // echo "<br><br><br> <h1> $row[Name]</h1> <br> ";
                                         while ($row2 = $TITELS->fetch()) {
-                                            echo "$row2[Titel] <br>";
+                                            echo'<div class="ItemsSlider">';
+                                            echo "<h1> $row2[Name] </h1>";
+                                            displayCatogorie($row2["ID"], $dbh);
+                                           echo' </div>';
                                         }
                                     }
                                 }

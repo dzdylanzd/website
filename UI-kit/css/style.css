@@ -1,3 +1,8 @@
+*{
+  word-wrap: break-word;
+}
+
+
 footer {
   background-color: #c6ae91;
   text-align: center;
@@ -74,14 +79,29 @@ h2 {
   padding: 15px;
 }
 
-.catogorieNav{
-  margin: 15px;
-  padding: 15px;
-  background-color: #c6ae91;
-  top: 130px;
-  position: sticky;
-  color: #fffbec;
-}
+  .categorieNav{
+    background-color: #c6ae91;
+    top: 130px;
+    height: 250px;
+    position: sticky;
+    width: 96%;
+    color: #fffbec;
+    /* padding: 15px; */
+  }
+
+  .CategorieNavigatie{
+    position: sticky;
+    top: 150px;
+    background-color:#C6AE91;
+    padding: 15px;
+  }
+  .sticky{
+    position: sticky;
+    top: 0;
+    width: 99%;
+    z-index:1;
+   margin-bottom: 60px;
+  }
 
 .sticky{
   position: sticky;
