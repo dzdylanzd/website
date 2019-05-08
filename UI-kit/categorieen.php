@@ -99,11 +99,12 @@
                     if (isset($_GET["root"])) {
                         include 'includes/display_product.php';
                         $sth = $dbh->prepare("SELECT * from Categorieen where ID = ?");
-                        // if ($sth->execute(array($_GET["root"]))) {
-                        //     while ($row = $sth->fetch()) {
-                        //         $TITELS = $dbh->prepare("SELECT * from items where Categorie = ?");
-                        //         if ($TITELS->execute(array($row["ID"]))) {
-                        //             if($row["ID"] != -1) {                                 
+                        if ($sth->execute(array($_GET["root"]))) {
+                            while ($row = $sth->fetch()) {
+                                $TITELS = $dbh->prepare("SELECT * from items where Categorie = ?");
+                                if ($TITELS->execute(array($row["ID"]))) {
+                                    $row2 = $TITELS->fetch();
+                                    if ($row2  > 0) {
                                        
                                         echo'<div class="ItemsSlider">';
                                             echo "<h1> $row[Name] </h1>";
@@ -111,7 +112,7 @@
                                            echo' </div>';
                                         
                                     }else{
-                                       echo "Er zijn geen producten van deze categorie beschikbaar";
+                                       echo" er is hier niks";
                                     }
                                 }
                             }
