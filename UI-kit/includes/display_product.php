@@ -68,7 +68,7 @@ if($sthImage->execute(array($alles["ID"]))){
     echo "
             <li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">
             <div class=\"uk-panel\">
-               <a href=\"productPage.php?ID=$alles[ID]\" > <img  class=\"image-square\" src=\"http://iproject5.icasites.nl/pics/$image[IllustratieFile]\" alt=\"\"> </a>
+               <a href=\"productPage.php?ID=$alles[ID]\" > <img  class=\"image-square\" src=\"http://iproject5.icasites.nl/thumbnails/$alles[Thumbnail]\" alt=\"\"> </a>
                 <div class=\"uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom\">
                     <h3 class=\"uk-margin-remove\">";
                     echo substr($alles["Titel"],0,10);
