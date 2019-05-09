@@ -33,7 +33,7 @@
                     <?php
                     $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
                     $sth = $dbh->prepare($sql);
-                    if ($sth->execute(array($_GET["Voorwerpnummer"]))) {
+                    if ($sth->execute(array($_GET["ID"]))) {
                         while ($alles = $sth->fetch()) {
                             echo "<h2>$alles[Titel]</h2>";
                         }
@@ -42,7 +42,7 @@
                     // foto slideshow
                     $sql = "SELECT TOP 4 IllustratieFile FROM Illustraties WHERE Voorwerpnummer = ? ";
                     $sth = $dbh->prepare($sql);
-                    if ($sth->execute(array($_GET["Voorwerpnummer"]))) {
+                    if ($sth->execute(array($_GET["ID"]))) {
                         $sliderFotos = '<div id="imageprevieuw-detailpage" class="uk-position-relative uk-visible-toggle uk-light  uk-width-4-4	uk-margin-bottom" tabindex="-1" uk-slideshow>
 
                         <ul class="uk-slideshow-items ">';
@@ -72,7 +72,7 @@
                     <?php
                         $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
                         $sth = $dbh->prepare($sql);
-                        if ($sth->execute(array($_GET["Voorwerpnummer"]))) {
+                        if ($sth->execute(array($_GET["ID"]))) {
                             while ($alles = $sth->fetch()) {
                                 $beschrijving = $alles['Beschrijving'];
                                 $beschrijving = strip_tags($beschrijving,"<style>");
