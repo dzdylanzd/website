@@ -16,23 +16,15 @@
     <div class="page-container">
         <div class="content-wrap">
 
-
-
-
-            <!-- header S (Mobile) -->
+            <!-- header -->
             <div class="uk-hidden@s">
                 <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
-
                     <div class="uk-navbar-nav  uk-flex-center">
                         <a class=" uk-logo uk-navbar-item " href="#"><img src="media\logo.png" alt="logo" width=100em></a>
-
                     </div>
-
-
                     <div class="uk-navbar-nav  uk-flex-center">
                         <div class="uk-navbar-item ">
                             <form action="productpage.php">
-
                                 <div class="uk-inline">
                                     <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
                                     <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
@@ -40,23 +32,19 @@
                             </form>
                             <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
                         </div>
-
                     </div>
-
-
                 </nav>
             </div>
 
             <!-- categorie nav S (mobile) -->
             <div class="uk-hidden@m">
                 <button class="uk-button uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
-                <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body uk-margin-small">
+                <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body">
                     <div class=" CategorieNavigatieBox">
-                    <h1>Rubrieken</h1>
+                        <h1>Rubrieken</h1>
                         <div class="scrollbox categorieNav">
                             <?php require_once('includes\categorie _nav.php');?>
                         </div>
-                        <div>
                         <h3> Staat</h3>
                         <form class="FilterenStaat" action="categorieen.php" method="post">
                             <input type="checkbox" name="nieuw" value="Nieuw"> Nieuw<br>
@@ -86,16 +74,15 @@
                     </div>
                 </div>
             </div>
+
             <!-- categorie nav M (desktop) -->
             <div class="uk-flex">
                 <div class="uk-width-1-3 uk-visible@m">
-                
                     <div class=" CategorieNavigatieBox">
-                    <h1>Rubrieken</h1>
+                        <h1>Rubrieken</h1>
                         <div class="scrollbox categorieNav">
                             <?php require_once('includes\categorie _nav.php');?>
                         </div>
-                        <div>
                         <h3> Staat</h3>
                         <form class="FilterenStaat" action="categorieen.php" method="post">
                             <input type="checkbox" name="nieuw" value="Nieuw"> Nieuw<br>
@@ -124,39 +111,39 @@
                         </form>
                     </div>
                 </div>
-            </div>
-            <div class="uk-width-3-4">
-                <?php
-                if (isset($_GET["root"])) {
-                    
-                    $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
+            
+                <div class="uk-width-3-4">
+                    <?php
+                    if (isset($_GET["root"])) {
+                        
+                        $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
 
-                    if ($sth->execute(array($_GET["root"]))) {
-                        while ($row = $sth->fetch()) {
-                            if($row["Rubrieknummer"] != -1){
-                            echo'<div class="ItemsSliderDonkerGroen">';
-                            echo "<h1> $row[Rubrieknaam] </h1>";
-                            displayCategorie($row["Rubrieknummer"], $dbh,100);
-                            echo' </div>';
+                        if ($sth->execute(array($_GET["root"]))) {
+                            while ($row = $sth->fetch()) {
+                                if($row["Rubrieknummer"] != -1){
+                                echo'<div class="ItemsSliderDonkerGroen">';
+                                echo "<h1> $row[Rubrieknaam] </h1>";
+                                displayCategorie($row["Rubrieknummer"], $dbh,100);
+                                echo' </div>';
+                                }
+                            }
+                        }
+                        $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE volgnr = ?");
+
+                        if ($sth->execute(array($_GET["root"]))) {
+                            while ($row = $sth->fetch()) {
+                                if($row["Rubrieknummer"] != -1){
+                                echo'<div class="ItemsSliderGroen">';
+                                echo "<h3> $row[Rubrieknaam] </h3>";
+                                displayCategorie($row["Rubrieknummer"], $dbh,10);
+                                echo' </div>';
+                                }
                             }
                         }
                     }
-                    $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE volgnr = ?");
+                    ?>
 
-                    if ($sth->execute(array($_GET["root"]))) {
-                        while ($row = $sth->fetch()) {
-                            if($row["Rubrieknummer"] != -1){
-                            echo'<div class="ItemsSliderGroen">';
-                            echo "<h3> $row[Rubrieknaam] </h3>";
-                            displayCategorie($row["Rubrieknummer"], $dbh,10);
-                            echo' </div>';
-                            }
-                        }
-                    }
-                }
-                ?>
-
-
+                </div>
             </div>
 
         </div>

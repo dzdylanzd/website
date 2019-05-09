@@ -2009,7 +2009,7 @@ select.uk-form-width-xsmall {
 }
 
 .uk-card-body {
-    padding: 30px 30px
+    padding-right: 18px;
 }
 
 .uk-card-header {

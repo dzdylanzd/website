@@ -230,7 +230,7 @@ h3{
  
 } 
 .FilterenStaat {
-  color: white;
+  color: #fffbec;
 }
 
 .FilterenPrijs {
@@ -245,9 +245,16 @@ h3{
   .image-square {
     height: 400px;
   }
-  
 
   .categorieNavHomepagina {
     margin-right: 15px;
+  }
+
+  .ItemsSliderDonkerGroen {
+    width: 113%;
+  }
+
+  .ItemsSliderGroen {
+    width: 113%;
   }
 }
