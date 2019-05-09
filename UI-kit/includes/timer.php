@@ -7,7 +7,8 @@ if($sth->execute(array($_GET["ID"]))){
         if($row["isVeilingGesloten"] == 0){
             echo"de veiling is open";
             $tijd =   substr(substr_replace($row["LooptijdEinde"], "T", 11,0),0,20) . "+01:00";
-            // $tijd =   "2019-05-16T10:22:25+00:00"; 
+            $tijd =  str_replace(" ","",$tijd);
+          
             echo "<div class=\"uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $tijd\">
             <div>
                 <div class=\"uk-countdown-number uk-countdown-days\"></div>
@@ -29,7 +30,7 @@ if($sth->execute(array($_GET["ID"]))){
                 <div class=\"uk-countdown-label uk-margin-small uk-text-center uk-visible@s\">Seconden</div>
             </div>
         </div>";
-        if($row["LooptijdEinde"] < getdate()){
+        if(strtotime($row["LooptijdEinde"]) < strtotime("today")){
            
             $sqlchangeIsGesloten = "update Voorwerp
             set  isVeilingGesloten = 1
