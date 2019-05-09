@@ -6,7 +6,9 @@
     if ($stmt->execute(array(-1))) {
       echo "<ul class=\"noDots\">";
       while ($row = $stmt->fetch()) {
+        if($row["Rubrieknummer"] != -1){
         echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\">  $row[Rubrieknaam] </a></li>";
+        }
       }
       echo "</ul>";
     }
@@ -59,7 +61,9 @@
       if ($row = $stmt->fetch() > 0) {
         $stmt->execute(array($_GET["root"]));
         while ($row = $stmt->fetch()) {   
+          if($row["Rubrieknummer"] != -1){
             echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\">  $row[Rubrieknaam] </a> </li>  ";
+          }
       }
     }else{
       $stmt = $dbh->prepare("SELECT * from Rubriek where Rubrieknummer = ?");
@@ -67,7 +71,9 @@
         if ($stmt->execute(array($_GET["root"]))) {
 
           while ($row = $stmt->fetch()) {
+            if($row["Rubrieknummer"] != -1){
             echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Volgnr]\">  $row[Rubrieknaam] </a> </li>  ";
+            }
           }
     }
   }

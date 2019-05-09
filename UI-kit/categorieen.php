@@ -13,7 +13,6 @@
 
 <body>
     <?php  include 'includes/display_product.php'; include 'includes\nav-L-M.php'; ?>
-    <?php header('Refresh: 100'); ?>
     <div class="page-container">
         <div class="content-wrap">
 

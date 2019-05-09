@@ -13,11 +13,10 @@
 
 <body>
     <?php include 'includes\nav-L-M.php'; ?>
-    <?php header('Refresh: 100'); ?>
     <div class="page-container">
         <div class="content-wrap">
-
-            <!-- navigatie balk S -->
+        <!-- <?php echo phpinfo(); ?> -->
+            <!-- navigatie balk Mobile -->
             <div class="uk-hidden@s">
                 <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
                     <div class="uk-navbar-nav  uk-flex-center">
@@ -84,10 +83,12 @@
 
                         if ($sth->execute(array(-1))) {
                             while ($row = $sth->fetch()) {
+                                if($row["Rubrieknummer"] != -1){
                                 echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Rubrieknaam] </h1>";
                                 displayCategorie($row["Rubrieknummer"], $dbh,10);
                                echo' </div>';
+                                }
                             }
                         }
                     }
@@ -123,7 +124,7 @@
                         }
                     }
                     ?>
-
+                    
 
                 </div>
             </div>
