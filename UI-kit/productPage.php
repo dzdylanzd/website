@@ -70,7 +70,7 @@
                     <!-- Beschrijving -->
                     <ul uk-accordion>
     <li >
-        <a class="uk-accordion-title" href="#">Beschrijving </a>
+        <a class="uk-accordion-title" href="#">Toon beschrijving </a>
         <div class="uk-accordion-content">
         <?php
                         $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
