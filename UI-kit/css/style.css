@@ -78,7 +78,21 @@ h3{
 }
   
 .ItemsSlider {
-  background-color: #ddc8af;
+  background-color: #ebdac6;
+  border-radius: 5px;
+  margin: 15px;
+  padding: 15px;
+}
+
+.ItemsSliderGroen {
+  background-color: #a7ca9b;
+  border-radius: 5px;
+  margin: 15px;
+  padding: 15px;
+}
+
+.ItemsSliderDonkerGroen {
+  background-color: #8ab27e;
   border-radius: 5px;
   margin: 15px;
   padding: 15px;
@@ -86,7 +100,6 @@ h3{
 
 .categorieNav {
   background-color: #ddc8af;
-  top: 130px;
   height: 250px;
   position: sticky;
   width: 96%;
@@ -95,7 +108,7 @@ h3{
 
 .categorieNavHomepagina {
   background-color: #c6ae91;
-  top: 130px;
+  top: 115px;
   margin: 15px;
   margin-right: 0px;
   padding: 15px;
@@ -105,10 +118,11 @@ h3{
 
 .CategorieNavigatieBox{
   position: sticky;
-  top: 150px;
+  top: 115px;
   background-color:#C6AE91;
+  margin: 15px;
+  margin-right: 0px;
   padding: 15px;
-  margin-left: 15px;
 }
 
 .sticky{

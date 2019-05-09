@@ -95,7 +95,7 @@
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
                                 if($row["Rubrieknummer"] != -1){
-                                echo'<div class="ItemsSlider">';
+                                echo'<div class="ItemsSliderDonkerGroen">';
                                 echo "<h1> $row[Rubrieknaam] </h1>";
                                 displayCategorie($row["Rubrieknummer"], $dbh,100);
                                echo' </div>';
@@ -107,7 +107,7 @@
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
                                 if($row["Rubrieknummer"] != -1){
-                                echo'<div class="ItemsSlider">';
+                                echo'<div class="ItemsSliderGroen">';
                                 echo "<h3> $row[Rubrieknaam] </h3>";
                                 displayCategorie($row["Rubrieknummer"], $dbh,10);
                                echo' </div>';
