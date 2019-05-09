@@ -45,7 +45,11 @@
       if ($stmt->execute(array($_GET["root"]))) {
 
         while ($row = $stmt->fetch()) {
+          if($row["Volgnr"] = -1){
+            echo "<li> <a class=\"categorie-terug\" href=\"index.php\"> <span uk-icon=\"icon: arrow-left\"></span>terug</a></li>  ";
+          }else{
           echo "<li> <a class=\"categorie-terug\" href=\"categorieen.php?root=$row[Volgnr]\"> <span uk-icon=\"icon: arrow-left\"></span>terug</a></li>  ";
+          }
         }
       }
     }

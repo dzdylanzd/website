@@ -73,6 +73,11 @@ if($alles["Valuta"] = "EUR"){
 }else if($alles["Valuta"] = "AUD"){
     $valutaTeken = "\$A";
 }
+
+$sqlImage = "select top 1 * from Illustraties where VoorwerkNummer = ?";
+$sth = $dbh->prepare($sqlImage);
+if($sth->execute(array())){
+}
     echo "
             <li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">
             <div class=\"uk-panel\">
