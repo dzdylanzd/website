@@ -13,11 +13,10 @@
 
 <body>
     <?php include 'includes\nav-L-M.php'; ?>
-    <?php header('Refresh: 100'); ?>
     <div class="page-container">
         <div class="content-wrap">
-
-            <!-- navigatie balk S -->
+        <!-- <?php echo phpinfo(); ?> -->
+            <!-- navigatie balk Mobile -->
             <div class="uk-hidden@s">
                 <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
                     <div class="uk-navbar-nav  uk-flex-center">
@@ -125,7 +124,7 @@
                         }
                     }
                     ?>
-
+                    
 
                 </div>
             </div>
