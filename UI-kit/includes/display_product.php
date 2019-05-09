@@ -2,6 +2,7 @@
 
 function displayCategorie($nummer, $dbh, $hoeveel) {
     
+    
         $sql= "SELECT top $hoeveel * FROM Voorwerp V LEFT JOIN Voorwerpinrubriek VR ON V.VoorwerpNummer = VR.Voorwerp where Rubriekoplaagsteniveau in(
             SELECT Rubrieknummer from Rubriek where Volgnr = any(
             select Rubrieknummer from Rubriek where Volgnr = any(
