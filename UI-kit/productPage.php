@@ -68,7 +68,8 @@
                     ?>
 
                     <!-- Beschrijving -->
-                    <h2> Beschrijving </h2>
+                    <h2><a class="uk-accordion-title" href="#" Beschrijving </h2>
+                    <div class="uk-accordion-content">
                     <?php
                         $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
                         $sth = $dbh->prepare($sql);
@@ -85,6 +86,8 @@
                             }
                         }
                     ?>
+                    </div>
+
                 </div>
 
                 
@@ -132,8 +135,12 @@
                                 </form>
                             </div>
                         </div>
-
+                        
                     </div>
+                    <div> 
+                            <h2>Reviews over "Verkoper"</h2>
+                            
+                        </div>
                     <div class="uk-container">
                     
                     </div>
