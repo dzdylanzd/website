@@ -137,7 +137,7 @@
                         </div>
                         
                     </div>
-                    <div> 
+                    <div class="reviews"> 
                             <h2>Reviews over "Verkoper"</h2>
                             
                         </div>
