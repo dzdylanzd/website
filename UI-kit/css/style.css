@@ -98,6 +98,13 @@ h3{
   padding: 15px;
 }
 
+.ItemsSliderHomepagina {
+  background-color: #a7ca9b;
+  border-radius: 5px;
+  margin: 15px;
+  padding: 15px;
+}
+
 .categorieNav {
   background-color: #ddc8af;
   height: 250px;
