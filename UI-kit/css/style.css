@@ -78,7 +78,7 @@ h3{
 }
   
 .ItemsSlider {
-  background-color: #ebdac6;
+  background-color: #ddc8af;
   border-radius: 5px;
   margin: 15px;
   padding: 15px;
@@ -242,10 +242,14 @@ h3{
   .flex-column-phone {
     flex-direction: column
   }
-}
 
-@media only screen and (max-width: 960px) {
   .image-square {
     height: 400px;
+  }
+
+  
+
+  .categorieNavHomepagina {
+    margin-right: 15px;
   }
 }
