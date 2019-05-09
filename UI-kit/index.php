@@ -39,7 +39,7 @@
 
 
 
-                </nav>
+                
             </div>
 
             <div class="  flex-column-phone">
