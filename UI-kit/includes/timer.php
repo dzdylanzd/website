@@ -41,7 +41,7 @@ if($sth->execute(array($_GET["ID"]))){
         }
         }else{
             
-            echo"de veiling is gesloten";
+            echo"<h2>Sorry, de veiling is gesloten</h2>";
         }
     }
 }
