@@ -58,7 +58,7 @@ echo'<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" 
 
 <ul class="uk-slider-items uk-grid">';
 while ($alles = $sth->fetch()) {
-    $sqlImage = "SELECT TOP 1 * FROM Illustraties WHERE Voorwerpnummer = ? ";
+    $sqlImage = "SELECT TOP 1 * FROM Thumbnail where VoorwerpNummer  = ? ";
     $sthImage = $dbh->prepare($sqlImage);
 if($sthImage->execute(array($alles["Voorwerp"]))){
     $image = $sthImage->fetch();
@@ -74,22 +74,27 @@ if($alles["Valuta"] = "EUR"){
     $valutaTeken = "\$A";
 }
 
-$sqlImage = "select top 1 * from Illustraties where VoorwerkNummer = ?";
-$sth = $dbh->prepare($sqlImage);
-if($sth->execute(array())){
+$sqlImage2 = "select top 1 * from Thumbnail where VoorwerpNummer = $nummer";
+$sthImage2 = $dbh->prepare($sqlImage2);
+if($sthImage2->execute(array())){
+   while ($image2 = $sthImage2->fetch()) { 
+    
+   }
 }
-    echo "
-            <li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">
-            <div class=\"uk-panel\">
-               <a href=\"productPage.php?ID=$alles[VoorwerpNummer]\" > <img  class=\"image-square\" src=\"http://iproject5.icasites.nl/thumbnails/$alles[Thumbnail]\" alt=\"\"> </a>
-                <div class=\"uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom\">
-                    <h3 class=\"uk-margin-remove\">";
-                    echo substr($alles["Titel"],0,10);
-                    echo "... </h3>
-                    <p class=\"uk-margin-remove\"> $valutaTeken $alles[Prijs]</p>
-                </div>
-            </div>
-        </li>";
+echo "
+<li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">
+<div class=\"uk-panel\">
+   <a href=\"productPage.php?ID=$alles[VoorwerpNummer]\" > <img  class=\"image-square\" src=\"http://iproject5.icasites.nl/thumbnails/$image[Thumbnailfile]\" alt=\"\"> </a>
+    <div class=\"uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom\">
+        <h3 class=\"uk-margin-remove\">";
+        echo substr($alles["Titel"],0,10);
+        echo "... </h3>
+        <p class=\"uk-margin-remove\"> $valutaTeken $alles[StartPrijs]</p>
+    </div>
+</div>
+</li>"; 
+
+  
 }
 echo'</ul>
 
