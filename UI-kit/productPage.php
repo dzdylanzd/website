@@ -66,7 +66,17 @@
                         echo $knoppenFotos;
                     }
                     ?>
+<!-- CONDITIE -->
+<?php
+  $sql = "SELECT Staat FROM Voorwerp WHERE Voorwerpnummer = ? ";
+  $sth = $dbh->prepare($sql);
+  if ($sth->execute(array($_GET["ID"]))) {
+      while ($alles = $sth->fetch()) {
+          echo"<h4 class= \"uk-text-emphasis\"> staat: $alles[Staat] </h4>" ;
+      }
+    }
 
+        ?>
                     <!-- Beschrijving -->
                     <ul uk-accordion>
     <li >
