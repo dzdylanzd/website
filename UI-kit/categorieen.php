@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <?php  include 'includes/display_product.php'; include 'includes\nav-L-M.php'; ?>
+    <?php include 'includes/display_product.php';
+    include 'includes\nav-L-M.php'; ?>
     <div class="page-container">
         <div class="content-wrap">
 
@@ -43,7 +44,7 @@
                     <div class=" CategorieNavigatieBox">
                         <h1>Rubrieken</h1>
                         <div class="scrollbox categorieNav">
-                            <?php require_once('includes\categorie _nav.php');?>
+                            <?php require_once('includes\categorie _nav.php'); ?>
                         </div>
                         <h3> Staat</h3>
                         <form class="FilterenStaat" action="categorieen.php" method="post">

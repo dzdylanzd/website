@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="uk-flex">
+            <div class="flex-column-phone">
                 <div class="uk-width-1-3 Card-Empty">
                     <!-- Titel -->
                     <?php
@@ -70,7 +70,7 @@
                     <!-- Beschrijving -->
                     <ul uk-accordion>
     <li >
-        <a class="uk-accordion-title" href="#">Beschrijving </a>
+        <a class="uk-accordion-title" href="#">Toon beschrijving </a>
         <div class="uk-accordion-content">
         <?php
                         $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
@@ -126,7 +126,16 @@
 
                     <div class="uk-flex Verkoper">
                         <div class="uk-width-1-2 ">
-                            <h2>Verkoper</h2>
+                            <h2>Verkoper:</h2>
+                            <?php
+ $sql = "select Verkoper from Voorwerp where VoorwerpNummer = ? ";
+ $sth = $dbh->prepare($sql);
+ if ($sth->execute(array($_GET["ID"]))) {
+     while ($alles = $sth->fetch()) {
+         echo "<h2>$alles[Verkoper]</h2>";
+     }
+ }
+                            ?>
                         </div>
                         <div class="uk-width-1-2 Plaats-Bod">
                             <div class="uk-flex">
@@ -142,7 +151,7 @@
                         </div>
                         
                     </div>
-                    <div> 
+                    <div class="reviews"> 
                             <h2>Reviews over "Verkoper"</h2>
                             
                         </div>

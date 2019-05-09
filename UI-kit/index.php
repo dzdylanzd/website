@@ -84,7 +84,7 @@
                             while ($row = $sth->fetch()) {
                                 if($row["Rubrieknummer"] != -1){
                                 echo'<div class="ItemsSlider">';
-                                echo "<h1> $row[Rubrieknaam] </h1>";
+                                echo " <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Volgnr]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
                                 displayCategorie($row["Rubrieknummer"], $dbh,10);
                                echo' </div>';
                                 }
@@ -103,7 +103,7 @@
                                         // echo "<br><br><br> <h1> $row[Rubrieknaam]</h1> <br> ";
                                         while ($row2 = $TITELS->fetch()) {
                                             echo'<div class="ItemsSlider">';
-                                            echo "<h1> $row2[Rubrieknaam] </h1>";
+                                            echo " <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row2[Volgnr]\"> <h1>  $row2[Rubrieknaam] </h1> </a>";
                                             displayCategorie($row2["Rubrieknummer"], $dbh, 10);
                                            echo' </div>';
                                         }
