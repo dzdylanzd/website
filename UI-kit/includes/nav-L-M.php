@@ -1,4 +1,4 @@
-<!-- navigatiebalk L -->
+<!-- navigatiebalk Desktop -->
 
 <div class="uk-visible@m sticky ">
       
@@ -34,7 +34,7 @@
             </nav>
         
     </div>
-    <!-- navigatiebalk M -->
+    <!-- navigatiebalk Mobile -->
     <div class="uk-visible@s uk-hidden@m sticky ">
         
             
