@@ -84,10 +84,12 @@
 
                         if ($sth->execute(array(-1))) {
                             while ($row = $sth->fetch()) {
+                                if($row["Rubrieknummer"] != -1){
                                 echo'<div class="ItemsSlider">';
                                 echo "<h1> $row[Rubrieknaam] </h1>";
                                 displayCategorie($row["Rubrieknummer"], $dbh,10);
                                echo' </div>';
+                                }
                             }
                         }
                     }
