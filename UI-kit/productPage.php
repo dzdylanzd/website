@@ -68,7 +68,7 @@
                     ?>
 
                     <!-- Beschrijving -->
-                    <h2><a class="uk-accordion-title" href="#" Beschrijving </h2>
+                    <h2><a class="uk-accordion-title" href="#"> Beschrijving </a></h2>
                     <div class="uk-accordion-content">
                     <?php
                         $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
