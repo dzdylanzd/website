@@ -68,9 +68,11 @@
                     ?>
 
                     <!-- Beschrijving -->
-                    <h2><a class="uk-accordion-title" href="#"> Beschrijving </a></h2>
-                    <div class="uk-accordion-content">
-                    <?php
+                    <ul uk-accordion>
+    <li >
+        <a class="uk-accordion-title" href="#">Beschrijving </a>
+        <div class="uk-accordion-content">
+        <?php
                         $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
@@ -86,8 +88,11 @@
                             }
                         }
                     ?>
-                    </div>
-
+        </div>
+    </li>
+    
+</ul>
+                   
                 </div>
 
                 
