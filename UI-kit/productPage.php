@@ -131,8 +131,12 @@
                                 </form>
                             </div>
                         </div>
-
+                        
                     </div>
+                    <div> 
+                            <h2>Reviews over "Verkoper"</h2>
+                            
+                        </div>
                     <div class="uk-container">
                     
                     </div>

@@ -15,7 +15,6 @@
     <?php include 'includes\nav-L-M.php'; ?>
     <div class="page-container">
         <div class="content-wrap">
-        <!-- <?php echo phpinfo(); ?> -->
             <!-- navigatie balk Mobile -->
             <div class="uk-hidden@s">
                 <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
