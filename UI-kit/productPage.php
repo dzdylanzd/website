@@ -96,6 +96,7 @@
                     <div class="uk-flex Bieding">
                         <div class="uk-width-1-2">
                             <h3>Tijd resterend</h3>
+                            <?php  require_once('includes/database.php'); require_once('includes/timer.php'); ?>
                         </div>
                         <div class="uk-width-1-2">
                             <h3>Huidig bod: </h3>
