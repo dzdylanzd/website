@@ -39,19 +39,23 @@ p {
   background-color: #fffbec;
 }
 
-h1, h3, h4 {
+h1, h3 {
   font-family: "Century Gothic", sans-serif;
   color: #fffbec;
 }
 
-h2 {
+h2, h4 {
   font-family: "Century Gothic", sans-serif;
   color: #43464B;
 }
 
-h3{
+h3 {
   margin-top: 10px;
   margin-bottom: 5px;
+}
+
+h4 {
+  font-size: 1.5em;
 }
 
 
@@ -177,7 +181,7 @@ h3{
 }
 
 .categorie-terug {
-  color: #c6ae91;
+  color: #fffbec;
 }
   
 .Vertical_Line {
@@ -212,7 +216,7 @@ h3{
 .Bieden {
   width: 100%;
   background-color: #fffbec;
-  margin: 15px;
+  margin: 30px;
 }
 
 .Bod-Plaatsen {

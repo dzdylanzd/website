@@ -69,33 +69,29 @@
 
                     <!-- Beschrijving -->
                     <ul uk-accordion>
-    <li >
-        <a class="uk-accordion-title" href="#">Toon beschrijving </a>
-        <div class="uk-accordion-content">
-        <?php
-                        $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
-                        $sth = $dbh->prepare($sql);
-                        if ($sth->execute(array($_GET["ID"]))) {
-                            while ($alles = $sth->fetch()) {
-                                $beschrijving = $alles['Beschrijving'];
-                                $beschrijving = strip_tags($beschrijving,"<style>");
-                                $substring = substr($beschrijving,strpos($beschrijving,"<style"),strpos($beschrijving,"</style>"));
-                                $beschrijving = str_replace($substring,"",$beschrijving);
-                                $beschrijving = str_replace(array("\t","\r","\n"),"",$beschrijving);
-                                $beschrijving = trim($beschrijving);
+                        <li >
+                            <a class="uk-accordion-title" href="#">Toon beschrijving </a>
+                            <div class="uk-accordion-content">
+                                <?php
+                                $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
+                                $sth = $dbh->prepare($sql);
+                                if ($sth->execute(array($_GET["ID"]))) {
+                                    while ($alles = $sth->fetch()) {
+                                        $beschrijving = $alles['Beschrijving'];
+                                        $beschrijving = strip_tags($beschrijving,"<style>");
+                                        $substring = substr($beschrijving,strpos($beschrijving,"<style"),strpos($beschrijving,"</style>"));
+                                        $beschrijving = str_replace($substring,"",$beschrijving);
+                                        $beschrijving = str_replace(array("\t","\r","\n"),"",$beschrijving);
+                                        $beschrijving = trim($beschrijving);
 
-                                echo $beschrijving;
-                            }
-                        }
-                    ?>
-        </div>
-    </li>
-    
-</ul>
-                   
+                                        echo $beschrijving;
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-
-                
 
                 <div class="Vertical_Line"></div>
 
@@ -126,15 +122,14 @@
 
                     <div class="uk-flex Verkoper">
                         <div class="uk-width-1-2 ">
-                            <h2>Verkoper:</h2>
                             <?php
- $sql = "select Verkoper from Voorwerp where VoorwerpNummer = ? ";
- $sth = $dbh->prepare($sql);
- if ($sth->execute(array($_GET["ID"]))) {
-     while ($alles = $sth->fetch()) {
-         echo "<h2>$alles[Verkoper]</h2>";
-     }
- }
+                            $sql = "SELECT Verkoper FROM Voorwerp WHERE VoorwerpNummer = ? ";
+                            $sth = $dbh->prepare($sql);
+                            if ($sth->execute(array($_GET["ID"]))) {
+                                while ($alles = $sth->fetch()) {
+                                    echo "<h2>Verkoper: $alles[Verkoper]</h2>";
+                                }
+                            }
                             ?>
                         </div>
                         <div class="uk-width-1-2 Plaats-Bod">
@@ -142,17 +137,25 @@
                                 <div class="uk-width-2-3">
                                     <form class="Bieden" action="productpage.php">
                                         <input class="uk-input Bod-Veld" type="text" name="bod" placeholder="bod .....">
+                                    </form>
                                 </div>
                                 <div class="uk-button uk-width-1-3">
                                     <input type="submit" class="Bod-Plaatsen" value="Plaats bod">
                                 </div>
-                                </form>
                             </div>
                         </div>
                         
                     </div>
                     <div class="reviews"> 
-                            <h2>Reviews over "Verkoper"</h2>
+                            <?php
+                            $sql = "SELECT Verkoper FROM Voorwerp WHERE VoorwerpNummer = ? ";
+                            $sth = $dbh->prepare($sql);
+                            if ($sth->execute(array($_GET["ID"]))) {
+                                while ($alles = $sth->fetch()) {
+                                    echo "<h2>Reviews over $alles[Verkoper]</h2>";
+                                }
+                            }
+                            ?>
                             
                         </div>
                     <div class="uk-container">
