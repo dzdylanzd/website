@@ -82,6 +82,7 @@ if($sthImage2->execute(array())){
     
    }
 }
+$alles["StartPrijs"] = (double)$alles["StartPrijs"];
 echo "
 <li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">
 <div class=\"uk-panel\">
