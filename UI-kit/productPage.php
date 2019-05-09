@@ -68,7 +68,8 @@
                     ?>
 
                     <!-- Beschrijving -->
-                    <h2> Beschrijving </h2>
+                    <h2><a class="uk-accordion-title" href="#" Beschrijving </h2>
+                    <div class="uk-accordion-content">
                     <?php
                         $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
                         $sth = $dbh->prepare($sql);
@@ -85,6 +86,8 @@
                             }
                         }
                     ?>
+                    </div>
+
                 </div>
 
                 
@@ -96,6 +99,7 @@
                     <div class="uk-flex Bieding">
                         <div class="uk-width-1-2">
                             <h3>Tijd resterend</h3>
+                            <?php  require_once('includes/database.php'); require_once('includes/timer.php'); ?>
                         </div>
                         <div class="uk-width-1-2">
                             <h3>Huidig bod: </h3>
