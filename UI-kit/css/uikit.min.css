@@ -1271,11 +1271,9 @@ select.uk-form-width-xsmall {
 }
 
 .uk-button {
-    margin: 0;
     border: none;
     overflow: visible;
     font: inherit;
-    color: inherit;
     text-transform: none;
     display: inline-block;
     box-sizing: border-box;
@@ -1287,7 +1285,11 @@ select.uk-form-width-xsmall {
     text-decoration: none;
     text-transform: uppercase;
     transition: .1s ease-in-out;
-    transition-property: color, background-color, border-color
+    transition-property: color, background-color, border-color;
+    background-color: #c6ae91;
+    color: #fffbec;
+    width: 92%;
+    margin: 15px;
 }
 
 .uk-button:not(:disabled) {
@@ -1308,37 +1310,38 @@ select.uk-form-width-xsmall {
 }
 
 .uk-button-default {
-    background-color: transparent;
-    color: #333;
-    border: 1px solid #e5e5e5
+    background-color: #c6ae91;
+    color: #fffbec;
+    width: 92%;
+    margin: 15px;
 }
 
 .uk-button-default:focus, .uk-button-default:hover {
-    background-color: transparent;
-    color: #333;
+    background-color: #ddc8af;
+    color: #fffbec;
     border-color: #b2b2b2
 }
 
 .uk-button-default.uk-active, .uk-button-default:active {
-    background-color: transparent;
-    color: #333;
+    background-color: #ddc8af;
+    color: #fffbec;
     border-color: #999
 }
 
 .uk-button-primary {
     background-color: #c6ae91;
-    color: #fff;
+    color: #fffbec;
     border: 1px solid transparent
 }
 
 .uk-button-primary:focus, .uk-button-primary:hover {
     background-color: #ddc8af;
-    color: #fff
+    color: #fffbec;
 }
 
 .uk-button-primary.uk-active, .uk-button-primary:active {
     background-color: #ddc8af;
-    color: #fff
+    color: #fffbec;
 }
 
 .uk-button-secondary {

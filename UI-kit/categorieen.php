@@ -49,12 +49,41 @@
 
             <!-- categorie nav S (mobile) -->
             <div class="uk-hidden@m">
-                <button class="uk-button" data-uk-toggle="{target:'.MobileCategorie'}"><h2>Categorieën</h2></button>
-                <div class="MobileCategorie"> 
-                    <h2> EN NU KOMT ER HIER DE MOBIELE NAVIGATIE YO </h2>
-                </div>
-                <div class="MobileCategorie uk-hidden">
-                    
+                <button class="uk-button uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
+                <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body uk-margin-small">
+                    <div class=" CategorieNavigatieBox">
+                    <h1>Rubrieken</h1>
+                        <div class="scrollbox categorieNav">
+                            <?php require_once('includes\categorie _nav.php');?>
+                        </div>
+                        <div>
+                        <h3> Staat</h3>
+                        <form class="FilterenStaat" action="categorieen.php" method="post">
+                            <input type="checkbox" name="nieuw" value="Nieuw"> Nieuw<br>
+                            <input type="checkbox" name="bijnaNieuw" value="bijnaNieuw"> Zo goed als nieuw<br>
+                            <input type="checkbox" name="gebruikt" value="Gebruikt"> Gebruikt<br>
+                        </form>
+                        <h3> Prijs</h3>
+                        <form action="categorieen.php" method="post">
+                            <label for="prijsVan"> Van</label>
+                            <input class="FilterenPrijs" type="text" name="prijs" id="prijsVan">
+                            <label for="prijsTot"> Tot</label>
+                            <input class="FilterenPrijs" type="text" name="prijs" id="prijsTot">
+                        </form>
+                        <h3> Locatie</h3>
+                        <form action="categorieen.php"  method="post">
+                            <label for="afstand"> Binnen</label>
+                            <select name="afstanden">
+                                <option value="niks"> ... </option>
+                                <option value="10km"> < 10 kilometer </option>
+                                <option value="25km"> < 25 kilometer </option>
+                                <option value="50km"> < 50 kilometer </option>
+                                <option value="100km"> < 100 kilometer </option>
+                                <option value="250km"> < 250 kilometer </option>
+                                <option value="500km"> < 500 kilometer </option>
+                            </select>
+                        </form>
+                    </div>
                 </div>
             </div>
             <!-- categorie nav M (desktop) -->

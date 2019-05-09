@@ -173,7 +173,7 @@ h3{
   color: #c6ae91;
 }
   
-.Vertical_Line{
+.Vertical_Line {
   background-color: #43464B;
   padding: 0.5px;
   margin-left: 2px;
@@ -182,30 +182,30 @@ h3{
   margin-bottom: 10px;
 }
 
-.Bieding{
+.Bieding {
   background-color: #739F65;
   border-radius: 5px;
   padding: 15px;
 }
 
-.Vorige-Bieder{
+.Vorige-Bieder {
   background-color: #C6AE91;
   border-radius: 5px;
   padding: 15px;
 }
 
-.Verkoper{
+.Verkoper {
   padding-left: 0px;
   padding-top: 40px;
 }
 
-.Bieden{
+.Bieden {
   width: 100%;
   background-color: #fffbec;
   margin: 15px;
 }
 
-.Bod-Plaatsen{
+.Bod-Plaatsen {
   background-color: #43464B;
   border: none;
   border-radius: 5px;
@@ -215,28 +215,27 @@ h3{
   margin: 15px;
 }
 
-.Plaats-Bod{
+.Plaats-Bod {
   margin: 10px;
   background-color: #C6AE91;
   border-radius: 5px;
 }
 
-.Bod-Veld{
+.Bod-Veld {
   height: 100px;
 }
 
-.Card-Empty{
-   margin: 10px;
+.Card-Empty {
+  margin: 10px;
  
 } 
-.FilterenStaat{
+.FilterenStaat {
   color: white;
 }
 
-.FilterenPrijs{
+.FilterenPrijs {
   width: 80px;
 }
-
 
 @media only screen and (max-width: 960px) {
   .flex-column-phone {
@@ -246,7 +245,6 @@ h3{
   .image-square {
     height: 400px;
   }
-
   
 
   .categorieNavHomepagina {
