@@ -4368,13 +4368,13 @@ ul.uk-nav-sub {
 
 @media (min-width:640px) {
     .uk-countdown-number {
-        font-size: 4rem
+        font-size: 2rem
     }
 }
 
 @media (min-width:960px) {
     .uk-countdown-number {
-        font-size: 6rem
+        font-size: 3rem
     }
 }
 
