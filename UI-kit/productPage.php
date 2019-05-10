@@ -160,7 +160,7 @@
                             <div class="productPageMobile Plaats-Bod">
                                 <div class="uk-flex">
                                     <div class="uk-width-2-3">
-                                        <form class="Bieden" action="productpage.php">
+                                        <form class="Bieden" action="index.php">
                                             <input class="uk-input Bod-Veld" type="text" name="bod" placeholder="bod .....">
                                     </div>
                                     <div class="button-mobile uk-width-1-3">
