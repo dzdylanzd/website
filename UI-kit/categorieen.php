@@ -21,7 +21,7 @@
             <div class="uk-hidden@s">
                 <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
                     <div class="uk-navbar-nav  uk-flex-center">
-                        <a class=" uk-logo uk-navbar-item " href="#"><img src="media/logo.png" alt="logo" width=100em></a>
+                        <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media/logo.png" alt="logo" width=100em></a>
                     </div>
                     <div class="uk-navbar-nav  uk-flex-center">
                         <div class="uk-navbar-item ">
@@ -42,6 +42,7 @@
                 <button class="uk-button uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
                 <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body">
                     <div class=" CategorieNavigatieBox">
+                        <script> UIkit.toggle('.uk-card').toggle(); </script>
                         <h1>Rubrieken</h1>
                         <div class="scrollbox categorieNav">
                             <?php require_once('includes\categorie _nav.php'); ?>

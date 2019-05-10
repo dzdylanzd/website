@@ -19,7 +19,7 @@
             <div class="uk-hidden@s">
                 <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
                     <div class="uk-navbar-nav  uk-flex-center">
-                        <a class=" uk-logo uk-navbar-item " href="#"><img src="media\logo.png" alt="logo" width=100em></a>
+                        <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
                     </div>
 
                     <div class="uk-navbar-nav  uk-flex-center">
@@ -44,10 +44,14 @@
 
             <div class="  flex-column-phone">
                 <div class="uk-width-1-5@m uk-text-center@s uk-text-left@m ">
+                <button class="uk-button uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
+                <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body">
                 <div class="categorieNavHomepagina"> 
+                <script> UIkit.toggle('.uk-card').toggle(); </script>
                     <h1>Rubrieken</h1>
                     <?php require_once('includes\categorie _nav.php'); ?>
                 </div>
+</div>
                 </div>
                 <div class="uk-width-4-5@m ">
                     <div class="margin"> </div>
