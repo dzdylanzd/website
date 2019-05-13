@@ -1290,6 +1290,7 @@ select.uk-form-width-xsmall {
     color: #fffbec;
     width: 92%;
     margin: 15px;
+    font-family: "Calibri", sans-serif
 }
 
 .uk-button:not(:disabled) {
