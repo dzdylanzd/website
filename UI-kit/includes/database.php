@@ -1,5 +1,5 @@
 <?php
-
+/*
 $hostname = "(local)";
 $dbname = 'IProject';
 $username = 'iproject37';
@@ -12,8 +12,8 @@ $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 catch (PDOException $e) {	 
 die ( "Fout met de database: {$e->getMessage()} " );
 }
+*/
 
- /*
 $hostname = "(local)";
 $dbname = 'iproject37';
 $username = 'iproject37';
@@ -26,7 +26,7 @@ $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 catch (PDOException $e) {	 
 die ( "Fout met de database: {$e->getMessage()} " );
 }
-*/
+
 
 /*
 $hostname = "(mssql.iproject.icasites.nl)";
