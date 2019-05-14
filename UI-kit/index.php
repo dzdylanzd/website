@@ -126,7 +126,7 @@
                             while ($row = $sth->fetch()) {
                                 if ($row["Rubrieknummer"] != -1) {
                                     $text = "";
-                                    $text = $text . '<div class="ItemsSliderGroen">';
+                                    $text = $text . '<div class="ItemsSliderDonkerGroen">';
                                     $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
                                     if (displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123) {
                                         $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
