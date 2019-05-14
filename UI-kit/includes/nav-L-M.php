@@ -54,7 +54,7 @@
                 <div class="uk-navbar-right">
                     <div class="uk-navbar-nav">
                         <div class=" uk-navbar-item ">
-                            <button class="uk-button uk-button-primary">inloggen</button></div>
+                            
                         <div class=" uk-navbar-item "> <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href='email-Bevestiging.php'">registreren</button>
                         </div>
                 </div>
