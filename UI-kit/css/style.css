@@ -262,8 +262,34 @@ h4 {
 }
 
 .registreerbox{
-  background-color: #A7CA9B
+  background-color: #A7CA9B;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
+
+.email-box{
+  background-color: #A7CA9B;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+.knop-email{
+  width: 200px;
+}
+
+.input-registratie{
+width: 60%;
+}
+
+.registreren{
+  margin-left: 25%;
+}
+
 
 .productPageMobile {
   width: 94%;
