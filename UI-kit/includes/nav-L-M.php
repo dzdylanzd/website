@@ -27,7 +27,7 @@
                     <div class="uk-navbar-nav">
                         <div class=" uk-navbar-item ">
                             <button class="uk-button uk-button-primary">inloggen</button></div>
-                        <div class=" uk-navbar-item "> <button class="uk-button uk-button-primary uk-margin-right">registreren</button>
+                        <div class=" uk-navbar-item "><a href="registreren.php"> <button class="uk-button uk-button-primary uk-margin-right">registreren</button><a>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                 <div class="uk-navbar-nav">
                     <div class=" uk-navbar-item ">
                         <button class="uk-button uk-button-primary ">inloggen</button></div>
-                    <div class=" uk-navbar-item "> <button class="uk-button uk-button-primary uk-margin-right">registreren</button>
+                        <div class=" uk-navbar-item "><button class="uk-button uk-button-primary uk-margin-right">registreren</button>
                     </div>
                 </div>
 
