@@ -23,7 +23,6 @@ if (isset($_POST['signup-submit']))
     $WachtwoordHerhaal = "";
     $VraagNummer = "";
     $Antwoordtekst = "";
-    $acounttype = "";
 
 
     //fout meldingen
@@ -93,5 +92,3 @@ if (isset($_POST['signup-submit']))
     header("location: ../bezoeker_registeren.php");
     exit();
 }
-
-?>
