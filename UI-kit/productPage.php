@@ -45,12 +45,14 @@
                 <div class="flex-column-phone">
                     <div class="productPageMobile Card-Empty">
                         <!-- Titel -->
+                        
                         <?php
                         $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
                             while ($alles = $sth->fetch()) {
-                                echo "<h2>$alles[Titel]</h2>";
+                                echo '<h2><span  class="uk-icon" uk-icon="icon: arrow-left; ratio: 2" onclick="history.go(-1);"></span>';
+                                echo " $alles[Titel]</h2>";
                             }
                         }
 
@@ -197,12 +199,14 @@
                 <div class="flex-column-phone">
                     <div class="uk-width-1-3 Card-Empty">
                         <!-- Titel -->
+                        
                         <?php
                         $sql = "SELECT Titel, Beschrijving, Startprijs FROM Voorwerp WHERE Voorwerpnummer = ? ";
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
                             while ($alles = $sth->fetch()) {
-                                echo "<h2>$alles[Titel]</h2>";
+                                echo '<h2><span  class="uk-icon" uk-icon="icon: arrow-left; ratio: 2" onclick="history.go(-1);"></span>';
+                                echo " $alles[Titel]</h2>";
                             }
                         }
 
@@ -277,7 +281,7 @@
                         <div class="uk-flex Bieding">
                             <div class="uk-width-1-2">
                                 <h3>Tijd resterend: </h3>
-                                <?php  require_once('includes/database.php'); require_once('includes/timer.php'); ?>
+                                <?php  require_once('includes/database.php'); include('includes/timer.php'); ?>
                             </div>
                             <div class="uk-width-1-2">
                                 <h3>Huidig bod: </h3>

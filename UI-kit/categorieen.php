@@ -124,7 +124,7 @@
                             while ($row = $sth->fetch()) {
                                 if($row["Rubrieknummer"] != -1){
                                 echo'<div class="ItemsSliderDonkerGroen">';
-                                echo "<h1> $row[Rubrieknaam] </h1>";
+                                echo "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
                                 displayCategorie($row["Rubrieknummer"], $dbh,100);
                                 echo' </div>';
                                 }
@@ -136,7 +136,7 @@
                             while ($row = $sth->fetch()) {
                                 if($row["Rubrieknummer"] != -1){
                                 echo'<div class="ItemsSliderGroen">';
-                                echo "<h3> $row[Rubrieknaam] </h3>";
+                                echo "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
                                 displayCategorie($row["Rubrieknummer"], $dbh,10);
                                 echo' </div>';
                                 }
