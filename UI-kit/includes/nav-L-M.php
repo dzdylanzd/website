@@ -45,8 +45,9 @@
                                         <input class="uk-input" type="password">
                                     </div>
                                 </div>
-
+                                <button class="loginknop uk-width-1-1 uk-button uk-button-default " type="submit">Login</button>
                             </form>
+                            <a class="uk-link-muted" href="index.php">Wachtwoord vergeten?</a>
                         </div>
                     </div>
 
