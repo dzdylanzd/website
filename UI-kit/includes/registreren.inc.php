@@ -4,10 +4,26 @@ if (isset($_POST['signup-submit']))
     require_once('database.php');
 
     
-    $username = $_POST['uid'];
-    $email = $_POST['mail'];
-    $password = $_POST{"pwd"};
-    $passwordRepeat = $_POST['pwd-repeat'];
+    // $username = $_POST['uid'];
+    // $email = $_POST['mail'];
+    // $password = $_POST{"pwd"};
+    // $passwordRepeat = $_POST['pwd-repeat'];
+
+    $Gebruiksernaam = $_POST['uid'];
+    $voornaam = $_POST['mail'];
+    $Achternaam = $_POST{"pwd"};
+    $Straat = $_POST['pwd-repeat'];
+    $Huinummer = "";
+    $Postcode = "";
+    $Plaatsnaam = "";
+    $Land = "";
+    $Geboortedag = "";
+    $Mailadress = "";
+    $Wachtwoord = "";
+    $WachtwoordHerhaal = "";
+    $VraagNummer = "";
+    $Antwoordtekst = "";
+    $acounttype = "";
 
 
     //fout meldingen

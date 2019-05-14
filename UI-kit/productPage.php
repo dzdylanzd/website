@@ -51,7 +51,7 @@
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
                             while ($alles = $sth->fetch()) {
-                                echo '<h2><span  class="uk-icon" uk-icon="icon: arrow-left; ratio: 2" onclick="history.go(-1);"></span>';
+                                 echo '<h2><span  class="uk-icon" uk-icon="icon: arrow-left; ratio: 2" onclick="history.go(-1);"></span>';
                                 echo " $alles[Titel]</h2>";
                             }
                         }
@@ -93,6 +93,8 @@
                             }
                         }
                         ?>
+
+                        
 
                         <!-- Beschrijving -->
                         <ul uk-accordion>
@@ -237,6 +239,7 @@
                             echo $knoppenFotos;
                         }
                         
+                        
                         // CONDITIE
                         
                         $sql = "SELECT Staat FROM Voorwerp WHERE Voorwerpnummer = ? ";
@@ -249,7 +252,7 @@
                         ?>
 
                         <!-- Beschrijving -->
-                        <ul uk-accordion>
+                                               <ul uk-accordion>
                             <li >
                                 <a class="uk-accordion-title" href="#">Toon beschrijving </a>
                                 <div class="uk-accordion-content">
