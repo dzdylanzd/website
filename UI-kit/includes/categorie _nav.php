@@ -20,7 +20,7 @@
 
       while ($row = $stmt->fetch()) {
         if($row["Rubrieknummer"] != -1){
-        $text =  $row["Rubrieknaam"];
+        $text = $row["Rubrieknaam"];
         $parent = $row["Volgnr"];
        
           while($parent > 0){
@@ -33,9 +33,13 @@
               }
             }
           }
-        echo $text;
+          
+       
         }        
       }
+      $text = "<div> $text </div>";
+      echo $text;
+      echo "<div class=\"-margin20\"></div>";
     }
 
 

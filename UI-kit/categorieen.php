@@ -42,7 +42,9 @@
                 <button class="uk-button uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
                 <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body">
                     <div class=" CategorieNavigatieBox">
-                        <script> UIkit.toggle('.uk-card').toggle(); </script>
+                        <script>
+                            UIkit.toggle('.uk-card').toggle();
+                        </script>
                         <h1>Rubrieken</h1>
                         <div class="scrollbox categorieNav">
                             <?php require_once('includes\categorie _nav.php'); ?>
@@ -61,96 +63,95 @@
                             <input class="FilterenPrijs" type="text" name="prijs" id="prijsTot">
                         </form>
                         <h3> Locatie</h3>
-                        <form action="categorieen.php"  method="post">
-                            <label for="afstand"> Binnen</label>
-                            <select name="afstanden">
-                                <option value="niks"> ... </option>
-                                <option value="10km"> < 10 kilometer </option>
-                                <option value="25km"> < 25 kilometer </option>
-                                <option value="50km"> < 50 kilometer </option>
-                                <option value="100km"> < 100 kilometer </option>
-                                <option value="250km"> < 250 kilometer </option>
-                                <option value="500km"> < 500 kilometer </option>
-                            </select>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-            <!-- categorie nav M (desktop) -->
-            <div class="uk-flex">
-                <div class="uk-width-1-3 uk-visible@m">
-                    <div class=" CategorieNavigatieBox">
-                        <h1>Rubrieken</h1>
-                        <div class="scrollbox categorieNav">
-                            <?php require 'includes\categorie _nav.php';?>
-                        </div>
-                        <h3> Staat</h3>
-                        <form class="FilterenStaat" action="categorieen.php" method="post">
-                            <input type="checkbox" name="nieuw" value="Nieuw"> Nieuw<br>
-                            <input type="checkbox" name="bijnaNieuw" value="bijnaNieuw"> Zo goed als nieuw<br>
-                            <input type="checkbox" name="gebruikt" value="Gebruikt"> Gebruikt<br>
-                        </form>
-                        <h3> Prijs</h3>
                         <form action="categorieen.php" method="post">
-                            <label for="prijsVan"> Van</label>
-                            <input class="FilterenPrijs" type="text" name="prijs" id="prijsVan">
-                            <label for="prijsTot"> Tot</label>
-                            <input class="FilterenPrijs" type="text" name="prijs" id="prijsTot">
-                        </form>
-                        <h3> Locatie</h3>
-                        <form action="categorieen.php"  method="post">
                             <label for="afstand"> Binnen</label>
                             <select name="afstanden">
                                 <option value="niks"> ... </option>
-                                <option value="10km"> < 10 kilometer </option>
-                                <option value="25km"> < 25 kilometer </option>
-                                <option value="50km"> < 50 kilometer </option>
-                                <option value="100km"> < 100 kilometer </option>
-                                <option value="250km"> < 250 kilometer </option>
-                                <option value="500km"> < 500 kilometer </option>
-                            </select>
-                        </form>
+                                <option value="10km">
+                                    < 10 kilometer </option> <option value="25km">
+                                        < 25 kilometer </option> <option value="50km">
+                                            < 50 kilometer </option> <option value="100km">
+                                                < 100 kilometer </option> <option value="250km">
+                                                    < 250 kilometer </option> <option value="500km">
+                                                        < 500 kilometer </option> </select> </form> </div> </div> </div> <!-- categorie nav M (desktop) -->
+                                                            <div class="uk-flex">
+                                                                <div class="uk-width-1-3 uk-visible@m">
+                                                                    <div class=" CategorieNavigatieBox">
+                                                                        <h1>Rubrieken</h1>
+                                                                        <div class="scrollbox categorieNav">
+                                                                            <?php require 'includes\categorie _nav.php'; ?>
+                                                                        </div>
+                                                                        <h3> Staat</h3>
+                                                                        <form class="FilterenStaat" action="categorieen.php" method="post">
+                                                                            <input type="checkbox" name="nieuw" value="Nieuw"> Nieuw<br>
+                                                                            <input type="checkbox" name="bijnaNieuw" value="bijnaNieuw"> Zo goed als nieuw<br>
+                                                                            <input type="checkbox" name="gebruikt" value="Gebruikt"> Gebruikt<br>
+                                                                        </form>
+                                                                        <h3> Prijs</h3>
+                                                                        <form action="categorieen.php" method="post">
+                                                                            <label for="prijsVan"> Van</label>
+                                                                            <input class="FilterenPrijs" type="text" name="prijs" id="prijsVan">
+                                                                            <label for="prijsTot"> Tot</label>
+                                                                            <input class="FilterenPrijs" type="text" name="prijs" id="prijsTot">
+                                                                        </form>
+                                                                        <h3> Locatie</h3>
+                                                                        <form action="categorieen.php" method="post">
+                                                                            <label for="afstand"> Binnen</label>
+                                                                            <select name="afstanden">
+                                                                                <option value="niks"> ... </option>
+                                                                                <option value="10km">
+                                                                                    < 10 kilometer </option> <option value="25km">
+                                                                                        < 25 kilometer </option> <option value="50km">
+                                                                                            < 50 kilometer </option> <option value="100km">
+                                                                                                < 100 kilometer </option> <option value="250km">
+                                                                                                    < 250 kilometer </option> <option value="500km">
+                                                                                                        < 500 kilometer </option> </select> </form> </div> </div> <div class="uk-width-3-4">
+                                                                                                            <?php
+                                                                                                            if (isset($_GET["root"])) {
+
+                                                                                                                $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
+
+                                                                                                                if ($sth->execute(array($_GET["root"]))) {
+                                                                                                                    while ($row = $sth->fetch()) {
+                                                                                                                        if ($row["Rubrieknummer"] != -1) {
+                                                                                                                            $text = "";
+                                                                                                                            $text = $text . '<div class="ItemsSliderDonkerGroen">';
+                                                                                                                            $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
+                                                                                                                            if (displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123) {
+                                                                                                                                $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
+                                                                                                                                $text = $text . ' </div>';
+                                                                                                                                echo $text;
+                                                                                                                            } else {
+                                                                                                                                echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze catogorie</h4>";
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                                $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE volgnr = ?");
+
+                                                                                                                if ($sth->execute(array($_GET["root"]))) {
+                                                                                                                    while ($row = $sth->fetch()) {
+                                                                                                                        if ($row["Rubrieknummer"] != -1) {
+                                                                                                                            $text = "";
+                                                                                                                            $text = $text . '<div class="ItemsSliderGroen">';
+                                                                                                                            $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
+                                                                                                                            if (displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123) {
+                                                                                                                                $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
+                                                                                                                                $text = $text . ' </div>';
+                                                                                                                                echo $text;
+                                                                                                                            }
+                                                                                                                        }
+                                                                                                                    }
+                                                                                                                }
+                                                                                                            }
+                                                                                                            ?>
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
                     </div>
                 </div>
-            
-                <div class="uk-width-3-4">
-                    <?php
-                    if (isset($_GET["root"])) {
-                        
-                        $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
-
-                        if ($sth->execute(array($_GET["root"]))) {
-                            while ($row = $sth->fetch()) {
-                                if($row["Rubrieknummer"] != -1){
-                                echo'<div class="ItemsSliderDonkerGroen">';
-                                echo "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
-                                displayCategorie($row["Rubrieknummer"], $dbh,100);
-                                echo' </div>';
-                                }
-                            }
-                        }
-                        $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE volgnr = ?");
-
-                        if ($sth->execute(array($_GET["root"]))) {
-                            while ($row = $sth->fetch()) {
-                                if($row["Rubrieknummer"] != -1){
-                                echo'<div class="ItemsSliderGroen">';
-                                echo "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
-                                displayCategorie($row["Rubrieknummer"], $dbh,10);
-                                echo' </div>';
-                                }
-                            }
-                        }
-                    }
-                    ?>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
 </body>
 <?php include 'includes/footer.inc.php'; ?>
 
