@@ -39,19 +39,26 @@
 
 
 
-                
+
             </div>
 
             <div class="  flex-column-phone">
                 <div class="uk-width-1-5@m uk-text-center@s uk-text-left@m ">
-                <button class="uk-button uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
-                <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body">
-                <div class="categorieNavHomepagina"> 
-                <script> UIkit.toggle('.uk-card').toggle(); </script>
-                    <h1>Rubrieken</h1>
-                    <?php require_once('includes\categorie _nav.php'); ?>
-                </div>
-</div>
+                    <button class="uk-button uk-button-default uk-hidden@s" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
+                    <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body uk-hidden@s">
+                        <div class="categorieNavHomepagina">
+                            <script>
+                                UIkit.toggle('.uk-card').toggle();
+                            </script>
+                            <h1>Rubrieken</h1>
+                            <?php require_once('includes\categorie _nav.php'); ?>
+                        </div>
+                    </div>
+                    <div class="categorieNavHomepagina uk-visible@s">
+                       
+                        <h1>Rubrieken</h1>                     
+                        <?php include('includes\categorie _nav.php'); ?>
+                    </div>
                 </div>
                 <div class="uk-width-4-5@m ">
                     <div class="margin"> </div>
@@ -74,7 +81,7 @@
                             }
                         }
                         $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Volgnr = ?");
-                        
+
                         /* Tijdelijke Laatste kans en nieuw box */
                         echo '<div class="ItemsSliderHomepagina">';
                         echo "<h1> Laatste kans! </h1>";
@@ -86,11 +93,11 @@
 
                         if ($sth->execute(array(-1))) {
                             while ($row = $sth->fetch()) {
-                                if($row["Rubrieknummer"] != -1){
-                                echo'<div class="ItemsSlider">';
-                                echo " <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Volgnr]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
-                                displayCategorie($row["Rubrieknummer"], $dbh,10);
-                               echo' </div>';
+                                if ($row["Rubrieknummer"] != -1) {
+                                    echo '<div class="ItemsSlider">';
+                                    echo " <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
+                                    displayCategorie($row["Rubrieknummer"], $dbh, 10);
+                                    echo ' </div>';
                                 }
                             }
                         }
@@ -106,10 +113,10 @@
                                     if ($row2  > 0) {
                                         // echo "<br><br><br> <h1> $row[Rubrieknaam]</h1> <br> ";
                                         while ($row2 = $TITELS->fetch()) {
-                                            echo'<div class="ItemsSlider">';
-                                            echo " <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row2[Volgnr]\"> <h1>  $row2[Rubrieknaam] </h1> </a>";
+                                            echo '<div class="ItemsSlider">';
+                                            echo " <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row2[Rubrieknummer]\"> <h1>  $row2[Rubrieknaam] </h1> </a>";
                                             displayCategorie($row2["Rubrieknummer"], $dbh, 10);
-                                           echo' </div>';
+                                            echo ' </div>';
                                         }
                                     }
                                 }
@@ -119,15 +126,15 @@
 
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
-                                echo'<div class="ItemsSlider">';
+                                echo '<div class="ItemsSlider">';
                                 echo "<h1> $row[Rubrieknaam] </h1>";
                                 displayCategorie($row["Rubrieknummer"], $dbh, 10);
-                               echo' </div>';
+                                echo ' </div>';
                             }
                         }
                     }
                     ?>
-                    
+
 
                 </div>
             </div>
