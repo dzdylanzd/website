@@ -92,7 +92,11 @@
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array())) {
                                     while ($alles = $sth->fetch()) {
+                                        if($alles['LandNaam'] == "Nederland"){
+                                        $tekst = "<option value='$alles[LandNaam]' selected>$alles[LandNaam]</option>";
+                                         } else{
                                         $tekst = "<option value='$alles[LandNaam]'>$alles[LandNaam]</option>";
+                                    }
                                         echo $tekst;
                                     }
                                 }
@@ -110,14 +114,34 @@
                         <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
                         <label for="bevestigingsvraag">Bevestigingsvraag</label><br>
                         <select class="uk-select input-registratie" name="bevestigingsvraag">
-                            <option value="test">tekst</option>
+                        <?php
+                        $sql = "SELECT TekstVraag FROM vraag ORDER BY vraagnummer ASC";
+                            if ($sth = $dbh->prepare($sql)) {
+                                if ($sth->execute(array())) {
+                                    while ($vraag = $sth->fetch()) {
+                                        $tekst = "value='$vraag[TekstVraag]'>$vraag[TekstVraag]</option>";
+                                        echo $tekst;
+                                    }
+                                }
+                            }
+                            ?>
                         </select><br>
                         <label for="antwoord">Antwoord</label><br>
                         <input class="uk-input input-registratie" type="password" id="antwoord" name="antwoord"><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Voorkeuren</h3>
-                        <input class="uk-checkbox" type="checkbox" value="categorie">categorie<br>
+                        <?php
+                        $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
+                            if ($sth = $dbh->prepare($sql)) {
+                                if ($sth->execute(array(-1, -1))) {
+                                    while ($row = $sth->fetch()) {
+                                        $tekst = "<input class='uk-checkbox' type='checkbox' name='$row[Rubrieknaam]' value='$row[Rubrieknaam]'>$row[Rubrieknaam]<br>";
+                                        echo $tekst;
+                                    }
+                                }
+                            }
+                            ?>
                     </div>
                     <button type="submit" name="bevestigings-button" class="uk-button knop-email">Registreren</button>
                 </form>
