@@ -3,22 +3,22 @@
 if(isset($_POST['login-submit'])){
     require_once('database.php');
 
-    $mailuid = $_POST['mailuid'];
-    $password = $_POST['pwd'];
+    $gebruikersnaam = $_POST['gebruikersnaam'];
+    $password = $_POST['wachtwoord'];
 
-    if (empty($mailuid) || empty($password)) {
+    if (empty($gebruikersnaam) || empty($password)) {
         header("Location: ../bezoeker_login.php?error=emptyfields");
         exit();
     }
     else {
-     $sql = "SELECT * FROM users WHERE UidUsers=? or emailUsers=?; " ;
+     $sql = "SELECT * from Gebruiker where Gebruikersnaam = ? " ;
      if (!$query = $dbh->prepare($sql)){
          header("location: ../bezoeker_login.php?error=sqlerror");
         exit();
         }
         else {
             $query = $dbh->prepare($sql);
-      $query->execute(array($mailuid,$mailuid));
+      $query->execute(array($gebruikersnaam,$gebruikersnaam));
       if($row = $query->fetch()) {
         $pwdCheck = password_verify($password,$row['pwdUsers']);
         if ($pwdCheck == false) {

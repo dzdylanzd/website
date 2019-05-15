@@ -21,5 +21,6 @@ else if ($_POST['bevestigingscode'] != $code) {
   header("location: ../email-Bevestiging.php?error=nietDeGoedeCode");
 } else {
   header("location: ../registreren.php");
+  $_SESSION["gevalideert"] = true;
 }
 ?>

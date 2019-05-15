@@ -1,3 +1,13 @@
+<?php
+
+if(!isset($_SESSION["gevalideert"])){
+    header("Location: email-Bevestiging.php");
+    die();
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -71,7 +81,10 @@
                                     }
                                 }
                             }
+
+                           
                              ?>
+                             
                         </select><br>
                     </div>
                     <div class="registreerbox">

@@ -30,22 +30,22 @@
                     <div class="uk-inline">
                         <button class="uk-button uk-button-primary " type="button">Inloggen</button>
                         <div uk-dropdown="mode: click">
-                            <form>
+                            <form method="post" action="includes/login.inc.php">
 
                                 <div class="uk-margin">
                                     <div class="uk-inline">
                                         <span class="uk-form-icon" uk-icon="icon: user"></span>
-                                        <input class="uk-input" type="text">
+                                        <input class="uk-input" name="gebruikersnaam" type="text">
                                     </div>
                                 </div>
 
                                 <div class="uk-margin">
                                     <div class="uk-inline">
                                         <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-                                        <input class="uk-input" type="password">
+                                        <input class="uk-input" name="wachtwoord" type="password">
                                     </div>
                                 </div>
-                                <button class="loginknop uk-width-1-1 uk-button uk-button-default " type="submit">Login</button>
+                                <button class="loginknop uk-width-1-1 uk-button uk-button-default " name="login-submit" type="submit">Login</button>
                             </form>
                             <a class="uk-link-muted" href="index.php">Wachtwoord vergeten?</a>
                         </div>
@@ -54,11 +54,11 @@
                 <div class="uk-navbar-right">
                     <div class="uk-navbar-nav">
                         <div class=" uk-navbar-item ">
-                            
-                        <div class=" uk-navbar-item "> <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href='email-Bevestiging.php'">registreren</button>
+
+                            <div class=" uk-navbar-item "> <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href='email-Bevestiging.php'">registreren</button>
+                            </div>
                         </div>
-                </div>
-            </div>
+                    </div>
     </nav>
 
 </div>
@@ -90,29 +90,29 @@
 
         <div class="uk-navbar-nav">
             <div class=" uk-navbar-item ">
-            <div class="uk-inline">
-                        <button class="uk-button uk-button-primary " type="button">Inloggen</button>
-                        <div uk-dropdown="mode: click">
-                            <form>
+                <div class="uk-inline">
+                    <button class="uk-button uk-button-primary " type="button">Inloggen</button>
+                    <div uk-dropdown="mode: click">
+                        <form method="post" action="includes/login.inc.php">
 
-                                <div class="uk-margin">
-                                    <div class="uk-inline">
-                                        <span class="uk-form-icon" uk-icon="icon: user"></span>
-                                        <input class="uk-input" type="text">
-                                    </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline">
+                                    <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                    <input class="uk-input" name="gebruikersnaam" type="text">
                                 </div>
+                            </div>
 
-                                <div class="uk-margin">
-                                    <div class="uk-inline">
-                                        <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-                                        <input class="uk-input" type="password">
-                                    </div>
+                            <div class="uk-margin">
+                                <div class="uk-inline">
+                                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                                    <input class="uk-input" name="wachtwoord" type="password">
                                 </div>
-
-                            </form>
-                        </div>
+                            </div>
+                            <button class="loginknop uk-width-1-1 uk-button uk-button-default " name="login-submit" type="submit">Login</button>
+                        </form>
                     </div>
-</div>
+                </div>
+            </div>
             <div class=" uk-navbar-item "><button class="uk-button uk-button-primary uk-margin-right">registreren</button>
             </div>
         </div>

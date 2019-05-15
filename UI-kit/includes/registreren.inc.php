@@ -108,6 +108,6 @@ if (isset($_POST['bevestigings-button']))
 
  else 
 {
-    header("location: ../bezoeker_registeren.php");
+    header("location: ../index.php");
     exit();
 }
