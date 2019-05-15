@@ -40,13 +40,13 @@
             <div class="registreren">
                     <h2>Registreren</h2>
                 </div>
-                <form method="post" action="registreren.inc.php">
+                <form method="post" action="zendMail.php">
                     <div class="email-box">
                         <h3>E-mail bevestiging</h3> 
                         <p>Beste bezoeker,<br> voordat u een gebruiker aan kunt maken moet u eerst uw e-mail adres bevestigen. <br>
                         Dit doet u door uw e-mail in te geven en op "E-mail bevestigen" te klikken.
                         </p>
-                        <form method="post" action="registreren.inc.php">
+                       
                             <label for="emailbevestiging">E-mail*</label>
                             <input class="uk-input input-registratie" type="email" name="emailbevestiging" id="emailbevestiging">
                             <button class="uk-button knop-email">E-mail bevestigen</button>

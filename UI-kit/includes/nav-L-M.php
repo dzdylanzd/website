@@ -1,5 +1,5 @@
 <!-- navigatiebalk Desktop -->
-
+<?php session_start(); ?>
 <div class="uk-visible@m sticky ">
 
 
