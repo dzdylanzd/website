@@ -13,6 +13,7 @@
 
 <body>
     <?php include 'includes\nav-L-M.php';
+    include 'database.php';
     require_once('includes/database.php'); ?>
     <div class="page-container">
         <div class="content-wrap">
@@ -44,11 +45,11 @@
                     <div class="registreerbox">
 
                         <h3>Persoonsgegevens</h3>
-                        <label for="voornaam">Voornaam*</label><br>
+                        <label for="voornaam">Voornaam</label><br>
                         <input class="uk-input input-registratie" type="text" id="voornaam" name="voornaam"><br>
-                        <label for="achternaam">Achternaam*</label><br>
+                        <label for="achternaam">Achternaam</label><br>
                         <input class="uk-input input-registratie" type="text" id="achternaam" name="achternaam"><br>
-                        <label for="geboortedatum">Geboortedatum*</label><br>
+                        <label for="geboortedatum">Geboortedatum</label><br>
                         <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum"><br>
                     </div>
                     <div class="registreerbox">
@@ -61,29 +62,39 @@
                         <input class="uk-input input-registratie" type="text" id="plaats" name="plaats"><br>
                         <label for="land">Land</label><br>
                         <select class="uk-select input-registratie" name="land">
-                            <option value="land">tekst</option>
+                            <?php 
+                            $sql = "SELECT LandNaam FROM Landen ORDER BY LandNaam ASC";
+                            if($sth = $dbh->prepare($sql)){
+                                if($sth->execute(array())){
+                                    while ($alles = $sth->fetch()) {
+                                        $tekst = "<option value='$alles[LandNaam]'>$alles[LandNaam]</option>";
+                                        echo $tekst;
+                                    }
+                                }
+                            }
+                             ?>
                         </select><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Inloggegevens</h3>
-                        <label for="gebruikersnaam">Gebruikersnaam*</label><br>
+                        <label for="gebruikersnaam">Gebruikersnaam</label><br>
                         <input class="uk-input input-registratie" type="text" id="gebruikersnaam" name="gebruikersnaam"><br>
-                        <label for="wachtwoord">Wachtwoord*</label><br>
+                        <label for="wachtwoord">Wachtwoord</label><br>
                         <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord"><br>
-                        <label for="bevestigWachtwoord">Wachtwoord herhalen*</label><br>
+                        <label for="bevestigWachtwoord">Wachtwoord herhalen</label><br>
                         <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
-                        <label for="bevestigingsvraag">Bevestiginsvraag*</label><br>
+                        <label for="bevestigingsvraag">Bevestiginsvraag</label><br>
                         <select class="uk-select input-registratie" name="bevestigingsvraag">
                             <option value="test">tekst</option>
                         </select><br>
-                        <label for="antwoord">Antwoord*</label><br>
+                        <label for="antwoord">Antwoord</label><br>
                         <input class="uk-input input-registratie" type="password" id="antwoord" name="antwoord"><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Voorkeuren</h3>
                         <input class="uk-checkbox" type="checkbox" value="categorie">categorie<br>
                     </div>
-                    <button type="submit" name="bevestigings-button" class="uk-button knop-email">E-mail bevestigen</button>
+                    <button type="submit" name="bevestigings-button" class="uk-button knop-email">Registreren</button>
                 </form>
             </div>
         </div>
