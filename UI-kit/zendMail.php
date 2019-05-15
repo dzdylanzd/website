@@ -21,11 +21,20 @@ $message = '
     <script src="js/uikit-icons.min.js"></script>
 </head>
 
-<body> 
-Beste heer/vrouw, bijgaand de code voor het registeren van uw account op EenmaalAndermaal: ' . $random_hash . '
-<br>
-Bedankt dat u voor ons heeft gekozen!
+<body>
+Beste meneer/mevrouw,<br> 
+Bedankt dat u voor EenmaalAndermaal heeft gekozen.<br>
+Hieronder vindt u de code om uw e-mailadres te bevestigen.<br>
+Dit kunt u doen door op \'registeren\' te klikken of door op de onderstaande link te klikken<br>
+De bevestigingscode is:  <strong>' . $random_hash . '
 
+</strong><br>
+<a href="http://iproject37.icasites.nl/email-Bevestigen.php">Bevestig e-mailadres</a>
+
+<br>
+<br>
+Bedankt dat u voor ons heeft gekozen!<br>
+Iconcepts
 </body>
 
 </html>

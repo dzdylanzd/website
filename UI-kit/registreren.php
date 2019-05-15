@@ -46,8 +46,6 @@
                         <h3>Persoonsgegevens</h3>
                         <label for="voornaam">Voornaam*</label><br>
                         <input class="uk-input input-registratie" type="text" id="voornaam" name="voornaam"><br>
-                        <label for="tussenvoegsel">Tussenvoegsel</label><br>
-                        <input class="uk-input input-registratie" type="text" id="tussenvoegsel" name="tussenvoegsel"><br>
                         <label for="achternaam">Achternaam*</label><br>
                         <input class="uk-input input-registratie" type="text" id="achternaam" name="achternaam"><br>
                         <label for="geboortedatum">Geboortedatum*</label><br>
