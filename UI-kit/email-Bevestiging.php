@@ -60,9 +60,10 @@
                         <input class="uk-input input-registratie" type="password" id="bevestigingscode" name="bevestigingscode">
                         <button class="uk-button knop-email">Bevestigen</button>
                     </form>
-                    </div>
-                <?php include 'includes/footer.inc.php'; ?>
-
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php include 'includes/footer.inc.php'; ?>
 </body>
-
 </html>
