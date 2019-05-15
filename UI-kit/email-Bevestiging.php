@@ -37,7 +37,7 @@
                 </nav>
             </div>
             <div class="uk-flex-center uk-flex-column">
-            <div class="registreren">
+                <div class="registreren">
                     <h2>Registreren</h2>
                 </div>
                 <form method="post" action="zendMail.php">
@@ -47,11 +47,11 @@
                         Dit doet u door uw e-mail in te geven en op "E-mail bevestigen" te klikken.
                         </p>
                        
-                            <label for="emailbevestiging">E-mail*</label>
-                            <input class="uk-input input-registratie" type="email" name="emailbevestiging" id="emailbevestiging">
-                            <button class="uk-button knop-email">E-mail bevestigen</button>
-                            </form>
-                    </div>
+                        <label for="emailbevestiging">E-mail*</label>
+                        <input class="uk-input input-registratie" type="email" name="emailbevestiging" id="emailbevestiging">
+                        <button class="uk-button knop-email">E-mail bevestigen</button>
+                    </form>
+                </div>
             <?php include 'includes/footer.inc.php'; ?>
 
 </body>
