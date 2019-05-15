@@ -83,7 +83,7 @@
                         <h3>Voorkeuren</h3>
                         <input class="uk-checkbox" type="checkbox" value="categorie">categorie<br>
                     </div>
-                    <button class="uk-button knop-email">E-mail bevestigen</button>
+                    <button type="submit" name="bevestigings-button" class="uk-button knop-email">E-mail bevestigen</button>
                 </form>
             </div>
         </div>
