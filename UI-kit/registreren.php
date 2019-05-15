@@ -61,7 +61,7 @@
                         <input class="uk-input input-registratie" type="text" id="plaats" name="plaats"><br>
                         <label for="land">Land</label><br>
                         <select class="uk-select input-registratie" name="land">
-                            <option value="">tekst</option>
+                            <option value="land">tekst</option>
                         </select><br>
                     </div>
                     <div class="registreerbox">
