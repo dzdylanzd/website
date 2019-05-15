@@ -55,14 +55,15 @@
                 <div class="email-box">
                     <h3> Bevestigingscode </h3>
                     <p> Voer hier de bevestigingscode in die u per mail heeft ontvangen.</p>
-                    <form method="post" action="checkCode.inc.php"> 
+                    <form method="post" action="includes/checkCode.inc.php"> 
                         <label for="bevestigingscode">Bevestigingscode:</label><br>
                         <input class="uk-input input-registratie" type="password" id="bevestigingscode" name="bevestigingscode">
                         <button class="uk-button knop-email">Bevestigen</button>
                     </form>
-                    </div>
-                <?php include 'includes/footer.inc.php'; ?>
-
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php include 'includes/footer.inc.php'; ?>
 </body>
-
 </html>
