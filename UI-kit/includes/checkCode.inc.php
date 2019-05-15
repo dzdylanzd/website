@@ -12,10 +12,12 @@ var_dump($date2);
 
 $secondes =  $date1 - $date2 ;
 if($secondes > $maxTijd ){
-    echo"je kode is te lang";
+    header("location: ../email-Bevestiging.php?error=codeNietMeerValide");
 }else{
-  if(  $_POST['emailbevestiging']){
-      
+  if(  $_POST['bevestigingscode'] != $code){
+    header("location: ../email-Bevestiging.php?error=nietDeGoedeCode");
+  }else{
+    header("location: ../registreren.php");
   }
 }
 
