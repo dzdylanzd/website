@@ -46,6 +46,32 @@ if(!isset($_SESSION["gevalideert"])){
                     </div>
                 </nav>
             </div>
+            <?php
+                    if (isset($_GET['error'])) {
+                        $errorBericht = ($_GET['error']);
+                        switch ($errorBericht) {
+                            case 1:
+                                echo '<p class="errors">Vul alle velden in</p>';
+                                break;
+                            case 3:
+                                echo '<p class="errors">De gebruikersnaam is al in gebruik</p>';
+                            case 4:
+                                echo '<p class="errors">De wachtwoorden komen niet overeen</p>';
+                                break;
+                            case 5:
+                                echo '<p class="errors">Een of meerdere invoervelden bevatten teveel tekens</p>';
+                                break;
+                            case 6:
+                                echo '<p class="errors">De gebruikersnaam bevat een speciaal teken</p>';
+                                break;
+                            case 7:
+                                echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                                break;
+                            default:
+                                echo '<p class="errors">Onverwachte error, probeer het opnieuw';
+                        }
+                    }
+                    ?>
             <div class="uk-flex-center uk-flex-column">
                 <div class="registreren">
                     <h2>Registreren</h2>
@@ -71,20 +97,17 @@ if(!isset($_SESSION["gevalideert"])){
                         <input class="uk-input input-registratie" type="text" id="plaats" name="plaats"><br>
                         <label for="land">Land</label><br>
                         <select class="uk-select input-registratie" name="land">
-                            <?php 
+                            <?php
                             $sql = "SELECT LandNaam FROM Landen ORDER BY LandNaam ASC";
-                            if($sth = $dbh->prepare($sql)){
-                                if($sth->execute(array())){
+                            if ($sth = $dbh->prepare($sql)) {
+                                if ($sth->execute(array())) {
                                     while ($alles = $sth->fetch()) {
                                         $tekst = "<option value='$alles[LandNaam]'>$alles[LandNaam]</option>";
                                         echo $tekst;
                                     }
                                 }
                             }
-
-                           
-                             ?>
-                             
+                            ?>
                         </select><br>
                     </div>
                     <div class="registreerbox">
@@ -95,7 +118,7 @@ if(!isset($_SESSION["gevalideert"])){
                         <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord"><br>
                         <label for="bevestigWachtwoord">Wachtwoord herhalen</label><br>
                         <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
-                        <label for="bevestigingsvraag">Bevestiginsvraag</label><br>
+                        <label for="bevestigingsvraag">Bevestigingsvraag</label><br>
                         <select class="uk-select input-registratie" name="bevestigingsvraag">
                             <option value="test">tekst</option>
                         </select><br>
