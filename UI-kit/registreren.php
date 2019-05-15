@@ -40,7 +40,7 @@
                 <div class="registreren">
                     <h2>Registreren</h2>
                 </div>
-                <form method="post" action="registreren.inc.php">
+                <form method="post" action="includes/registreren.inc.php">
                     <div class="registreerbox">
 
                         <h3>Persoonsgegevens</h3>

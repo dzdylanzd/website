@@ -1,5 +1,6 @@
 <?php
-if (isset($_POST['signup-submit']))
+session_start();
+if (isset($_POST['']))
 {
     require_once('database.php');
 
@@ -9,70 +10,70 @@ if (isset($_POST['signup-submit']))
     // $password = $_POST{"pwd"};
     // $passwordRepeat = $_POST['pwd-repeat'];
 
-    $Gebruiksernaam = $_POST['uid'];
-    $voornaam = $_POST['mail'];
-    $Achternaam = $_POST{"pwd"};
-    $Straat = $_POST['pwd-repeat'];
-    $Huinummer = "";
-    $Postcode = "";
-    $Plaatsnaam = "";
-    $Land = "";
-    $Geboortedag = "";
-    $Mailadress = "";
-    $Wachtwoord = "";
-    $WachtwoordHerhaal = "";
-    $VraagNummer = "";
-    $Antwoordtekst = "";
+    $Gebruiksernaam = $_POST['gebruikersnaam'];
+    $voornaam = $_POST['voornaam'];
+    $Achternaam = $_POST{"achternaam"};
+    $StraatHuisnummer = $_POST['adres1'];
+    $Postcode = $_POST['postcode'];
+    $Plaatsnaam = $_POST['plaats'];
+    $Land = $_POST['land'];
+    $Geboortedag = $_POST['geboortedatum'];
+    $Mailadress = $_SESSION["Email"];
+    $Wachtwoord = $_POST['wachtwoord'];
+    $WachtwoordHerhaal = $_POST['bevestigWachtwoord'];
+    $VraagNummer = $_POST['bevestigingsvraag'];
+    $Antwoordtekst = $_POST['antwoord'];
 
 
     //fout meldingen
     //check voor lege velden
-    if (empty($username)|| empty($email)|| empty($password)|| empty($passwordRepeat)) 
+    if (empty($Gebruiksernaam)|| empty($voornaam)|| empty($Achternaam)|| empty( $StraatHuisnummer)|| empty($Huisnummer)|| empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) || empty($Mailadress) || empty($Wachtwoord) || empty( $WachtwoordHerhaal) || empty($VraagNummer) ||  empty($Antwoordtekst)   ) 
     {
-        header("location: ../bezoeker_registeren.php?error=emptyfields&uid=".$username."$mail=".$email);
+        header("location: ../registreren.php?error=1");
         exit();
 
     } 
-    else if (!filter_var($email,FILTER_VALIDATE_EMAIL)) 
+    else if (!filter_var($Mailadress,FILTER_VALIDATE_EMAIL)) 
         {
-            header("location: ../bezoeker_registeren.php?error=invalidmail&uid=".$email);
+          header("location: ../registreren.php?error=2");
+          exit();
         exit();
         } 
-    else if(!preg_match("/^[a-zA-Z0-9]*$/",$username)){
-        header("location: ../bezoeker_registeren.php?error=invaliduid&mail=".$username);
+    else if(!preg_match("/^[a-zA-Z0-9]*$/",$Gebruiksernaam)){
+      header("location: ../registreren.php?error=6");
         exit();
         } 
-    else if($password !== $passwordRepeat){
-        header("location: ../bezoeker_registeren.php?error=passwordcheckuid=".$username."&email=".$email);
+    else if($Wachtwoord !== $WachtwoordHerhaal){
+      header("location: ../registreren.php?error=4");
         exit();
         } 
     
     else {
 
-      $sql = "SELECT UidUsers FROM users WHERE UidUsers = ?";
+      $sql = "SELECT Gebruikersnaam from Gebruiker where Gebruikersnaam = ?";
       if (!$query = $dbh->prepare($sql)){
-        header("location: ../bezoeker_registeren.php?error=sqlerror=");
+        header("location: ../registreren.php?error=7");
         exit();
       } 
     
     else{
         $query = $dbh->prepare($sql);
-      $query->execute(array($username));
+      $query->execute(array($Gebruiksernaam));
       if($query->fetch()) {
-        header("location: ../bezoeker_registeren.php?error=usertaken&email=".$email);
+        header("location: ../registreren.php?error=3");
         exit();
         } 
         else {
             
 
-                $sql = "INSERT INTO users(UidUsers, emailUsers, pwdUsers) VALUES(?,?,?)";
+                $sql = "INSERT Gebruiker(Gebruikersnaam,Voornaam,Achternaam,Adresregel1,Postcode,Plaatsnaam,Land,Geboortedatum,Mailadres,Wachtwoord,Vraagnummer,AntwoordTekst,IsAccountVerkoper,DatumMakenAccount) values( ?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 if (!$query = $dbh->prepare($sql)){
-                  header("location: ../bezoeker_registeren.php?error=sqlerror=");
+                  header("location: ../registreren.php?error=7");
                   exit();
                 } 
               
               else{
-                $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
+                $hashedPwd = password_hash($Wachtwoord, PASSWORD_DEFAULT);
                 $query = $dbh->prepare($sql);
                 $query->execute(array($username,$email,$hashedPwd));
                 header("location: ../bezoeker_login.php?signup=success=");
