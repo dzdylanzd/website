@@ -27,7 +27,7 @@ if (isset($_POST['bevestigings-button']))
 
     //fout meldingen
     //check voor lege velden
-    if (empty($Gebruiksernaam)|| empty($voornaam)|| empty($Achternaam)|| empty( $StraatHuisnummer)|| empty($Huisnummer)|| empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) || empty($Mailadress) || empty($Wachtwoord) || empty( $WachtwoordHerhaal) || empty($VraagNummer) ||  empty($Antwoordtekst)   ) 
+    if (empty($Gebruiksernaam)|| empty($voornaam)|| empty($Achternaam)|| empty( $StraatHuisnummer)|| empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) || empty($Mailadress) || empty($Wachtwoord) || empty( $WachtwoordHerhaal) || empty($VraagNummer) ||  empty($Antwoordtekst)   ) 
     {
         header("location: ../registreren.php?error=1");
         exit();
@@ -71,11 +71,29 @@ if (isset($_POST['bevestigings-button']))
                   header("location: ../registreren.php?error=7");
                   exit();
                 } 
+
+                // $Gebruiksernaam = $_POST['gebruikersnaam'];
+                // $voornaam = $_POST['voornaam'];
+                // $Achternaam = $_POST{"achternaam"};
+                // $StraatHuisnummer = $_POST['adres1'];
+                // $Postcode = $_POST['postcode'];
+                // $Plaatsnaam = $_POST['plaats'];
+                // $Land = $_POST['land'];
+                // $Geboortedag = $_POST['geboortedatum'];
+                // $Mailadress = $_SESSION["Email"];
+                // $Wachtwoord = $_POST['wachtwoord'];
+                // $WachtwoordHerhaal = $_POST['bevestigWachtwoord'];
+                // $VraagNummer = $_POST['bevestigingsvraag'];
+                // $Antwoordtekst = $_POST['antwoord'];
               
               else{
                 $hashedPwd = password_hash($Wachtwoord, PASSWORD_DEFAULT);
-                $query = $dbh->prepare($sql);
-                $query->execute(array($username,$email,$hashedPwd));
+                var_dump($hashedPwd);
+                Echo " $hashedPwd";
+                if($query = $dbh->prepare($sql)){
+                  echo"jan";
+                }
+                $query->execute(array($Gebruiksernaam,$voornaam,$Achternaam,$StraatHuisnummer,$Postcode,$Plaatsnaam,$Land,$Geboortedag,$Mailadress, $hashedPwd,2,$Antwoordtekst,0,date("Y-m-d H:i:s")));
                 header("location: ../bezoeker_login.php?signup=success=");
                   exit();
                                             
