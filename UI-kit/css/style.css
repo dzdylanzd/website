@@ -16,6 +16,18 @@ p {
   font-family: "Calibri", sans-serif;
 }
 
+.errors {
+  font-size: 2em;
+  text-align: center;
+  color: rgb(223, 50, 50);
+}
+
+.succes {
+  font-size: 2em;
+  text-align: center;
+  color: #739F65;
+}
+
 .logo{
   margin-left: 50px;
 }

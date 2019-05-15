@@ -37,6 +37,25 @@
                 </nav>
             </div>
             <div class="uk-flex-center uk-flex-column">
+                <!-- Error handlers -->
+                <?php if (isset($_GET['error'])) {
+                        if ($_GET['error'] == "leegveld") {
+                            echo '<p class="errors"> Voer een code in </p>';
+                        }
+                        else if ($_GET['error'] == "legeemail") {
+                            echo '<p class="errors"> Voer uw e-mailadres in </p>';
+                        }
+                        else if ($_GET['error'] == "codeNietMeerValide") {
+                            echo '<p class="errors"> De ingevoerde code is niet meer geldig </p>';
+                        }
+                        else if ($_GET['error'] == "nietDeGoedeCode") {
+                            echo '<p class="errors"> De ingevoerde code wordt niet herkent </p>';
+                        }
+                        else if ($_GET['error'] == "succes") {
+                            echo '<p class="succes"> Er is een code naar uw e-mailadres verzonden </p>';
+                        }
+                    }
+                ?>
                 <div class="registreren">
                     <h2>Registreren</h2>
                 </div>
@@ -46,7 +65,6 @@
                         <p>Beste bezoeker,<br> voordat u een gebruiker aan kunt maken moet u eerst uw e-mail adres bevestigen. <br>
                             Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken.
                         </p>
-
                         <label for="emailbevestiging">E-mail:</label><br>
                         <input class="uk-input input-registratie" type="email" name="emailbevestiging" id="emailbevestiging">
                         <button class="uk-button knop-email">E-mail bevestigen</button>

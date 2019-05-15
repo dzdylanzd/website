@@ -11,19 +11,15 @@ var_dump($date1);
 var_dump($date2);
 
 $secondes =  $date1 - $date2 ;
-if($secondes > $maxTijd ){
-    header("location: ../email-Bevestiging.php?error=codeNietMeerValide");
-}else{
-  if(  $_POST['bevestigingscode'] != $code){
-    header("location: ../email-Bevestiging.php?error=nietDeGoedeCode");
-  }else{
-    header("location: ../registreren.php");
-  }
+if (empty($_POST['bevestigingscode'])) {
+  header("Location: ../email-Bevestiging.php?error=leegveld");
 }
-
-
-
-
-
-
+else if($secondes > $maxTijd ) {
+  header("location: ../email-Bevestiging.php?error=codeNietMeerValide");
+} 
+else if ($_POST['bevestigingscode'] != $code) {
+  header("location: ../email-Bevestiging.php?error=nietDeGoedeCode");
+} else {
+  header("location: ../registreren.php");
+}
 ?>

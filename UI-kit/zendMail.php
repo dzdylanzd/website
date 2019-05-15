@@ -34,7 +34,7 @@ De bevestigingscode is:  <strong>' . $random_hash . '
 <br>
 <br>
 Bedankt dat u voor ons heeft gekozen!<br>
-Iconcepts
+iConcepts
 </body>
 
 </html>
@@ -48,6 +48,11 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <webmaster@example.com>' . "\r\n";
 $headers .= 'Cc: myboss@example.com' . "\r\n";
 
-mail($to,$subject,$message,$headers);
-header("location: email-Bevestiging.php");
+
+if (empty($_POST['emailbevestiging'])) {
+    header("Location: email-Bevestiging.php?error=legeemail");
+} else {
+    mail($to,$subject,$message,$headers);
+    header("Location: email-Bevestiging.php?error=succes");
+}
 ?>
