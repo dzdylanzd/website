@@ -29,7 +29,7 @@ Dit kunt u doen door op \'registeren\' te klikken of door op de onderstaande lin
 De bevestigingscode is:  <strong>' . $random_hash . '
 
 </strong><br>
-<a href="http://iproject37.icasites.nl/email-Bevestigen.php">Bevestig e-mailadres</a>
+<a href="http://iproject37.icasites.nl/email-Bevestiging.php">Bevestig e-mailadres</a>
 
 <br>
 <br>
