@@ -1,9 +1,10 @@
 <?php
 session_start();
-$random_hash = bin2hex(random_bytes(8));
+$random_hash = bin2hex(random_bytes(3));
 $_SESSION["emailCode"] = $random_hash;
-$_SESSION["EmailDateTime"] = getdate();
+$_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_POST['emailbevestiging'];
+$_SESSION["Email"] = $to;
 $subject = "HTML email";
 
 $message = '

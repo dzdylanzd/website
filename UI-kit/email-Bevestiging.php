@@ -42,18 +42,25 @@
                 </div>
                 <form method="post" action="zendMail.php">
                     <div class="email-box">
-                        <h3>E-mail bevestiging</h3> 
+                        <h3>E-mail bevestiging</h3>
                         <p>Beste bezoeker,<br> voordat u een gebruiker aan kunt maken moet u eerst uw e-mail adres bevestigen. <br>
-                        Dit doet u door uw e-mail in te geven en op "E-mail bevestigen" te klikken.
+                            Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken.
                         </p>
-                       
-                        <label for="emailbevestiging">E-mail*</label>
+
+                        <label for="emailbevestiging">E-mail:</label><br>
                         <input class="uk-input input-registratie" type="email" name="emailbevestiging" id="emailbevestiging">
                         <button class="uk-button knop-email">E-mail bevestigen</button>
+                    </div>
+                </form>
+                <div class="email-box">
+                    <h3> Bevestigingscode </h3>
+                    <p> Voer hier de bevestigingscode in die u per mail heeft ontvangen.</p>
+                    <form method="post" action="checkCode.inc.php"> 
+                        <label for="bevestigingscode">Bevestigingscode:</label><br>
+                        <input class="uk-input input-registratie" type="password" id="bevestigingscode" name="bevestigingscode">
+                        <button class="uk-button knop-email">Bevestigen</button>
                     </form>
                 </div>
-            <?php include 'includes/footer.inc.php'; ?>
-
+    <?php include 'includes/footer.inc.php'; ?>
 </body>
-
 </html>
