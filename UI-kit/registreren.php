@@ -82,7 +82,7 @@
                         <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord"><br>
                         <label for="bevestigWachtwoord">Wachtwoord herhalen</label><br>
                         <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
-                        <label for="bevestigingsvraag">Bevestiginsvraag</label><br>
+                        <label for="bevestigingsvraag">Bevestigingsvraag</label><br>
                         <select class="uk-select input-registratie" name="bevestigingsvraag">
                             <option value="test">tekst</option>
                         </select><br>
