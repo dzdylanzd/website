@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_POST['signup-submit']))
+if (isset($_POST['']))
 {
     require_once('database.php');
 
