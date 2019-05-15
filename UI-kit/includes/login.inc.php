@@ -3,49 +3,71 @@
 if(isset($_POST['login-submit'])){
     require_once('database.php');
 
-    $mailuid = $_POST['mailuid'];
-    $password = $_POST['pwd'];
+    $gebruikersnaam = $_POST['gebruikersnaam'];
+    $password = $_POST['wachtwoord'];
 
-    if (empty($mailuid) || empty($password)) {
-        header("Location: ../bezoeker_login.php?error=emptyfields");
+    if (empty($gebruikersnaam) || empty($password)) {
+        if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+        header("location: $_SERVER[HTTP_REFERER]&errorLogin=leeg");
+        }else{
+            header("location: $_SERVER[HTTP_REFERER]?errorLogin=leeg");
+        }
         exit();
     }
     else {
-     $sql = "SELECT * FROM users WHERE UidUsers=? or emailUsers=?; " ;
+     $sql = "SELECT * from Gebruiker where Gebruikersnaam = ? " ;
      if (!$query = $dbh->prepare($sql)){
-         header("location: ../bezoeker_login.php?error=sqlerror");
+        if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+            header("location: $_SERVER[HTTP_REFERER]&errorLogin=GebruikerBestaatNiet");
+            }else{
+                header("location: $_SERVER[HTTP_REFERER]?errorLogin=GebruikerBestaatNiet");
+            }
         exit();
         }
         else {
             $query = $dbh->prepare($sql);
-      $query->execute(array($mailuid,$mailuid));
+      $query->execute(array($gebruikersnaam));
       if($row = $query->fetch()) {
-        $pwdCheck = password_verify($password,$row['pwdUsers']);
+        $pwdCheck = password_verify($password,$row['Wachtwoord']);
         if ($pwdCheck == false) {
-            header("location: ../bezoeker_login.php?error=wrongpwd");
+            if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+                header("location: $_SERVER[HTTP_REFERER]&errorLogin=verkeerdwachtwoord");
+                }else{
+                    header("location: $_SERVER[HTTP_REFERER]?errorLogin=vekeerdwachtwoord");
+                }
         exit();
         }
         else if($pwdCheck == true){
 session_start();
-$_SESSION['userId'] = $row['idUsers'];
-$_SESSION['userUid'] = $row['UidUsers'];
-header("location: ../bezoeker_login.php?login=success");
+$_SESSION['userId'] = $row['Gebruikersnaam'];
+$_SESSION['userUid'] = $row['Mailadres'];
+echo"<script> history.go(-1); </script> ";
             exit();
            }
            else {
-            header("location: ../bezoeker_login.php?error=wrongpwd");
-            exit();
+            if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+                header("location: $_SERVER[HTTP_REFERER]&errorLogin=verkeerdwachtwoord");
+                }else{
+                    header("location: $_SERVER[HTTP_REFERER]?errorLogin=vekeerdwachtwoord");
+                }
            }
     } 
     else {
-        header("location: ../bezoeker_login.php?error=nouser");
-        exit();
+        if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+            header("location: $_SERVER[HTTP_REFERER]&errorLogin=sql");
+            }else{
+                header("location: $_SERVER[HTTP_REFERER]?errorLogin=sql");
+            }
     }
         }
     }
 
 }
 else {
-    header("location: ../bezoeker_login.php?error=test");
+    if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+        header("location: $_SERVER[HTTP_REFERER]&errorLogin=error");
+        }else{
+            header("location: $_SERVER[HTTP_REFERER]?errorLogin=error");
+        }
     exit();
 }

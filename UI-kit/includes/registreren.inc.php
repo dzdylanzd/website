@@ -94,7 +94,7 @@ if (isset($_POST['bevestigings-button']))
                   echo"jan";
                 }
                 $query->execute(array($Gebruiksernaam,$voornaam,$Achternaam,$StraatHuisnummer,$Postcode,$Plaatsnaam,$Land,$Geboortedag,$Mailadress, $hashedPwd,2,$Antwoordtekst,0,date("Y-m-d H:i:s")));
-                header("location: ../bezoeker_login.php?signup=success=");
+                header("location: ../index.php");
                   exit();
                                             
                 }
@@ -108,6 +108,6 @@ if (isset($_POST['bevestigings-button']))
 
  else 
 {
-    header("location: ../bezoeker_registeren.php");
+    header("location: ../index.php");
     exit();
 }
