@@ -13,7 +13,6 @@
 
 <body>
     <?php include 'includes\nav-L-M.php';
-    include 'database.php';
     require_once('includes/database.php'); ?>
     <div class="page-container">
         <div class="content-wrap">
