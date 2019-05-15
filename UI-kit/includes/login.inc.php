@@ -7,13 +7,21 @@ if(isset($_POST['login-submit'])){
     $password = $_POST['wachtwoord'];
 
     if (empty($gebruikersnaam) || empty($password)) {
-       echo"<script> history.go(-1); </script> ";
+        if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+        header("location: $_SERVER[HTTP_REFERER]&errorLogin=leeg");
+        }else{
+            header("location: $_SERVER[HTTP_REFERER]?errorLogin=leeg");
+        }
         exit();
     }
     else {
      $sql = "SELECT * from Gebruiker where Gebruikersnaam = ? " ;
      if (!$query = $dbh->prepare($sql)){
-        echo"<script> history.go(-1); </script> ";
+        if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+            header("location: $_SERVER[HTTP_REFERER]&errorLogin=GebruikerBestaatNiet");
+            }else{
+                header("location: $_SERVER[HTTP_REFERER]?errorLogin=GebruikerBestaatNiet");
+            }
         exit();
         }
         else {
@@ -22,30 +30,44 @@ if(isset($_POST['login-submit'])){
       if($row = $query->fetch()) {
         $pwdCheck = password_verify($password,$row['Wachtwoord']);
         if ($pwdCheck == false) {
-            echo"<script> history.go(-1); </script> ";
+            if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+                header("location: $_SERVER[HTTP_REFERER]&errorLogin=verkeerdwachtwoord");
+                }else{
+                    header("location: $_SERVER[HTTP_REFERER]?errorLogin=vekeerdwachtwoord");
+                }
         exit();
         }
         else if($pwdCheck == true){
 session_start();
-$_SESSION['userId'] = $row['idUsers'];
-$_SESSION['userUid'] = $row['UidUsers'];
+$_SESSION['userId'] = $row['Gebruikersnaam'];
+$_SESSION['userUid'] = $row['Mailadres'];
 echo"<script> history.go(-1); </script> ";
             exit();
            }
            else {
-            echo"<script> history.go(-1); </script> ";
-            exit();
+            if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+                header("location: $_SERVER[HTTP_REFERER]&errorLogin=verkeerdwachtwoord");
+                }else{
+                    header("location: $_SERVER[HTTP_REFERER]?errorLogin=vekeerdwachtwoord");
+                }
            }
     } 
     else {
-        echo"<script> history.go(-1); </script> ";
-        exit();
+        if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+            header("location: $_SERVER[HTTP_REFERER]&errorLogin=sql");
+            }else{
+                header("location: $_SERVER[HTTP_REFERER]?errorLogin=sql");
+            }
     }
         }
     }
 
 }
 else {
-    echo"<script> history.go(-1); </script> ";
+    if (strpos( $_SERVER['HTTP_REFERER'], '?') != false) {
+        header("location: $_SERVER[HTTP_REFERER]&errorLogin=error");
+        }else{
+            header("location: $_SERVER[HTTP_REFERER]?errorLogin=error");
+        }
     exit();
 }
