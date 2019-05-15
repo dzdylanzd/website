@@ -61,6 +61,9 @@
                         <button class="uk-button knop-email">Bevestigen</button>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
     <?php include 'includes/footer.inc.php'; ?>
 </body>
 </html>
