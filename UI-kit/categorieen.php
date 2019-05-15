@@ -122,7 +122,7 @@
                                                                                                                                 $text = $text . ' </div>';
                                                                                                                                 echo $text;
                                                                                                                             } else {
-                                                                                                                                echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze catogorie</h4>";
+                                                                                                                                echo "<h4 class=\"geenProducten\"> Excuses, er zijn geen producten weer te geven uit deze rubriek.</h4>";
                                                                                                                             }
                                                                                                                         }
                                                                                                                     }

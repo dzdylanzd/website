@@ -46,8 +46,6 @@
                         <h3>Persoonsgegevens</h3>
                         <label for="voornaam">Voornaam*</label><br>
                         <input class="uk-input input-registratie" type="text" id="voornaam" name="voornaam"><br>
-                        <label for="tussenvoegsel">Tussenvoegsel</label><br>
-                        <input class="uk-input input-registratie" type="text" id="tussenvoegsel" name="tussenvoegsel"><br>
                         <label for="achternaam">Achternaam*</label><br>
                         <input class="uk-input input-registratie" type="text" id="achternaam" name="achternaam"><br>
                         <label for="geboortedatum">Geboortedatum*</label><br>
@@ -55,15 +53,13 @@
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
-                        <label for="straat">Straat*</label><br>
-                        <input class="uk-input input-registratie" type="text" id="straat" name="straat"><br>
-                        <label for="huisnummer">Huisnummer*</label><br>
-                        <input class="uk-input input-registratie" type="text" id="huisnummer" name="huisnummer"><br>
-                        <label for="postcode">Postcode*</label><br>
+                        <label for="adres1">Straat en huisnummer</label><br>
+                        <input class="uk-input input-registratie" type="text" id="adres1" name="adres1"><br>
+                        <label for="postcode">Postcode</label><br>
                         <input class="uk-input input-registratie" type="text" id="postcode" name="postcode"><br>
-                        <label for="plaats">Plaats*</label><br>
+                        <label for="plaats">Plaats</label><br>
                         <input class="uk-input input-registratie" type="text" id="plaats" name="plaats"><br>
-                        <label for="land">Land*</label><br>
+                        <label for="land">Land</label><br>
                         <select class="uk-select input-registratie" name="land">
                             <option value="">tekst</option>
                         </select><br>
@@ -86,14 +82,16 @@
                     <div class="registreerbox">
                         <h3>Voorkeuren</h3>
                         <input class="uk-checkbox" type="checkbox" value="categorie">categorie<br>
-
+                    </div>
+                    <button class="uk-button knop-email">E-mail bevestigen</button>
                 </form>
             </div>
+        </div>
 
 
 
 
-            <?php include 'includes/footer.inc.php'; ?>
+        <?php include 'includes/footer.inc.php'; ?>
 
 </body>
 
