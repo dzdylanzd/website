@@ -74,7 +74,7 @@
                         <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
                         <label for="bevestigingsvraag">Bevestiginsvraag*</label><br>
                         <select class="uk-select input-registratie" name="bevestigingsvraag">
-                            <option value="">tekst</option>
+                            <option value="test">tekst</option>
                         </select><br>
                         <label for="antwoord">Antwoord*</label><br>
                         <input class="uk-input input-registratie" type="password" id="antwoord" name="antwoord"><br>
