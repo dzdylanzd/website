@@ -127,11 +127,11 @@ if(!isset($_SESSION["gevalideert"])){
                         <label for="bevestigingsvraag">Bevestigingsvraag</label><br>
                         <select class="uk-select input-registratie" name="bevestigingsvraag">
                         <?php
-                        $sql = "SELECT TekstVraag FROM vraag ORDER BY vraagnummer ASC";
+                        $sql = "SELECT * from vraag ORDER BY vraagnummer ASC";
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array())) {
                                     while ($vraag = $sth->fetch()) {
-                                        $tekst = "value='$vraag[TekstVraag]'>$vraag[TekstVraag]</option>";
+                                        $tekst = "<option value=$vraag[Vraagnummer] >$vraag[TekstVraag]</option>";
                                         echo $tekst;
                                     }
                                 }

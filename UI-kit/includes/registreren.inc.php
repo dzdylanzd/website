@@ -93,7 +93,7 @@ if (isset($_POST['bevestigings-button']))
                 if($query = $dbh->prepare($sql)){
                   echo"jan";
                 }
-                $query->execute(array($Gebruiksernaam,$voornaam,$Achternaam,$StraatHuisnummer,$Postcode,$Plaatsnaam,$Land,$Geboortedag,$Mailadress, $hashedPwd,2,$Antwoordtekst,0,date("Y-m-d H:i:s")));
+                $query->execute(array($Gebruiksernaam,$voornaam,$Achternaam,$StraatHuisnummer,$Postcode,$Plaatsnaam,$Land,$Geboortedag,$Mailadress, $hashedPwd,$VraagNummer,$Antwoordtekst,0,date("Y-m-d H:i:s")));
                 header("location: ../index.php");
                   exit();
                                             
