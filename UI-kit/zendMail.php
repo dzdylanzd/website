@@ -21,8 +21,10 @@ $message = '
     <script src="js/uikit-icons.min.js"></script>
 </head>
 
-<body> hier is uw code ' . $random_hash . '
-
+<body> 
+Beste heer/vrouw, bijgaand de code voor het registeren van uw account op EenmaalAndermaal: ' . $random_hash . '
+<br>
+Bedankt dat u voor ons heeft gekozen!
 
 </body>
 

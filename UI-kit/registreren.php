@@ -72,8 +72,6 @@
                         <h3>Inloggegevens</h3>
                         <label for="gebruikersnaam">Gebruikersnaam*</label><br>
                         <input class="uk-input input-registratie" type="text" id="gebruikersnaam" name="gebruikersnaam"><br>
-                        <label for="email">E-mail adres*</label><br>
-                        <input class="uk-input input-registratie" type="email" id="email" name="email"><br>
                         <label for="wachtwoord">Wachtwoord*</label><br>
                         <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord"><br>
                         <label for="bevestigWachtwoord">Wachtwoord herhalen*</label><br>
