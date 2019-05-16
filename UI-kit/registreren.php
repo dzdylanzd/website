@@ -1,9 +1,9 @@
 <?php
 session_start();
-if(!isset($_SESSION["gevalideert"])){
+if (!isset($_SESSION["gevalideert"])) {
     header("Location: email-Bevestiging.php");
     die();
-}else{
+} else {
     session_abort();
 }
 
@@ -49,31 +49,31 @@ if(!isset($_SESSION["gevalideert"])){
                 </nav>
             </div>
             <?php
-                    if (isset($_GET['error'])) {
-                        $errorBericht = ($_GET['error']);
-                        switch ($errorBericht) {
-                            case 1:
-                                echo '<p class="errors">Vul alle velden in</p>';
-                                break;
-                            case 3:
-                                echo '<p class="errors">De gebruikersnaam is al in gebruik</p>';
-                            case 4:
-                                echo '<p class="errors">De wachtwoorden komen niet overeen</p>';
-                                break;
-                            case 5:
-                                echo '<p class="errors">Een of meerdere invoervelden bevatten teveel tekens</p>';
-                                break;
-                            case 6:
-                                echo '<p class="errors">De gebruikersnaam bevat een speciaal teken</p>';
-                                break;
-                            case 7:
-                                echo '<p class="errors">SQL error, probeer het opnieuw</p>';
-                                break;
-                            default:
-                                echo '<p class="errors">Onverwachte error, probeer het opnieuw';
-                        }
-                    }
-                    ?>
+            if (isset($_GET['error'])) {
+                $errorBericht = ($_GET['error']);
+                switch ($errorBericht) {
+                    case 1:
+                        echo '<p class="errors">Vul alle velden in</p>';
+                        break;
+                    case 3:
+                        echo '<p class="errors">De gebruikersnaam is al in gebruik</p>';
+                    case 4:
+                        echo '<p class="errors">De wachtwoorden komen niet overeen</p>';
+                        break;
+                    case 5:
+                        echo '<p class="errors">Een of meerdere invoervelden bevatten teveel tekens</p>';
+                        break;
+                    case 6:
+                        echo '<p class="errors">De gebruikersnaam bevat een speciaal teken</p>';
+                        break;
+                    case 7:
+                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        break;
+                    default:
+                        echo '<p class="errors">Onverwachte error, probeer het opnieuw';
+                }
+            }
+            ?>
             <div class="uk-flex-center uk-flex-column">
                 <div class="registreren">
                     <h2>Registreren</h2>
@@ -82,33 +82,33 @@ if(!isset($_SESSION["gevalideert"])){
                     <div class="registreerbox">
 
                         <h3>Persoonsgegevens</h3>
-                        <label for="voornaam">Voornaam</label><br>
+                        <label class="registreerlabel" for="voornaam">Voornaam</label><br>
                         <input class="uk-input input-registratie" type="text" id="voornaam" name="voornaam"><br>
-                        <label for="achternaam">Achternaam</label><br>
+                        <label class="registreerlabel" for="achternaam">Achternaam</label><br>
                         <input class="uk-input input-registratie" type="text" id="achternaam" name="achternaam"><br>
-                        <label for="geboortedatum">Geboortedatum</label><br>
+                        <label class="registreerlabel" for="geboortedatum">Geboortedatum</label><br>
                         <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum"><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
-                        <label for="adres1">Straat en huisnummer</label><br>
+                        <label class="registreerlabel" for="adres1">Straat en huisnummer</label><br>
                         <input class="uk-input input-registratie" type="text" id="adres1" name="adres1"><br>
-                        <label for="postcode">Postcode</label><br>
+                        <label class="registreerlabel" for="postcode">Postcode</label><br>
                         <input class="uk-input input-registratie" type="text" id="postcode" name="postcode"><br>
-                        <label for="plaats">Plaats</label><br>
+                        <label class="registreerlabel" for="plaats">Plaats</label><br>
                         <input class="uk-input input-registratie" type="text" id="plaats" name="plaats"><br>
-                        <label for="land">Land</label><br>
+                        <label class="registreerlabel" for="land">Land</label><br>
                         <select class="uk-select input-registratie" name="land">
                             <?php
                             $sql = "SELECT LandNaam FROM Landen ORDER BY LandNaam ASC";
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array())) {
                                     while ($alles = $sth->fetch()) {
-                                        if($alles['LandNaam'] == "Nederland"){
-                                        $tekst = "<option value='$alles[LandNaam]' selected>$alles[LandNaam]</option>";
-                                         } else{
-                                        $tekst = "<option value='$alles[LandNaam]'>$alles[LandNaam]</option>";
-                                    }
+                                        if ($alles['LandNaam'] == "Nederland") {
+                                            $tekst = "<option value='$alles[LandNaam]' selected>$alles[LandNaam]</option>";
+                                        } else {
+                                            $tekst = "<option value='$alles[LandNaam]'>$alles[LandNaam]</option>";
+                                        }
                                         echo $tekst;
                                     }
                                 }
@@ -118,16 +118,16 @@ if(!isset($_SESSION["gevalideert"])){
                     </div>
                     <div class="registreerbox">
                         <h3>Inloggegevens</h3>
-                        <label for="gebruikersnaam">Gebruikersnaam</label><br>
+                        <label class="registreerlabel" for="gebruikersnaam">Gebruikersnaam</label><br>
                         <input class="uk-input input-registratie" type="text" id="gebruikersnaam" name="gebruikersnaam"><br>
-                        <label for="wachtwoord">Wachtwoord</label><br>
+                        <label class="registreerlabel" for="wachtwoord">Wachtwoord</label><br>
                         <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord"><br>
-                        <label for="bevestigWachtwoord">Wachtwoord herhalen</label><br>
+                        <label class="registreerlabel" for="bevestigWachtwoord">Wachtwoord herhalen</label><br>
                         <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
-                        <label for="bevestigingsvraag">Bevestigingsvraag</label><br>
+                        <label class="registreerlabel" for="bevestigingsvraag">Bevestigingsvraag</label><br>
                         <select class="uk-select input-registratie" name="bevestigingsvraag">
-                        <?php
-                        $sql = "SELECT * from vraag ORDER BY vraagnummer ASC";
+                            <?php
+                            $sql = "SELECT * from vraag ORDER BY vraagnummer ASC";
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array())) {
                                     while ($vraag = $sth->fetch()) {
@@ -138,14 +138,14 @@ if(!isset($_SESSION["gevalideert"])){
                             }
                             ?>
                         </select><br>
-                        <label for="antwoord">Antwoord</label><br>
+                        <label class="registreerlabel" for="antwoord">Antwoord</label><br>
                         <input class="uk-input input-registratie" type="password" id="antwoord" name="antwoord"><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Voorkeuren</h3>
                         <select class="uk-select input-registratie" name="voorkeur1">
-                        <?php
-                        $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
+                            <?php
+                            $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array(-1, -1))) {
                                     while ($row = $sth->fetch()) {
@@ -155,10 +155,10 @@ if(!isset($_SESSION["gevalideert"])){
                                 }
                             }
                             ?>
-                              </select><br>
-                              <select class="uk-select input-registratie" name="voorkeur2">
-                        <?php
-                        $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
+                        </select><br>
+                        <select class="uk-select input-registratie" name="voorkeur2">
+                            <?php
+                            $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array(-1, -1))) {
                                     while ($row = $sth->fetch()) {
@@ -168,10 +168,10 @@ if(!isset($_SESSION["gevalideert"])){
                                 }
                             }
                             ?>
-                              </select><br>
-                              <select class="uk-select input-registratie" name="voorkeur3">
-                        <?php
-                        $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
+                        </select><br>
+                        <select class="uk-select input-registratie" name="voorkeur3">
+                            <?php
+                            $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array(-1, -1))) {
                                     while ($row = $sth->fetch()) {
@@ -181,18 +181,12 @@ if(!isset($_SESSION["gevalideert"])){
                                 }
                             }
                             ?>
-                              </select><br>
+                        </select><br>
                     </div>
                     <button type="submit" name="bevestigings-button" class="uk-button knop-email">Registreren</button>
                 </form>
             </div>
         </div>
-
-
-
-
         <?php include 'includes/footer.inc.php'; ?>
-
 </body>
-
 </html>

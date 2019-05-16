@@ -28,6 +28,11 @@ p {
   color: #739F65;
 }
 
+.registreerlabel {
+  font-family: "Calibri", sans-serif;
+  color: #fffbec;
+}
+
 .logo{
   margin-left: 50px;
 }
