@@ -250,7 +250,7 @@ h4 {
   padding-left: 0px;
   padding-top: 40px;
 }
-.reviews{
+.reviews {
   padding-top: 40px;
 }
 
@@ -292,32 +292,40 @@ h4 {
   width: 80px;
 }
 
-.registreerbox{
-  background-color: #A7CA9B;
+.mijngegevens {
+  font-family: "Calibri", sans-serif;
+  font-size: 1.3em;
+  text-align: left;
+  margin: 0px;
+  margin-left: 2em;
+  color: #fffbec;
+}
+
+.registreerbox {
+  background-color: #a7ca9b;
   text-align: center;
   width: 50%;
   margin: auto;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  border-radius: 20px;
 }
 
-.email-box{
-  background-color: #A7CA9B;
-  width: 50%;
-  margin: auto;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-}
-.knop-email{
-  width: 200px;
+.knop-registreren {
+  margin-left: 42.5%;
+  width: 15%;
 }
 
-.input-registratie{
-width: 60%;
+.knop-email {
+  width: 25%;
 }
 
-.registreren{
+.input-registratie {
+  width: 60%;
+}
+
+.registreren {
   margin-left: 25%;
 }
 

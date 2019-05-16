@@ -60,7 +60,7 @@
                     <h2>Registreren</h2>
                 </div>
                 <form method="post" action="zendMail.php">
-                    <div class="email-box">
+                    <div class="registreerbox">
                         <h3>E-mail bevestiging</h3>
                         <p>Beste bezoeker,<br> voordat u een gebruiker aan kunt maken moet u eerst uw e-mail adres bevestigen. <br>
                             Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken.
@@ -70,7 +70,7 @@
                         <button class="uk-button knop-email">E-mail bevestigen</button>
                     </div>
                 </form>
-                <div class="email-box">
+                <div class="registreerbox">
                     <h3> Bevestigingscode </h3>
                     <p> Voer hier de bevestigingscode in die u per mail heeft ontvangen.</p>
                     <form method="post" action="includes/checkCode.inc.php"> 
