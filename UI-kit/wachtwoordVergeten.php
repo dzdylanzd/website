@@ -40,15 +40,17 @@
                 <div class="registreren">
                     <h2>Wachtwoord vergeten</h2>
                 </div>
-                <form method="post" action="zendWachtwoordVergetenMail.php">
+                <form method="post" action="includes/zendWachtwoordVergetenMail.php">
                     <div class="email-box">
                         <h3>Wachtwoord vergeten</h3>
-                        <p>Beste bezoeker,<br> voordat u uw wachtwoord kan wijzigen moet u uw e-mailadres ingeven. <br>
-                            Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken.
+                        <p>Beste bezoeker,<br> voordat u uw wachtwoord kunt wijzigen moet u uw e-mailadres ingeven. <br>
+                            Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken. Ook moet u uw antwoord op de beveiliginsvraag ingeven.
                         </p>
                         <label for="wachtwoorVergetenEmail">E-mail:</label><br>
-                        <input class="uk-input input-registratie" type="email" name="wachtwoorVergetenEmail" id="wachtwoorVergetenEmail">
-                        <button class="uk-button knop-email">E-mail bevestigen</button>
+                        <input class="uk-input input-registratie" type="email" name="wachtwoorVergetenEmail" id="wachtwoorVergetenEmail"><br>
+                        <label for="beveiligingsvraag">Antwoord op de beveiligingsvraag:</label><br>
+                        <input class="uk-input input-registratie" type="password" name="beveiligingsvraag" id="beveiligingsvraag"><br>
+                        <button class="uk-button knop-email">Bevestigen</button>
                     </div>
                 </form>
 
