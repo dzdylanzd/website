@@ -80,9 +80,7 @@
                                                     $text = $text . displayCategorie($row2["Rubrieknummer"], $dbh, 100);
                                                     $text = $text . ' </div>';
                                                     echo $text;
-                                                } else {
-                                                    echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze catogorie</h4>";
-                                                }
+                                                } 
                                             }
                                         }
                                     }
