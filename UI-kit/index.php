@@ -67,7 +67,7 @@
                         $sql = "select * from voorkeur where gebruikersnaam = ?";
                         if ($sth = $dbh->prepare($sql)) {
                             if ($sth->execute(array($_SESSION['userId']))) {
-                                while ($tes = $sth->fetch()) {
+                                while ($row = $sth->fetch()) {
                                     $sth2 = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
 
                                     if ($sth2->execute(array($row['catogorie']))) {
