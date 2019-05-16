@@ -149,7 +149,7 @@ if(!isset($_SESSION["gevalideert"])){
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array(-1, -1))) {
                                     while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknaam]'>$row[Rubrieknaam]</option><br>";
+                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
                                         echo $tekst;
                                     }
                                 }
@@ -162,7 +162,7 @@ if(!isset($_SESSION["gevalideert"])){
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array(-1, -1))) {
                                     while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknaam]'>$row[Rubrieknaam]</option><br>";
+                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
                                         echo $tekst;
                                     }
                                 }
@@ -175,7 +175,7 @@ if(!isset($_SESSION["gevalideert"])){
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array(-1, -1))) {
                                     while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknaam]'>$row[Rubrieknaam]</option><br>";
+                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
                                         echo $tekst;
                                     }
                                 }

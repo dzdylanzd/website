@@ -53,7 +53,7 @@ if (isset($_POST['bevestigings-button'])) {
   } else if ($Wachtwoord !== $WachtwoordHerhaal) {
     header("location: ../registreren.php?error=4");
     exit();
-  } else if (($voorkeur1 == $voorkeur2 || $voorkeur3) || ($voorkeur2 == $voorkeur1 || $voorkeur3) || ($voorkeur3 == $voorkeur1 || $voorkeu23)) {
+  } else if (($voorkeur1 == $voorkeur2 || $voorkeur1 == $voorkeur3) || ($voorkeur2 == $voorkeur1 || $voorkeur2 == $voorkeur3) || ($voorkeur3 == $voorkeur1 || $voorkeur3 == $voorkeur2)) {
     header("location: ../registreren.php?error=11");
     exit();
   } else {
