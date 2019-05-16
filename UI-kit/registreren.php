@@ -171,7 +171,7 @@ if(!isset($_SESSION["gevalideert"])){
                               </select><br>
                               <select class="uk-select input-registratie" name="voorkeur3">
                         <?php
-                        $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
+                        $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ? ";
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array(-1, -1))) {
                                     while ($row = $sth->fetch()) {

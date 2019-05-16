@@ -5,7 +5,7 @@ $_SESSION["emailCode"] = $random_hash;
 $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_POST['emailbevestiging'];
 $_SESSION["Email"] = $to;
-$subject = "HTML email";
+$subject = "verificatie code";
 
 $message = '
 <!DOCTYPE html>
@@ -45,8 +45,8 @@ $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 // More headers
-$headers .= 'From: <webmaster@example.com>' . "\r\n";
-$headers .= 'Cc: myboss@example.com' . "\r\n";
+$headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
+
 
 
 if (empty($_POST['emailbevestiging'])) {
@@ -55,4 +55,3 @@ if (empty($_POST['emailbevestiging'])) {
     mail($to,$subject,$message,$headers);
     header("Location: email-Bevestiging.php?error=succes");
 }
-?>
