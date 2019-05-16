@@ -1,15 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION["gevalideert"])) {
-    header("Location: email-Bevestiging.php");
-    die();
-} else {
-    session_abort();
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -76,7 +64,7 @@ if (!isset($_SESSION["gevalideert"])) {
             ?>
             <div class="uk-flex-center uk-flex-column">
                 <div class="registreren">
-                    <h2>Registreren</h2>
+                    <h2>Wijzigen gegevens</h2>
                 </div>
                 <form method="post" action="includes/registreren.inc.php">
                     <div class="registreerbox">
@@ -183,11 +171,10 @@ if (!isset($_SESSION["gevalideert"])) {
                             ?>
                         </select><br>
                     </div>
-                    <button type="submit" name="bevestigings-button" class="uk-button knop-registreren">Registreren</button>
+                    <button type="submit" name="bevestigings-button" class="uk-button knop-email">Registreren</button>
                 </form>
             </div>
         </div>
         <?php include 'includes/footer.inc.php'; ?>
 </body>
-
 </html>
