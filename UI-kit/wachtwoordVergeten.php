@@ -37,7 +37,20 @@
                 </nav>
             </div>
             <div class="uk-flex-center uk-flex-column">
-
+                <div class="registreren">
+                    <h2>Wachtwoord vergeten</h2>
+                </div>
+                <form method="post" action="zendWachtwoordVergetenMail.php">
+                    <div class="email-box">
+                        <h3>Wachtwoord vergeten</h3>
+                        <p>Beste bezoeker,<br> voordat u uw wachtwoord kan wijzigen moet u uw e-mailadres ingeven. <br>
+                            Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken.
+                        </p>
+                        <label for="wachtwoorVergetenEmail">E-mail:</label><br>
+                        <input class="uk-input input-registratie" type="email" name="wachtwoorVergetenEmail" id="wachtwoorVergetenEmail">
+                        <button class="uk-button knop-email">E-mail bevestigen</button>
+                    </div>
+                </form>
 
 
             </div>
@@ -45,4 +58,5 @@
     </div>
     <?php include 'includes/footer.inc.php'; ?>
 </body>
+
 </html>
