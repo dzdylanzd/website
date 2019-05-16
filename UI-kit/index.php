@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <?php include 'includes\nav-L-M.php'; include 'includes/display_product.php'; ?>
+    <?php include 'includes\nav-L-M.php';
+    include 'includes/display_product.php'; ?>
     <div class="page-container">
         <div class="content-wrap">
             <!-- navigatie balk Mobile -->
@@ -62,7 +63,33 @@
                     echo '<div class="ItemsSliderHomepagina">';
                     echo "<h1> Nieuw </h1>";
                     echo '</div>';
+                    if (isset($_SESSION['userId'])) {
+                        $sql = "select * from voorkeur where gebruikersnaam = ?";
+                        if ($sth = $dbh->prepare($sql)) {
+                            if ($sth->execute(array($_SESSION['userId']))) {
+                                while ($tes = $sth->fetch()) {
+                                    $sth2 = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
 
+                                    if ($sth2->execute(array($row['catogorie']))) {
+                                        while ($row2 = $sth2->fetch()) {
+                                            if ($row2["Rubrieknummer"] != -1) {
+                                                $text = "";
+                                                $text = $text . '<div class="ItemsSliderDonkerGroen">';
+                                                $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row2[Rubrieknummer]\"> <h1>  $row2[Rubrieknaam] </h1> </a>";
+                                                if (displayCategorie($row2["Rubrieknummer"], $dbh, 100) != 123) {
+                                                    $text = $text . displayCategorie($row2["Rubrieknummer"], $dbh, 100);
+                                                    $text = $text . ' </div>';
+                                                    echo $text;
+                                                } else {
+                                                    echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze catogorie</h4>";
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
 
                     if (isset($_GET["root"])) {
 
@@ -100,8 +127,8 @@
                                 }
                             }
                         }
-                    }else{
-                       
+                    } else {
+
                         $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
 
                         if ($sth->execute(array(-1))) {

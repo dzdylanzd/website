@@ -103,7 +103,8 @@ if (isset($_POST['bevestigings-button'])) {
           if ($query = $dbh->prepare($sql)) {
             $query->execute(array($voorkeur1, $Gebruiksernaam, $voorkeur2, $Gebruiksernaam, $voorkeur3, $Gebruiksernaam));
           }
-
+          $_SESSION['userId'] = $Gebruiksernaam;
+          $_SESSION['userUid'] = $Mailadress;
           header("location: ../index.php");
           exit();
         }
