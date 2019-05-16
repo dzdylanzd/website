@@ -1,123 +1,116 @@
 <?php
 session_start();
-if (isset($_POST['bevestigings-button']))
-{
-    require_once('database.php');
-
-    
-    // $username = $_POST['uid'];
-    // $email = $_POST['mail'];
-    // $password = $_POST{"pwd"};
-    // $passwordRepeat = $_POST['pwd-repeat'];
-
-    $Gebruiksernaam = $_POST['gebruikersnaam'];
-    $voornaam = $_POST['voornaam'];
-    $Achternaam = $_POST{"achternaam"};
-    $StraatHuisnummer = $_POST['adres1'];
-    $Postcode = $_POST['postcode'];
-    $Plaatsnaam = $_POST['plaats'];
-    $Land = $_POST['land'];
-    $Geboortedag = $_POST['geboortedatum'];
-    $Mailadress = $_SESSION["Email"];
-    $Wachtwoord = $_POST['wachtwoord'];
-    $WachtwoordHerhaal = $_POST['bevestigWachtwoord'];
-    $VraagNummer = $_POST['bevestigingsvraag'];
-    $Antwoordtekst = $_POST['antwoord'];
+if (isset($_POST['bevestigings-button'])) {
+  require_once('database.php');
 
 
-    //fout meldingen
-    //check voor lege velden
-    if (empty($Gebruiksernaam)|| empty($voornaam)|| empty($Achternaam)|| empty( $StraatHuisnummer)|| empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) || empty($Mailadress) || empty($Wachtwoord) || empty( $WachtwoordHerhaal) || empty($VraagNummer) ||  empty($Antwoordtekst)   ) 
-    {
-        header("location: ../registreren.php?error=1");
-        exit();
+  // $username = $_POST['uid'];
+  // $email = $_POST['mail'];
+  // $password = $_POST{"pwd"};
+  // $passwordRepeat = $_POST['pwd-repeat'];
 
-    } 
-    else if (!filter_var($Mailadress,FILTER_VALIDATE_EMAIL)) 
-        {
-          header("location: ../registreren.php?error=2");
-          exit();
-        exit();
-        } 
-    else if(!preg_match("/^[a-zA-Z0-9]*$/",$Gebruiksernaam)){
-      header("location: ../registreren.php?error=6");
-        exit();
-        } else if(strlen($Wachtwoord) < 7){
-          header("location: ../registreren.php?error=8");
-        exit();
-        }else if(!preg_match('/[A-Z]/', $Wachtwoord)){
-          header("location: ../registreren.php?error=9");
-        exit();
-        }else if(!preg_match('~[0-9]~', $Wachtwoord)){
-          header("location: ../registreren.php?error=10");
-        exit();
-      }
-      
-    else if($Wachtwoord !== $WachtwoordHerhaal){
-      header("location: ../registreren.php?error=4");
-        exit();
-        } 
-    
-    else {
+  $Gebruiksernaam = $_POST['gebruikersnaam'];
+  $voornaam = $_POST['voornaam'];
+  $Achternaam = $_POST{
+  "achternaam"};
+  $StraatHuisnummer = $_POST['adres1'];
+  $Postcode = $_POST['postcode'];
+  $Plaatsnaam = $_POST['plaats'];
+  $Land = $_POST['land'];
+  $Geboortedag = $_POST['geboortedatum'];
+  $Mailadress = $_SESSION["Email"];
+  $Wachtwoord = $_POST['wachtwoord'];
+  $WachtwoordHerhaal = $_POST['bevestigWachtwoord'];
+  $VraagNummer = $_POST['bevestigingsvraag'];
+  $Antwoordtekst = $_POST['antwoord'];
+  $voorkeur1 =  $_POST['voorkeur1'];
+  $voorkeur2 =  $_POST['voorkeur2'];
+  $voorkeur3 =  $_POST['voorkeur3'];
 
-      $sql = "SELECT Gebruikersnaam from Gebruiker where Gebruikersnaam = ?";
-      if (!$query = $dbh->prepare($sql)){
-        header("location: ../registreren.php?error=7");
-        exit();
-      } 
-    
-    else{
-        $query = $dbh->prepare($sql);
+
+
+  //fout meldingen
+  //check voor lege velden
+  if (empty($Gebruiksernaam) || empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) || empty($Mailadress) || empty($Wachtwoord) || empty($WachtwoordHerhaal) || empty($VraagNummer) ||  empty($Antwoordtekst)) {
+    header("location: ../registreren.php?error=1");
+    exit();
+  } else if (!filter_var($Mailadress, FILTER_VALIDATE_EMAIL)) {
+    header("location: ../registreren.php?error=2");
+    exit();
+    exit();
+  } else if (!preg_match("/^[a-zA-Z0-9]*$/", $Gebruiksernaam)) {
+    header("location: ../registreren.php?error=6");
+    exit();
+  } else if (strlen($Wachtwoord) < 7) {
+    header("location: ../registreren.php?error=8");
+    exit();
+  } else if (!preg_match('/[A-Z]/', $Wachtwoord)) {
+    header("location: ../registreren.php?error=9");
+    exit();
+  } else if (!preg_match('~[0-9]~', $Wachtwoord)) {
+    header("location: ../registreren.php?error=10");
+    exit();
+  } else if ($Wachtwoord !== $WachtwoordHerhaal) {
+    header("location: ../registreren.php?error=4");
+    exit();
+  } else if (($voorkeur1 == $voorkeur2 || $voorkeur1 == $voorkeur3) || ($voorkeur2 == $voorkeur1 || $voorkeur2 == $voorkeur3) || ($voorkeur3 == $voorkeur1 || $voorkeur3 == $voorkeur2)) {
+    header("location: ../registreren.php?error=11");
+    exit();
+  } else {
+
+    $sql = "SELECT Gebruikersnaam from Gebruiker where Gebruikersnaam = ?";
+    if (!$query = $dbh->prepare($sql)) {
+      header("location: ../registreren.php?error=7");
+      exit();
+    } else {
+      $query = $dbh->prepare($sql);
       $query->execute(array($Gebruiksernaam));
-      if($query->fetch()) {
+      if ($query->fetch()) {
         header("location: ../registreren.php?error=3");
         exit();
-        } 
-        else {
-            
+      } else {
 
-                $sql = "INSERT Gebruiker(Gebruikersnaam,Voornaam,Achternaam,Adresregel1,Postcode,Plaatsnaam,Land,Geboortedatum,Mailadres,Wachtwoord,Vraagnummer,AntwoordTekst,IsAccountVerkoper,DatumMakenAccount) values( ?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-                if (!$query = $dbh->prepare($sql)){
-                  header("location: ../registreren.php?error=7");
-                  exit();
-                } 
 
-                // $Gebruiksernaam = $_POST['gebruikersnaam'];
-                // $voornaam = $_POST['voornaam'];
-                // $Achternaam = $_POST{"achternaam"};
-                // $StraatHuisnummer = $_POST['adres1'];
-                // $Postcode = $_POST['postcode'];
-                // $Plaatsnaam = $_POST['plaats'];
-                // $Land = $_POST['land'];
-                // $Geboortedag = $_POST['geboortedatum'];
-                // $Mailadress = $_SESSION["Email"];
-                // $Wachtwoord = $_POST['wachtwoord'];
-                // $WachtwoordHerhaal = $_POST['bevestigWachtwoord'];
-                // $VraagNummer = $_POST['bevestigingsvraag'];
-                // $Antwoordtekst = $_POST['antwoord'];
-              
-              else{
-                $hashedPwd = password_hash($Wachtwoord, PASSWORD_DEFAULT);
-                var_dump($hashedPwd);
-                Echo " $hashedPwd";
-                if($query = $dbh->prepare($sql)){
-                  echo"jan";
-                }
-                $query->execute(array($Gebruiksernaam,$voornaam,$Achternaam,$StraatHuisnummer,$Postcode,$Plaatsnaam,$Land,$Geboortedag,$Mailadress, $hashedPwd,$VraagNummer,$Antwoordtekst,0,date("Y-m-d H:i:s")));
-                header("location: ../index.php");
-                  exit();
-                                            
-                }
-            }
-
+        $sql = "INSERT Gebruiker(Gebruikersnaam,Voornaam,Achternaam,Adresregel1,Postcode,Plaatsnaam,Land,Geboortedatum,Mailadres,Wachtwoord,Vraagnummer,AntwoordTekst,IsAccountVerkoper,DatumMakenAccount) values( ?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        if (!$query = $dbh->prepare($sql)) {
+          header("location: ../registreren.php?error=7");
+          exit();
         }
 
+        // $Gebruiksernaam = $_POST['gebruikersnaam'];
+        // $voornaam = $_POST['voornaam'];
+        // $Achternaam = $_POST{"achternaam"};
+        // $StraatHuisnummer = $_POST['adres1'];
+        // $Postcode = $_POST['postcode'];
+        // $Plaatsnaam = $_POST['plaats'];
+        // $Land = $_POST['land'];
+        // $Geboortedag = $_POST['geboortedatum'];
+        // $Mailadress = $_SESSION["Email"];
+        // $Wachtwoord = $_POST['wachtwoord'];
+        // $WachtwoordHerhaal = $_POST['bevestigWachtwoord'];
+        // $VraagNummer = $_POST['bevestigingsvraag'];
+        // $Antwoordtekst = $_POST['antwoord'];
+
+        else {
+          $hashedPwd = password_hash($Wachtwoord, PASSWORD_DEFAULT);
+          $hashedAnswer = password_hash($Antwoordtekst, PASSWORD_DEFAULT);
+
+          if ($query = $dbh->prepare($sql)) {
+          }
+          $query->execute(array($Gebruiksernaam, $voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land, $Geboortedag, $Mailadress, $hashedPwd, $VraagNummer, $hashedAnswer, 0, date("Y-m-d H:i:s")));
+
+          $sql = "INSERT into voorkeur(catogorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
+          if ($query = $dbh->prepare($sql)) {
+            $query->execute(array($voorkeur1, $Gebruiksernaam, $voorkeur2, $Gebruiksernaam, $voorkeur3, $Gebruiksernaam));
+          }
+
+          header("location: ../index.php");
+          exit();
+        }
+      }
     }
-
-}
-
- else 
-{
-    header("location: ../index.php");
-    exit();
+  }
+} else {
+  header("location: ../index.php");
+  exit();
 }

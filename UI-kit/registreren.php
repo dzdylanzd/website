@@ -143,13 +143,39 @@ if(!isset($_SESSION["gevalideert"])){
                     </div>
                     <div class="registreerbox">
                         <h3>Voorkeuren</h3>
-                        <select class="uk-select input-registratie" name="bevestigingsvraag">
+                        <select class="uk-select input-registratie" name="voorkeur1">
                         <?php
                         $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array(-1, -1))) {
                                     while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknaam]'>$row[Rubrieknaam]</option><br>";
+                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
+                                        echo $tekst;
+                                    }
+                                }
+                            }
+                            ?>
+                              </select><br>
+                              <select class="uk-select input-registratie" name="voorkeur2">
+                        <?php
+                        $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
+                            if ($sth = $dbh->prepare($sql)) {
+                                if ($sth->execute(array(-1, -1))) {
+                                    while ($row = $sth->fetch()) {
+                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
+                                        echo $tekst;
+                                    }
+                                }
+                            }
+                            ?>
+                              </select><br>
+                              <select class="uk-select input-registratie" name="voorkeur3">
+                        <?php
+                        $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ? ";
+                            if ($sth = $dbh->prepare($sql)) {
+                                if ($sth->execute(array(-1, -1))) {
+                                    while ($row = $sth->fetch()) {
+                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
                                         echo $tekst;
                                     }
                                 }
