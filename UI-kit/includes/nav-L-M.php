@@ -154,14 +154,20 @@ if(!isset($_SESSION['userId'])){
     echo'
     </div>
 </div>
-/div>
-            <div class=" uk-navbar-item "><button class="uk-button uk-button-primary uk-margin-right">registreren</button>
-            </div>';
+</div>
+<div class="uk-navbar-right">
+    <div class="uk-navbar-nav">
+        <div class=" uk-navbar-item ">
+
+            <div class=" uk-navbar-item "> <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'email-Bevestiging.php\'">registreren</button>
+            </div>
+        </div>
+    </div>';
 }else{
     echo'<button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>';
 }
 ?>
-            <
+            
         </div>
 
     </nav>

@@ -42,7 +42,17 @@ if (isset($_POST['bevestigings-button']))
     else if(!preg_match("/^[a-zA-Z0-9]*$/",$Gebruiksernaam)){
       header("location: ../registreren.php?error=6");
         exit();
-        } 
+        } else if(strlen($Wachtwoord) < 7){
+          header("location: ../registreren.php?error=8");
+        exit();
+        }else if(!preg_match('/[A-Z]/', $Wachtwoord)){
+          header("location: ../registreren.php?error=9");
+        exit();
+        }else if(!preg_match('~[0-9]~', $Wachtwoord)){
+          header("location: ../registreren.php?error=10");
+        exit();
+      }
+      
     else if($Wachtwoord !== $WachtwoordHerhaal){
       header("location: ../registreren.php?error=4");
         exit();

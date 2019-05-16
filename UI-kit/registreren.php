@@ -143,17 +143,19 @@ if(!isset($_SESSION["gevalideert"])){
                     </div>
                     <div class="registreerbox">
                         <h3>Voorkeuren</h3>
+                        <select class="uk-select input-registratie" name="bevestigingsvraag">
                         <?php
                         $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
                             if ($sth = $dbh->prepare($sql)) {
                                 if ($sth->execute(array(-1, -1))) {
                                     while ($row = $sth->fetch()) {
-                                        $tekst = "<input class='uk-checkbox' type='checkbox' name='$row[Rubrieknaam]' value='$row[Rubrieknaam]'>$row[Rubrieknaam]<br>";
+                                        $tekst = "<option value='$row[Rubrieknaam]'>$row[Rubrieknaam]</option><br>";
                                         echo $tekst;
                                     }
                                 }
                             }
                             ?>
+                              </select><br>
                     </div>
                     <button type="submit" name="bevestigings-button" class="uk-button knop-email">Registreren</button>
                 </form>
