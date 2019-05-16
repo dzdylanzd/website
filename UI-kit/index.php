@@ -63,11 +63,14 @@
                     echo '<div class="ItemsSliderHomepagina">';
                     echo "<h1> Nieuw </h1>";
                     echo '</div>';
+                    $nietLatenZien = array(0, 0, 0);
                     if (isset($_SESSION['userId'])) {
                         $sql = "select * from voorkeur where gebruikersnaam = ?";
                         if ($sth = $dbh->prepare($sql)) {
                             if ($sth->execute(array($_SESSION['userId']))) {
+                                $index = 0;
                                 while ($row = $sth->fetch()) {
+                                    $nietLatenZien[$index] = $row['catogorie'];
                                     $sth2 = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
 
                                     if ($sth2->execute(array($row['catogorie']))) {
@@ -80,10 +83,11 @@
                                                     $text = $text . displayCategorie($row2["Rubrieknummer"], $dbh, 100);
                                                     $text = $text . ' </div>';
                                                     echo $text;
-                                                } 
+                                                }
                                             }
                                         }
                                     }
+                                    $index++;
                                 }
                             }
                         }
@@ -99,10 +103,12 @@
                                     $text = "";
                                     $text = $text . '<div class="ItemsSliderDonkerGroen">';
                                     $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
-                                    if (displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123) {
-                                        $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
-                                        $text = $text . ' </div>';
-                                        echo $text;
+                                    if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
+                                        if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
+                                            $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
+                                            $text = $text . ' </div>';
+                                            echo $text;
+                                        }
                                     } else {
                                         echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze catogorie</h4>";
                                     }
@@ -117,10 +123,12 @@
                                     $text = "";
                                     $text = $text . '<div class="ItemsSliderGroen">';
                                     $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
-                                    if (displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123) {
-                                        $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
-                                        $text = $text . ' </div>';
-                                        echo $text;
+                                    if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
+                                        if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
+                                            $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
+                                            $text = $text . ' </div>';
+                                            echo $text;
+                                        }
                                     }
                                 }
                             }
@@ -135,10 +143,12 @@
                                     $text = "";
                                     $text = $text . '<div class="ItemsSliderDonkerGroen">';
                                     $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
-                                    if (displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123) {
-                                        $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
-                                        $text = $text . ' </div>';
-                                        echo $text;
+                                    if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
+                                        if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
+                                            $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
+                                            $text = $text . ' </div>';
+                                            echo $text;
+                                        }
                                     } else {
                                         echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze catogorie</h4>";
                                     }
@@ -153,10 +163,12 @@
                                     $text = "";
                                     $text = $text . '<div class="ItemsSliderDonkerGroen">';
                                     $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
-                                    if (displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123) {
-                                        $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
-                                        $text = $text . ' </div>';
-                                        echo $text;
+                                    if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
+                                        if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
+                                            $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
+                                            $text = $text . ' </div>';
+                                            echo $text;
+                                        }
                                     }
                                 }
                             }
