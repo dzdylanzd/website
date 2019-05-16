@@ -1,15 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION["gevalideert"])) {
-    header("Location: email-Bevestiging.php");
-    die();
-} else {
-    session_abort();
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -25,7 +13,9 @@ if (!isset($_SESSION["gevalideert"])) {
 
 <body>
     <?php include 'includes\nav-L-M.php';
-    require_once('includes/database.php'); ?>
+    require_once('includes/database.php');
+    ?>
+
     <div class="page-container">
         <div class="content-wrap">
 
@@ -74,47 +64,46 @@ if (!isset($_SESSION["gevalideert"])) {
                 }
             }
             ?>
+            <?php
+            // Haal gegevens van database en zet ze in variabelen
+            if (isset($_SESSION['userId']) && isset($_SESSION['userUid'])) {
+                $gebruikersnaam = $_SESSION['userId'];
+                $email = $_SESSION['userUid'];
+
+                $sql = 'SELECT * FROM Gebruiker WHERE gebruikersnaam = ?';
+                if ($sth = $dbh->prepare($sql)) {
+                    if ($sth->execute(array($gebruikersnaam))) {
+                        while ($row = $sth->fetch()) {
+                            $voornaam = $row['Voornaam'];
+                            $achternaam = $row['Achternaam'];
+                            $geboortedatum = $row['Geboortedatum'];
+                            $straat = $row['Adresregel1'];
+                            $postcode = $row['Postcode'];
+                            $plaats = $row['Plaatsnaam'];
+                            $land = $row['Land'];
+
+                        }
+                    }
+                }
+            }
+            ?>
             <div class="uk-flex-center uk-flex-column">
                 <div class="registreren">
-                    <h2>Registreren</h2>
+                    <h2>Mijn gegevens</h2>
                 </div>
                 <form method="post" action="includes/registreren.inc.php">
                     <div class="registreerbox">
-
                         <h3>Persoonsgegevens</h3>
-                        <label class="registreerlabel" for="voornaam">Voornaam</label><br>
-                        <input class="uk-input input-registratie" type="text" id="voornaam" name="voornaam"><br>
-                        <label class="registreerlabel" for="achternaam">Achternaam</label><br>
-                        <input class="uk-input input-registratie" type="text" id="achternaam" name="achternaam"><br>
-                        <label class="registreerlabel" for="geboortedatum">Geboortedatum</label><br>
-                        <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum"><br>
+                        <p class="mijngegevens">Voornaam:  <?php echo $voornaam?> </p><br>
+                        <p class="mijngegevens">Achternaam:  <?php echo $achternaam?> </p><br>
+                        <p class="mijngegevens">Geboortedatum:  <?php echo $geboortedatum?> </p><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
-                        <label class="registreerlabel" for="adres1">Straat en huisnummer</label><br>
-                        <input class="uk-input input-registratie" type="text" id="adres1" name="adres1"><br>
-                        <label class="registreerlabel" for="postcode">Postcode</label><br>
-                        <input class="uk-input input-registratie" type="text" id="postcode" name="postcode"><br>
-                        <label class="registreerlabel" for="plaats">Plaats</label><br>
-                        <input class="uk-input input-registratie" type="text" id="plaats" name="plaats"><br>
-                        <label class="registreerlabel" for="land">Land</label><br>
-                        <select class="uk-select input-registratie" name="land">
-                            <?php
-                            $sql = "SELECT LandNaam FROM Landen ORDER BY LandNaam ASC";
-                            if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array())) {
-                                    while ($alles = $sth->fetch()) {
-                                        if ($alles['LandNaam'] == "Nederland") {
-                                            $tekst = "<option value='$alles[LandNaam]' selected>$alles[LandNaam]</option>";
-                                        } else {
-                                            $tekst = "<option value='$alles[LandNaam]'>$alles[LandNaam]</option>";
-                                        }
-                                        echo $tekst;
-                                    }
-                                }
-                            }
-                            ?>
-                        </select><br>
+                        <p class="mijngegevens">Straat en huisnummer: <?php echo $straat?></p><br>
+                        <p class="mijngegevens">Postcode: <?php echo $postcode?></p><br>
+                        <p class="mijngegevens">Plaats: <?php echo $plaats?></p><br>
+                        <p class="mijngegevens">Land: <?php echo $land?></p><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Inloggegevens</h3>
@@ -183,7 +172,7 @@ if (!isset($_SESSION["gevalideert"])) {
                             ?>
                         </select><br>
                     </div>
-                    <button type="submit" name="bevestigings-button" class="uk-button knop-registreren">Registreren</button>
+                    <button action="wijzigen-gegevens.php" type="submit" name="bevestigings-button" class="uk-button knop-registreren">Gegevens wijzigen</button>
                 </form>
             </div>
         </div>

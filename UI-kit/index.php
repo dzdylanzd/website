@@ -59,6 +59,7 @@
                     /* Tijdelijke Laatste kans en nieuw box */
                     echo '<div class="ItemsSliderHomepagina">';
                     echo "<h1> Laatste kans! </h1>";
+                    
                     echo '</div>';
                     echo '<div class="ItemsSliderHomepagina">';
                     echo "<h1> Nieuw </h1>";
