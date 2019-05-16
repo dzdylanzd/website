@@ -48,7 +48,7 @@ if(!isset($_SESSION['userId'])){
             </div>
             <button class="loginknop uk-width-1-1 uk-button uk-button-default " name="login-submit" type="submit">Login</button>
         </form>
-        <a class="uk-link-muted" href="index.php">Wachtwoord vergeten?</a>';
+        <a class="uk-link-muted" href="wachtwoordVergeten.php">Wachtwoord vergeten?</a>';
       
         if (isset($_GET["errorLogin"])) {
             if($_GET["errorLogin"] == "leeg" ){
@@ -135,7 +135,7 @@ if(!isset($_SESSION['userId'])){
             </div>
             <button class="loginknop uk-width-1-1 uk-button uk-button-default " name="login-submit" type="submit">Login</button>
         </form>
-        <a class="uk-link-muted" href="index.php">Wachtwoord vergeten?</a>';
+        <a class="uk-link-muted" href="wachtwoordVergeten.php">Wachtwoord vergeten?</a>';
       
         if (isset($_GET["errorLogin"])) {
             if($_GET["errorLogin"] == "leeg" ){
