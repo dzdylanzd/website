@@ -23,6 +23,10 @@ if (isset($_POST['bevestigings-button']))
     $WachtwoordHerhaal = $_POST['bevestigWachtwoord'];
     $VraagNummer = $_POST['bevestigingsvraag'];
     $Antwoordtekst = $_POST['antwoord'];
+    $voorkeur1 =  $_POST['voorkeur1'];
+    $voorkeur2 =  $_POST['voorkeur2'];
+    $voorkeur3 =  $_POST['voorkeur3'];
+
 
 
     //fout meldingen
@@ -104,6 +108,12 @@ if (isset($_POST['bevestigings-button']))
                   echo"jan";
                 }
                 $query->execute(array($Gebruiksernaam,$voornaam,$Achternaam,$StraatHuisnummer,$Postcode,$Plaatsnaam,$Land,$Geboortedag,$Mailadress, $hashedPwd,$VraagNummer,$Antwoordtekst,0,date("Y-m-d H:i:s")));
+                
+                $sql = "INSERT into voorkeur(catogorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
+                if($query = $dbh->prepare($sql)){
+                  $query->execute(array($voorkeur1,$Gebruiksernaam,$voorkeur2,$Gebruiksernaam,$voorkeur3,$Gebruiksernaam));
+                }
+
                 header("location: ../index.php");
                   exit();
                                             
