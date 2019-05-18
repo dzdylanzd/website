@@ -39,22 +39,18 @@
             <div class="uk-flex-center uk-flex-column">
                 <!-- Error handlers -->
                 <?php if (isset($_GET['error'])) {
-                        if ($_GET['error'] == "leegveld") {
-                            echo '<p class="errors"> Voer een code in </p>';
-                        }
-                        else if ($_GET['error'] == "legeemail") {
-                            echo '<p class="errors"> Voer uw e-mailadres in </p>';
-                        }
-                        else if ($_GET['error'] == "codeNietMeerValide") {
-                            echo '<p class="errors"> De ingevoerde code is niet meer geldig </p>';
-                        }
-                        else if ($_GET['error'] == "nietDeGoedeCode") {
-                            echo '<p class="errors"> De ingevoerde code wordt niet herkent </p>';
-                        }
-                        else if ($_GET['error'] == "succes") {
-                            echo '<p class="succes"> Er is een code naar uw e-mailadres verzonden </p>';
-                        }
-                    }
+                    if ($_GET['error'] == "leegveld") {
+                        echo '<p class="errors"> Voer een code in </p>';
+                    } else if ($_GET['error'] == "legeemail") {
+                        echo '<p class="errors"> Voer uw e-mailadres in </p>';
+                    } else if ($_GET['error'] == "codeNietMeerValide") {
+                        echo '<p class="errors"> De ingevoerde code is niet meer geldig </p>';
+                    } else if ($_GET['error'] == "nietDeGoedeCode") {
+                        echo '<p class="errors"> De ingevoerde code wordt niet herkent </p>';
+                    } else if ($_GET['error'] == "succes") {
+                        echo '<p class="succes"> Er is een code naar uw e-mailadres verzonden </p>';
+                    } 
+                }
                 ?>
                 <div class="registreren">
                     <h2>Registreren</h2>
@@ -73,7 +69,7 @@
                 <div class="registreerbox">
                     <h3> Bevestigingscode </h3>
                     <p> Voer hier de bevestigingscode in die u per mail heeft ontvangen.</p>
-                    <form method="post" action="includes/checkCode.inc.php"> 
+                    <form method="post" action="includes/checkCode.inc.php">
                         <label for="bevestigingscode">Bevestigingscode:</label><br>
                         <input class="uk-input input-registratie" type="password" id="bevestigingscode" name="bevestigingscode">
                         <button class="uk-button knop-email">Bevestigen</button>
@@ -84,4 +80,5 @@
     </div>
     <?php include 'includes/footer.inc.php'; ?>
 </body>
+
 </html>

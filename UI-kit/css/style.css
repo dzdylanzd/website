@@ -292,6 +292,15 @@ h4 {
   width: 80px;
 }
 
+.headerinlog {
+  font-family: "Calibri", sans-serif;
+  font-size: 1.2em;
+  color: #fffbec;
+  margin-top: 1.5em;
+  vertical-align: middle;
+  width: 300%;
+}
+
 .mijngegevens {
   font-family: "Calibri", sans-serif;
   font-size: 1.3em;

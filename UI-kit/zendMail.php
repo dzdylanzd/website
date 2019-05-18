@@ -1,4 +1,5 @@
 <?php
+include "includes/database.php";
 session_start();
 $random_hash = bin2hex(random_bytes(3));
 $_SESSION["emailCode"] = $random_hash;
@@ -6,6 +7,18 @@ $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_POST['emailbevestiging'];
 $_SESSION["Email"] = $to;
 $subject = "verificatie code";
+    $sql = "SELECT Mailadres from Gebruiker where Mailadres = ?";
+    if (!$query = $dbh->prepare($sql)) {
+        header("location: ./email-Bevestiging.php?error=7");
+        exit();
+    } else {
+        $query = $dbh->prepare($sql);
+        $query->execute(array($to));
+        if ($query->fetch()) {
+            header("location: ./email-Bevestiging.php?error=13");
+            exit();
+        } else { }
+    }
 
 $message = '
 <!DOCTYPE html>
