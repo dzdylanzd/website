@@ -80,7 +80,7 @@
                     } else {
                         $gebruikersnaam = $_SESSION['userId'];
 
-                        $sql = 'SELECT * FROM Gebruiker WHERE gebruikersnaam = ?';
+                        $sql = 'SELECT Gebruikersnaam FROM Gebruiker WHERE gebruikersnaam = ?';
                         if ($sth = $dbh->prepare($sql)) {
                             if ($sth->execute(array($gebruikersnaam))) {
                                 while ($row = $sth->fetch()) {
