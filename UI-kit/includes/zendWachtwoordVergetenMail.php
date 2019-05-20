@@ -5,6 +5,7 @@ $random_hash = bin2hex(random_bytes(4));
 $to = $_POST['wachtwoorVergetenEmail'];
 $subject = "Wachtwoord wijzigen";
 $antwoord =  $_POST['beveiligingsvraag'];
+
 $sql = "SELECT AntwoordTekst FROM Gebruiker WHERE Mailadres = ?";
 if ($query = $dbh->prepare($sql)) {
     if ($query->execute(array($to))) {
