@@ -63,20 +63,24 @@ if (!empty($oudWachtwoord) && !empty($Wachtwoord) && !empty($WachtwoordHerhaal))
 
 
 
-if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag)) {
-    header("location: ../index.php?error=1");
+if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) || empty($Mailadres)){
+    header("location: ../wijzigen-gegevens.php?error=1");
     exit();
 } else if (($voorkeur1 == $voorkeur2 || $voorkeur1 == $voorkeur3) || ($voorkeur2 == $voorkeur1 || $voorkeur2 == $voorkeur3) || ($voorkeur3 == $voorkeur1 || $voorkeur3 == $voorkeur2)) {
-    header("location: ../index.php?error=11");
+    header("location: ../wijzigen-gegevens.php?error=11");
     exit();
-} else {
+} else if (!filter_var($Mailadres, FILTER_VALIDATE_EMAIL)) {
+    header("location: ../wijzigen-gegevens.php?error=2");
+    exit();
+  } else {
     $sql = 'UPDATE Gebruiker
-    SET Voornaam = ? , Achternaam = ?, Adresregel1 = ?, Postcode = ?,Plaatsnaam = ?,Land = ?,Geboortedatum = ?,Mailadres = ?
+    SET Voornaam = ? , Achternaam = ?, Adresregel1 = ?, Postcode = ?,Plaatsnaam = ?,Land = ?,Mailadres = ?, Geboortedatum = ?
     WHERE Gebruikersnaam = ?';
     $sql2 = "delete from voorkeur where gebruikersnaam = ?";
     $sql3 = "INSERT into voorkeur(categorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
     if ($sth = $dbh->prepare($sql)) {
-        if ($sth->execute(array($voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land, $Geboortedag, $Mailadres, $gebruikersnaam))) {
+        $_SESSION['userUid'] = $Mailadres;
+        if ($sth->execute(array($voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land,$Mailadres,  $Geboortedag, $gebruikersnaam))) {
             if ($sth2 = $dbh->prepare($sql2)) {
                 if ($sth2->execute(array($gebruikersnaam))) {
                     if ($sth3 = $dbh->prepare($sql3)) {
