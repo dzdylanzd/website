@@ -26,13 +26,21 @@ include('database.php');
     $sql = 'UPDATE Gebruiker
     SET Voornaam = ? , Achternaam = ?, Adresregel1 = ?, Postcode = ?,Plaatsnaam = ?,Land = ?,Geboortedatum = ?,Mailadres = ?
     WHERE Gebruikersnaam = ?';
-    $sql2 = "delete * from voorkeur where gebruikersnaam = ?";
+    $sql2 = "delete from voorkeur where gebruikersnaam = ?";
     $sql3 = "INSERT into voorkeur(categorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
-    if ($sth = $dbh->prepare($sql) || $sth2 = $dbh->prepare($sql2) || $sth3 = $dbh->prepare($sql3)) {
+    if ($sth = $dbh->prepare($sql) ) {
         if ($sth->execute(array($voornaam,$Achternaam,$StraatHuisnummer,$Postcode,$Plaatsnaam,$Land,$Geboortedag,$Mailadres, $gebruikersnaam))  ) {
             if ( $sth2 = $dbh->prepare($sql2)) {
-                if ($sth->execute(array($voornaam,$Achternaam,$StraatHuisnummer,$Postcode,$Plaatsnaam,$Land,$Geboortedag,$Mailadres, $gebruikersnaam))  ) {
-                   
+                if ($sth2->execute(array($gebruikersnaam))  ) {
+                    if ( $sth3 = $dbh->prepare($sql3)) {
+                        if ($sth3->execute(array($voorkeur1, $gebruikersnaam, $voorkeur2, $gebruikersnaam, $voorkeur3, $gebruikersnaam))  ) {
+                            header("location: ../index.php");
+                            exit(); 
+                        }else{
+                            header("location: ../index.php?error=7");
+                            exit(); 
+                        }
+                    }
                 }else{
                     header("location: ../index.php?error=7");
                     exit(); 
