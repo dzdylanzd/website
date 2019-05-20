@@ -17,7 +17,35 @@ include('database.php');
   $voorkeur3 =  $_POST['voorkeur3'];
   $gebruikersnaam = $_SESSION['userId'];
 
-  if(!empty($oudWachtwoord) && )
+  if(!empty($oudWachtwoord) && !empty($Wachtwoord) && !empty($WachtwoordHerhaal) ){
+    $sql = "SELECT Wachtwoord FROM Gebruiker WHERE Gebruikersnaam = ?";
+    if ($query = $dbh->prepare($sql)) {
+        if ($query->execute(array($gebruikersnaam))) {
+          
+            while ($alles = $query->fetch()) {
+             
+                $pwdCheck = password_verify($oudWachtwoord, $alles['Wachtwoord']);
+                if(!$pwdCheck){
+                header("location: ../index.php?error=wachtwoordKomtNietOvereen");
+                exit();
+                }
+            }
+        }
+    }
+    
+    
+    
+    if ($pwdCheck) {
+        if($Wachtwoord == $WachtwoordHerhaal){
+        $hashedPwd = password_hash($Wachtwoord, PASSWORD_DEFAULT);
+        $sql = "UPDATE Gebruiker SET Wachtwoord = ? WHERE Gebruikersnaam = ?";
+        if ($query = $dbh->prepare($sql)) {
+            $query->execute(array($hashedPwd, $gebruikersnaam));
+        }
+    }
+
+  }
+}
 
 
 
