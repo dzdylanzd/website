@@ -86,7 +86,7 @@
                                 }
                             }
                         }
-                        echo '<p class="headerinlog">Ingelogd als: '.$gebruikersnaam.'</p>';
+                        echo '<p class="headerinlog">'.$gebruikersnaam.'</p>';
                         echo '<button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>';
                     }
                     ?>
