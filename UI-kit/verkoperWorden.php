@@ -47,7 +47,7 @@
                     <li class="tag-creditcard verkoopbox">
                         <div class="verkoopbox">
                             <h3>identificatiemethode creditcard:</h3>
-                            <form method="post" action="verkoperWorden.php">
+                            <form method="post" action="includes/verkoperWorden.inc.php">
                             <label for="creditcard">Creditcard nummer</label><br>
                             <input class="uk-input input-registratie" type="number" name="creditcard" id="creditcard"><br>
                             <button class="uk-button knop-email">Verkoopaccount activeren</button>
@@ -57,7 +57,7 @@
                     <li class="tag-post verkoopbox">
                         <div class="verkoopbox">
                             <h3>identificatiemethode post:</h3>
-                            <form method="post" action="verkoperWorden.php">
+                            <form method="post" action="includes/verkoperWorden.inc.php">
                             <label for="bank">Bank</label><br>
                             <input class="uk-input input-registratie" type="text" name="bank" id="bank"><br>
                             <label for="rekeningnummer">Rekeningnummer</label><br>
