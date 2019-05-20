@@ -1,6 +1,6 @@
 <!-- navigatiebalk Desktop -->
-<?php session_start(); 
-    include 'database.php'?>
+<?php session_start();
+include 'database.php' ?>
 <div class="uk-visible@m sticky ">
 
 
@@ -33,21 +33,21 @@
                                 <button class="uk-button uk-button-primary " type="button">Inloggen</button>
                                 <div uk-dropdown="mode: click">
                                     <form method="post" action="includes/login.inc.php">';
-                                    if (isset($_GET["errorLogin"])) {
-                                        if ($_GET["errorLogin"] == "leeg") {
-                                            echo "<br> <p class=\"errorLogin\"> Niet alle velden zijn ingevuld </p>";
-                                        }
-                                        if ($_GET["errorLogin"] == "GebruikerBestaatNiet") {
-                                            echo "<br> <p class=\"errorLogin\"> Deze gebruiker bestaat niet </p>";
-                                        }
-                                        if ($_GET["errorLogin"] == "verkeerdwachtwoord") {
-                                            echo "<br> <p class=\"errorLogin\"> Onjuist wachtwoord </p>";
-                                        }
-                                        if ($_GET["errorLogin"] == "sql") {
-                                            echo "<br> <p class=\"errorLogin\"> Er is een fout opgelopen, probeer het opnieuw </p>";
-                                        }
-                                    }
-                                    echo '<div class="uk-margin">
+                        if (isset($_GET["errorLogin"])) {
+                            if ($_GET["errorLogin"] == "leeg") {
+                                echo "<br> <p class=\"errorLogin\"> Niet alle velden zijn ingevuld </p>";
+                            }
+                            if ($_GET["errorLogin"] == "GebruikerBestaatNiet") {
+                                echo "<br> <p class=\"errorLogin\"> Deze gebruiker bestaat niet </p>";
+                            }
+                            if ($_GET["errorLogin"] == "verkeerdwachtwoord") {
+                                echo "<br> <p class=\"errorLogin\"> Onjuist wachtwoord </p>";
+                            }
+                            if ($_GET["errorLogin"] == "sql") {
+                                echo "<br> <p class=\"errorLogin\"> Er is een fout opgelopen, probeer het opnieuw </p>";
+                            }
+                        }
+                        echo '<div class="uk-margin">
                                             <div class="uk-inline">
                                                 <span class="uk-form-icon" uk-icon="icon: user"></span>
                                                 <input class="uk-input" name="gebruikersnaam" type="text">
@@ -86,7 +86,10 @@
                                 }
                             }
                         }
-                        echo '<p class="headerinlog">'.$gebruikersnaam.'</p>';
+                        echo '<div class="uk-inline">
+                        <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
+                        <div uk-dropdown="mode: click">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div> </div>';
+               
                         echo '<button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>';
                     }
                     ?>
