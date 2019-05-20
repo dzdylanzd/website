@@ -81,6 +81,7 @@
                             $postcode = $row['Postcode'];
                             $plaats = $row['Plaatsnaam'];
                             $land = $row['Land'];
+                            $vraag = $row["Vraagnummer"];
 
                         }
                     }
@@ -105,72 +106,30 @@
                         <p class="mijngegevens">Plaats: <?php echo $plaats?></p><br>
                         <p class="mijngegevens">Land: <?php echo $land?></p><br>
                     </div>
+
                     <div class="registreerbox">
-                        <h3>Inloggegevens</h3>
-                        <label class="registreerlabel" for="gebruikersnaam">Gebruikersnaam</label><br>
-                        <input class="uk-input input-registratie" type="text" id="gebruikersnaam" name="gebruikersnaam"><br>
-                        <label class="registreerlabel" for="wachtwoord">Wachtwoord</label><br>
-                        <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord"><br>
-                        <label class="registreerlabel" for="bevestigWachtwoord">Wachtwoord herhalen</label><br>
-                        <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
-                        <label class="registreerlabel" for="bevestigingsvraag">Bevestigingsvraag</label><br>
-                        <select class="uk-select input-registratie" name="bevestigingsvraag">
-                            <?php
-                            $sql = "SELECT * from vraag ORDER BY vraagnummer ASC";
-                            if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array())) {
-                                    while ($vraag = $sth->fetch()) {
-                                        $tekst = "<option value=$vraag[Vraagnummer] >$vraag[TekstVraag]</option>";
-                                        echo $tekst;
-                                    }
-                                }
-                            }
-                            ?>
-                        </select><br>
-                        <label class="registreerlabel" for="antwoord">Antwoord</label><br>
-                        <input class="uk-input input-registratie" type="password" id="antwoord" name="antwoord"><br>
+                        <h3>Accountgegevens</h3>
+                        <p class="mijngegevens">gebruikersnaam: <?php echo $gebruikersnaam?></p><br>
+                        <p class="mijngegevens">email: <?php echo $email?></p><br>
+
                     </div>
+         
                     <div class="registreerbox">
                         <h3>Voorkeuren</h3>
-                        <select class="uk-select input-registratie" name="voorkeur1">
+                    
                             <?php
-                            $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
+                            $sql = "select Rubrieknaam from Rubriek where Rubrieknummer in(
+
+                                select categorie from voorkeur where gebruikersnaam = ?)";
                             if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array(-1, -1))) {
+                                if ($sth->execute(array( $gebruikersnaam))) {
                                     while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
-                                        echo $tekst;
+                                        echo "<p class=\"mijngegevens\">$row[Rubrieknaam]</p> <br>";
                                     }
                                 }
                             }
                             ?>
-                        </select><br>
-                        <select class="uk-select input-registratie" name="voorkeur2">
-                            <?php
-                            $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
-                            if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array(-1, -1))) {
-                                    while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
-                                        echo $tekst;
-                                    }
-                                }
-                            }
-                            ?>
-                        </select><br>
-                        <select class="uk-select input-registratie" name="voorkeur3">
-                            <?php
-                            $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
-                            if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array(-1, -1))) {
-                                    while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
-                                        echo $tekst;
-                                    }
-                                }
-                            }
-                            ?>
-                        </select><br>
+                       
                     </div>
                     <button action="wijzigen-gegevens.php" type="submit" name="bevestigings-button" class="uk-button knop-registreren">Gegevens wijzigen</button>
                 </form>

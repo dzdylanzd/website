@@ -71,10 +71,10 @@
                             if ($sth->execute(array($_SESSION['userId']))) {
                                 $index = 0;
                                 while ($row = $sth->fetch()) {
-                                    $nietLatenZien[$index] = $row['catogorie'];
+                                    $nietLatenZien[$index] = $row['Categorie'];
                                     $sth2 = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
 
-                                    if ($sth2->execute(array($row['catogorie']))) {
+                                    if ($sth2->execute(array($row['Categorie']))) {
                                         while ($row2 = $sth2->fetch()) {
                                             if ($row2["Rubrieknummer"] != -1) {
                                                 $text = "";
@@ -110,7 +110,7 @@
                                             echo $text;
                                         }
                                     } else {
-                                        echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze catogorie</h4>";
+                                        echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze categorie</h4>";
                                     }
                                 }
                             }
@@ -150,7 +150,7 @@
                                             echo $text;
                                         }
                                     } else {
-                                        echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze catogorie</h4>";
+                                        echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze categorie</h4>";
                                     }
                                 }
                             }

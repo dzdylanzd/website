@@ -25,6 +25,7 @@ if (isset($_POST['bevestigings-button'])) {
   $voorkeur1 =  $_POST['voorkeur1'];
   $voorkeur2 =  $_POST['voorkeur2'];
   $voorkeur3 =  $_POST['voorkeur3'];
+  $soortGebruiker = chr(72);
 
 
 
@@ -100,34 +101,22 @@ if (isset($_POST['bevestigings-button'])) {
           } else {
 
 
-            $sql = "INSERT Gebruiker(Gebruikersnaam,Voornaam,Achternaam,Adresregel1,Postcode,Plaatsnaam,Land,Geboortedatum,Mailadres,Wachtwoord,Vraagnummer,AntwoordTekst,IsAccountVerkoper,DatumMakenAccount) values( ?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $sql = "INSERT Gebruiker(Gebruikersnaam,Voornaam,Achternaam,Adresregel1,Postcode,Plaatsnaam,Land,Geboortedatum,Mailadres,Wachtwoord,Vraagnummer,AntwoordTekst,SoortGebruiker,DatumMakenAccount) values( ?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             if (!$query = $dbh->prepare($sql)) {
               header("location: ../registreren.php?error=7");
               exit();
             }
 
-            // $Gebruiksernaam = $_POST['gebruikersnaam'];
-            // $voornaam = $_POST['voornaam'];
-            // $Achternaam = $_POST{"achternaam"};
-            // $StraatHuisnummer = $_POST['adres1'];
-            // $Postcode = $_POST['postcode'];
-            // $Plaatsnaam = $_POST['plaats'];
-            // $Land = $_POST['land'];
-            // $Geboortedag = $_POST['geboortedatum'];
-            // $Mailadres = $_SESSION["Email"];
-            // $Wachtwoord = $_POST['wachtwoord'];
-            // $WachtwoordHerhaal = $_POST['bevestigWachtwoord'];
-            // $VraagNummer = $_POST['bevestigingsvraag'];
-            // $Antwoordtekst = $_POST['antwoord'];
+
 
             else {
               $hashedPwd = password_hash($Wachtwoord, PASSWORD_DEFAULT);
               $hashedAnswer = password_hash($Antwoordtekst, PASSWORD_DEFAULT);
 
-              if ($query = $dbh->prepare($sql)) { }
-              $query->execute(array($Gebruiksernaam, $voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land, $Geboortedag, $Mailadres, $hashedPwd, $VraagNummer, $hashedAnswer, 0, date("Y-m-d H:i:s")));
 
-              $sql = "INSERT into voorkeur(catogorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
+              $query->execute(array($Gebruiksernaam, $voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land, $Geboortedag, $Mailadres, $hashedPwd, $VraagNummer, $hashedAnswer, $soortGebruiker, date("Y-m-d H:i:s")));
+
+              $sql = "INSERT into voorkeur(categorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
               if ($query = $dbh->prepare($sql)) {
                 $query->execute(array($voorkeur1, $Gebruiksernaam, $voorkeur2, $Gebruiksernaam, $voorkeur3, $Gebruiksernaam));
               }
