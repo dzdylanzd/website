@@ -92,7 +92,7 @@
                 <div class="registreren">
                     <h2>Mijn gegevens</h2>
                 </div>
-                <form method="post" action="includes/registreren.inc.php">
+                <form method="post" action="mijn-gegevens.php">
                     <div class="registreerbox">
                         <h3>Persoonsgegevens</h3>
                         <p class="mijngegevens">Voornaam:  <?php echo $voornaam?> </p><br>
