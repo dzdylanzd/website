@@ -82,6 +82,7 @@
                             $plaats = $row['Plaatsnaam'];
                             $land = $row['Land'];
                             $vraag = $row["Vraagnummer"];
+                            $accountType = $row["SoortGebruiker"];
 
                         }
                     }
@@ -109,6 +110,7 @@
 
                     <div class="registreerbox">
                         <h3>Accountgegevens</h3>
+                        <p class="mijngegevens">account type: <?php if($accountType == 'K'){echo"Koper"; }else if($accountType == 'V'){echo"verkoper"; } else if($accountType == 'A'){echo"admin"; }else{echo"?";}  ?></p><br>
                         <p class="mijngegevens">gebruikersnaam: <?php echo $gebruikersnaam?></p><br>
                         <p class="mijngegevens">email: <?php echo $email?></p><br>
 
