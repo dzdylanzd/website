@@ -321,6 +321,20 @@ h4 {
   border-radius: 20px;
 }
 
+.verkoopbox{
+  background-color: #a7ca9b;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  border-radius: 20px;
+}
+.verkoper{
+width: 50%;
+margin: auto;
+}
 .knop-registreren {
   margin-left: 42.5%;
   width: 15%;

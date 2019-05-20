@@ -133,7 +133,7 @@
                     <div class="registreerbox">
                         <h3>Inloggegevens</h3>
                         <label class="registreerlabel" for="oudWachtwoord">Oud wachtwoord</label><br>
-                        <input class="uk-input input-registratie" type="text" id="oudWachtwoord" name="oudWachtwoord"><br>
+                        <input class="uk-input input-registratie" type="password" id="oudWachtwoord" name="oudWachtwoord"><br>
                         <label class="registreerlabel" for="wachtwoord">Wachtwoord</label><br>
                         <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord"><br>
                         <label class="registreerlabel" for="bevestigWachtwoord">Wachtwoord herhalen</label><br>

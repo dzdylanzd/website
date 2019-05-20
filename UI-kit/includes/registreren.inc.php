@@ -25,7 +25,7 @@ if (isset($_POST['bevestigings-button'])) {
   $voorkeur1 =  $_POST['voorkeur1'];
   $voorkeur2 =  $_POST['voorkeur2'];
   $voorkeur3 =  $_POST['voorkeur3'];
-  $soortGebruiker = chr(72);
+  $soortGebruiker = chr(75);
 
 
 
