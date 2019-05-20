@@ -22,6 +22,10 @@ p {
   color: rgb(223, 50, 50);
 }
 
+.errorLogin {
+  color: rgb(223, 50, 50);
+}
+
 .succes {
   font-size: 2em;
   text-align: center;
@@ -313,7 +317,7 @@ h4 {
   margin: auto;
   margin-bottom: 20px;
   padding-top: 5px;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
   border-radius: 20px;
 }
 

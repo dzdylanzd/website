@@ -15,7 +15,7 @@ $subject = "verificatie code";
         $query = $dbh->prepare($sql);
         $query->execute(array($to));
         if ($query->fetch()) {
-            header("location: ./email-Bevestiging.php?error=13");
+            header("location: ./email-Bevestiging.php?error=emailInGebruik");
             exit();
         } else { }
     }
@@ -63,7 +63,7 @@ $headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
 
 
 if (empty($_POST['emailbevestiging'])) {
-    header("Location: email-Bevestiging.php?error=legeemail");
+    header("Location: email-Bevestiging.php?error=legeEmail");
 } else {
     mail($to,$subject,$message,$headers);
     header("Location: email-Bevestiging.php?error=succes");

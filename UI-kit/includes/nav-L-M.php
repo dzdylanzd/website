@@ -32,9 +32,22 @@
                         echo ' <div class="uk-inline">
                                 <button class="uk-button uk-button-primary " type="button">Inloggen</button>
                                 <div uk-dropdown="mode: click">
-                                    <form method="post" action="includes/login.inc.php">
-
-                                        <div class="uk-margin">
+                                    <form method="post" action="includes/login.inc.php">';
+                                    if (isset($_GET["errorLogin"])) {
+                                        if ($_GET["errorLogin"] == "leeg") {
+                                            echo "<br> <p class=\"errorLogin\"> Niet alle velden zijn ingevuld </p>";
+                                        }
+                                        if ($_GET["errorLogin"] == "GebruikerBestaatNiet") {
+                                            echo "<br> <p class=\"errorLogin\"> Deze gebruiker bestaat niet </p>";
+                                        }
+                                        if ($_GET["errorLogin"] == "verkeerdwachtwoord") {
+                                            echo "<br> <p class=\"errorLogin\"> Onjuist wachtwoord </p>";
+                                        }
+                                        if ($_GET["errorLogin"] == "sql") {
+                                            echo "<br> <p class=\"errorLogin\"> Er is een fout opgelopen, probeer het opnieuw </p>";
+                                        }
+                                    }
+                                    echo '<div class="uk-margin">
                                             <div class="uk-inline">
                                                 <span class="uk-form-icon" uk-icon="icon: user"></span>
                                                 <input class="uk-input" name="gebruikersnaam" type="text">
@@ -50,21 +63,6 @@
                                         <button class="loginknop uk-width-1-1 uk-button uk-button-default " name="login-submit" type="submit">Login</button>
                                     </form>
                                     <a class="uk-link-muted" href="wachtwoordVergeten.php">Wachtwoord vergeten?</a>';
-
-                        if (isset($_GET["errorLogin"])) {
-                            if ($_GET["errorLogin"] == "leeg") {
-                                echo "<br> er is een veld leeg";
-                            }
-                            if ($_GET["errorLogin"] == "GebruikerBestaatNiet") {
-                                echo "<br> deze gebruiker bestaat niet";
-                            }
-                            if ($_GET["errorLogin"] == "verkeerdwachtwoord") {
-                                echo "<br> verkeerde wachtwoord probeer opnieuw";
-                            }
-                            if ($_GET["errorLogin"] == "sql") {
-                                echo "<br> er ging iets mis probeer opnieuw";
-                            }
-                        }
                         echo '
                                 </div>
                             </div>
@@ -148,16 +146,16 @@
 
                     if (isset($_GET["errorLogin"])) {
                         if ($_GET["errorLogin"] == "leeg") {
-                            echo "<br> er is een veld leeg";
+                            echo "<br> <p class=\"errorLogin\"> Niet alle velden zijn ingevuld </p>";
                         }
                         if ($_GET["errorLogin"] == "GebruikerBestaatNiet") {
-                            echo "<br> deze gebruiker bestaat niet";
+                            echo "<br> <p class=\"errorLogin\"> Deze gebruiker bestaat niet </p>";
                         }
                         if ($_GET["errorLogin"] == "verkeerdwachtwoord") {
-                            echo "<br> verkeerde wachtwoord probeer opnieuw";
+                            echo "<br> <p class=\"errorLogin\"> Onjuist wachtwoord </p>";
                         }
                         if ($_GET["errorLogin"] == "sql") {
-                            echo "<br> er ging iets mis probeer opnieuw";
+                            echo "<br> <p class=\"errorLogin\"> Er is een fout opgelopen, probeer het opnieuw </p>";
                         }
                     }
                     echo '

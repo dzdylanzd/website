@@ -41,8 +41,10 @@
                 <?php if (isset($_GET['error'])) {
                     if ($_GET['error'] == "leegveld") {
                         echo '<p class="errors"> Voer een code in </p>';
-                    } else if ($_GET['error'] == "legeemail") {
+                    } else if ($_GET['error'] == "legeEmail") {
                         echo '<p class="errors"> Voer uw e-mailadres in </p>';
+                    } else if ($_GET['error'] == "emailInGebruik") {
+                        echo '<p class="errors"> Het ingevoerde e-mailadres is al in gebruik </p>';
                     } else if ($_GET['error'] == "codeNietMeerValide") {
                         echo '<p class="errors"> De ingevoerde code is niet meer geldig </p>';
                     } else if ($_GET['error'] == "nietDeGoedeCode") {
@@ -58,7 +60,7 @@
                 <form method="post" action="zendMail.php">
                     <div class="registreerbox">
                         <h3>E-mail bevestiging</h3>
-                        <p>Beste bezoeker,<br> voordat u een gebruiker aan kunt maken moet u eerst uw e-mail adres bevestigen. <br>
+                        <p>Beste bezoeker,<br> Voordat u een gebruiker aan kunt maken moet u eerst uw e-mail adres bevestigen. <br>
                             Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken.
                         </p>
                         <label for="emailbevestiging">E-mail:</label><br>
