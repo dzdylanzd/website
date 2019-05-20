@@ -33,16 +33,17 @@
                             <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
                         </div>
                     </div>
+                </nav>
             </div>
 
-            <div class="  flex-column-phone">
+            <div class="flex-column-phone">
                 <div class="uk-width-1-5@m uk-text-center@s uk-text-left@m ">
                     <button class="uk-button uk-button-default uk-hidden@s" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
                     <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body uk-hidden@s">
                         <div class="categorieNavHomepagina">
-                            <script>
+                            <!-- <script>
                                 UIkit.toggle('.uk-card').toggle();
-                            </script>
+                            </script> -->
                             <h1>Rubrieken</h1>
                             <?php require_once('includes\categorie _nav.php'); ?>
                         </div>
@@ -64,6 +65,8 @@
                     echo '<div class="ItemsSliderHomepagina">';
                     echo "<h1> Nieuw </h1>";
                     echo '</div>';
+
+                    // Favoriete rubrieken 
                     $nietLatenZien = array(0, 0, 0);
                     if (isset($_SESSION['userId'])) {
                         $sql = "select * from voorkeur where gebruikersnaam = ?";
@@ -78,7 +81,7 @@
                                         while ($row2 = $sth2->fetch()) {
                                             if ($row2["Rubrieknummer"] != -1) {
                                                 $text = "";
-                                                $text = $text . '<div class="ItemsSliderDonkerGroen">';
+                                                $text = $text . '<div class="ItemsSliderGroen">';
                                                 $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row2[Rubrieknummer]\"> <h1>  $row2[Rubrieknaam] </h1> </a>";
                                                 if (displayCategorie($row2["Rubrieknummer"], $dbh, 100) != 123) {
                                                     $text = $text . displayCategorie($row2["Rubrieknummer"], $dbh, 100);
@@ -93,7 +96,7 @@
                             }
                         }
                     }
-
+                    // Display producten alle rubrieken, deze hebben een zandkleur
                     if (isset($_GET["root"])) {
 
                         $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
@@ -101,7 +104,7 @@
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
                                 if ($row["Rubrieknummer"] != -1) {
-                                    $text = $text . '<div class="ItemsSliderDonkerGroen">';
+                                    $text = $text . '<div class="ItemsSlider">';
                                     $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
                                     if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
                                         if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
@@ -121,7 +124,7 @@
                             while ($row = $sth->fetch()) {
                                 if ($row["Rubrieknummer"] != -1) {
                                     $text = "";
-                                    $text = $text . '<div class="ItemsSliderGroen">';
+                                    $text = $text . '<div class="ItemsSlider">';
                                     $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
                                     if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
                                         if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
@@ -141,7 +144,7 @@
                             while ($row = $sth->fetch()) {
                                 if ($row["Rubrieknummer"] != -1) {
                                     $text = "";
-                                    $text = $text . '<div class="ItemsSliderDonkerGroen">';
+                                    $text = $text . '<div class="ItemsSlider">';
                                     $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
                                     if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
                                         if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
@@ -161,7 +164,7 @@
                             while ($row = $sth->fetch()) {
                                 if ($row["Rubrieknummer"] != -1) {
                                     $text = "";
-                                    $text = $text . '<div class="ItemsSliderDonkerGroen">';
+                                    $text = $text . '<div class="ItemsSlider">';
                                     $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
                                     if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
                                         if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {

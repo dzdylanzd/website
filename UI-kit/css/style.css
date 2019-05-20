@@ -150,6 +150,20 @@ h4 {
   padding: 15px;
 }
 
+.ItemsSliderGroenRubrieken {
+  background-color: #a7ca9b;
+  border-radius: 5px;
+  margin: 15px;
+  padding: 15px;
+}
+
+.ItemsSliderDonkerGroenRubrieken {
+  background-color: #8ab27e;
+  border-radius: 5px;
+  margin: 15px;
+  padding: 15px;
+}
+
 .categorieNav {
   background-color: #ddc8af;
   height: 250px;
@@ -395,12 +409,28 @@ margin: auto;
     margin-right: 15px;
   }
 
+  .ItemsSlider {
+    width: 84%;
+  }
+
   .ItemsSliderDonkerGroen {
-    width: 113%;
+    width: 84%;
   }
 
   .ItemsSliderGroen {
-    width: 113%;
+    width: 84%;
+  }
+
+  .ItemsSliderRubrieken {
+    width: 111%;
+  }
+
+  .ItemsSliderDonkerGroenRubrieken {
+    width: 111%;
+  }
+
+  .ItemsSliderGroenRubrieken {
+    width: 111%;
   }
 
   .categorieNavHomepagina{
