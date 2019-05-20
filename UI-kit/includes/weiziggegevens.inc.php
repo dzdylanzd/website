@@ -35,13 +35,13 @@ if (!empty($oudWachtwoord) && !empty($Wachtwoord) && !empty($WachtwoordHerhaal))
 
 
     if (!preg_match('/[A-Z]/', $Wachtwoord)) {
-        header("location: ../registreren.php?error=9");
+        header("location: ../wijzigen-gegevens.php?error=9");
         exit();
     } else if (!preg_match('~[0-9]~', $Wachtwoord)) {
-        header("location: ../registreren.php?error=10");
+        header("location: ../wijzigen-gegevens.php?error=10");
         exit();
     } else if (strlen($Wachtwoord) < 7) {
-        header("location: ../registreren.php?error=8");
+        header("location: ../wijzigen-gegevens.php?error=8");
         exit();
     } else {
         if ($pwdCheck) {
@@ -84,21 +84,21 @@ if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty(
                             header("location: ../index.php");
                             exit();
                         } else {
-                            header("location: ../index.php?error=7");
+                            header("location: ../wijzigen-gegevens.php?error=7");
                             exit();
                         }
                     }
                 } else {
-                    header("location: ../index.php?error=7");
+                    header("location: ../wijzigen-gegevens.php?error=7");
                     exit();
                 }
             }
         } else {
-            header("location: ../index.php?error=7");
+            header("location: ../wijzigen-gegevens.php?error=7");
             exit();
         }
     } else {
-        header("location: ../index.php?error=7");
+        header("location: ../wijzigen-gegevens.php?error=7");
         exit();
     }
 }
