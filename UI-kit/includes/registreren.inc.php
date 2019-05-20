@@ -37,7 +37,6 @@ if (isset($_POST['bevestigings-button'])) {
   } else if (!filter_var($Mailadres, FILTER_VALIDATE_EMAIL)) {
     header("location: ../registreren.php?error=2");
     exit();
-    exit();
   } else if (!preg_match("/^[a-zA-Z0-9]*$/", $Gebruiksernaam)) {
     header("location: ../registreren.php?error=6");
     exit();
