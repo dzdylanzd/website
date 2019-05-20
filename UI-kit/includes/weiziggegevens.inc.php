@@ -9,12 +9,22 @@ include('database.php');
   $Land = $_POST['land'];
   $Geboortedag = $_POST['geboortedatum'];
  $Mailadres = $_POST['Email'];
+ $oudWachtwoord =  $_POST['oudWachtwoord'];
   $Wachtwoord = $_POST['wachtwoord'];
   $WachtwoordHerhaal = $_POST['bevestigWachtwoord'];
   $voorkeur1 =  $_POST['voorkeur1'];
   $voorkeur2 =  $_POST['voorkeur2'];
   $voorkeur3 =  $_POST['voorkeur3'];
   $gebruikersnaam = $_SESSION['userId'];
+
+  if(!empty($oudWachtwoord) && )
+
+
+
+
+
+
+
 
   if( empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) ){
     header("location: ../index.php?error=1");
