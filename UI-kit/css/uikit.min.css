@@ -3321,7 +3321,8 @@ ul.uk-nav-sub {
 }
 
 .uk-tab .uk-dropdown {
-    margin-left: 30px
+    margin-left: 30px;
+    width: 100px;
 }
 
 .uk-slidenav {

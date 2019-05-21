@@ -42,7 +42,7 @@
                 <ul class="uk-subnav uk-subnav-pill">
                     <li class="uk-active" uk-filter-control=".tag-post"><a href="#">Post</a></li>
                     <li uk-filter-control=".tag-creditcard"><a href="#">Creditcard</a></li>
-</ul>
+                </ul>
 
                 <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid>
                     <li class="tag-creditcard verkoopbox">
@@ -51,7 +51,7 @@
                             <form method="post" action="includes/verkoperWorden.inc.php">
                             <label for="creditcard">Creditcard nummer</label><br>
                             <input class="uk-input input-registratie" type="number" name="creditcard" id="creditcard"><br>
-                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-email">Verkoopaccount activeren</button>
+                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-lang">Verkoopaccount activeren</button>
                             </form>
                         </div>
                     </li>
@@ -65,7 +65,7 @@
                             <input class="uk-input input-registratie" type="text" name="rekeningnummer" id="rekeningnummer"><br>
                             <label for="bevestigingsnummer">Bevestigingsnummer</label><br>
                             <input class="uk-input input-registratie" type="number" name="bevestigingsnummer" id="bevestigingsnummer"><br>
-                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-email">Verkoopaccount activeren</button>
+                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-lang">Verkoopaccount activeren</button>
                             </form>
                     </li>
                 </ul>
