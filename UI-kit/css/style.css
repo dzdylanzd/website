@@ -114,8 +114,8 @@ h4 {
 .scrollbox {
   border: none;
   padding: 5px;
-  width: 80%;
-  height: 500px;
+
+  height: 200px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
