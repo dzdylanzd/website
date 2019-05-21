@@ -44,6 +44,7 @@ p {
   color: black;
   margin-left: 20px;
 }
+
 .image-square {
   width:500px;
   height:300px;
@@ -114,8 +115,8 @@ h4 {
 .scrollbox {
   border: none;
   padding: 5px;
-  width: 80%;
-  height: 500px;
+
+  height: 200px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -334,6 +335,18 @@ h4 {
   padding-bottom: 15px;
   border-radius: 20px;
 }
+
+.veilingbox {
+  background-color: #a7ca9b;
+  text-align: center;
+  width: 20%;
+  margin: auto;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  padding-bottom: 25px;
+  border-radius: 20px;
+}
+
 .verkoper{
 width: 50%;
 margin: auto;
@@ -351,6 +364,7 @@ margin: auto;
 .knop-email {
   width: 25%;
 }
+
 .knop-lang{
   width: 250px;
 }
@@ -361,6 +375,10 @@ margin: auto;
 
 .registreren {
   margin-left: 25%;
+}
+
+.mijn-veilingen {
+  margin-left: 5%;
 }
 
 .uk-subnav-pill>.uk-active>a {
@@ -397,6 +415,10 @@ background-color: #739F65;
 
 .flex-column-phone {
   display: flex;
+}
+
+.menuknoppen {
+  min-width: 120%;
 }
 
 @media only screen and (max-width: 960px) {

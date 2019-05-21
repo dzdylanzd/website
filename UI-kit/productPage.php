@@ -13,7 +13,9 @@
 
 <body>
     <?php include 'includes\nav-L-M.php';
-    require_once('includes/database.php'); ?>
+    require_once('includes/database.php');
+    $_SESSION['PID'] = $_GET["ID"];
+    ?>
     <div class="page-container">
         <div class="content-wrap">
 
@@ -44,7 +46,7 @@
             <!-- =========================================== -->
 
             <div class="flex-column-phone">
-                <div class="uk-width-1-1 uk-width-1-3@s Card-Empty ">
+                <div class="uk-width-1-1 uk-width-1-3@s Card-Empty">
                     <!-- Titel -->
 
                     <?php
@@ -137,17 +139,33 @@
                             <h3>Huidig bod: </h3>
                         </div>
                     </div>
-
+                    <?php
+                            $sql = "SELECT * from Bod where Voorwerp = ? order by BodDagTijd desc ";
+                            $sth = $dbh->prepare($sql);
+                            $bod = "";
+                            $datumTijd = "";
+                            $bieder = "";
+                            if ($sth->execute(array($_GET["ID"]))) {
+                                while ($alles = $sth->fetch()) {
+                                   $bod .="<h5>$alles[BodBedrag]</h5>";
+                                   $bieder .="<h5>$alles[Gebruiker]</h5>";
+                                   $datumTijd .="<h5>" . substr($alles['BodDagTijd'],0,19) ." </h5>";
+                                }
+                            }
+                            ?>
                     <h2>Vorige biedingen</h2>
-                    <div class="uk-flex Vorige-Bieder">
+                    <div class="uk-flex scrollbox Vorige-Bieder ">
                         <div class="uk-width-1-3">
                             <h3>Naam bieder</h3>
+                            <?php echo $bieder ?>
                         </div>
                         <div class="uk-width-1-3">
                             <h3>Bod</h3>
+                            <?php echo $bod ?>
                         </div>
                         <div class="uk-width-1-3">
                             <h3>Datum en tijd van bieding</h3>
+                            <?php echo $datumTijd ?>
                         </div>
                     </div>
 
@@ -166,8 +184,33 @@
                         <div class="uk-width-1-2@s uk-wdith-1-1 Plaats-Bod">
                             <div class="uk-flex">
                                 <div class="uk-width-2-3@s uk-wdith-1-1">
-                                    <form class="Bieden" action="productpage.php">
-                                        <input class="uk-input Bod-Veld" type="text" name="bod" placeholder="bod .....">
+                                    <form class="Bieden" method="post" action="includes/bieden.inc.php">
+                                    <?php
+ $sql = "SELECT top 1 * from Bod where Voorwerp = ? order by BodDagTijd desc";
+ $bod = 0;
+ $minimumVerhoging = 0.5;
+ if ($sth = $dbh->prepare($sql)) {
+     if ($sth->execute(array($_GET["ID"]))) {
+         while ($row = $sth->fetch()) {
+             $bod = $row['BodBedrag'];
+             if($bod > 1 && $bod <= 50 ){
+                $minimumVerhoging = 0.5;
+             }else if($bod > 50 && $bod <= 500 ){
+                $minimumVerhoging = 1;
+             }else if($bod > 500 && $bod <= 1000 ){
+                $minimumVerhoging = 5;
+            }else if($bod > 1000 && $bod <= 5000 ){
+                $minimumVerhoging = 10;
+            }else{
+                $minimumVerhoging = 50;
+            }
+         }
+        }
+    }
+    echo " <input class=\"uk-input Bod-Veld\" type=\"number\" min=\"$bod\" max=\"10000000\" step=\"$minimumVerhoging\" name=\"bod\" placeholder=\"bod .....\">";
+                                    ?>
+                                       
+                                      
                                 </div>
                                 <div class="uk-button uk-width-1-3@s uk-wdith-1-1">
                                     <input type="submit" class="Bod-Plaatsen" value="Plaats bod">
@@ -194,8 +237,9 @@
                     </div>
                 </div>
             </div>
-
-            <?php include 'includes/footer.inc.php'; ?>
+        </div>
+    </div>
+    <?php include 'includes/footer.inc.php'; ?>
 </body>
 
 </html>

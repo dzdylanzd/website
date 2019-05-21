@@ -65,7 +65,7 @@
             }
             ?>
             <?php
-            // Haal gegevens van database en zet ze in variabelen
+            // Haal gegevens van de database en zet ze in variabelen
             if (isset($_SESSION['userId']) && isset($_SESSION['userUid'])) {
                 $gebruikersnaam = $_SESSION['userId'];
                 $email = $_SESSION['userUid'];
@@ -83,7 +83,6 @@
                             $land = $row['Land'];
                             $vraag = $row["Vraagnummer"];
                             $accountType = $row["SoortGebruiker"];
-
                         }
                     }
                 }

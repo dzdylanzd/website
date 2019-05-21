@@ -42,7 +42,7 @@
                 <ul class="uk-subnav uk-subnav-pill">
                     <li class="uk-active" uk-filter-control=".tag-email"><a href="#">Email</a></li>
                     <li uk-filter-control=".tag-creditcard"><a href="#">Creditcard</a></li>
-</ul>
+                </ul>
 
                 <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid>
                     <li class="tag-creditcard verkoopbox">

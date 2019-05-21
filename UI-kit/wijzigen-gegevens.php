@@ -176,7 +176,7 @@
 
 
                     </div>
-                    <button type="submit" name="bevestigings-button" class="uk-button knop-email">Registreren</button>
+                    <button type="submit" name="bevestigings-button" class="uk-button knop-registreren">Gegevens wijzigen</button>
                 </form>
             </div>
         </div>
