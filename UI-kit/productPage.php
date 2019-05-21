@@ -166,8 +166,9 @@
                         <div class="uk-width-1-2@s uk-wdith-1-1 Plaats-Bod">
                             <div class="uk-flex">
                                 <div class="uk-width-2-3@s uk-wdith-1-1">
-                                    <form class="Bieden" action="productpage.php">
-                                        <input class="uk-input Bod-Veld" type="text" name="bod" placeholder="bod .....">
+                                    <form class="Bieden" action="includes/bieden.inc.php">
+                                        <input class="uk-input Bod-Veld" type="number" min="0.00" max="10000.00" step="0.5" name="bod" placeholder="bod .....">
+                                      
                                 </div>
                                 <div class="uk-button uk-width-1-3@s uk-wdith-1-1">
                                     <input type="submit" class="Bod-Plaatsen" value="Plaats bod">
