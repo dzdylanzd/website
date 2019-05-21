@@ -44,7 +44,7 @@
             <!-- =========================================== -->
 
             <div class="flex-column-phone">
-                <div class="uk-width-1-1 uk-width-1-3@s Card-Empty ">
+                <div class="uk-width-1-1 uk-width-1-3@s Card-Empty">
                     <!-- Titel -->
 
                     <?php
