@@ -1,11 +1,6 @@
 <?php
-session_start();
-if (!isset($_SESSION["gevalideert"])) {
-    header("Location: email-Bevestiging.php");
-    die();
-} else {
-    session_abort();
-}
+
+
 
 ?>
 
@@ -48,11 +43,26 @@ if (!isset($_SESSION["gevalideert"])) {
                     </div>
                 </nav>
             </div>
-                <div class="uk-flex-center uk-flex-column">
+            <div class="uk-flex-center uk-flex-column">
                 <div class="registreren">
                     <h2>Veiling Plaatsen</h2>
                 </div>
-                <form method="post" action="includes/registreren.inc.php">
+              
+                    <div class="registreerbox">
+
+                        <h3>foto's</h3>
+                
+                        <div class="uk-flex">
+    <div class="uk-card uk-card-default uk-card-body uk-width-1-3 "><img src="https://via.placeholder.com/150" alt="Girl in a jacket"></div>
+    
+    
+    <div class="uk-card uk-card-default uk-card-body uk-width-expand ">Item 3</div>
+</div>
+
+
+
+                    </div>
+                    <form method="post" action="includes/registreren.inc.php">
                     <div class="registreerbox">
 
                         <h3>Algemene informatie</h3>
@@ -60,7 +70,7 @@ if (!isset($_SESSION["gevalideert"])) {
                         <input class="uk-input input-registratie" type="text" id="titel" name="titel"><br>
                         <label class="registreerlabel" for="staat">Staat van het product</label><br>
                         <select class="uk-select input-registratie" name="staat">
-                            <option value="..." >...</option>
+                            <option value="...">...</option>
                         </select>
                     </div>
                     <div class="registreerbox">
@@ -73,8 +83,8 @@ if (!isset($_SESSION["gevalideert"])) {
                         <input class="uk-input input-registratie" type="text" id="plaats" name="plaats"><br>
                         <label class="registreerlabel" for="land">Land</label><br>
                         <select class="uk-select input-registratie" name="land">
-                        
-                        </><br>
+
+                            </><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Inloggegevens</h3>
@@ -86,7 +96,7 @@ if (!isset($_SESSION["gevalideert"])) {
                         <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
                         <label class="registreerlabel" for="bevestigingsvraag">Bevestigingsvraag</label><br>
                         <select class="uk-select input-registratie" name="bevestigingsvraag">
-                           
+
                     </div>
                     <button type="submit" name="veiling-maken-button" class="uk-button knop-veiling-maken">Veiling maken</button>
                 </form>
