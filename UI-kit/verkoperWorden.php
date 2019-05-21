@@ -37,26 +37,27 @@
                 </nav>
             </div>
             <div class="verkoper" uk-filter="target: .js-filter">
-
+                <h2> Aanmaken verkoopaccount </h2>
+                <p class="voorwaarden">Kies hieronder uw gewenste identificatie methode.</p>
                 <ul class="uk-subnav uk-subnav-pill">
                     <li class="uk-active" uk-filter-control=".tag-post"><a href="#">Post</a></li>
                     <li uk-filter-control=".tag-creditcard"><a href="#">Creditcard</a></li>
-                </ul>
+</ul>
 
                 <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid>
                     <li class="tag-creditcard verkoopbox">
                         <div class="verkoopbox">
-                            <h3>identificatiemethode creditcard:</h3>
+                            <h3>Identificatiemethode creditcard:</h3>
                             <form method="post" action="includes/verkoperWorden.inc.php">
                             <label for="creditcard">Creditcard nummer</label><br>
                             <input class="uk-input input-registratie" type="number" name="creditcard" id="creditcard"><br>
-                            <button class="uk-button knop-email">Verkoopaccount activeren</button>
+                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-email">Verkoopaccount activeren</button>
                             </form>
                         </div>
                     </li>
                     <li class="tag-post verkoopbox">
                         <div class="verkoopbox">
-                            <h3>identificatiemethode post:</h3>
+                            <h3>Identificatiemethode post:</h3>
                             <form method="post" action="includes/verkoperWorden.inc.php">
                             <label for="bank">Bank</label><br>
                             <input class="uk-input input-registratie" type="text" name="bank" id="bank"><br>
@@ -64,7 +65,7 @@
                             <input class="uk-input input-registratie" type="text" name="rekeningnummer" id="rekeningnummer"><br>
                             <label for="bevestigingsnummer">Bevestigingsnummer</label><br>
                             <input class="uk-input input-registratie" type="number" name="bevestigingsnummer" id="bevestigingsnummer"><br>
-                            <button class="uk-button knop-email">Verkoopaccount activeren</button>
+                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-email">Verkoopaccount activeren</button>
                             </form>
                     </li>
                 </ul>

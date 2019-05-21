@@ -86,11 +86,32 @@ include 'database.php' ?>
                                 }
                             }
                         }
-                        echo '<div class="uk-inline">
+                        $sql = 'SELECT SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
+                        if ($sth = $dbh->prepare($sql)) {
+                            if ($sth->execute(array($gebruikersnaam))) {
+                                while ($row = $sth->fetch()) {
+                                    if ($row['SoortGebruiker'] == 'V') {
+                                        $verkoper = true;
+                                    }else{
+                                        $verkoper = false;
+                                    }
+                                }
+                            }
+                        }
+
+                        if ($verkoper) {
+                            echo '<div class="uk-inline">
                         <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
-                        <div uk-dropdown="mode: click"><button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">mijn gegevens</button>
-                        <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">mijn gegevens</button></div> </div>';
-               
+                        <div uk-dropdown="mode: click"><button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
+                        <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn biedingen</button>
+                        <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-veilingen.php\'">Mijn veilingen</button></div> </div>';
+                        } else {
+                            echo '<div class="uk-inline">
+                        <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
+                        <div uk-dropdown="mode: click"><button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
+                        <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
+                        <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'VerkoperWorden.php\'">Verkoper worden</button></div> </div>';
+                        }
                         echo '<button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>';
                     }
                     ?>
