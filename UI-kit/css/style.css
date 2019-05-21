@@ -340,9 +340,9 @@ h4 {
   background-color: #a7ca9b;
   text-align: center;
   width: 20%;
-  margin: auto;
-  margin-bottom: 20px;
+  margin: 20px;
   padding-top: 5px;
+  padding: 8px;
   padding-bottom: 25px;
   border-radius: 20px;
 }
@@ -352,10 +352,15 @@ width: 50%;
 margin: auto;
 }
 
+.countdown-getal-klein {
+  font-size: 1em;
+}
+
 .voorwaarden{
   font-size: 1em;
   font-style: italic;
 }
+
 .knop-registreren {
   margin-left: 42.5%;
   width: 15%;
@@ -378,7 +383,16 @@ margin: auto;
 }
 
 .mijn-veilingen {
-  margin-left: 5%;
+  margin-left
+}
+
+.mijn-veilingen-titel {
+  margin-left: 8%;
+}
+
+.mijn-veilingen-thumbnail {
+  width: 90%;
+  height: auto;
 }
 
 .uk-subnav-pill>.uk-active>a {

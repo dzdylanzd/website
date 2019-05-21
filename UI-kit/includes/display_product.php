@@ -59,8 +59,8 @@ if($sth->execute(array())){
 if($alles = $sth->fetch() > 0){
     // start van de slider 
    $text ='<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="clsActivated: uk-transition-active; ">
+           <ul class="uk-slider-items uk-grid">';
 
-<ul class="uk-slider-items uk-grid">';
 while ($alles = $sth->fetch()) {
     // haal thumbnail foto op
     $sqlImage = "SELECT TOP 1 * FROM Thumbnail where VoorwerpNummer  = ? ";
