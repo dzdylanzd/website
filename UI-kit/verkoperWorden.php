@@ -51,7 +51,7 @@
                             <form method="post" action="includes/verkoperWorden.inc.php">
                             <label for="creditcard">Creditcard nummer</label><br>
                             <input class="uk-input input-registratie" type="number" name="creditcard" id="creditcard"><br>
-                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-email">Verkoopaccount activeren</button>
+                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-lang">Verkoopaccount activeren</button>
                             </form>
                         </div>
                     </li>
@@ -65,7 +65,7 @@
                             <input class="uk-input input-registratie" type="text" name="rekeningnummer" id="rekeningnummer"><br>
                             <label for="bevestigingsnummer">Bevestigingsnummer</label><br>
                             <input class="uk-input input-registratie" type="number" name="bevestigingsnummer" id="bevestigingsnummer"><br>
-                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-email">Verkoopaccount activeren</button>
+                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-lang">Verkoopaccount activeren</button>
                             </form>
                     </li>
                 </ul>
