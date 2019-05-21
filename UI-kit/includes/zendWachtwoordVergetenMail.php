@@ -18,8 +18,6 @@ if ($query = $dbh->prepare($sql)) {
     }
 }
 
-
-
 if ($pwdCheck) {
     $hashedPwd = password_hash($random_hash, PASSWORD_DEFAULT);
     $sql = "UPDATE Gebruiker SET Wachtwoord = ? WHERE Mailadres = ?";
@@ -47,10 +45,6 @@ Beste meneer/mevrouw,<br>
 Hieronder vindt u een nieuw wachtwoord.<br>
 Deze kunt u wijzigen door in te loggen met dit wachtwoord en dan naar de pagina \'Mijn gegevens\' te gaan en uw wachtwoord aan te passen.<br>
 Het nieuwe wachtwoord is:  <strong>' . $random_hash . '
-
-</strong><br>
-<a href="http://iproject37.icasites.nl/email-Bevestiging.php">Bevestig e-mailadres</a>
-
 <br>
 <br>
 Bedankt dat u voor ons heeft gekozen!<br>
