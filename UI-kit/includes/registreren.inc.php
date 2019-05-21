@@ -123,7 +123,7 @@ if (isset($_POST['bevestigings-button'])) {
 
           $_SESSION['userId'] = $Gebruiksernaam;
           $_SESSION['userUid'] = $Mailadres;
-          header("location: ../index.php");
+          header("location: zendmailRegistreren.php");
           exit();
         }
       }
