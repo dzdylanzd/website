@@ -325,6 +325,7 @@ h4 {
 
 .verkoopbox{
   background-color: #a7ca9b;
+  color: white;
   text-align: center;
   width: 100%;
   margin: auto;
@@ -350,6 +351,9 @@ margin: auto;
 .knop-email {
   width: 25%;
 }
+.knop-lang{
+  width: 250px;
+}
 
 .input-registratie {
   width: 60%;
@@ -359,7 +363,9 @@ margin: auto;
   margin-left: 25%;
 }
 
-
+.uk-subnav-pill>.uk-active>a {
+background-color: #739F65;
+}
 .productPageMobile {
   width: 94%;
 }
