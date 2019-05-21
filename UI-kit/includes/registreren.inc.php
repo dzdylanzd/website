@@ -87,47 +87,49 @@ if (isset($_POST['bevestigings-button'])) {
     exit();
   } else {
 
-        $sql = "SELECT Gebruikersnaam from Gebruiker where Gebruikersnaam = ?";
+    $sql = "SELECT Gebruikersnaam from Gebruiker where Gebruikersnaam = ?";
+    if (!$query = $dbh->prepare($sql)) {
+      header("location: ../registreren.php?error=7");
+      exit();
+    } else {
+      $query = $dbh->prepare($sql);
+      $query->execute(array($Gebruiksernaam));
+      if ($query->fetch()) {
+        header("location: ../registreren.php?error=3");
+        exit();
+      } else {
+
+
+        $sql = "INSERT Gebruiker(Gebruikersnaam,Voornaam,Achternaam,Adresregel1,Postcode,Plaatsnaam,Land,Geboortedatum,Mailadres,Wachtwoord,Vraagnummer,AntwoordTekst,SoortGebruiker,DatumMakenAccount) values( ?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         if (!$query = $dbh->prepare($sql)) {
           header("location: ../registreren.php?error=7");
           exit();
         } else {
-          $query = $dbh->prepare($sql);
-          $query->execute(array($Gebruiksernaam));
-          if ($query->fetch()) {
-            header("location: ../registreren.php?error=3");
+          $hashedPwd = password_hash($Wachtwoord, PASSWORD_DEFAULT);
+          $hashedAnswer = password_hash($Antwoordtekst, PASSWORD_DEFAULT);
+
+          try {
+            $query->execute(array($Gebruiksernaam, $voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land, $Geboortedag, $Mailadres, $hashedPwd, $VraagNummer, $hashedAnswer, $soortGebruiker, date("Y-m-d H:i:s")));
+
+            $sql = "INSERT into voorkeur(categorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
+            if ($query = $dbh->prepare($sql)) {
+              $query->execute(array($voorkeur1, $Gebruiksernaam, $voorkeur2, $Gebruiksernaam, $voorkeur3, $Gebruiksernaam));
+            }
+          } catch (PDOException $e) {
+            $error = $e->getMessage();
+            header("location: ../registreren.php?error=$error");
             exit();
-          } else {
-
-
-            $sql = "INSERT Gebruiker(Gebruikersnaam,Voornaam,Achternaam,Adresregel1,Postcode,Plaatsnaam,Land,Geboortedatum,Mailadres,Wachtwoord,Vraagnummer,AntwoordTekst,SoortGebruiker,DatumMakenAccount) values( ?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            if (!$query = $dbh->prepare($sql)) {
-              header("location: ../registreren.php?error=7");
-              exit();
-            }
-
-
-
-            else {
-              $hashedPwd = password_hash($Wachtwoord, PASSWORD_DEFAULT);
-              $hashedAnswer = password_hash($Antwoordtekst, PASSWORD_DEFAULT);
-
-
-              $query->execute(array($Gebruiksernaam, $voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land, $Geboortedag, $Mailadres, $hashedPwd, $VraagNummer, $hashedAnswer, $soortGebruiker, date("Y-m-d H:i:s")));
-
-              $sql = "INSERT into voorkeur(categorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
-              if ($query = $dbh->prepare($sql)) {
-                $query->execute(array($voorkeur1, $Gebruiksernaam, $voorkeur2, $Gebruiksernaam, $voorkeur3, $Gebruiksernaam));
-              }
-              $_SESSION['userId'] = $Gebruiksernaam;
-              $_SESSION['userUid'] = $Mailadres;
-              header("location: ../index.php");
-              exit();
-            }
           }
+
+          $_SESSION['userId'] = $Gebruiksernaam;
+          $_SESSION['userUid'] = $Mailadres;
+          header("location: ../index.php");
+          exit();
         }
       }
-}else {
+    }
+  }
+} else {
   header("location: ../index.php");
   exit();
 }

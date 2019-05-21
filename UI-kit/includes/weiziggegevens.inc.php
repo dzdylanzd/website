@@ -80,6 +80,25 @@ if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty(
     $sql3 = "INSERT into voorkeur(categorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
     if ($sth = $dbh->prepare($sql)) {
         $_SESSION['userUid'] = $Mailadres;
+        try {
+            if ($sth->execute(array($voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land,$Mailadres,  $Geboortedag, $gebruikersnaam))) {
+                if ($sth2 = $dbh->prepare($sql2)) {
+                    if ($sth2->execute(array($gebruikersnaam))) {
+                        if ($sth3 = $dbh->prepare($sql3)) {
+                            if ($sth3->execute(array($voorkeur1, $gebruikersnaam, $voorkeur2, $gebruikersnaam, $voorkeur3, $gebruikersnaam))) {
+                                header("location: ../index.php");
+                                exit();
+                            } 
+                        }
+                    } 
+                }
+            }
+    } 
+    catch (PDOException $e) {	 
+   $error = $e->getMessage();
+    header("location: ../wijzigen-gegevens.php?error= $error");
+    exit();
+    }
         if ($sth->execute(array($voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land,$Mailadres,  $Geboortedag, $gebruikersnaam))) {
             if ($sth2 = $dbh->prepare($sql2)) {
                 if ($sth2->execute(array($gebruikersnaam))) {
