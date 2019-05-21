@@ -337,6 +337,11 @@ h4 {
 width: 50%;
 margin: auto;
 }
+
+.voorwaarden{
+  font-size: 1em;
+  font-style: italic;
+}
 .knop-registreren {
   margin-left: 42.5%;
   width: 15%;

@@ -121,7 +121,7 @@ if (!isset($_SESSION["gevalideert"])) {
                         <label class="registreerlabel" for="gebruikersnaam">Gebruikersnaam</label><br>
                         <input class="uk-input input-registratie" type="text" id="gebruikersnaam" name="gebruikersnaam"><br>
                         <label class="registreerlabel" for="wachtwoord">Wachtwoord</label><br>
-                        <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord"><br>
+                        <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord" placeholder="Minimaal acht tekens, één hoofdletter en één cijfer"><br>
                         <label class="registreerlabel" for="bevestigWachtwoord">Wachtwoord herhalen</label><br>
                         <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
                         <label class="registreerlabel" for="bevestigingsvraag">Bevestigingsvraag</label><br>
