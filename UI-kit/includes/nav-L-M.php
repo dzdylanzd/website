@@ -98,6 +98,18 @@ include 'database.php' ?>
                                 }
                             }
                         }
+                        $sql = 'SELECT SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
+                        if ($sth = $dbh->prepare($sql)) {
+                            if ($sth->execute(array($gebruikersnaam))) {
+                                while ($row = $sth->fetch()) {
+                                    if ($row['SoortGebruiker'] == 'A') {
+                                        $activatie = true;
+                                    }else{
+                                        $activatie = false;
+                                    }
+                                }
+                            }
+                        }
 
                         if ($verkoper) {
                             echo '<div class="uk-inline">
@@ -105,7 +117,7 @@ include 'database.php' ?>
                         <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                         <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn biedingen</button>
                         <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-veilingen.php\'">Mijn veilingen</button></div> </div>';
-                        }else if(isset($_SESSION['bevestigingscode'])){
+                        }else if($activatie){
                             echo '<div class="uk-inline">
                             <button class="knop-lang uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                             <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
