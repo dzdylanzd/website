@@ -39,7 +39,7 @@
 
             <!-- categorie nav S (mobile) -->
             <div class="uk-hidden@m">
-                <button class="uk-button uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
+                <button class="uk-button-categorieen uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
                 <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body">
                     <div class=" CategorieNavigatieBox">
                         <!-- <script>

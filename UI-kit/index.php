@@ -58,11 +58,11 @@
                     <div class="margin"> </div>
                     <?php
                     /* Tijdelijke Laatste kans en nieuw box */
-                    echo '<div class="ItemsSliderHomepagina">';
+                    echo '<div class="ItemsSliderGroen">';
                     echo "<h1> Laatste kans! </h1>";
                     
                     echo '</div>';
-                    echo '<div class="ItemsSliderHomepagina">';
+                    echo '<div class="ItemsSliderGroen">';
                     echo "<h1> Nieuw </h1>";
                     echo '</div>';
 
@@ -125,7 +125,7 @@
                                 if ($row["Rubrieknummer"] != -1) {
                                     $text = "";
                                     $text = $text . '<div class="ItemsSlider">';
-                                    $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
+                                    $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
                                     if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
                                         if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
                                             $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
@@ -165,7 +165,7 @@
                                 if ($row["Rubrieknummer"] != -1) {
                                     $text = "";
                                     $text = $text . '<div class="ItemsSlider">';
-                                    $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
+                                    $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
                                     if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
                                         if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
                                             $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
