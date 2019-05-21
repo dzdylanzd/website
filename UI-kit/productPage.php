@@ -194,20 +194,20 @@
          while ($row = $sth->fetch()) {
              $bod = $row['BodBedrag'];
              if($bod > 1 && $bod <= 50 ){
-                $minimumVerhoging = 0.5;
+                $minimumVerhoging =$row['BodBedrag'] + 0.5;
              }else if($bod > 50 && $bod <= 500 ){
-                $minimumVerhoging = 1;
+                $minimumVerhoging = $row['BodBedrag'] + 1;
              }else if($bod > 500 && $bod <= 1000 ){
-                $minimumVerhoging = 5;
+                $minimumVerhoging =  $row['BodBedrag'] +5;
             }else if($bod > 1000 && $bod <= 5000 ){
-                $minimumVerhoging = 10;
+                $minimumVerhoging =  $bod +10;
             }else{
-                $minimumVerhoging = 50;
+                $minimumVerhoging =  $row['BodBedrag'] +50;
             }
          }
         }
     }
-    echo " <input class=\"uk-input Bod-Veld\" type=\"number\" min=\"$bod\" max=\"10000000\" step=\"$minimumVerhoging\" name=\"bod\" placeholder=\"bod .....\">";
+    echo " <input class=\"uk-input Bod-Veld\" type=\"number\" min=\"$minimumVerhoging\" max=\"10000000\" step=\"0.5\" name=\"bod\" placeholder=\"bod .....\">";
                                     ?>
                                        
                                       
