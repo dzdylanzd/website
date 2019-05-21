@@ -95,42 +95,52 @@
                 <form method="post" action="wijzigen-gegevens.php">
                     <div class="registreerbox">
                         <h3>Persoonsgegevens</h3>
-                        <p class="mijngegevens">Voornaam:  <?php echo $voornaam?> </p><br>
-                        <p class="mijngegevens">Achternaam:  <?php echo $achternaam?> </p><br>
-                        <p class="mijngegevens">Geboortedatum:  <?php echo $geboortedatum?> </p><br>
+                        <p class="mijngegevens">Voornaam: <?php echo $voornaam ?> </p><br>
+                        <p class="mijngegevens">Achternaam: <?php echo $achternaam ?> </p><br>
+                        <p class="mijngegevens">Geboortedatum: <?php echo $geboortedatum ?> </p><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
-                        <p class="mijngegevens">Straat en huisnummer: <?php echo $straat?></p><br>
-                        <p class="mijngegevens">Postcode: <?php echo $postcode?></p><br>
-                        <p class="mijngegevens">Plaats: <?php echo $plaats?></p><br>
-                        <p class="mijngegevens">Land: <?php echo $land?></p><br>
+                        <p class="mijngegevens">Straat en huisnummer: <?php echo $straat ?></p><br>
+                        <p class="mijngegevens">Postcode: <?php echo $postcode ?></p><br>
+                        <p class="mijngegevens">Plaats: <?php echo $plaats ?></p><br>
+                        <p class="mijngegevens">Land: <?php echo $land ?></p><br>
                     </div>
 
                     <div class="registreerbox">
                         <h3>Accountgegevens</h3>
-                        <p class="mijngegevens">account type: <?php if($accountType == 'K'){echo"Koper"; }else if($accountType == 'V'){echo"verkoper"; } else if($accountType == 'A'){echo"admin"; }else{echo"?";}  ?></p><br>
-                        <p class="mijngegevens">gebruikersnaam: <?php echo $gebruikersnaam?></p><br>
-                        <p class="mijngegevens">email: <?php echo $email?></p><br>
+                        <p class="mijngegevens">Account type: <?php if ($accountType == 'K') {
+                                                                    echo "Koper";
+                                                                } else if ($accountType == 'V') {
+                                                                    echo "Verkoper";
+                                                                } else if ($accountType == 'A') {
+                                                                    echo "Activatie";
+                                                                } else if ($accountType == 'B') {
+                                                                    echo "Beheerder";
+                                                                } else {
+                                                                    echo "?";
+                                                                }  ?></p><br>
+                        <p class="mijngegevens">Gebruikersnaam: <?php echo $gebruikersnaam ?></p><br>
+                        <p class="mijngegevens">E-mailadres: <?php echo $email ?></p><br>
 
                     </div>
-         
+
                     <div class="registreerbox">
                         <h3>Voorkeuren</h3>
-                    
-                            <?php
-                            $sql = "select Rubrieknaam from Rubriek where Rubrieknummer in(
+
+                        <?php
+                        $sql = "select Rubrieknaam from Rubriek where Rubrieknummer in(
 
                                 select categorie from voorkeur where gebruikersnaam = ?)";
-                            if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array( $gebruikersnaam))) {
-                                    while ($row = $sth->fetch()) {
-                                        echo "<p class=\"mijngegevens\">$row[Rubrieknaam]</p> <br>";
-                                    }
+                        if ($sth = $dbh->prepare($sql)) {
+                            if ($sth->execute(array($gebruikersnaam))) {
+                                while ($row = $sth->fetch()) {
+                                    echo "<p class=\"mijngegevens\">$row[Rubrieknaam]</p> <br>";
                                 }
                             }
-                            ?>
-                       
+                        }
+                        ?>
+
                     </div>
                     <button action="wijzigen-gegevens.php" type="submit" name="bevestigings-button" class="uk-button knop-registreren">Gegevens wijzigen</button>
                 </form>

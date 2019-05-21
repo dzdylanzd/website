@@ -1,11 +1,6 @@
 <?php
-session_start();
-if (!isset($_SESSION["gevalideert"])) {
-    header("Location: email-Bevestiging.php");
-    die();
-} else {
-    session_abort();
-}
+
+
 
 ?>
 
@@ -52,7 +47,22 @@ if (!isset($_SESSION["gevalideert"])) {
                 <div class="registreren">
                     <h2>Veiling Plaatsen</h2>
                 </div>
-                <form method="post" action="includes/registreren.inc.php">
+              
+                    <div class="registreerbox">
+
+                        <h3>foto's</h3>
+                
+                        <div class="uk-flex">
+    <div class="uk-card uk-card-default uk-card-body uk-width-1-3 "><img src="https://via.placeholder.com/150" alt="Girl in a jacket"></div>
+    
+    
+    <div class="uk-card uk-card-default uk-card-body uk-width-expand ">Item 3</div>
+</div>
+
+
+
+                    </div>
+                    <form method="post" action="includes/registreren.inc.php">
                     <div class="registreerbox">
 
                         <h3>Algemene informatie</h3>
