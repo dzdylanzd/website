@@ -48,7 +48,7 @@ if (!isset($_SESSION["gevalideert"])) {
                     </div>
                 </nav>
             </div>
-                <div class="uk-flex-center uk-flex-column">
+            <div class="uk-flex-center uk-flex-column">
                 <div class="registreren">
                     <h2>Veiling Plaatsen</h2>
                 </div>
@@ -59,40 +59,61 @@ if (!isset($_SESSION["gevalideert"])) {
                         <label class="registreerlabel" for="titel">Titel</label><br>
                         <input class="uk-input input-registratie" type="text" id="titel" name="titel"><br>
                         <label class="registreerlabel" for="staat">Staat van het product</label><br>
-                        <select class="uk-select input-registratie" name="staat">
-                            <option value="..." >...</option>
-                        </select>
+                        <select class="uk-select input-registratie" name="staat"><br>
+                            <option value="...">...</option>
+                        </select><br>
+                        <label class="registreerlabel" for="beschrijving">Beschrijving</label><br>
+                        <textarea class="uk-textarea" name="message" rows="5" cols="20"></textarea>
                     </div>
                     <div class="registreerbox">
-                        <h3>Adresgegevens</h3>
-                        <label class="registreerlabel" for="adres1">Straat en huisnummer</label><br>
-                        <input class="uk-input input-registratie" type="text" id="adres1" name="adres1"><br>
-                        <label class="registreerlabel" for="postcode">Postcode</label><br>
-                        <input class="uk-input input-registratie" type="text" id="postcode" name="postcode"><br>
-                        <label class="registreerlabel" for="plaats">Plaats</label><br>
-                        <input class="uk-input input-registratie" type="text" id="plaats" name="plaats"><br>
+                        <h3>Veilinginformatie</h3>
+                        <label class="registreerlabel" for="lengte">lengte van de veiling</label><br>
+                        <select class="uk-select input-registratie" name="lengte"><br>
+                            <option value="...">...</option>
+                        </select><br>
+                        <label class="registreerlabel" for="valuta">Valuta</label><br>
+                        <select class="uk-select input-registratie" name="valuta"><br>
+                            <option value="...">...</option>
+                        </select><br>
+                        <label class="registreerlabel" for="prijs">Prijs</label><br>
+                        <input class="uk-input input-registratie" type="text" id="verzendkosten" name="verzendkosten"><br>
+                        <label class="registreerlabel" for="verzendkosten">Verzendkosten</label><br>
+                        <input class="uk-input input-registratie" type="text" id="verzendkosten" name="verzendkosten"><br>
+                        <label class="registreerlabel" for="betalingswijze">Betalingswijze</label><br>
+                        <select class="uk-select input-registratie" name="betalingswijze"><br>
+                            <option value="...">...</option>
+                        </select><br>
+                           <br>
+                    </div>
+                    <div class="registreerbox">
+                        <h3>Locatie van het product</h3>
+                        <label class="registreerlabel" for="plaatsnaam">Plaatsnaam</label><br>
+                        <input class="uk-input input-registratie" type="text" id="plaatsnaam" name="plaatsnaam"><br>
                         <label class="registreerlabel" for="land">Land</label><br>
-                        <select class="uk-select input-registratie" name="land">
-                        
-                        </><br>
+                        <select class="uk-select input-registratie" name="land"><br>
+                        <?php
+                            $sql = "SELECT LandNaam FROM Landen ORDER BY LandNaam ASC";
+                            if ($sth = $dbh->prepare($sql)) {
+                                if ($sth->execute(array())) {
+                                    while ($alles = $sth->fetch()) {
+                                        if ($alles['LandNaam'] == "Nederland") {
+                                            $tekst = "<option value='$alles[LandNaam]' selected>$alles[LandNaam]</option>";
+                                        } else {
+                                            $tekst = "<option value='$alles[LandNaam]'>$alles[LandNaam]</option>";
+                                        }
+                                        echo $tekst;
+                                    }
+                                }
+                            }
+                            ?>
+                        </select><br>
                     </div>
-                    <div class="registreerbox">
-                        <h3>Inloggegevens</h3>
-                        <label class="registreerlabel" for="gebruikersnaam">Gebruikersnaam</label><br>
-                        <input class="uk-input input-registratie" type="text" id="gebruikersnaam" name="gebruikersnaam"><br>
-                        <label class="registreerlabel" for="wachtwoord">Wachtwoord</label><br>
-                        <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord" placeholder="Minimaal acht tekens, één hoofdletter en één cijfer"><br>
-                        <label class="registreerlabel" for="bevestigWachtwoord">Wachtwoord herhalen</label><br>
-                        <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
-                        <label class="registreerlabel" for="bevestigingsvraag">Bevestigingsvraag</label><br>
-                        <select class="uk-select input-registratie" name="bevestigingsvraag">
-                           
-                    </div>
-                    <button type="submit" name="veiling-maken-button" class="uk-button knop-veiling-maken">Veiling maken</button>
+                    <button type="submit" name="veiling-maken-button" class="uk-button knop-veiling-maken">Veiling plaatsen</button>
                 </form>
             </div>
         </div>
-        <?php include 'includes/footer.inc.php'; ?>
+    </div>
+    <?php include 'includes/footer.inc.php'; ?>
 </body>
 
 </html>
