@@ -195,7 +195,7 @@ include 'database.php' ?>
             </div>
         </div>
     </div>';
-                } else {
+                } else { 
                     echo '<div class="uk-inline">
                     <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                     <div uk-dropdown="mode: click"><button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">mijn gegevens</button>

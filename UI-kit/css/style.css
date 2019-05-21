@@ -393,6 +393,10 @@ margin: auto;
   display: flex;
 }
 
+.menuknoppen {
+  min-width: 120%;
+}
+
 @media only screen and (max-width: 960px) {
   .flex-column-phone {
     flex-direction: column;

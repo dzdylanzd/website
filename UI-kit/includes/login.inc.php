@@ -31,7 +31,7 @@ if (isset($_POST['login-submit'])) {
                     if (strpos($_SERVER['HTTP_REFERER'], '?') != false) {
                         header("location: $_SERVER[HTTP_REFERER]&errorLogin=verkeerdwachtwoord");
                     } else {
-                        header("location: $_SERVER[HTTP_REFERER]?errorLogin=vekeerdwachtwoord");
+                        header("location: $_SERVER[HTTP_REFERER]?errorLogin=verkeerdwachtwoord");
                     }
                     exit();
                 } else if ($pwdCheck == true) {
@@ -44,7 +44,7 @@ if (isset($_POST['login-submit'])) {
                     if (strpos($_SERVER['HTTP_REFERER'], '?') != false) {
                         header("location: $_SERVER[HTTP_REFERER]&errorLogin=verkeerdwachtwoord");
                     } else {
-                        header("location: $_SERVER[HTTP_REFERER]?errorLogin=vekeerdwachtwoord");
+                        header("location: $_SERVER[HTTP_REFERER]?errorLogin=verkeerdwachtwoord");
                     }
                 }
             } else {
