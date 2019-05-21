@@ -105,7 +105,13 @@ include 'database.php' ?>
                         <div uk-dropdown="mode: click"><button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                         <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn biedingen</button>
                         <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-veilingen.php\'">Mijn veilingen</button></div> </div>';
-                        } else {
+                        }else if(isset($_SESSION['bevestigingscode'])){
+                            echo '<div class="uk-inline">
+                            <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
+                            <div uk-dropdown="mode: click"><button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
+                            <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
+                            <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'VerkoperActiveren.php\'">Verkoper activeren</button></div> </div>';
+                            }else {
                             echo '<div class="uk-inline">
                         <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                         <div uk-dropdown="mode: click"><button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>

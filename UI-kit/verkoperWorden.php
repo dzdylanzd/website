@@ -40,7 +40,7 @@
                 <h2> Aanmaken verkoopaccount </h2>
                 <p class="voorwaarden">Kies hieronder uw gewenste identificatie methode.</p>
                 <ul class="uk-subnav uk-subnav-pill">
-                    <li class="uk-active" uk-filter-control=".tag-post"><a href="#">Post</a></li>
+                    <li class="uk-active" uk-filter-control=".tag-email"><a href="#">Email</a></li>
                     <li uk-filter-control=".tag-creditcard"><a href="#">Creditcard</a></li>
 </ul>
 
@@ -51,21 +51,19 @@
                             <form method="post" action="includes/verkoperWorden.inc.php">
                             <label for="creditcard">Creditcard nummer</label><br>
                             <input class="uk-input input-registratie" type="number" name="creditcard" id="creditcard"><br>
-                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-lang">Verkoopaccount activeren</button>
+                            <button name="verkoopaccountAanvragen" type="submit" class="uk-button knop-lang">Verkoopaccount activeren</button>
                             </form>
                         </div>
                     </li>
-                    <li class="tag-post verkoopbox">
+                    <li class="tag-email verkoopbox">
                         <div class="verkoopbox">
-                            <h3>Identificatiemethode post:</h3>
+                            <h3>Identificatiemethode email:</h3>
                             <form method="post" action="includes/verkoperWorden.inc.php">
                             <label for="bank">Bank</label><br>
                             <input class="uk-input input-registratie" type="text" name="bank" id="bank"><br>
                             <label for="rekeningnummer">Rekeningnummer</label><br>
                             <input class="uk-input input-registratie" type="text" name="rekeningnummer" id="rekeningnummer"><br>
-                            <label for="bevestigingsnummer">Bevestigingsnummer</label><br>
-                            <input class="uk-input input-registratie" type="number" name="bevestigingsnummer" id="bevestigingsnummer"><br>
-                            <button name="verkoopaccountActiveren" type="submit" class="uk-button knop-lang">Verkoopaccount activeren</button>
+                            <button name="verkoopaccountAanvragen" type="submit" class="uk-button knop-lang">Verkoopaccount aanvragen</button>
                             </form>
                     </li>
                 </ul>
