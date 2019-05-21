@@ -2,7 +2,6 @@
   word-wrap: break-word;
 }
 
-
 footer {
   background-color: #c6ae91;
   text-align: center;
@@ -88,8 +87,7 @@ h4 {
   font-size: 1.5em;
 }
 
-
-.imagePrevieuw img {
+.imagePreview img {
   height: 100%;
   border: 2px solid #43464B;
 }
@@ -105,7 +103,7 @@ h4 {
   border-radius: 3px;
 }
 
-#imageprevieuw-detailpage {
+#imagepreview-detailpage {
   margin-left: 2px;
 }
 
@@ -138,13 +136,6 @@ h4 {
 
 .ItemsSliderDonkerGroen {
   background-color: #8ab27e;
-  border-radius: 5px;
-  margin: 15px;
-  padding: 15px;
-}
-
-.ItemsSliderHomepagina {
-  background-color: #a7ca9b;
   border-radius: 5px;
   margin: 15px;
   padding: 15px;
@@ -207,10 +198,6 @@ h4 {
   margin-bottom: 60px;
 }
 
-.flex-column-phone{
-  display: flex
-}
-
 .marginRemove{
   margin: -15px;
 }
@@ -264,6 +251,7 @@ h4 {
   padding-left: 0px;
   padding-top: 40px;
 }
+
 .reviews {
   padding-top: 40px;
 }
@@ -396,9 +384,14 @@ margin: auto;
   font-family: "Calibri", sans-serif
 }
 
+.flex-column-phone {
+  display: flex;
+}
+
 @media only screen and (max-width: 960px) {
   .flex-column-phone {
-    flex-direction: column
+    flex-direction: column;
+    max-width: 93%;
   }
 
   .image-square {
@@ -409,31 +402,42 @@ margin: auto;
     margin-right: 15px;
   }
 
-  .ItemsSlider {
-    width: 84%;
+  .ItemsSlider, .ItemsSliderDonkerGroen, .ItemsSliderGroen {
+    width: 90%;
   }
 
-  .ItemsSliderDonkerGroen {
-    width: 84%;
-  }
-
-  .ItemsSliderGroen {
-    width: 84%;
-  }
-
-  .ItemsSliderRubrieken {
+  .ItemsSliderRubrieken, .ItemsSliderDonkerGroenRubrieken, .ItemsSliderGroenRubrieken {
     width: 111%;
   }
 
-  .ItemsSliderDonkerGroenRubrieken {
-    width: 111%;
+  .categorieNavHomepagina {
+    width: 94%;
   }
 
-  .ItemsSliderGroenRubrieken {
-    width: 111%;
+  .uk-button {
+    width: 98%;
   }
 
-  .categorieNavHomepagina{
-    width: 89%;
+  .uk-button-categorieen {
+    border: none;
+    overflow: visible;
+    font: inherit;
+    text-transform: none;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0 30px;
+    vertical-align: middle;
+    font-size: .875rem;
+    line-height: 38px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .1s ease-in-out;
+    transition-property: color, background-color, border-color;
+    background-color: #c6ae91;
+    color: #fffbec;
+    width: 92%;
+    margin: 15px;
+    font-family: "Calibri", sans-serif
   }
 }

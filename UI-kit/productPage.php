@@ -62,10 +62,10 @@
                     $sql = "SELECT TOP 4 IllustratieFile FROM Illustraties WHERE Voorwerpnummer = ? ";
                     $sth = $dbh->prepare($sql);
                     if ($sth->execute(array($_GET["ID"]))) {
-                        $sliderFotos = '<div id="imageprevieuw-detailpage" class="uk-position-relative uk-visible-toggle uk-light  uk-width-4-4	uk-margin-bottom" tabindex="-1" uk-slideshow>
+                        $sliderFotos = '<div id="imagepreview-detailpage" class="uk-position-relative uk-visible-toggle uk-light  uk-width-4-4	uk-margin-bottom" tabindex="-1" uk-slideshow>
 
                             <ul class="uk-slideshow-items ">';
-                        $knoppenFotos = '<div class="imagePrevieuw uk-flex">';
+                        $knoppenFotos = '<div class="imagePreview uk-flex">';
                         $index = 0;
                         while ($alles = $sth->fetch()) {
                             $image = "src=\"http://iproject5.icasites.nl/pics/$alles[IllustratieFile]\" ";
