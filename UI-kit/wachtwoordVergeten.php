@@ -41,9 +41,9 @@
                     <h2>Wachtwoord vergeten</h2>
                 </div>
                 <form method="post" action="includes/zendWachtwoordVergetenMail.php">
-                    <div class="email-box">
+                    <div class="registreerbox witte-tekst">
                         <h3>Wachtwoord vergeten</h3>
-                        <p>Beste bezoeker,<br> voordat u uw wachtwoord kunt wijzigen moet u uw e-mailadres ingeven. <br>
+                        <p>Beste bezoeker,<br> Voordat u uw wachtwoord kunt wijzigen moet u uw e-mailadres ingeven. <br>
                             Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken. Ook moet u uw antwoord op de beveiliginsvraag ingeven.
                         </p>
                         <label for="wachtwoorVergetenEmail">E-mail:</label><br>
@@ -53,8 +53,6 @@
                         <button class="uk-button knop-email">Bevestigen</button>
                     </div>
                 </form>
-
-
             </div>
         </div>
     </div>
