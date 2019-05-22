@@ -33,10 +33,9 @@ Beste meneer/mevrouw,<br>
 Bedankt dat u voor EenmaalAndermaal heeft gekozen.<br>
 U kunt nu beginnen met het bieden op veilingen!<br>
 Wilt u inloggen? Dit kan door op de inlogknop te klikken en uw gegevens in te vullen.<br>
-Uw gebruikersnaam is:  <strong>' . $gebruiksersnaam . '.<br>
+Uw gebruikersnaam is:  <strong>' . $gebruiksersnaam . '.<br></strong>
 U kunt ten alle tijden uw gegevens wijzigen op de mijn gegevens pagina.
-
-</strong>
+<br>
 <br>
 Bedankt dat u voor ons heeft gekozen!<br>
 iConcepts
