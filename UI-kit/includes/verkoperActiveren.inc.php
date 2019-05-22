@@ -16,8 +16,10 @@ if (isset($_POST['verkoopaccountActiveren'])) {
         $sql2 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?';
         $query = $dbh->prepare($sql2);
         if ($query->execute(array("V", $Gebruiksernaam))) {
-            header("location: ../index.php");
+            header("location: ../index.php?succes=uBentVerkoper");
             exit();
         }
+    }else{
+        
     }
 }
