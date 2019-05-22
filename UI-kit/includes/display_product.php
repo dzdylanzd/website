@@ -57,11 +57,13 @@ $sth = $dbh->prepare($sql);
 if($sth->execute(array())){
 
 if($alles = $sth->fetch() > 0){
+   
     // start van de slider 
    $text ='<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="clsActivated: uk-transition-active; ">
            <ul class="uk-slider-items uk-grid">';
 
 while ($alles = $sth->fetch()) {
+    $valuta = $alles['Valuta'];
     // haal thumbnail foto op
     $sqlImage = "SELECT TOP 1 * FROM Thumbnail where VoorwerpNummer  = ? ";
     $sthImage = $dbh->prepare($sqlImage);
@@ -70,15 +72,32 @@ if($sthImage->execute(array($alles["Voorwerp"]))){
     // zet de titel tot max 6
     $titel = substr($alles["Titel"],6);
 }
-// bepaal het valuta teken
-if($alles["Valuta"] = "EUR"){
-    $valutaTeken = "€";
-}else if($alles["Valuta"] = "USD"){
-    $valutaTeken = "$";
-}else if($alles["Valuta"] = "GBP"){
-    $valutaTeken = "£";
-}else if($alles["Valuta"] = "AUD"){
-    $valutaTeken = "\$A";
+
+// Schrijf valuta om in tekens
+switch ($valuta) {
+    case 'EUR':
+        $valuta = '€';
+        break;
+
+    case 'GBP':
+        $valuta = '£';
+        break;
+
+    case 'AUD':
+        $valuta = 'A$';
+        break;
+
+    case 'CAD':
+        $valuta = 'C$';
+        break;
+
+    case 'INR':
+        $valuta = '₹';
+        break;
+
+    case 'USD':
+        $valuta = '$';
+        break;
 }
 
 
@@ -91,7 +110,7 @@ $text = $text . "
         <h3 class=\"uk-margin-remove\">";
         $text = $text . substr($alles["Titel"],0,10);
         $text = $text . "... </h3>
-        <p class=\"uk-margin-remove\"> $valutaTeken $alles[StartPrijs]</p>
+        <p class=\"uk-margin-remove\"> $valuta $alles[StartPrijs]</p>
     </div>
 </div>
 </li>"; 
