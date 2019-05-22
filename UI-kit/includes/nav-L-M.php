@@ -1,7 +1,7 @@
 <!-- navigatiebalk Desktop -->
 <?php session_start();
 include 'database.php' ?>
-<div class="uk-visible@m sticky ">
+<div class="uk-visible@m sticky">
 
 
     <nav class="uk-navbar-container marginRemove" uk-navbar>
@@ -92,7 +92,7 @@ include 'database.php' ?>
                                 while ($row = $sth->fetch()) {
                                     if ($row['SoortGebruiker'] == 'V') {
                                         $verkoper = true;
-                                    }else{
+                                    } else {
                                         $verkoper = false;
                                     }
                                 }
@@ -104,7 +104,7 @@ include 'database.php' ?>
                                 while ($row = $sth->fetch()) {
                                     if ($row['SoortGebruiker'] == 'A') {
                                         $activatie = true;
-                                    }else{
+                                    } else {
                                         $activatie = false;
                                     }
                                 }
@@ -115,15 +115,15 @@ include 'database.php' ?>
                             echo '<div class="uk-inline">
                         <button class=" knop-lang uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                         <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
-                        <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn biedingen</button>
+                        <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
                         <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-veilingen.php\'">Mijn veilingen</button></div> </div>';
-                        }else if($activatie){
+                        } else if ($activatie) {
                             echo '<div class="uk-inline">
                             <button class="knop-lang uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                             <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                             <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
                             <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'VerkoperActiveren.php\'">Verkoper activeren</button></div> </div>';
-                            }else {
+                        } else {
                             echo '<div class="uk-inline">
                         <button class="knop-lang uk-button uk-button-default uk-margin-right" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                         <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
@@ -202,17 +202,17 @@ include 'database.php' ?>
                         }
                     }
                     echo '
-    </div>
-</div>
-</div>
-<div class="uk-navbar-right">
-    <div class="uk-navbar-nav">
-        <div class=" uk-navbar-item ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-navbar-right">
+                            <div class="uk-navbar-nav">
+                                <div class=" uk-navbar-item ">
 
-            <div class=" uk-navbar-item "> <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'email-Bevestiging.php\'">registreren</button>
-            </div>
-        </div>
-    </div>';
+                                    <div class=" uk-navbar-item "> <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'email-Bevestiging.php\'">registreren</button>
+                                    </div>
+                                </div>
+                            </div>';
                 } else {
                     echo '<div class="uk-inline">
                     <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>

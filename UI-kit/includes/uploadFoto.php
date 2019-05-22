@@ -1,8 +1,8 @@
 <?php
 session_start();
-$target_dir = "../uploud/";
+$target_dir = "../upload/";
 if( $_SESSION['index'] >= 4){
-    header("location: ../veiling-Maken.php?error=maxImage");
+    header("location: ../veiling-Maken.php?error=maxFotos");
     exit();
 }
 
@@ -11,22 +11,23 @@ $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 $random_hash = bin2hex(random_bytes(8));
 $target_file = $target_dir . $random_hash . "." . $imageFileType;
-$file =  "uploud/" . $random_hash . "." . $imageFileType;
+$file =  "upload/" . $random_hash . "." . $imageFileType;
 
-// Check if image file is a actual image or fake image
+// Check of de geüploade foto een echte foto is
 if(isset($_POST["submit"])) {
     $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
     if($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".";
+        echo "Bestand is een foto - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
-        header("location: ../veiling-Maken.php?error=NoImage");
+        header("location: ../veiling-Maken.php?error=geenFoto");
     exit();
-        echo "File is not an image.";
+        echo "Bestand is geen foto.";
         $uploadOk = 0;
     }
 }
-// Check if file already exists
+
+// Check of de foto al bestaat
 while (file_exists($target_file)) {
     $target_file = basename($_FILES["fileToUpload"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -34,29 +35,33 @@ while (file_exists($target_file)) {
     $target_file = $target_dir . $random_hash . "." . $imageFileType;
     $file =  $random_hash . "." . $imageFileType;
 }
-// Check file size
+
+// Check de grootte van het bestand
 if ($_FILES["fileToUpload"]["size"] > 500000) {
     
-    echo "Sorry, your file is too large.";
+    echo "Sorry, deze foto is te groot.";
     $uploadOk = 0;
 
-    header("location: ../veiling-Maken.php?error=toLarge");
+    header("location: ../veiling-Maken.php?error=fotoTeGroot");
     exit();
 }
-// Allow certain file formats
+
+// Check of het bestand JPG, JPEG en PNG is
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" ) {
-    echo "Sorry, only JPG, JPEG, PNG files are allowed.";
+    echo "Sorry, wij accepteren alleen JPG, JPEG of PNG foto's.";
     $uploadOk = 0;
     header("location: ../veiling-Maken.php?error=notRightFormate");
     exit();
 }
-// Check if $uploadOk is set to 0 by an error
+
+// Check of de foto door de vorige checks kwam
 if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
+    echo "Sorry, uw bestand is niet geüpload.";
+
+// Als alles klopt, upload het bestand
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        echo "Het bestand ". basename( $_FILES["fileToUpload"]["name"]). " is geüpload.";
         $_SESSION['fotos'][$_SESSION['index']] = $file;
         $_SESSION['index']++;
         // rond gaan
@@ -66,7 +71,7 @@ if ($uploadOk == 0) {
         header("location: ../veiling-Maken.php");
         exit();
     } else {
-        echo "Sorry, there was an error uploading your file.";
+        echo "Sorry, uw bestand is niet geüpload.";
     }
 }
 ?>

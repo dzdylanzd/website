@@ -348,6 +348,16 @@ h4 {
   border-radius: 20px;
 }
 
+.veiling-maken-box {
+  background-color: #a7ca9b;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
 .verkoper{
 width: 50%;
 margin: auto;
@@ -368,6 +378,10 @@ margin: auto;
   font-style: italic;
 }
 
+.upload-form {
+  margin-top: 5%;
+}
+
 .knop-registreren {
   margin-left: 42.5%;
   width: 15%;
@@ -383,6 +397,10 @@ margin: auto;
   width: 25%;
 }
 
+.witte-tekst {
+  color: #fffbec;
+}
+
 .knop-lang{
   width: 250px;
 }
@@ -394,6 +412,7 @@ margin: auto;
 .registreren {
   margin-left: 25%;
 }
+
 .registreer{
   text-align: center;
 }
