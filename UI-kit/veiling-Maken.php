@@ -51,18 +51,150 @@
                     <div class="registreerbox">
 
                         <h3>foto's</h3>
-                
+                <?php
+         if(!isset($_SESSION['fotos']) && !isset($_SESSION['index']) ){       
+$_SESSION['fotos'] = array("https://via.placeholder.com/150","https://via.placeholder.com/150","https://via.placeholder.com/150","https://via.placeholder.com/150");
+$_SESSION['index'] = 0;
+}
+
+                ?>
                         <div class="uk-flex">
-    <div class="uk-card uk-card-default uk-card-body uk-width-1-3 "><img src="https://via.placeholder.com/150" alt="Girl in a jacket"></div>
+    <div class="uk-card uk-card-default  uk-width-2-5 uk-height-medium "><img class="uk-width-1-1 uk-height-1-1" src="<?php echo$_SESSION['fotos'][0];  ?>" alt="Girl in a jacket"></div>
     
     
-    <div class="uk-card uk-card-default uk-card-body uk-width-expand ">Item 3</div>
+    <div class=" uk-width-expand ">
+    <div class="uk-card uk-card-default  uk-width-expand uk-height-small ">
+<div class="uk-flex">
+<img class="uk-width-1-3 uk-height-1-1" src="<?php echo$_SESSION['fotos'][1];  ?>" alt="Girl in a jacket">
+<img class="uk-width-1-3 uk-height-1-1" src="<?php echo$_SESSION['fotos'][2];  ?>" alt="Girl in a jacket">
+<img class="uk-width-1-3 uk-height-1-1" src="<?php echo$_SESSION['fotos'][3];  ?>" alt="Girl in a jacket">
+</div>
+
+    </div>
+    <div class="uk-card uk-card-default  uk-width-expand uk-height-small ">
+    <form action="includes/uploadFoto.php" method="post" enctype="multipart/form-data">
+    Select image to upload:
+    <input type="file" name="fileToUpload" id="fileToUpload">
+    <input type="submit" value="Upload Image" name="submit">
+</form>
+    </div>
+
+
+    </div>
 </div>
 
 
 
                     </div>
-                    <form method="post" action="includes/registreren.inc.php">
+                    
+                    <div class="registreerbox">
+
+                    <div class="uk-flex">
+                       <div class="uk-width-1-3"> </div>
+                       <div class="uk-width-1-3 uk-text-left"> 
+
+
+                       <form action="veiling-Maken.php" method="get">
+<?php
+  require_once('includes\database.php');
+  if (!isset($_GET["root"])) {
+    $stmt = $dbh->prepare("SELECT * from Rubriek where Volgnr = ?");
+
+    if ($stmt->execute(array(-1))) {
+      echo "<ul class=\"noDots\">";
+      while ($row = $stmt->fetch()) {
+        if ($row["Rubrieknummer"] != -1) {
+          echo "   <li><input type=\"radio\" name=\"Rubriek\" value=\"$row[Rubrieknummer]\"> <a class=\"uk-link-heading\" href=\"veiling-Maken.php?root=$row[Rubrieknummer]\">  $row[Rubrieknaam] </a></li>";
+        }
+      }
+      echo "</ul>";
+    }
+  } else {
+
+    $stmt = $dbh->prepare("SELECT * from Rubriek where Rubrieknummer = ?");
+
+    if ($stmt->execute(array($_GET["root"]))) {
+
+      while ($row = $stmt->fetch()) {
+        if ($row["Rubrieknummer"] != -1) {
+          $text = $row["Rubrieknaam"];
+          $parent = $row["Volgnr"];
+
+          while ($parent > 0) {
+            $stmt2 = $dbh->prepare("SELECT * from Rubriek where Rubrieknummer = ?");
+
+            if ($stmt2->execute(array($parent))) {
+              while ($row2 = $stmt2->fetch()) {
+                $text =  " <a class=\"uk-link-heading\" href=\"veiling-Maken.php?root=$row2[Rubrieknummer]\">  $row2[Rubrieknaam] </a> /  $text";
+                $parent = $row2["Volgnr"];
+              }
+            }
+          }
+        }
+      }
+      $text = "<div> $text </div>";
+      echo $text;
+      echo "<div class=\"-margin20\"></div>";
+    }
+
+
+
+    echo "<ul class=\"noDots\">";
+    if ($_GET["root"] != -1) {
+      $stmt = $dbh->prepare("SELECT * from Rubriek where Rubrieknummer = ?");
+
+      if ($stmt->execute(array($_GET["root"]))) {
+
+        while ($row = $stmt->fetch()) {
+          if ($row["Volgnr"] == -1) {
+            echo "<li> <a class=\"categorie-terug\" href=\"veiling-Maken.php\"> <span uk-icon=\"icon: arrow-left\"></span>terug</a></li>  ";
+          } else {
+            echo "<li> <a class=\"categorie-terug\" href=\"veiling-Maken.php?root=$row[Volgnr]\"> <span uk-icon=\"icon: arrow-left\"></span>terug</a></li>  ";
+          }
+        }
+      }
+    }
+    $stmt = $dbh->prepare("SELECT * from Rubriek where Volgnr = ?");
+
+    if ($stmt->execute(array($_GET["root"]))) {
+      if ($row = $stmt->fetch() > 0) {
+        $stmt->execute(array($_GET["root"]));
+        while ($row = $stmt->fetch()) {
+          if ($row["Rubrieknummer"] != -1) {
+            echo "<li><input type=\"radio\" name=\"Rubriek\" value=\"$row[Rubrieknummer]\"> <a class=\"uk-link-heading\" href=\"veiling-Maken.php?root=$row[Rubrieknummer]\">  $row[Rubrieknaam] </a> </li>  ";
+          }
+        }
+      } else {
+        $stmt = $dbh->prepare("SELECT * from Rubriek where Rubrieknummer = ?");
+
+        if ($stmt->execute(array($_GET["root"]))) {
+
+          while ($row = $stmt->fetch()) {
+            if ($row["Rubrieknummer"] != -1) {
+              echo "<li><input type=\"radio\" name=\"Rubriek\" value=\"$row[Rubrieknummer]\"> <a class=\"uk-link-heading\" href=\"veiling-Maken.php?root=$row[Volgnr]\">  $row[Rubrieknaam] </a> </li>  ";
+            }
+          }
+        }
+      }
+      echo "</ul >";
+    }
+  }
+  ?>
+
+                       </div>
+                       <div class="uk-width-1-3"> </div>
+                   </div>
+
+
+
+                   
+    
+</div>
+
+
+
+
+
                     <div class="registreerbox">
 
                         <h3>Algemene informatie</h3>
@@ -70,7 +202,20 @@
                         <input class="uk-input input-registratie" type="text" id="titel" name="titel"><br>
                         <label class="registreerlabel" for="staat">Staat van het product</label><br>
                         <select class="uk-select input-registratie" name="staat"><br>
-                            <option value="...">...</option>
+
+                                 <?php
+                            $sql = "select distinct Staat from Voorwerp where staat != ''";
+                            if ($sth = $dbh->prepare($sql)) {
+                                if ($sth->execute(array())) {
+                                    while ($alles = $sth->fetch()) {
+                                       
+                                            $tekst = "<option value='$alles[Staat]'>$alles[Staat]</option>";
+                                        
+                                        echo $tekst;
+                                    }
+                                }
+                            }
+                            ?>
                         </select><br>
                         <label class="registreerlabel" for="beschrijving">Beschrijving</label><br>
                         <textarea class="uk-textarea" name="message" rows="5" cols="20"></textarea>
@@ -79,11 +224,27 @@
                         <h3>Veilinginformatie</h3>
                         <label class="registreerlabel" for="lengte">lengte van de veiling</label><br>
                         <select class="uk-select input-registratie" name="lengte"><br>
-                            <option value="...">...</option>
+                            <option value="1" selected>1 dag</option>
+                            <option value='3'>3 dagen</option>
+                            <option value='5'>5 dagen</option>
+                            <option value='7'>7 dagen</option>
+                            <option value='10'>10 dagen</option>
                         </select><br>
                         <label class="registreerlabel" for="valuta">Valuta</label><br>
                         <select class="uk-select input-registratie" name="valuta"><br>
-                            <option value="...">...</option>
+                        <?php
+                            $sql = "select distinct Valuta from Voorwerp";
+                            if ($sth = $dbh->prepare($sql)) {
+                                if ($sth->execute(array())) {
+                                    while ($alles = $sth->fetch()) {
+                                       
+                                            $tekst = "<option value='$alles[Valuta]'>$alles[Valuta]</option>";
+                                        
+                                        echo $tekst;
+                                    }
+                                }
+                            }
+                            ?>
                         </select><br>
                         <label class="registreerlabel" for="prijs">Prijs</label><br>
                         <input class="uk-input input-registratie" type="text" id="verzendkosten" name="verzendkosten"><br>
