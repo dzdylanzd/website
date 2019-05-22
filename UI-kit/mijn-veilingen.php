@@ -68,6 +68,34 @@
                                 $titel = substr($titel, 0, 30);
                                 $looptijdEinde = $row['LooptijdEinde'];
                                 $voorwerpnummer = $row['VoorwerpNummer'];
+                                $valuta = $row['Valuta'];
+
+                                // Schrijf valuta om in tekens
+                                switch ($valuta) {
+                                    case 'EUR': 
+                                        $valuta = '€';
+                                        break;
+                                    
+                                    case 'GBP':
+                                        $valuta = '£';
+                                        break;
+                                    
+                                    case 'AUD':
+                                        $valuta = 'A$';
+                                        break;
+                                    
+                                    case 'CAD':
+                                        $valuta = 'C$';
+                                        break;
+
+                                    case 'INR':
+                                        $valuta = '₹';
+                                        break;
+
+                                    case 'USD':
+                                        $valuta = '$';
+                                        break;
+                                }
 
                                 // Bereken de looptijd
                                 $looptijd = substr(substr_replace($looptijdEinde, "T", 11, 0), 0, 20) . "+01:00";
@@ -98,8 +126,8 @@
                                 echo '<div class="uk-width-1-1 uk-width-1-3@s veilingbox">';
                                 echo '<h3>' . $titel . '...</h3>';
                                 echo '<img class="mijn-veilingen-thumbnail" '.$thumbnail.'" alt="Thumbnail"><br>';
-                                echo "<h4 class=\"mijn-veilingen\">  
-                                        <div class=\"uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $looptijd\">
+                                echo "<p> Tijd resterend: </p><br><h3 class=\"mijn-veilingen\">  
+                                        <div class=\"margin-auto uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $looptijd\">
                                             <div>
                                                 <div class=\"countdown-getal-klein uk-countdown-number uk-countdown-days\"></div>
                                             </div>
@@ -116,8 +144,8 @@
                                                 <div class=\"countdown-getal-klein uk-countdown-number uk-countdown-seconds\"></div>
                                             </div>
                                             <div class=\"countdown-getal-klein uk-countdown-separator\">s</div>
-                                        </div></h4>";
-                                echo 'Huidig bod: ' . $huidigbod;
+                                        </div></h3>";
+                                echo 'Huidig bod: ' . $valuta . $huidigbod;
                                 echo '</div>';
                             }
                         }
