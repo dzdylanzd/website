@@ -2,11 +2,11 @@
 
 session_start();
 
-$gebruiksernsam = $_SESSION['userId'];
+$gebruiksersnaam = $_SESSION['userId'];
 $to = $_SESSION['userUid'];
 
 
-$subject = "gefeliciteerd u ben lid";
+$subject = "Welkom bij EenmaalAndermaal!";
 
 // Always set content-type when sending HTML email
 $headers = "MIME-Version: 1.0" . "\r\n";
@@ -31,9 +31,9 @@ $message = '
 <body>
 Beste meneer/mevrouw,<br> 
 Bedankt dat u voor EenmaalAndermaal heeft gekozen.<br>
-u bent nu lid geworden van onze prachtige site.<br>
-u kunt nu inloggen door op de inlog knop te klikken en uw gegevens in te vullen<br>
-uw gebruikersnaam is:  <strong>' . $gebruiksernsam . '
+U kunt nu beginnen met het bieden op veilingen!<br>
+Wilt u inloggen? Dit kan door op de inlogknop te klikken en uw gegevens in te vullen.<br>
+Uw gebruikersnaam is:  <strong>' . $gebruiksersnaam . '.
 
 </strong>
 <br>

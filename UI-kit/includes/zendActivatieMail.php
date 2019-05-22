@@ -26,7 +26,7 @@ Beste '.$Gebruikersnaam.',<br>
 Bedankt dat u voor EenmaalAndermaal heeft gekozen.<br>
 Hieronder vindt u de code om uw verkoopaccount te activeren.<br>
 Dit kunt u doen door op \'Verkoopaccount activeren\' te klikken<br>
-De verificatiecode is:  <strong>' . $random_hash . '
+De verificatiecode is:  <strong>' . $random_hash . '</strong>
 <br>
 <br>
 Bedankt dat u voor ons heeft gekozen!<br>
