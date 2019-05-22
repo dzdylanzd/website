@@ -1,6 +1,10 @@
 <?php
 session_start();
 $target_dir = "../uploud/";
+if( $_SESSION['index'] >= 4){
+    header("location: ../veiling-Maken.php?error=maxImage");
+    exit();
+}
 
 $target_file = basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;

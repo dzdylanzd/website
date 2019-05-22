@@ -224,10 +224,10 @@ $_SESSION['index'] = 0;
                         <h3>Veilinginformatie</h3>
                         <label class="registreerlabel" for="lengte">lengte van de veiling</label><br>
                         <select class="uk-select input-registratie" name="lengte"><br>
-                            <option value="1" selected>1 dag</option>
+                            <option value="1" >1 dag</option>
                             <option value='3'>3 dagen</option>
                             <option value='5'>5 dagen</option>
-                            <option value='7'>7 dagen</option>
+                            <option value='7' selected>7 dagen</option>
                             <option value='10'>10 dagen</option>
                         </select><br>
                         <label class="registreerlabel" for="valuta">Valuta</label><br>
@@ -252,9 +252,14 @@ $_SESSION['index'] = 0;
                         <input class="uk-input input-registratie" type="text" id="verzendkosten" name="verzendkosten"><br>
                         <label class="registreerlabel" for="betalingswijze">Betalingswijze</label><br>
                         <select class="uk-select input-registratie" name="betalingswijze"><br>
-                            <option value="...">...</option>
+                            <option value="Contant">Contant</option>
+                            <option value="Bank">Bank</option>
+                            <option value="Giro">Giro</option>
+                            <option value="Anders">Anders</option>
                         </select><br>
-                           <br>
+                        <label class="registreerlabel" for="betalingsinstructies">betalingsinstructies</label><br>
+                        <input class="uk-input input-registratie" type="text" id="betalingsinstructies" name="betalingsinstructies"><br>
+                           
                     </div>
                     <div class="registreerbox">
                         <h3>Locatie van het product</h3>
