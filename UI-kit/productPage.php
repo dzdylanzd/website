@@ -33,7 +33,7 @@
                                     <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
                                 </div>
                             </form>
-                            <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
+                            <a class="uk-margin-left" href="inloggen-Mobile.php" uk-icon="icon: user"></a>
                         </div>
                     </div>
                 </nav>

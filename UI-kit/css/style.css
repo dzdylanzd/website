@@ -452,7 +452,7 @@ background-color: #739F65;
 @media only screen and (max-width: 960px) {
   .flex-column-phone {
     flex-direction: column;
-    max-width: 93%;
+    width: 93%;
   }
 
   .image-square {
@@ -500,5 +500,19 @@ background-color: #739F65;
     width: 92%;
     margin: 15px;
     font-family: "Calibri", sans-serif
+  }
+  .registreerbox{
+    width: 94%;
+  }
+  .registreren{
+    margin-left: 5%;
+  }
+  .knop-email{
+    width: 60%;
+    margin-left: 12px;
+  }
+  .knop-registreren{
+    margin-left: 10%;
+    width: 80%;
   }
 }

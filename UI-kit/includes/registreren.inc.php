@@ -112,9 +112,9 @@ if (isset($_POST['bevestigings-button'])) {
 
           try {
             $query->execute(array($Gebruiksernaam, $voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $adresregel2, $Land, $Geboortedag, $Mailadres, $hashedPwd, $VraagNummer, $hashedAnswer, $soortGebruiker, date("Y-m-d H:i:s")));
-            $sql = "INSERT into Gebruikerstelefoon VALUES (?,?,?)";
+            $sql = "INSERT into Gebruikerstelefoon(Gebruiker, Telefoonnummer) VALUES (?,?)";
             if ($query = $dbh->prepare($sql)) {
-              $query->execute(array(1,  $Gebruiksernaam, $telefoonnummer));
+              $query->execute(array($Gebruiksernaam, $telefoonnummer));
             }
             $sql2 = "INSERT into voorkeur(categorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
             if ($query = $dbh->prepare($sql2)) {
