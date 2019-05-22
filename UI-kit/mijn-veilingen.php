@@ -41,7 +41,7 @@
 
             <!-- titel van pagina -->
             <div class="mijn-veilingen-titel">
-                <h2>Mijn veilingen</h2>
+                <h2>Mijn veilingen <button onclick="window.location.href='veiling-Maken.php'" name="bevestigings-button" class="uk-button knop-nieuwe-veiling">Nieuwe veiling maken</button><h2>
             </div>
 
             <!-- veilingen -->
@@ -126,8 +126,8 @@
                                 echo '<div class="uk-width-1-1 uk-width-1-3@s veilingbox">';
                                 echo '<h3>' . $titel . '...</h3>';
                                 echo '<img class="mijn-veilingen-thumbnail" '.$thumbnail.'" alt="Thumbnail"><br>';
-                                echo "<p> Tijd resterend: </p><br><h3 class=\"mijn-veilingen\">  
-                                        <div class=\"margin-auto uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $looptijd\">
+                                echo "<h3 class=\"mijn-veilingen\"> Tijd resterend: <br>  
+                                        <div class=\"margin-left uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $looptijd\">
                                             <div>
                                                 <div class=\"countdown-getal-klein uk-countdown-number uk-countdown-days\"></div>
                                             </div>
@@ -145,8 +145,8 @@
                                             </div>
                                             <div class=\"countdown-getal-klein uk-countdown-separator\">s</div>
                                         </div></h3>";
-                                echo 'Huidig bod: ' . $valuta . $huidigbod;
-                                echo '</div>';
+                                echo '<h3>Huidig bod: ' . $valuta . $huidigbod;
+                                echo '</div></h3>';
                             }
                         }
                     }

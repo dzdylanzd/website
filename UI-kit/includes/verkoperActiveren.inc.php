@@ -12,6 +12,7 @@ if (isset($_POST['verkoopaccountActiveren'])) {
             $verificatiecodeTabel = $row['Verificatiecode'];
         }
     }
+    
     if ($verificatiecode == $verificatiecodeTabel) {
         $sql2 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?';
         $query = $dbh->prepare($sql2);

@@ -72,6 +72,7 @@ p {
 h1, h3 {
   font-family: "Century Gothic", sans-serif;
   color: #fffbec;
+  margin: 5px;
 }
 
 h2, h4 {
@@ -358,7 +359,7 @@ margin: auto;
   padding-left: 0px;
 }
 
-.margin-auto {
+.margin-left {
   margin-left: 10%;
 }
 
@@ -369,6 +370,12 @@ margin: auto;
 
 .knop-registreren {
   margin-left: 42.5%;
+  width: 15%;
+}
+
+.knop-nieuwe-veiling {
+  float: right;
+  margin-right: 8%;
   width: 15%;
 }
 
@@ -388,6 +395,10 @@ margin: auto;
   margin-left: 25%;
 }
 
+.mijn-veilingen {
+  line-height: 2em;
+}
+
 .mijn-veilingen-titel {
   margin-left: 8%;
 }
@@ -395,6 +406,7 @@ margin: auto;
 .mijn-veilingen-thumbnail {
   width: 90%;
   height: auto;
+  margin-bottom: -10px;
 }
 
 .uk-subnav-pill>.uk-active>a {
