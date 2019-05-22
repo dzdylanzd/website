@@ -77,6 +77,7 @@ $_SESSION['index'] = 0;
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload Image" name="submit">
 </form>
+<button onclick=" Session_start(); $_SESSION['index'] = 0;">test</button>
     </div>
 
 
@@ -247,9 +248,11 @@ $_SESSION['index'] = 0;
                             ?>
                         </select><br>
                         <label class="registreerlabel" for="prijs">Prijs</label><br>
-                        <input class="uk-input input-registratie" type="text" id="verzendkosten" name="verzendkosten"><br>
+                        <input class="uk-input input-registratie" type="number" min="0.00" max="10000.00" step="0.01" id="prijs" name="prijs"><br>
                         <label class="registreerlabel" for="verzendkosten">Verzendkosten</label><br>
-                        <input class="uk-input input-registratie" type="text" id="verzendkosten" name="verzendkosten"><br>
+                        <input class="uk-input input-registratie" type="number" min="0.00" max="10000.00" step="0.01" id="verzendkosten" name="verzendkosten"><br>
+                        <label class="registreerlabel" for="verzendinstructies">verzendinstructies</label><br>
+                        <input class="uk-input input-registratie" type="text" id="verzendinstructies" name="verzendinstructies"><br>
                         <label class="registreerlabel" for="betalingswijze">Betalingswijze</label><br>
                         <select class="uk-select input-registratie" name="betalingswijze"><br>
                             <option value="Contant">Contant</option>
