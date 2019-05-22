@@ -37,6 +37,7 @@ Uw gebruikersnaam is:  <strong>' . $gebruiksersnaam . '.<br></strong>
 U kunt ten alle tijden uw gegevens wijzigen op de mijn gegevens pagina.
 <br>
 <br>
+<br>
 Bedankt dat u voor ons heeft gekozen!<br>
 iConcepts
 </body>

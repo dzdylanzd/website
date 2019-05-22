@@ -6,7 +6,7 @@ $_SESSION["emailCode"] = $random_hash;
 $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_POST['emailbevestiging'];
 $_SESSION["Email"] = $to;
-$subject = "verificatie code";
+$subject = "EenmaalAndermaal Verificatiecode";
     $sql = "SELECT Mailadres from Gebruiker where Mailadres = ?";
     if (!$query = $dbh->prepare($sql)) {
         header("location: ./email-Bevestiging.php?error=7");

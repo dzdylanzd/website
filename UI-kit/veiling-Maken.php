@@ -77,7 +77,6 @@ $_SESSION['index'] = 0;
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload Image" name="submit">
 </form>
-<button onclick=" Session_start(); $_SESSION['index'] = 0;">test</button>
     </div>
 
 

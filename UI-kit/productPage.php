@@ -70,7 +70,12 @@
                         $knoppenFotos = '<div class="imagePreview uk-flex">';
                         $index = 0;
                         while ($alles = $sth->fetch()) {
-                            $image = "src=\"http://iproject5.icasites.nl/pics/$alles[IllustratieFile]\" ";
+                            if(strpos( $alles['IllustratieFile'],"dt_") !== false){
+                                $alles['IllustratieFile'] = "http://iproject5.icasites.nl/pics/".  $alles['IllustratieFile'];
+                            }else{
+                                $alles['IllustratieFile'] = "uploud/".  $alles['IllustratieFile'];
+                            }
+                            $image = "src=\"$alles[IllustratieFile]\" ";
                             $sliderFotos = "$sliderFotos <li class=\"Image-Border\">
                                 <img $image alt=\"\" uk-cover>
                             </li>";
