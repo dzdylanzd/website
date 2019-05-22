@@ -353,7 +353,13 @@ margin: auto;
 }
 
 .countdown-getal-klein {
-  font-size: 1em;
+  font-size: 0.9em;
+  line-height: 10px;
+  padding-left: 0px;
+}
+
+.margin-auto {
+  margin-left: 10%;
 }
 
 .voorwaarden{
@@ -380,10 +386,6 @@ margin: auto;
 
 .registreren {
   margin-left: 25%;
-}
-
-.mijn-veilingen {
-  margin-left
 }
 
 .mijn-veilingen-titel {
