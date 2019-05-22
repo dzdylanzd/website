@@ -20,6 +20,7 @@ if (isset($_POST['verkoopaccountActiveren'])) {
             exit();
         }
     }else{
+        header("location: ../verkoperWorden.php?error=codeOnjuist");
         
     }
 }
