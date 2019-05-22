@@ -1,13 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION["gevalideert"])) {
-    header("Location: email-Bevestiging.php");
-    die();
-} else {
-    session_abort();
-}
-
-?>
 <!DOCTYPE html>
 <html>
 
@@ -105,7 +95,9 @@ if (!isset($_SESSION["gevalideert"])) {
                 }
                 if ($_GET["errorLogin"] == "sql") {
                     echo "<br> <p class=\"errorLogin\"> Er is een fout opgelopen, probeer het opnieuw </p>";
-                }
+                 }
+            }else{
+                header("location: index.php");
             }
             ?>
         </div>
