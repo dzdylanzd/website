@@ -69,6 +69,12 @@ while ($alles = $sth->fetch()) {
     $sthImage = $dbh->prepare($sqlImage);
 if($sthImage->execute(array($alles["Voorwerp"]))){
     $image = $sthImage->fetch();
+
+    if(strpos( $image['Thumbnailfile'],"img") !== false){
+        $image['Thumbnailfile'] = "http://iproject5.icasites.nl/thumbnails/".  $image['Thumbnailfile'];
+    }else{
+        $image['Thumbnailfile'] = "uploud/".  $image['Thumbnailfile'];
+    }
     // zet de titel tot max 6
     $titel = substr($alles["Titel"],6);
 }
@@ -105,7 +111,7 @@ $alles["StartPrijs"] = (double)$alles["StartPrijs"];
 $text = $text . "
 <li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">
 <div class=\"uk-panel\">
-   <a href=\"productPage.php?ID=$alles[VoorwerpNummer]\" > <img  class=\"image-square\" src=\"http://iproject5.icasites.nl/thumbnails/$image[Thumbnailfile]\" alt=\"\"> </a>
+   <a href=\"productPage.php?ID=$alles[VoorwerpNummer]\" > <img  class=\"image-square\" src=\"$image[Thumbnailfile]\" alt=\"\"> </a>
     <div class=\"uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom\">
         <h3 class=\"uk-margin-remove\">";
         $text = $text . substr($alles["Titel"],0,10);

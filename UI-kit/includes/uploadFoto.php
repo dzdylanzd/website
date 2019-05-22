@@ -36,14 +36,19 @@ while (file_exists($target_file)) {
 }
 // Check file size
 if ($_FILES["fileToUpload"]["size"] > 500000) {
+    
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
+
+    header("location: ../veiling-Maken.php?error=toLarge");
+    exit();
 }
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" ) {
+    echo "Sorry, only JPG, JPEG, PNG files are allowed.";
     $uploadOk = 0;
+    header("location: ../veiling-Maken.php?error=notRightFormate");
+    exit();
 }
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
