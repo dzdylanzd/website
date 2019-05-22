@@ -191,11 +191,6 @@ $_SESSION['index'] = 0;
                    
     
 </div>
-
-
-
-
-
                     <div class="registreerbox">
 
                         <h3>Algemene informatie</h3>
@@ -247,7 +242,7 @@ $_SESSION['index'] = 0;
                             }
                             ?>
                         </select><br>
-                        <label class="registreerlabel" for="prijs">Prijs</label><br>
+                        <label class="registreerlabel" for="prijs">Startprijs</label><br>
                         <input class="uk-input input-registratie" type="number" min="0.00" max="10000.00" step="0.01" id="prijs" name="prijs"><br>
                         <label class="registreerlabel" for="verzendkosten">Verzendkosten</label><br>
                         <input class="uk-input input-registratie" type="number" min="0.00" max="10000.00" step="0.01" id="verzendkosten" name="verzendkosten"><br>
