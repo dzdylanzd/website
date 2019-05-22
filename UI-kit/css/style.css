@@ -532,4 +532,18 @@ background-color: #739F65;
     margin: 15px;
     font-family: "Calibri", sans-serif
   }
+  .registreerbox{
+    width: 94%;
+  }
+  .registreren{
+    margin-left: 5%;
+  }
+  .knop-email{
+    width: 60%;
+    margin-left: 12px;
+  }
+  .knop-registreren{
+    margin-left: 10%;
+    width: 80%;
+  }
 }

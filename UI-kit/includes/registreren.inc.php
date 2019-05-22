@@ -12,6 +12,7 @@ if (isset($_POST['bevestigings-button'])) {
   $Gebruiksernaam = $_POST['gebruikersnaam'];
   $voornaam = $_POST['voornaam'];
   $Achternaam = $_POST["achternaam"];
+  $telefoonnummer = $_POST['telefoonnummer'];
   $StraatHuisnummer = $_POST['adres1'];
   $Postcode = $_POST['postcode'];
   $Plaatsnaam = $_POST['plaats'];
@@ -111,9 +112,12 @@ if (isset($_POST['bevestigings-button'])) {
 
           try {
             $query->execute(array($Gebruiksernaam, $voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $adresregel2, $Land, $Geboortedag, $Mailadres, $hashedPwd, $VraagNummer, $hashedAnswer, $soortGebruiker, date("Y-m-d H:i:s")));
-
-            $sql = "INSERT into voorkeur(categorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
+            $sql = "INSERT into Gebruikerstelefoon(Gebruiker, Telefoonnummer) VALUES (?,?)";
             if ($query = $dbh->prepare($sql)) {
+              $query->execute(array($Gebruiksernaam, $telefoonnummer));
+            }
+            $sql2 = "INSERT into voorkeur(categorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
+            if ($query = $dbh->prepare($sql2)) {
               $query->execute(array($voorkeur1, $Gebruiksernaam, $voorkeur2, $Gebruiksernaam, $voorkeur3, $Gebruiksernaam));
             }
           } catch (PDOException $e) {

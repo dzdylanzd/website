@@ -43,7 +43,7 @@ if (!isset($_SESSION["gevalideert"])) {
                                     <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
                                 </div>
                             </form>
-                            <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
+                            <a class="uk-margin-left" href="inloggen-Mobile.php" uk-icon="icon: user"></a>
                         </div>
                     </div>
                 </nav>
@@ -88,6 +88,8 @@ if (!isset($_SESSION["gevalideert"])) {
                         <input class="uk-input input-registratie" type="text" id="achternaam" name="achternaam"><br>
                         <label class="registreerlabel" for="geboortedatum">Geboortedatum *</label><br>
                         <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum"><br>
+                        <label class="registreerlabel" for="telefoonnummer">Telefoonnummer *</label><br>
+                        <input class="uk-input input-registratie" type="number" id="telefoonnummer" name="telefoonnummer"><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
