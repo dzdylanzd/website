@@ -20,6 +20,8 @@ if(isset($_POST["submit"])) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
     } else {
+        header("location: ../veiling-Maken.php?error=NoImage");
+    exit();
         echo "File is not an image.";
         $uploadOk = 0;
     }
