@@ -90,11 +90,42 @@
 
                     // CONDITIE
 
-                    $sql = "SELECT Staat FROM Voorwerp WHERE Voorwerpnummer = ? ";
+                    $sql = "SELECT Staat, StartPrijs, Valuta, Verzendkosten FROM Voorwerp WHERE Voorwerpnummer = ? ";
                     $sth = $dbh->prepare($sql);
                     if ($sth->execute(array($_GET["ID"]))) {
                         while ($alles = $sth->fetch()) {
-                            echo "<h4 class= \"uk-text-emphasis\"> Staat: $alles[Staat] </h4>";
+                            $valuta = $alles['Valuta'];
+                            // Schrijf valuta om in tekens
+                            switch ($valuta) {
+                                case 'EUR':
+                                    $valuta = '€';
+                                    break;
+
+                                case 'GBP':
+                                    $valuta = '£';
+                                    break;
+
+                                case 'AUD':
+                                    $valuta = 'A$';
+                                    break;
+
+                                case 'CAD':
+                                    $valuta = 'C$';
+                                    break;
+
+                                case 'INR':
+                                    $valuta = '₹';
+                                    break;
+
+                                case 'USD':
+                                    $valuta = '$';
+                                    break;
+                            }
+
+                            echo "<h4 class= \"uk-text-emphasis\">Staat: $alles[Staat] </h4><br> 
+                            <h4 class=\"conditie\">Startprijs: $valuta " . (double)$alles['StartPrijs'] . "</h4><br>
+                            <h4 class=\"conditie\">Verzendkosten: $valuta " . (double)$alles['Verzendkosten'] . "</h4>";
+
                         }
                     }
                     ?>
@@ -140,19 +171,19 @@
                         </div>
                     </div>
                     <?php
-                            $sql = "SELECT * from Bod where Voorwerp = ? order by BodDagTijd desc ";
-                            $sth = $dbh->prepare($sql);
-                            $bod = "";
-                            $datumTijd = "";
-                            $bieder = "";
-                            if ($sth->execute(array($_GET["ID"]))) {
-                                while ($alles = $sth->fetch()) {
-                                   $bod .="<h5>$alles[BodBedrag]</h5>";
-                                   $bieder .="<h5>$alles[Gebruiker]</h5>";
-                                   $datumTijd .="<h5>" . substr($alles['BodDagTijd'],0,19) ." </h5>";
-                                }
-                            }
-                            ?>
+                    $sql = "SELECT * from Bod where Voorwerp = ? order by BodDagTijd desc ";
+                    $sth = $dbh->prepare($sql);
+                    $bod = "";
+                    $datumTijd = "";
+                    $bieder = "";
+                    if ($sth->execute(array($_GET["ID"]))) {
+                        while ($alles = $sth->fetch()) {
+                            $bod .= "<h5>$alles[BodBedrag]</h5>";
+                            $bieder .= "<h5>$alles[Gebruiker]</h5>";
+                            $datumTijd .= "<h5>" . substr($alles['BodDagTijd'], 0, 19) . " </h5>";
+                        }
+                    }
+                    ?>
                     <h2>Vorige biedingen</h2>
                     <div class="uk-flex scrollbox Vorige-Bieder ">
                         <div class="uk-width-1-3">
@@ -185,32 +216,40 @@
                             <div class="uk-flex">
                                 <div class="uk-width-2-3@s uk-wdith-1-1">
                                     <form class="Bieden" method="post" action="includes/bieden.inc.php">
-                                    <?php
- $sql = "SELECT top 1 * from Bod where Voorwerp = ? order by BodDagTijd desc";
- $bod = 0;
- $minimumVerhoging = 0.5;
- if ($sth = $dbh->prepare($sql)) {
-     if ($sth->execute(array($_GET["ID"]))) {
-         while ($row = $sth->fetch()) {
-             $bod = $row['BodBedrag'];
-             if($bod > 1 && $bod <= 50 ){
-                $minimumVerhoging =$row['BodBedrag'] + 0.5;
-             }else if($bod > 50 && $bod <= 500 ){
-                $minimumVerhoging = $row['BodBedrag'] + 1;
-             }else if($bod > 500 && $bod <= 1000 ){
-                $minimumVerhoging =  $row['BodBedrag'] +5;
-            }else if($bod > 1000 && $bod <= 5000 ){
-                $minimumVerhoging =  $bod +10;
-            }else{
-                $minimumVerhoging =  $row['BodBedrag'] +50;
-            }
-         }
-        }
-    }
-    echo " <input class=\"uk-input Bod-Veld\" type=\"number\" min=\"$minimumVerhoging\" max=\"10000000\" step=\"0.5\" name=\"bod\" placeholder=\"bod .....\">";
-                                    ?>
-                                       
-                                      
+                                        <?php
+                                        $sql = "SELECT top 1 * from Bod where Voorwerp = ? order by BodDagTijd desc";
+                                        $sql2 = "SELECT StartPrijs FROM Voorwerp WHERE VoorwerpNummer = ?";
+                                        if ($sth = $dbh->prepare($sql2)) {
+                                            if ($sth->execute(array($_GET["ID"]))) {
+                                                while ($row = $sth->fetch()) {
+                                                    $minimumVerhoging = $row['StartPrijs'];
+                                                }
+                                            }
+                                        }
+
+
+                                        if ($sth = $dbh->prepare($sql)) {
+                                            if ($sth->execute(array($_GET["ID"]))) {
+                                                while ($row = $sth->fetch()) {
+                                                    $bod = $row['BodBedrag'];
+                                                    if ($bod > 1 && $bod <= 50) {
+                                                        $minimumVerhoging = $row['BodBedrag'] + 0.5;
+                                                    } else if ($bod > 50 && $bod <= 500) {
+                                                        $minimumVerhoging = $row['BodBedrag'] + 1;
+                                                    } else if ($bod > 500 && $bod <= 1000) {
+                                                        $minimumVerhoging =  $row['BodBedrag'] + 5;
+                                                    } else if ($bod > 1000 && $bod <= 5000) {
+                                                        $minimumVerhoging =  $bod + 10;
+                                                    } else {
+                                                        $minimumVerhoging =  $row['BodBedrag'] + 50;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        echo " <input class=\"uk-input Bod-Veld\" type=\"number\" min=\"$minimumVerhoging\" max=\"10000000\" step=\"0.5\" name=\"bod\" placeholder=\"bod .....\">";
+                                        ?>
+
+
                                 </div>
                                 <div class="uk-button uk-width-1-3@s uk-wdith-1-1">
                                     <input type="submit" class="Bod-Plaatsen" value="Plaats bod">
