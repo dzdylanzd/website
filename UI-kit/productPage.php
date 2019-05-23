@@ -51,7 +51,7 @@
                             if(strpos( $alles['IllustratieFile'],"dt_") !== false){
                                 $alles['IllustratieFile'] = "http://iproject5.icasites.nl/pics/".  $alles['IllustratieFile'];
                             }else{
-                                $alles['IllustratieFile'] = "uploud/".  $alles['IllustratieFile'];
+                                $alles['IllustratieFile'] =   $alles['IllustratieFile'];
                             }
                             $image = "src=\"$alles[IllustratieFile]\" ";
                             $sliderFotos = "$sliderFotos <li class=\"Image-Border\">

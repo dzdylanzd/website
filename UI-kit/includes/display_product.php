@@ -57,6 +57,7 @@ $sth = $dbh->prepare($sql);
 if($sth->execute(array())){
 
 if($alles = $sth->fetch() > 0){
+    $sth->execute(array());
    
     // start van de slider 
    $text ='<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="clsActivated: uk-transition-active; ">
@@ -73,7 +74,7 @@ if($sthImage->execute(array($alles["Voorwerp"]))){
     if(strpos( $image['Thumbnailfile'],"img") !== false){
         $image['Thumbnailfile'] = "http://iproject5.icasites.nl/thumbnails/".  $image['Thumbnailfile'];
     }else{
-        $image['Thumbnailfile'] = "uploud/".  $image['Thumbnailfile'];
+        $image['Thumbnailfile'] =  $image['Thumbnailfile'];
     }
     // zet de titel tot max 6
     $titel = substr($alles["Titel"],6);
@@ -105,7 +106,6 @@ switch ($valuta) {
         $valuta = '$';
         break;
 }
-
 
 $alles["StartPrijs"] = (double)$alles["StartPrijs"];
 $text = $text . "
