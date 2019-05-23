@@ -403,6 +403,7 @@ margin: auto;
 }
 
 .witte-tekst {
+  margin: 5px;
   color: #fffbec;
 }
 
@@ -420,6 +421,10 @@ margin: auto;
 
 .registreer{
   text-align: center;
+}
+
+.timer {
+  font-size: 1em;
 }
 
 .mijn-veilingen {
