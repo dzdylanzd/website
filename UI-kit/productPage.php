@@ -73,7 +73,7 @@
 
                     // CONDITIE
 
-                    $sql = "SELECT Staat, StartPrijs, Valuta, Verzendkosten FROM Voorwerp WHERE Voorwerpnummer = ? ";
+                    $sql = "SELECT Staat, StartPrijs, Valuta, Verzendkosten,VerzendInstructies,BetalingsInstructie FROM Voorwerp WHERE Voorwerpnummer = ? ";
                     $sth = $dbh->prepare($sql);
                     if ($sth->execute(array($_GET["ID"]))) {
                         while ($alles = $sth->fetch()) {
@@ -107,7 +107,10 @@
 
                             echo "<h4 class= \"uk-text-emphasis\">Staat: $alles[Staat] </h4><br> 
                             <h4 class=\"conditie\">Startprijs: $valuta " . (double)$alles['StartPrijs'] . "</h4><br>
-                            <h4 class=\"conditie\">Verzendkosten: $valuta " . (double)$alles['Verzendkosten'] . "</h4>";
+                            <h4 class=\"conditie\">Verzendkosten:". $alles['Verzendkosten'] . "</h4><br>
+                            <h4 class=\"conditie\">VerzendInstructies:  " . $alles['VerzendInstructies'] . "</h4><br>
+                            <h4 class=\"conditie\">BetalingsInstructie:  " . $alles['BetalingsInstructie'] . "</h4>";
+                            
 
                         }
                     }
@@ -151,6 +154,19 @@
                         </div>
                         <div class="uk-width-1-2">
                             <h3>Huidig bod: </h3>
+<?php
+                            $sql = 'SELECT top 1 BodBedrag FROM Bod WHERE Voorwerp = ?';
+                                if ($sth = $dbh->prepare($sql)) {
+                                    if ($sth->execute(array($_GET["ID"]))) {
+                                        while ($row = $sth->fetch()) {
+                                            echo "<h3>" . $valuta . (double)$row['BodBedrag'] . "</h3>";
+                                        }
+                                    }
+                                }
+
+                                ?>
+
+
                         </div>
                     </div>
                     <?php
@@ -159,9 +175,12 @@
                     $bod = "";
                     $datumTijd = "";
                     $bieder = "";
+
+
                     if ($sth->execute(array($_GET["ID"]))) {
+
                         while ($alles = $sth->fetch()) {
-                            $bod .= "<p>" . (double)$alles['BodBedrag'] . "</p>";
+                            $bod .= "<p>" . $valuta . (double)$alles['BodBedrag'] . "</p>";
                             $bieder .= "<p>$alles[Gebruiker]</p>";
                             $datumTijd .= "<p>" . substr($alles['BodDagTijd'], 0, 19) . " </p>";
                         }
