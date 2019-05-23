@@ -18,6 +18,19 @@
   <div class="page-container">
     <div class="content-wrap">
 
+   <?php 
+   if(isset($_GET['error'])){
+   if ($_GET['error'] == "geenFoto") {
+   echo '<p class="errors">uw moet een foto kiezen</p>';
+   }else if ($_GET['error'] == "leeg") {
+    echo '<p class="errors">uw heeft een veld niet ingevuld</p>';
+    }else if ($_GET['error'] == "geenCatogorie") {
+      echo '<p class="errors">uw moet een catogorie kiezen</p>';
+      }
+  }
+
+     ?>
+
       <div class="uk-flex-center uk-flex-column">
         <div class="registreren">
           <h2 class="veiling-Plaatsen">Veiling Plaatsen</h2>

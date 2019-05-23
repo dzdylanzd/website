@@ -502,6 +502,9 @@ background-color: #739F65;
     flex-direction: column;
     width: 93%;
   }
+  .veilingbox {
+    width: 100%;
+  }
 
   .image-square {
     height: 400px;
