@@ -17,22 +17,15 @@
     require_once('includes/database.php'); ?>
     <div class="page-container">
         <div class="content-wrap">
-
-<div class="registreerbox">
-<form method="post" action="includes\telefoonNummerToevoegen.inc.php">
-<label class="registreerlabel" for="telefoonNummer">telfoon nummer toevoegen</label><br>
-
-                        <input class="uk-input input-registratie" type="number" id="telefoonNummer" name="telefoonNummer" placeholder="vul hier uw telfoon nummer in">
-                        <button type="submit" name="submit" class="uk-button input-registratie">Telefoon nummer toevoegen</button>
-                        </form>
-</div>
-
-
-
-
+            <div class="registreerbox">
+                <form method="post" action="includes\telefoonNummerToevoegen.inc.php">
+                    <label class="registreerlabel" for="telefoonNummer"><h3>Telefoonnummer toevoegen</h3></label><br>
+                    <input class="uk-input input-registratie" type="number" id="telefoonNummer" name="telefoonNummer" placeholder="Vul hier uw telefoonnummer in">
+                    <button type="submit" name="submit" class="uk-button input-registratie">Telefoonnummer toevoegen</button>
+                </form>
+            </div>
         </div>
-        </div>
-        <?php include 'includes/footer.inc.php'; ?>
+    </div>
+    <?php include 'includes/footer.inc.php'; ?>
 </body>
-
 </html>
