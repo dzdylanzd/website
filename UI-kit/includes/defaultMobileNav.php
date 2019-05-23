@@ -17,10 +17,11 @@
                             }else{
                                 echo '<div class="uk-inline">
                                 <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span> </button>
-                                <div uk-dropdown="mode: click"><button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
-                                <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-Biedingen.php\'">Mijn biedingen</button>
-                                <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-Veilingen.php\'">Mijn veilingen</button>
-                                <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>
+                                <div class="mobileNavigatie" uk-dropdown="offset: 21" >
+                                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
+                                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-Biedingen.php\'">Mijn biedingen</button>
+                                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-Veilingen.php\'">Mijn veilingen</button>
+                                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>
                                 </div>                                
                                 </div>';
                                 

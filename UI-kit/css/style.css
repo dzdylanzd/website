@@ -543,7 +543,18 @@ background-color: #739F65;
     margin-left: 12px;
   }
   .knop-registreren{
-    margin-left: 10%;
-    width: 80%;
+    margin-left: 4%;
+    width: 60%;
+  }
+  .mobileNav{
+    margin: 1%;
+    margin-bottom: 4%;
+  }
+  .mobileNavigatie{
+    padding: 15%;
+  }
+  .inloggen{
+    margin-left: 5%;
+    margin-top: 5%;
   }
 }
