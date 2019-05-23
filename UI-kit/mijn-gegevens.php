@@ -89,20 +89,20 @@
                         <p class="mijngegevens">Achternaam: <?php echo $achternaam ?> </p><br>
                         <p class="mijngegevens">Geboortedatum: <?php echo $geboortedatum ?> </p><br>
 
-                 <?php       
-                $sql = 'SELECT Telefoonnummer FROM Gebruikerstelefoon WHERE gebruiker = ?';
-                if ($sth = $dbh->prepare($sql)) {
-                    if ($sth->execute(array($gebruikersnaam))) {
-                        while ($row = $sth->fetch()) {
-                            echo"<p class=\"mijngegevens\">Telefoonnummer:";
-                            echo" $row[Telefoonnummer]";
-                            echo"</p><br>";
+                        <?php
+                        $sql = 'SELECT Telefoonnummer FROM Gebruikerstelefoon WHERE gebruiker = ?';
+                        if ($sth = $dbh->prepare($sql)) {
+                            if ($sth->execute(array($gebruikersnaam))) {
+                                while ($row = $sth->fetch()) {
+                                    echo "<p class=\"mijngegevens\">Telefoonnummer:";
+                                    echo " $row[Telefoonnummer]";
+                                    echo "</p><br>";
+                                }
+                            }
                         }
-                    }
-                }
-                ?>
-                <p class="mijngegevens"> <a href="telefoonnummerToevoegen.php">telefoon nummer toevoegen</a></p>
-                 
+                        ?>
+                        <p class="mijngegevens"> <a href="telefoonnummerToevoegen.php">Telefoonnummer toevoegen</a></p>
+
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
@@ -147,7 +147,7 @@
                         ?>
 
                     </div>
-                    <button action="wijzigen-gegevens.php" type="submit" name="bevestigings-button" class="uk-button knop-registreren">Gegevens wijzigen</button>
+                    <button action="wijzigen-gegevens.php" type="submit" name="bevestigings-button" class="uk-button veiling-maken-button">Gegevens wijzigen</button>
                 </form>
             </div>
         </div>
