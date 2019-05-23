@@ -13,31 +13,12 @@
 
 <body>
     <?php include 'includes/display_product.php';
-    include 'includes\nav-L-M.php'; ?>
+    include 'includes\nav-L-M.php'; 
+    include 'includes/defaultMobileNav.php';?>
     <div class="page-container">
         <div class="content-wrap">
-
-            <!-- header -->
-            <div class="uk-hidden@s">
-                <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media/logo.png" alt="logo" width=100em></a>
-                    </div>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <div class="uk-navbar-item ">
-                            <form action="productpage.php">
-                                <div class="uk-inline">
-                                    <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                                    <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
-                                </div>
-                            </form>
-                            <a class="uk-margin-left" href="inloggen-Mobile.php" uk-icon="icon: user"></a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-
-            <!-- categorie nav S (mobile) -->
+           
+        <!-- categorie nav S (mobile) -->
             <div class="uk-hidden@m">
                 <button class="uk-button-categorieen uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
                 <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body">
