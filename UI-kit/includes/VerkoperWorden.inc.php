@@ -10,12 +10,12 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
         $identificatieMethode = "Creditcard";
         $sql = "INSERT  INTO Verkoper( Gebruiker, ControleOptie, Creditcard) VALUES (?, ?, ?)";
         $sql2 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?';
-        try {
+        try { $query = $dbh->prepare($sql2);
+            if ($query->execute(array("V", $Gebruiksernaam))) {
             $query = $dbh->prepare($sql);
             if ($query->execute(array($Gebruiksernaam, $identificatieMethode, $creditcard))) {
 
-                $query = $dbh->prepare($sql2);
-                if ($query->execute(array("V", $Gebruiksernaam))) {
+               
                     header("location: ../index.php");
                     exit();
                 }
@@ -28,14 +28,14 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
     } else if (isset($_POST['bank']) && isset($_POST['rekeningnummer'])) {
         $bank = $_POST['bank'];
         $rekeningnummer = $_POST['rekeningnummer'];
-        $identificatieMethode = "email";
-        $sql = "INSERT  INTO Verkoper( Gebruiker, ControleOptie, Bank, Bankrekening) VALUES (?, ?, ?, ?)";
-        $sql2 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?';
+        $identificatieMethode = "Post";
+        $sql2 = "INSERT  INTO Verkoper( Gebruiker, ControleOptie, Bank, Bankrekening) VALUES (?, ?, ?, ?)";
+        $sql1 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?';
         try {
-            $query = $dbh->prepare($sql);
-            if ($query->execute(array($Gebruiksernaam, $identificatieMethode, $bank, $rekeningnummer))) {
+            $query = $dbh->prepare($sql1);
+            if ($query->execute(array("A", $Gebruiksernaam))) {
                 $query = $dbh->prepare($sql2);
-                if ($query->execute(array("A", $Gebruiksernaam))) {
+                if ($query->execute(array($Gebruiksernaam, $identificatieMethode, $bank, $rekeningnummer))) {
                     header("location: zendActivatieMail.php");
                     exit();
                 }

@@ -51,7 +51,7 @@
                             if(strpos( $alles['IllustratieFile'],"dt_") !== false){
                                 $alles['IllustratieFile'] = "http://iproject5.icasites.nl/pics/".  $alles['IllustratieFile'];
                             }else{
-                                $alles['IllustratieFile'] = "uploud/".  $alles['IllustratieFile'];
+                                $alles['IllustratieFile'] =   $alles['IllustratieFile'];
                             }
                             $image = "src=\"$alles[IllustratieFile]\" ";
                             $sliderFotos = "$sliderFotos <li class=\"Image-Border\">
@@ -161,7 +161,7 @@
                     $bieder = "";
                     if ($sth->execute(array($_GET["ID"]))) {
                         while ($alles = $sth->fetch()) {
-                            $bod .= "<p>$alles[BodBedrag]</p>";
+                            $bod .= "<p>" . (double)$alles['BodBedrag'] . "</p>";
                             $bieder .= "<p>$alles[Gebruiker]</p>";
                             $datumTijd .= "<p>" . substr($alles['BodDagTijd'], 0, 19) . " </p>";
                         }
@@ -234,7 +234,7 @@
                                                         $minimumVerhoging =  $minimumVerhoging + 5;
                                                     } else if ($bod > 1000 && $bod <= 5000) {
                                                         $minimumVerhoging =  $bod + 10;
-                                                    } else {
+                                                    } else if ($bod >  5000 ) {
                                                         $minimumVerhoging = $minimumVerhoging  + 50;
                                                     }
                                                 }
