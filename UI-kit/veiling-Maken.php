@@ -13,29 +13,10 @@
 
 <body>
   <?php include 'includes\nav-L-M.php';
+  include 'includes/defaultMobileNav.php';
   require_once('includes/database.php'); ?>
   <div class="page-container">
     <div class="content-wrap">
-
-      <!-- header -->
-      <div class="uk-hidden@s">
-        <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
-          <div class="uk-navbar-nav  uk-flex-center">
-            <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
-          </div>
-          <div class="uk-navbar-nav  uk-flex-center">
-            <div class="uk-navbar-item ">
-              <form action="productpage.php">
-                <div class="uk-inline">
-                  <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                  <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
-                </div>
-              </form>
-              <a class="uk-margin-left" href="inloggen-Mobile.php" uk-icon="icon: user"></a>
-            </div>
-          </div>
-        </nav>
-      </div>
 
       <div class="uk-flex-center uk-flex-column">
         <div class="registreren">
@@ -231,7 +212,7 @@
             <option value="Giro">Giro</option>
             <option value="Anders">Anders</option>
           </select><br>
-          <label class="registreerlabel" for="betalingsinstructies">betalingsinstructies</label><br>
+          <label class="registreerlabel" for="betalingsinstructies">Betalingsinstructies</label><br>
           <input class="uk-input input-registratie" type="text" id="betalingsinstructies" name="betalingsinstructies"><br>
 
         </div>

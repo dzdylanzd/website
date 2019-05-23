@@ -14,30 +14,11 @@
 <body>
     <?php include 'includes\nav-L-M.php';
     require_once('includes/database.php');
+    include 'includes/defaultMobileNav.php';
     ?>
 
     <div class="page-container">
         <div class="content-wrap">
-
-            <!-- header -->
-            <div class="uk-hidden@s">
-                <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
-                    </div>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <div class="uk-navbar-item ">
-                            <form action="productpage.php">
-                                <div class="uk-inline">
-                                    <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                                    <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
-                                </div>
-                            </form>
-                            <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
 
             <!-- titel van pagina -->
             <div class="mijn-veilingen-titel">
@@ -59,12 +40,12 @@
                     $thumbnail = '';
                     $huidigbod = '';
 
-                    $sqlBod = 'SELECT * FROM Bod WHERE Gebruiker = ?';
-                    if ($sthBod = $dbh->prepare($sqlBod)) {
-                        if ($sthBod->execute(array($gebruikersnaam))) {
-                            while ($rowBod = $sthBod->fetch()) {
-                                $voorwerpnummer = $rowBod['Voorwerp'];
-                                $huidigbod = $rowBod['BodBedrag'];
+                    // Haal unieke voorwerpen op
+                    $sqlDistinctVoorwerp = 'SELECT DISTINCT (Voorwerp) FROM Bod WHERE Gebruiker = ?';
+                    if ($sthDistinctVoorwerp = $dbh->prepare($sqlDistinctVoorwerp)) {
+                        if ($sthDistinctVoorwerp->execute(array($gebruikersnaam))) {
+                            while ($rowDistinctVoorwerp = $sthDistinctVoorwerp->fetch()) {
+                                $voorwerpnummer = $rowDistinctVoorwerp['Voorwerp'];
 
                                 // Haal titel, looptijd en voorwerpnummer op
                                 $sqlVoorwerp = 'SELECT * FROM Voorwerp WHERE VoorwerpNummer = ?';
@@ -119,6 +100,26 @@
                                                 }
                                             }
 
+                                            // Haal het huidige bod op
+                                            $sqlBod = 'SELECT BodBedrag FROM Bod WHERE Gebruiker = ?';
+                                            if ($sthBod = $dbh->prepare($sqlBod)) {
+                                                if ($sthBod->execute(array($gebruikersnaam))) {
+                                                    while ($rowBod = $sthBod->fetch()) {
+                                                        $huidigbod = $rowBod['BodBedrag'];
+                                                    }
+                                                }
+                                            }
+
+                                            // Haal op hoevaak er is geboden
+                                            $sqlAantalBiedingen = 'SELECT COUNT(BodBedrag) AS \'AantalBiedingen\' FROM Bod WHERE Voorwerp = ?';
+                                            if ($sthAantalBiedingen = $dbh->prepare($sqlAantalBiedingen)) {
+                                                if ($sthAantalBiedingen->execute(array($voorwerpnummer))) {
+                                                    while ($rowAantalBiedingen = $sthAantalBiedingen->fetch()) {
+                                                        $aantalBiedingen = $rowAantalBiedingen['AantalBiedingen'];
+                                                    }
+                                                }
+                                            }
+
                                             echo '<div class="uk-width-1-1 uk-width-1-3@s veilingbox">';
                                             echo '<h3>' . $titel . '...</h3>';
                                             echo '<img class="mijn-veilingen-thumbnail" ' . $thumbnail . '" alt="Thumbnail"><br>';
@@ -141,7 +142,7 @@
                                                         </div>
                                                         <div class=\"countdown-getal-klein uk-countdown-separator\">s</div>
                                                     </div></h3>";
-                                            echo '<h3>Huidig bod: ' . $valuta . $huidigbod;
+                                            echo '<h3>Huidig bod ('.$aantalBiedingen.'): ' . $valuta . $huidigbod;
                                             echo '</div></h3>';
                                         }
                                     }

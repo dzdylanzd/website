@@ -13,34 +13,12 @@
 
 <body>
     <?php include 'includes\nav-L-M.php';
+    include 'includes/defaultMobileNav.php';
     require_once('includes/database.php');
     $_SESSION['PID'] = $_GET["ID"];
     ?>
     <div class="page-container">
         <div class="content-wrap">
-
-            <!-- header -->
-            <div class="uk-hidden@s">
-                <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
-                    </div>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <div class="uk-navbar-item ">
-                            <form action="productpage.php">
-                                <div class="uk-inline">
-                                    <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                                    <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
-                                </div>
-                            </form>
-                            <a class="uk-margin-left" href="inloggen-Mobile.php" uk-icon="icon: user"></a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-
-
-
             <!-- =========================================== -->
             <!--                    DESKTOP                  -->
             <!-- =========================================== -->
@@ -183,9 +161,9 @@
                     $bieder = "";
                     if ($sth->execute(array($_GET["ID"]))) {
                         while ($alles = $sth->fetch()) {
-                            $bod .= "<h5>$alles[BodBedrag]</h5>";
-                            $bieder .= "<h5>$alles[Gebruiker]</h5>";
-                            $datumTijd .= "<h5>" . substr($alles['BodDagTijd'], 0, 19) . " </h5>";
+                            $bod .= "<p>$alles[BodBedrag]</p>";
+                            $bieder .= "<p>$alles[Gebruiker]</p>";
+                            $datumTijd .= "<p>" . substr($alles['BodDagTijd'], 0, 19) . " </p>";
                         }
                     }
                     ?>
@@ -193,7 +171,7 @@
                     <div class="uk-flex scrollbox Vorige-Bieder ">
                         <div class="uk-width-1-3">
                             <h3>Naam bieder</h3>
-                            <?php echo $bieder ?>
+                            <?php echo $bieder ?> </p>
                         </div>
                         <div class="uk-width-1-3">
                             <h3>Bod</h3>
