@@ -3,6 +3,7 @@ session_start();
 include('database.php');
 $voornaam = $_POST['voornaam'];
 $Achternaam = $_POST["achternaam"];
+$Telefoonnummer = $_POST['telefoonnummer'];
 $StraatHuisnummer = $_POST['adres1'];
 $Postcode = $_POST['postcode'];
 $Plaatsnaam = $_POST['plaats'];
@@ -63,7 +64,7 @@ if (!empty($oudWachtwoord) && !empty($Wachtwoord) && !empty($WachtwoordHerhaal))
 
 
 
-if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) || empty($Mailadres)){
+if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) || empty($Mailadres)) {
     header("location: ../wijzigen-gegevens.php?error=1");
     exit();
 } else if (($voorkeur1 == $voorkeur2 || $voorkeur1 == $voorkeur3) || ($voorkeur2 == $voorkeur1 || $voorkeur2 == $voorkeur3) || ($voorkeur3 == $voorkeur1 || $voorkeur3 == $voorkeur2)) {
@@ -72,34 +73,45 @@ if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty(
 } else if (!filter_var($Mailadres, FILTER_VALIDATE_EMAIL)) {
     header("location: ../wijzigen-gegevens.php?error=2");
     exit();
-  } else {
+} else {
     $sql = 'UPDATE Gebruiker
     SET Voornaam = ? , Achternaam = ?, Adresregel1 = ?, Postcode = ?,Plaatsnaam = ?,Land = ?,Mailadres = ?, Geboortedatum = ?
     WHERE Gebruikersnaam = ?';
     $sql2 = "delete from voorkeur where gebruikersnaam = ?";
     $sql3 = "INSERT into voorkeur(categorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
+    $sql3= "update Gebruikerstelefoon 
+    set Telefoonnummer = ?
+    where Gebruiker IN(
+    select top 1 Gebruiker from Gebruikerstelefoon
+    where Gebruiker = ?
+    )";
     if ($sth = $dbh->prepare($sql)) {
         $_SESSION['userUid'] = $Mailadres;
         try {
-            if ($sth->execute(array($voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land,$Mailadres,  $Geboortedag, $gebruikersnaam))) {
+            if ($sth->execute(array($voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land, $Mailadres,  $Geboortedag, $gebruikersnaam))) {
                 if ($sth2 = $dbh->prepare($sql2)) {
                     if ($sth2->execute(array($gebruikersnaam))) {
                         if ($sth3 = $dbh->prepare($sql3)) {
                             if ($sth3->execute(array($voorkeur1, $gebruikersnaam, $voorkeur2, $gebruikersnaam, $voorkeur3, $gebruikersnaam))) {
+                                // if ($sth4 = $dbh->prepare($sql4)) {
+                                //     if ($sth4->execute(array($Telefoonnummer,$gebruikersnaam))) {
+
+                                //      }
+                                // }
+
                                 header("location: ../index.php");
                                 exit();
-                            } 
+                            }
                         }
-                    } 
+                    }
                 }
             }
-    } 
-    catch (PDOException $e) {	 
-   $error = $e->getMessage();
-    header("location: ../wijzigen-gegevens.php?error= $error");
-    exit();
-    }
-        if ($sth->execute(array($voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land,$Mailadres,  $Geboortedag, $gebruikersnaam))) {
+        } catch (PDOException $e) {
+            $error = $e->getMessage();
+            header("location: ../wijzigen-gegevens.php?error= $error");
+            exit();
+        }
+        if ($sth->execute(array($voornaam, $Achternaam, $StraatHuisnummer, $Postcode, $Plaatsnaam, $Land, $Mailadres,  $Geboortedag, $gebruikersnaam))) {
             if ($sth2 = $dbh->prepare($sql2)) {
                 if ($sth2->execute(array($gebruikersnaam))) {
                     if ($sth3 = $dbh->prepare($sql3)) {
