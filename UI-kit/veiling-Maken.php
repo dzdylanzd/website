@@ -20,7 +20,7 @@
 
       <div class="uk-flex-center uk-flex-column">
         <div class="registreren">
-          <h2>Veiling Plaatsen</h2>
+          <h2 class="veiling-Plaatsen">Veiling Plaatsen</h2>
         </div>
         <div class="veiling-maken-box">
           <h3>Foto's</h3>
@@ -30,21 +30,21 @@
             $_SESSION['index'] = 0;
           }
           ?>
-          <div class="uk-flex">
-            <div class="uk-card uk-card-default  uk-width-2-5 uk-height-medium "><img class="uk-width-1-1 uk-height-1-1" src="<?php echo $_SESSION['fotos'][0];  ?>" alt="Foto 1"></div>
+          <div class="flex-column-phone">
+            <div class="uk-card uk-card-default  uk-width-2-5@s uk-width-1-1  uk-height-medium@s "><img class="uk-width-1-1 uk-height-1-1" src="<?php echo $_SESSION['fotos'][0];  ?>" alt="Foto 1"></div>
             <div class=" uk-width-expand ">
-              <div class="uk-card uk-card-default  uk-width-expand uk-height-small ">
-                <div class="uk-flex">
-                  <img class=" uk-height-small uk-width-1-3 " src="<?php echo $_SESSION['fotos'][1];  ?>" alt="Foto 2">
+              <div class="  uk-width-expand uk-height-small@s ">
+                <div class="flex-column-phone ">
+                  <img class=" uk-height-small@s uk-width-1-3@s uk-width-1-1" src="<?php echo $_SESSION['fotos'][1];  ?>" alt="Foto 2">
                 
-                  <img class=" uk-height-small uk-width-1-3 " src="<?php echo $_SESSION['fotos'][2];  ?>" alt="Foto 3">
+                  <img class=" uk-height-small@s uk-width-1-3@s uk-width-1-1 " src="<?php echo $_SESSION['fotos'][2];  ?>" alt="Foto 3">
         
-                  <img class="uk-width-1-3 uk-height-small" src="<?php echo $_SESSION['fotos'][3];  ?>" alt="Foto 4">
+                  <img class="uk-width-1-3@s uk-width-1-1 uk-height-small@s" src="<?php echo $_SESSION['fotos'][3];  ?>" alt="Foto 4">
                 </div>
               </div>
-              <form class="upload-form" action="includes/uploadFoto.php" method="post" enctype="multipart/form-data">
+              <form class="upload-form" action="includes/uploadFoto.php" method="post" enctype="multipart/form-data"><div class="uk-hidden@s"><br></div>
                 Selecteer een bestand om te uploaden:
-                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="file" name="fileToUpload" id="fileToUpload"><div class="uk-hidden@s"><br></div>
                 <input type="submit" value="Foto uploaden" name="submit">
               </form>
             </div>
@@ -52,14 +52,15 @@
         </div>
         <div class="veiling-maken-box">
           <div class="uk-flex">
-            <div class="uk-width-1-3"> </div>
-            <div class="uk-width-1-3 uk-text-left">
+            <div class="uk-width-1-3 uk-visible@s"> </div>
+            <div class="uk-width-1-3@s uk-wdith-1-1 uk-text-left">
               <form action="includes\veiling-maken.inc.php" method="post">
+              <h3 class="rubriek">Rubrieken</h3>
                 <?php
                 require_once('includes\database.php');
                 if (!isset($_GET["root"])) {
                   $stmt = $dbh->prepare("SELECT * from Rubriek where Volgnr = ?");
-
+                  
                   if ($stmt->execute(array(-1))) {
                     echo "<ul class=\"noDots\">";
                     while ($row = $stmt->fetch()) {
@@ -142,13 +143,13 @@
                 ?>
 
             </div>
-            <div class="uk-width-1-3"> </div>
+            <div class="uk-width-1-3  uk-visible@s"> </div>
           </div>
         </div>
        
         
       
-        <div class="registreerbox">
+        <div class="veiling-maken-box">
 
           <h3>Algemene informatie</h3>
           <label class="registreerlabel" for="titel">Titel</label><br>
@@ -171,9 +172,9 @@
             ?>
           </select><br>
           <label class="registreerlabel" for="beschrijving">Beschrijving</label><br>
-          <textarea class="uk-textarea" name="message" rows="5" cols="20"></textarea>
+          <textarea class="uk-textarea beschrijving" name="message" rows="5" cols="20"></textarea>
         </div>
-        <div class="registreerbox">
+        <div class="veiling-maken-box">
           <h3>Veilinginformatie</h3>
           <label class="registreerlabel" for="lengte">lengte van de veiling</label><br>
           <select class="uk-select input-registratie" name="lengte"><br>
@@ -216,7 +217,7 @@
           <input class="uk-input input-registratie" type="text" id="betalingsinstructies" name="betalingsinstructies"><br>
 
         </div>
-        <div class="registreerbox">
+        <div class="veiling-maken-box">
           <h3>Locatie van het product</h3>
           <label class="registreerlabel" for="plaatsnaam">Plaatsnaam</label><br>
           <input class="uk-input input-registratie" type="text" id="plaatsnaam" name="plaatsnaam"><br>
@@ -239,7 +240,7 @@
             ?>
           </select><br>
         </div>
-        <button type="submit" name="veiling-maken-button" class="uk-button knop-veiling-maken">Veiling plaatsen</button>
+        <button type="submit" name="veiling-maken-button" class="uk-button veiling-maken-button ">Veiling plaatsen</button>
         </form>
       </div>
     </div>
