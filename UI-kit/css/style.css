@@ -319,6 +319,17 @@ h4 {
   color: #fffbec;
 }
 
+.mijngegevens-link {
+  color: #f8f5e9;
+  font-family: "Calibri", sans-serif;
+  font-size: 1.3em;
+  text-align: left;
+  margin: 0px;
+  margin-left: 2em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .registreerbox {
   background-color: #a7ca9b;
   text-align: center;
