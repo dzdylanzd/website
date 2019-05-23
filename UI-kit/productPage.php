@@ -48,9 +48,9 @@
                         $knoppenFotos = '<div class="imagePreview uk-flex">';
                         $index = 0;
                         while ($alles = $sth->fetch()) {
-                            if(strpos( $alles['IllustratieFile'],"dt_") !== false){
-                                $alles['IllustratieFile'] = "http://iproject5.icasites.nl/pics/".  $alles['IllustratieFile'];
-                            }else{
+                            if (strpos($alles['IllustratieFile'], "dt_") !== false) {
+                                $alles['IllustratieFile'] = "http://iproject5.icasites.nl/pics/" .  $alles['IllustratieFile'];
+                            } else {
                                 $alles['IllustratieFile'] =   $alles['IllustratieFile'];
                             }
                             $image = "src=\"$alles[IllustratieFile]\" ";
@@ -107,11 +107,9 @@
 
                             echo "<h4 class= \"uk-text-emphasis\">Staat: $alles[Staat] </h4><br> 
                             <h4 class=\"conditie\">Startprijs: $valuta " . (double)$alles['StartPrijs'] . "</h4><br>
-                            <h4 class=\"conditie\">Verzendkosten:". $alles['Verzendkosten'] . "</h4><br>
+                            <h4 class=\"conditie\">Verzendkosten: $valuta ". (double)$alles['Verzendkosten'] . "</h4><br>
                             <h4 class=\"conditie\">VerzendInstructies:  " . $alles['VerzendInstructies'] . "</h4><br>
                             <h4 class=\"conditie\">BetalingsInstructie:  " . $alles['BetalingsInstructie'] . "</h4>";
-                            
-
                         }
                     }
                     ?>
@@ -144,6 +142,20 @@
 
                 <div class="Vertical_Line"></div>
 
+                <?php
+                $huidigbod = '';
+                
+                // Haal het huidige bod op
+                $sqlBod = 'SELECT BodBedrag FROM Bod WHERE Voorwerp = ?';
+                if ($sthBod = $dbh->prepare($sqlBod)) {
+                    if ($sthBod->execute(array($_GET["ID"]))) {
+                        while ($rowBod = $sthBod->fetch()) {
+                            $huidigbod = $rowBod['BodBedrag'];
+                        }
+                    }
+                }
+                ?>
+
                 <div class="uk-width-1-1 uk-width-2-3@s Card-Empty">
                     <h2>Bieding</h2>
                     <div class="uk-flex Bieding">
@@ -154,19 +166,7 @@
                         </div>
                         <div class="uk-width-1-2">
                             <h3>Huidig bod: </h3>
-<?php
-                            $sql = 'SELECT top 1 BodBedrag FROM Bod WHERE Voorwerp = ?';
-                                if ($sth = $dbh->prepare($sql)) {
-                                    if ($sth->execute(array($_GET["ID"]))) {
-                                        while ($row = $sth->fetch()) {
-                                            echo "<h3>" . $valuta . (double)$row['BodBedrag'] . "</h3>";
-                                        }
-                                    }
-                                }
-
-                                ?>
-
-
+                            <?php echo "<h1>". $valuta . $huidigbod . "</h1>"; ?>
                         </div>
                     </div>
                     <?php
@@ -188,21 +188,16 @@
                     ?>
                     <h2>Vorige biedingen</h2>
                     <div class="uk-flex scrollbox Vorige-Bieder uk-visible@m">
-                        <!-- <div class="uk-width-1-3"> -->
-                        <div>
+                        <div class="uk-width-1-3">
                             <h3>Naam bieder</h3>
-                            <h3>Bod</h3>
-                            <h3>Datum en tijd van bieding</h3>
-                        </div>  
-                        <div>
                             <?php echo $bieder ?>
-                        <!-- </div> -->
-                        <!-- <div class="uk-width-1-3"> -->
-                            
+                        </div>
+                        <div class="uk-width-1-3">
+                            <h3>Bod</h3>
                             <?php echo $bod ?>
-                        <!-- </div> -->
-                        <!-- <div class="uk-width-1-3"> -->
-                            
+                        </div>
+                        <div class="uk-width-1-3">
+                            <h3>Datum en tijd van bieding</h3>
                             <?php echo $datumTijd ?>
                         </div>
                     </div>
@@ -253,7 +248,7 @@
                                                         $minimumVerhoging =  $minimumVerhoging + 5;
                                                     } else if ($bod > 1000 && $bod <= 5000) {
                                                         $minimumVerhoging =  $bod + 10;
-                                                    } else if ($bod >  5000 ) {
+                                                    } else if ($bod >  5000) {
                                                         $minimumVerhoging = $minimumVerhoging  + 50;
                                                     }
                                                 }

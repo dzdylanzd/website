@@ -106,9 +106,9 @@
                                             }
 
                                             // Haal het huidige bod op
-                                            $sqlBod = 'SELECT BodBedrag FROM Bod WHERE Gebruiker = ?';
+                                            $sqlBod = 'SELECT BodBedrag FROM Bod WHERE Voorwerp = ?';
                                             if ($sthBod = $dbh->prepare($sqlBod)) {
-                                                if ($sthBod->execute(array($gebruikersnaam))) {
+                                                if ($sthBod->execute(array($voorwerpnummer))) {
                                                     while ($rowBod = $sthBod->fetch()) {
                                                         $huidigbod = $rowBod['BodBedrag'];
                                                     }
