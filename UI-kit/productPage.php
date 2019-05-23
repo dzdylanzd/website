@@ -183,9 +183,9 @@
                     $bieder = "";
                     if ($sth->execute(array($_GET["ID"]))) {
                         while ($alles = $sth->fetch()) {
-                            $bod .= "<h5>$alles[BodBedrag]</h5>";
-                            $bieder .= "<h5>$alles[Gebruiker]</h5>";
-                            $datumTijd .= "<h5>" . substr($alles['BodDagTijd'], 0, 19) . " </h5>";
+                            $bod .= "<p>$alles[BodBedrag]</p>";
+                            $bieder .= "<p>$alles[Gebruiker]</p>";
+                            $datumTijd .= "<p>" . substr($alles['BodDagTijd'], 0, 19) . " </p>";
                         }
                     }
                     ?>
@@ -193,7 +193,7 @@
                     <div class="uk-flex scrollbox Vorige-Bieder ">
                         <div class="uk-width-1-3">
                             <h3>Naam bieder</h3>
-                            <?php echo $bieder ?>
+                            <?php echo $bieder ?> </p>
                         </div>
                         <div class="uk-width-1-3">
                             <h3>Bod</h3>

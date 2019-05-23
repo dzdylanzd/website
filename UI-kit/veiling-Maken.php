@@ -229,7 +229,7 @@
             <option value="Giro">Giro</option>
             <option value="Anders">Anders</option>
           </select><br>
-          <label class="registreerlabel" for="betalingsinstructies">betalingsinstructies</label><br>
+          <label class="registreerlabel" for="betalingsinstructies">Betalingsinstructies</label><br>
           <input class="uk-input input-registratie" type="text" id="betalingsinstructies" name="betalingsinstructies"><br>
 
         </div>

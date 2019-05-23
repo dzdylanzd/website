@@ -19,7 +19,7 @@ $sql2 ="select isVeilingGesloten from Voorwerp where VoorwerpNummer = ?";
 $sth = $dbh->prepare($sql2);
 if($sth->execute(array($productid))){
     while ($row = $sth->fetch()) {
-       if(!$row['isVeilingGesloten']) {
+       if(/*!*/$row['isVeilingGesloten']) {
         try {
             $query = $dbh->prepare($sql);
             $query->execute(array($productid,$bod,$gebruiker,$bodTijd));
