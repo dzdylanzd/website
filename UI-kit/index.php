@@ -31,14 +31,18 @@
                                 </div>
                             </form>
                             <?php
-                            if(isset( $_SESSION['userId'])){
+                            if(!isset( $_SESSION['userId'])){
                            echo' <a class="uk-margin-left" href="inloggen-Mobile.php" uk-icon="icon: user"></a>';
                             }else{
                                 echo '<div class="uk-inline">
                                 <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span> </button>
                                 <div uk-dropdown="mode: click"><button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">mijn gegevens</button>
-                                <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">mijn gegevens</button></div> </div>';
-                                echo '<button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>';
+                                <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">mijn gegevens</button>
+                                <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>
+                                </div> 
+                               
+                                </div>';
+                                
                             }
 ?>
                         </div>
