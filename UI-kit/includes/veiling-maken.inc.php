@@ -20,5 +20,29 @@ $betalingsinstructies = $_POST['betalingsinstructies'];
 $plaatsnaam = $_POST['plaatsnaam'];
 $land = $_POST['land'];
 
+
+$sql = "select top 1 VoorwerpNummer from Voorwerp order by VoorwerpNummer desc";
+if ($sth = $dbh->prepare($sql)) {
+  if ($sth->execute(array())) {
+    while ($alles = $sth->fetch()) {     
+     $VoorwerpNummer =  $alles['VoorwerpNummer'] + 1;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
