@@ -50,7 +50,7 @@ if ($sth = $dbh->prepare($sql)) {
 }
 
 $sql = 'insert into Voorwerp(VoorwerpNummer,Titel,Beschrijving,StartPrijs,Betalingswijze, BetalingsInstructie,Plaatsnaam,Land,Looptijd,LooptijdBegin,Verzendkosten,Verkoper,LooptijdEinde,IsVeilingGesloten,Staat,Valuta,VerzendInstructies)
-values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 $sqlImage = 'insert into Illustraties(VoorwerpNummer,Illustratiefile)
 values(?,?)';
 $sqlThumbnail = 'insert into Thumbnail(VoorwerpNummer,Thumbnailfile)
