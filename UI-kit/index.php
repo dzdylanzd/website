@@ -39,8 +39,7 @@
                                 <div uk-dropdown="mode: click"><button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">mijn gegevens</button>
                                 <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">mijn gegevens</button>
                                 <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>
-                                </div> 
-                               
+                                </div>                                
                                 </div>';
                                 
                             }
