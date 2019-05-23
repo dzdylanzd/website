@@ -5,7 +5,26 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
 
     $Gebruiksernaam = $_SESSION['userId'];
 
+   
+
     if (isset($_POST['creditcard'])) {
+
+        if(empty($_POST['creditcard'])){
+            header("location: ../VerkoperWorden.php?errorVerkoper=leegVeld");
+            exit();
+        }else if(strlen($_POST['creditcard']) != 16){
+            header("location:0 ../VerkoperWorden.php?errorVerkoper=onjuisteCredicard");
+            exit();
+        }
+
+        if (isset($_POST['rekeningnummer'])) {
+
+            if(empty($_POST['bank']) || empty($_POST['rekenignummer'])){
+                header("location: ../VerkoperWorden.php?errorVerkoper=leegVeld");
+                exit();
+            }
+        }
+
         $creditcard = $_POST['creditcard'];
         $identificatieMethode = "Creditcard";
         $sql = "INSERT  INTO Verkoper( Gebruiker, ControleOptie, Creditcard) VALUES (?, ?, ?)";
@@ -14,8 +33,6 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
             if ($query->execute(array("V", $Gebruiksernaam))) {
             $query = $dbh->prepare($sql);
             if ($query->execute(array($Gebruiksernaam, $identificatieMethode, $creditcard))) {
-
-               
                     header("location: ../index.php");
                     exit();
                 }
@@ -54,4 +71,3 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
     header("location: ../VerkoperWorden.php?error=leeg");
     exit();
 }
-

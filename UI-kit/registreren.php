@@ -35,6 +35,9 @@ if (!isset($_SESSION["gevalideert"])) {
                 $errorBericht = ($_GET['error']);
                 switch ($errorBericht) {
                     case 1:
+                        echo '<p class="errors">vul alle velden in</p>';
+                        break;
+                    case 2:
                         echo '<p class="errors">Vul alle velden in</p>';
                         break;
                     case 3:
@@ -49,6 +52,18 @@ if (!isset($_SESSION["gevalideert"])) {
                         echo '<p class="errors">De gebruikersnaam bevat een speciaal teken</p>';
                         break;
                     case 7:
+                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        break;
+                        case 8:
+                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        break;
+                        case 9:
+                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        break;
+                        case 10:
+                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        break;
+                        case 11:
                         echo '<p class="errors">SQL error, probeer het opnieuw</p>';
                         break;
                     default:
@@ -142,7 +157,7 @@ if (!isset($_SESSION["gevalideert"])) {
                                 }
                             }
                             ?>
-                            
+
                         </select><br>
                         <select class="uk-select input-registratie" name="voorkeur2">
                             <?php

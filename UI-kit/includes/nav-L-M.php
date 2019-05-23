@@ -35,16 +35,16 @@ include 'database.php' ?>
                                     <form method="post" action="includes/login.inc.php">';
                         if (isset($_GET["errorLogin"])) {
                             if ($_GET["errorLogin"] == "leeg") {
-                                echo "<br> <p class=\"errorLogin\"> Niet alle velden zijn ingevuld </p>";
+                                echo "<br> <p class=\"errorLogin\"> Gelieve alle velden in te vullen. </p>";
                             }
                             if ($_GET["errorLogin"] == "GebruikerBestaatNiet") {
-                                echo "<br> <p class=\"errorLogin\"> Deze gebruiker bestaat niet </p>";
+                                echo "<br> <p class=\"errorLogin\"> Deze gebruikersnaam is niet bekend bij ons. </p>";
                             }
                             if ($_GET["errorLogin"] == "verkeerdwachtwoord") {
-                                echo "<br> <p class=\"errorLogin\"> Onjuist wachtwoord </p>";
+                                echo "<br> <p class=\"errorLogin\"> Onjuist wachtwoord. </p>";
                             }
                             if ($_GET["errorLogin"] == "sql") {
-                                echo "<br> <p class=\"errorLogin\"> Er is een fout opgelopen, probeer het opnieuw </p>";
+                                echo "<br> <p class=\"errorLogin\"> Er is een onverwachte foutmelding opgetreden. Probeer het opnieuw. </p>";
                             }
                         }
                         echo '<div class="uk-margin">

@@ -22,17 +22,17 @@
                 <!-- Error handlers -->
                 <?php if (isset($_GET['error'])) {
                     if ($_GET['error'] == "leegveld") {
-                        echo '<p class="errors"> Voer een code in </p>';
+                        echo '<p class="errors"> Gelieve een code in te vullen. </p>';
                     } else if ($_GET['error'] == "legeEmail") {
-                        echo '<p class="errors"> Voer uw e-mailadres in </p>';
+                        echo '<p class="errors">  Gelieve een e-mailadres in te vullen. </p>';
                     } else if ($_GET['error'] == "emailInGebruik") {
-                        echo '<p class="errors"> Het ingevoerde e-mailadres is al in gebruik </p>';
+                        echo '<p class="errors"> Dit e-mailadres is helaas al in gebruik. </p>';
                     } else if ($_GET['error'] == "codeNietMeerValide") {
-                        echo '<p class="errors"> De ingevoerde code is niet meer geldig </p>';
+                        echo '<p class="errors"> De ingevoerde code is niet meer geldig. </p>';
                     } else if ($_GET['error'] == "nietDeGoedeCode") {
-                        echo '<p class="errors"> De ingevoerde code wordt niet herkent </p>';
+                        echo '<p class="errors"> De code is onjuist, gelieve een juiste code in te vullen. </p>';
                     } else if ($_GET['error'] == "succes") {
-                        echo '<p class="succes"> Er is een code naar uw e-mailadres verzonden </p>';
+                        echo '<p class="succes"> Er is een code naar uw e-mailadres verzonden. </p>';
                     } 
                 }
                 ?>

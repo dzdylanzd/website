@@ -46,34 +46,34 @@ if (isset($_POST['bevestigings-button'])) {
     header("location: ../registreren.php?error=8");
     exit();
   } else if (strlen($Gebruiksernaam) > 30) {
-    header("location: ../registreren.php?error=12");
+    header("location: ../registreren.php?error=5");
     exit();
   } else if (strlen($voornaam) > 30) {
-    header("location: ../registreren.php?error=12");
+    header("location: ../registreren.php?error=5");
     exit();
   } else if (strlen($Achternaam) > 30) {
-    header("location: ../registreren.php?error=12");
+    header("location: ../registreren.php?error=5");
     exit();
   } else if (strlen($StraatHuisnummer) > 30) {
-    header("location: ../registreren.php?error=12");
+    header("location: ../registreren.php?error=5");
     exit();
   } else if (strlen($Postcode) > 30) {
-    header("location: ../registreren.php?error=12");
+    header("location: ../registreren.php?error=5");
     exit();
   } else if (strlen($Plaatsnaam) > 30) {
-    header("location: ../registreren.php?error=12");
+    header("location: ../registreren.php?error=5");
     exit();
   } else if (strlen($Mailadres) > 30) {
-    header("location: ../registreren.php?error=12");
+    header("location: ../registreren.php?error=5");
     exit();
   } else if (strlen($Wachtwoord) > 30) {
-    header("location: ../registreren.php?error=12");
+    header("location: ../registreren.php?error=5");
     exit();
   } else if (strlen($WachtwoordHerhaal) > 30) {
-    header("location: ../registreren.php?error=12");
+    header("location: ../registreren.php?error=5");
     exit();
   } else if (strlen($Antwoordtekst) > 30) {
-    header("location: ../registreren.php?error=12");
+    header("location: ../registreren.php?error=5");
     exit();
   } else if (!preg_match('/[A-Z]/', $Wachtwoord)) {
     header("location: ../registreren.php?error=9");
