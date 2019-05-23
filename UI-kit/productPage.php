@@ -168,9 +168,28 @@
                     }
                     ?>
                     <h2>Vorige biedingen</h2>
-                    <div class="uk-flex scrollbox Vorige-Bieder ">
-                        <div class="uk-width-1-3">
+                    <div class="uk-flex scrollbox Vorige-Bieder uk-visible@m">
+                        <!-- <div class="uk-width-1-3"> -->
+                        <div>
                             <h3>Naam bieder</h3>
+                            <h3>Bod</h3>
+                            <h3>Datum en tijd van bieding</h3>
+                        </div>  
+                        <div>
+                            <?php echo $bieder ?>
+                        <!-- </div> -->
+                        <!-- <div class="uk-width-1-3"> -->
+                            
+                            <?php echo $bod ?>
+                        <!-- </div> -->
+                        <!-- <div class="uk-width-1-3"> -->
+                            
+                            <?php echo $datumTijd ?>
+                        </div>
+                    </div>
+                    <div class="uk-flex scrollbox Vorige-Bieder uk-hidden@s">
+                        <div class="uk-width-1-3">
+                            <h3>Naam</h3>
                             <?php echo $bieder ?> </p>
                         </div>
                         <div class="uk-width-1-3">
@@ -178,7 +197,7 @@
                             <?php echo $bod ?>
                         </div>
                         <div class="uk-width-1-3">
-                            <h3>Datum en tijd van bieding</h3>
+                            <h3>Datum</h3>
                             <?php echo $datumTijd ?>
                         </div>
                     </div>
