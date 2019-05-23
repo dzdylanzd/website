@@ -26,7 +26,7 @@
             </div>
 
             <!-- veilingen -->
-            <div class="uk-flex uk-flex-center uk-flex-wrap uk-flex-wrap-around">
+            <div class="flex-column-phone uk-flex-center uk-flex-wrap uk-flex-wrap-around">
 
                 <?php
                 // Haal gegevens van de database en zet ze in variabelen

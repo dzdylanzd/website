@@ -26,7 +26,7 @@
             </div>
 
             <!-- veilingen -->
-            <div class="uk-flex uk-flex-center uk-flex-wrap uk-flex-wrap-around">
+            <div class="flex-column-phone  uk-flex-center uk-flex-wrap uk-flex-wrap-around">
 
                 <?php
                 // Haal gegevens van de database en zet ze in variabelen
@@ -111,7 +111,7 @@
                                     }
                                 }
 
-                                echo '<div class="uk-width-1-1 uk-width-1-3@s veilingbox">';
+                                echo '<div class=" veilingbox">';
                                 echo '<h3>' . $titel . '...</h3>';
                                 echo '<a href="productPage.php?ID='. $voorwerpnummer . '"><img class="mijn-veilingen-thumbnail" src="'.$thumbnail.'" alt="Thumbnail"></a><br>';
                                 echo "<h3 class=\"mijn-veilingen\"> Tijd resterend: <br>  
