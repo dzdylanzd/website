@@ -35,10 +35,10 @@ if (!isset($_SESSION["gevalideert"])) {
                 $errorBericht = ($_GET['error']);
                 switch ($errorBericht) {
                     case 1:
-                        echo '<p class="errors">vul alle velden in</p>';
+                        echo '<p class="errors">Vul alle velden in</p>';
                         break;
                     case 2:
-                        echo '<p class="errors">Vul alle velden in</p>';
+                        echo '<p class="errors">Dit is geen correct e-mailadres</p>';
                         break;
                     case 3:
                         echo '<p class="errors">De gebruikersnaam is al in gebruik</p>';

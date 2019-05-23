@@ -18,6 +18,18 @@
     <div class="page-container">
         <div class="content-wrap">
 
+            <?php
+            if (isset($_GET['errorVerkoper'])) {
+                $errorBericht = ($_GET['errorVerkoper']);
+                if ($errorBericht == 'leegVeld') {
+                    echo '<p class="errors">Vul alle velden in</p>';
+                }
+                else if ($errorBericht == 'onjuisteCreditcard') {
+                    echo '<p class="errors">Het ingevulde creditcardnummer is ongeldig</p>';
+                }
+            }
+            ?>
+
             <div class="verkoper" uk-filter="target: .js-filter">
                 <h2> Aanmaken verkoopaccount </h2>
                 <p class="voorwaarden">Kies hieronder uw gewenste identificatie methode.</p>
@@ -31,7 +43,7 @@
                         <div class="verkoopbox">
                             <h3>Identificatiemethode creditcard:</h3>
                             <form method="post" action="includes/verkoperWorden.inc.php">
-                                <label for="creditcard">Creditcard nummer</label><br>
+                                <label for="creditcard">Creditcardnummer</label><br>
                                 <input class="uk-input input-registratie" type="number" name="creditcard" id="creditcard"><br>
                                 <button name="verkoopaccountAanvragen" type="submit" class="uk-button knop-lang">Verkoopaccount activeren</button>
                             </form>
@@ -58,8 +70,8 @@
             echo "<br> <p class=\"errorLogin\"> Gelieve alle velden in te vullen. </p>";
         } else if ($_GET["errorVerkoper"] == "onjuisteCredicard") {
             echo "<br> <p class=\"errorLogin\"> Gelieve een geldig creditcardnummer in te vullen. </p>";
+        }
     }
-}
     ?>
 
     </div>
