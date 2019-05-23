@@ -35,9 +35,11 @@
             <div class=" uk-width-expand ">
               <div class="uk-card uk-card-default  uk-width-expand uk-height-small ">
                 <div class="uk-flex">
-                  <img class="uk-width-1-3 uk-height-1-1" src="<?php echo $_SESSION['fotos'][1];  ?>" alt="Foto 2">
-                  <img class="uk-width-1-3 uk-height-1-1" src="<?php echo $_SESSION['fotos'][2];  ?>" alt="Foto 3">
-                  <img class="uk-width-1-3 uk-height-1-1" src="<?php echo $_SESSION['fotos'][3];  ?>" alt="Foto 4">
+                  <img class=" uk-height-small uk-width-1-3 " src="<?php echo $_SESSION['fotos'][1];  ?>" alt="Foto 2">
+                
+                  <img class=" uk-height-small uk-width-1-3 " src="<?php echo $_SESSION['fotos'][2];  ?>" alt="Foto 3">
+        
+                  <img class="uk-width-1-3 uk-height-small" src="<?php echo $_SESSION['fotos'][3];  ?>" alt="Foto 4">
                 </div>
               </div>
               <form class="upload-form" action="includes/uploadFoto.php" method="post" enctype="multipart/form-data">
@@ -210,7 +212,7 @@
             <option value="Giro">Giro</option>
             <option value="Anders">Anders</option>
           </select><br>
-          <label class="registreerlabel" for="betalingsinstructies">betalingsinstructies</label><br>
+          <label class="registreerlabel" for="betalingsinstructies">Betalingsinstructies</label><br>
           <input class="uk-input input-registratie" type="text" id="betalingsinstructies" name="betalingsinstructies"><br>
 
         </div>

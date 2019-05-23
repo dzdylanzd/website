@@ -40,12 +40,12 @@
                     $thumbnail = '';
                     $huidigbod = '';
 
-                    $sqlBod = 'SELECT * FROM Bod WHERE Gebruiker = ?';
-                    if ($sthBod = $dbh->prepare($sqlBod)) {
-                        if ($sthBod->execute(array($gebruikersnaam))) {
-                            while ($rowBod = $sthBod->fetch()) {
-                                $voorwerpnummer = $rowBod['Voorwerp'];
-                                $huidigbod = $rowBod['BodBedrag'];
+                    // Haal unieke voorwerpen op
+                    $sqlDistinctVoorwerp = 'SELECT DISTINCT (Voorwerp) FROM Bod WHERE Gebruiker = ?';
+                    if ($sthDistinctVoorwerp = $dbh->prepare($sqlDistinctVoorwerp)) {
+                        if ($sthDistinctVoorwerp->execute(array($gebruikersnaam))) {
+                            while ($rowDistinctVoorwerp = $sthDistinctVoorwerp->fetch()) {
+                                $voorwerpnummer = $rowDistinctVoorwerp['Voorwerp'];
 
                                 // Haal titel, looptijd en voorwerpnummer op
                                 $sqlVoorwerp = 'SELECT * FROM Voorwerp WHERE VoorwerpNummer = ?';
@@ -100,6 +100,26 @@
                                                 }
                                             }
 
+                                            // Haal het huidige bod op
+                                            $sqlBod = 'SELECT BodBedrag FROM Bod WHERE Gebruiker = ?';
+                                            if ($sthBod = $dbh->prepare($sqlBod)) {
+                                                if ($sthBod->execute(array($gebruikersnaam))) {
+                                                    while ($rowBod = $sthBod->fetch()) {
+                                                        $huidigbod = $rowBod['BodBedrag'];
+                                                    }
+                                                }
+                                            }
+
+                                            // Haal op hoevaak er is geboden
+                                            $sqlAantalBiedingen = 'SELECT COUNT(BodBedrag) AS \'AantalBiedingen\' FROM Bod WHERE Voorwerp = ?';
+                                            if ($sthAantalBiedingen = $dbh->prepare($sqlAantalBiedingen)) {
+                                                if ($sthAantalBiedingen->execute(array($voorwerpnummer))) {
+                                                    while ($rowAantalBiedingen = $sthAantalBiedingen->fetch()) {
+                                                        $aantalBiedingen = $rowAantalBiedingen['AantalBiedingen'];
+                                                    }
+                                                }
+                                            }
+
                                             echo '<div class="uk-width-1-1 uk-width-1-3@s veilingbox">';
                                             echo '<h3>' . $titel . '...</h3>';
                                             echo '<img class="mijn-veilingen-thumbnail" ' . $thumbnail . '" alt="Thumbnail"><br>';
@@ -122,7 +142,7 @@
                                                         </div>
                                                         <div class=\"countdown-getal-klein uk-countdown-separator\">s</div>
                                                     </div></h3>";
-                                            echo '<h3>Huidig bod: ' . $valuta . $huidigbod;
+                                            echo '<h3>Huidig bod ('.$aantalBiedingen.'): ' . $valuta . $huidigbod;
                                             echo '</div></h3>';
                                         }
                                     }
