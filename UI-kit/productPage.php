@@ -104,9 +104,10 @@
                                     $valuta = '$';
                                     break;
                             }
+                            $startprijs = (double)$alles['StartPrijs'];
 
                             echo "<h4 class= \"uk-text-emphasis\">Staat: $alles[Staat] </h4><br> 
-                            <h4 class=\"conditie\">Startprijs: $valuta " . (double)$alles['StartPrijs'] . "</h4><br>
+                            <h4 class=\"conditie\">Startprijs: $valuta " . $startprijs . "</h4><br>
                             <h4 class=\"conditie\">Verzendkosten: $valuta ". (double)$alles['Verzendkosten'] . "</h4><br>
                             <h4 class=\"conditie\">VerzendInstructies:  " . $alles['VerzendInstructies'] . "</h4><br>
                             <h4 class=\"conditie\">BetalingsInstructie:  " . $alles['BetalingsInstructie'] . "</h4>";
@@ -151,6 +152,9 @@
                     if ($sthBod->execute(array($_GET["ID"]))) {
                         while ($rowBod = $sthBod->fetch()) {
                             $huidigbod = $rowBod['BodBedrag'];
+                            // if ($huidigbod <= $startprijs) {
+                            //     $huidigbod = $startprijs;
+                            // }
                         }
                     }
                 }
