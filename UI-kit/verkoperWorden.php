@@ -59,6 +59,7 @@
         } else if ($_GET["errorVerkoper"] == "onjuisteCredicard") {
             echo "<br> <p class=\"errorLogin\"> Gelieve een geldig creditcardnummer in te vullen. </p>";
     }
+}
     ?>
 
     </div>

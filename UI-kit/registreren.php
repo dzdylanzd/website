@@ -54,16 +54,16 @@ if (!isset($_SESSION["gevalideert"])) {
                     case 7:
                         echo '<p class="errors">SQL error, probeer het opnieuw</p>';
                         break;
-                        case 8:
+                    case 8:
                         echo '<p class="errors">SQL error, probeer het opnieuw</p>';
                         break;
-                        case 9:
+                    case 9:
                         echo '<p class="errors">SQL error, probeer het opnieuw</p>';
                         break;
-                        case 10:
+                    case 10:
                         echo '<p class="errors">SQL error, probeer het opnieuw</p>';
                         break;
-                        case 11:
+                    case 11:
                         echo '<p class="errors">SQL error, probeer het opnieuw</p>';
                         break;
                     default:
