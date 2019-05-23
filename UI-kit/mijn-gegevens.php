@@ -51,6 +51,15 @@
                 $gebruikersnaam = $_SESSION['userId'];
                 $email = $_SESSION['userUid'];
 
+                $sql = 'SELECT Telefoonnummer FROM Gebruikerstelefoon WHERE gebruiker = ?';
+                if ($sth = $dbh->prepare($sql)) {
+                    if ($sth->execute(array($gebruikersnaam))) {
+                        while ($row = $sth->fetch()) {
+                            $telefoonnummer = $row['Telefoonnummer'];
+                        }
+                    }
+                }
+
                 $sql = 'SELECT * FROM Gebruiker WHERE gebruikersnaam = ?';
                 if ($sth = $dbh->prepare($sql)) {
                     if ($sth->execute(array($gebruikersnaam))) {
@@ -79,6 +88,7 @@
                         <p class="mijngegevens">Voornaam: <?php echo $voornaam ?> </p><br>
                         <p class="mijngegevens">Achternaam: <?php echo $achternaam ?> </p><br>
                         <p class="mijngegevens">Geboortedatum: <?php echo $geboortedatum ?> </p><br>
+                        <p class="mijngegevens">Telefoonnummer: <?php echo $telefoonnummer ?> </p><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
