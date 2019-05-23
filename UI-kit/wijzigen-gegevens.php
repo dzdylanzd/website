@@ -93,8 +93,22 @@
                         <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum" value="<?php echo $geboortedatum;  ?>"><br>
                         <label class="registreerlabel" for="Email">Email </label><br>
                         <input class="uk-input input-registratie" type="text" id="Email" name="Email" value="<?php echo $email;  ?>"><br>
-                        <label class="registreerlabel" for="telefoonnummer">Telefoonnummer</label><br>
-                        <input class="uk-input input-registratie" type="number" id="telefoonnummer" name="telefoonnummer" value="<?php echo $telefoonnummer; ?>"><br>
+<!-- 
+                           <?php       
+                $sql = 'SELECT Telefoonnummer FROM Gebruikerstelefoon WHERE gebruiker = ?';
+                if ($sth = $dbh->prepare($sql)) {
+                    if ($sth->execute(array($gebruikersnaam))) {
+                        while ($row = $sth->fetch()) {
+                            echo"   <label class=\"registreerlabel\" for=\"telefoonnummer\">Telefoonnummer</label><br>
+                            <input class=\"uk-input input-registratie\" type=\"number\" id=\"telefoonnummer\" name=\"telefoonnummer\" value=\"";
+                            echo $row['Telefoonnummer'];
+                            echo"\"><br>";
+                            
+                        }
+                    }
+                }
+                ?> -->
+                   
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>

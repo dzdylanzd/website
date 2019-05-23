@@ -33,7 +33,7 @@ if (isset($_POST['bevestigings-button'])) {
 
   //fout meldingen
   //check voor lege velden
-  if (empty($Gebruiksernaam) || empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) || empty($Mailadres) || empty($Wachtwoord) || empty($WachtwoordHerhaal) || empty($VraagNummer) ||  empty($Antwoordtekst)) {
+  if (empty($Gebruiksernaam) || empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) || empty($Mailadres) || empty($Wachtwoord) || empty($WachtwoordHerhaal) || empty($VraagNummer) ||  empty($Antwoordtekst) ||  empty($telefoonnummer)) {
     header("location: ../registreren.php?error=1");
     exit();
   } else if (!filter_var($Mailadres, FILTER_VALIDATE_EMAIL)) {
