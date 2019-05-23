@@ -94,8 +94,13 @@
                                             if ($sthThumbnail = $dbh->prepare($sqlThumbnail)) {
                                                 if ($sthThumbnail->execute(array($voorwerpnummer))) {
                                                     while ($rowThumbnail = $sthThumbnail->fetch()) {
-                                                        $thumbnailSource = $rowThumbnail['Thumbnailfile'];
-                                                        $thumbnail = "src=\"http://iproject5.icasites.nl/thumbnails/$thumbnailSource";
+                                                        if(strpos( $rowThumbnail['Thumbnailfile'],"img") !== false){
+                                                            $rowThumbnail['Thumbnailfile'] = "http://iproject5.icasites.nl/thumbnails/".  $rowThumbnail['Thumbnailfile'];
+                                                        }else{
+                                                            $rowThumbnail['Thumbnailfile'] = $rowThumbnail['Thumbnailfile'];
+                                                        }
+                                                       
+                                                        $thumbnail = $rowThumbnail['Thumbnailfile'];
                                                     }
                                                 }
                                             }
@@ -122,7 +127,7 @@
 
                                             echo '<div class="uk-width-1-1 uk-width-1-3@s veilingbox">';
                                             echo '<h3>' . $titel . '...</h3>';
-                                            echo '<img class="mijn-veilingen-thumbnail" ' . $thumbnail . '" alt="Thumbnail"><br>';
+                                            echo '<img class="mijn-veilingen-thumbnail" src="' . $thumbnail . '" alt="Thumbnail"><br>';
                                             echo "<h3 class=\"mijn-veilingen\"> Tijd resterend: <br>  
                                                     <div class=\"margin-left uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $looptijd\">
                                                         <div>
@@ -142,7 +147,7 @@
                                                         </div>
                                                         <div class=\"countdown-getal-klein uk-countdown-separator\">s</div>
                                                     </div></h3>";
-                                            echo '<h3>Huidig bod ('.$aantalBiedingen.'): ' . $valuta . $huidigbod;
+                                            echo '<h3>Huidig bod ('.$aantalBiedingen.'): ' . $valuta . (double)$huidigbod;
                                             echo '</div></h3>';
                                         }
                                     }

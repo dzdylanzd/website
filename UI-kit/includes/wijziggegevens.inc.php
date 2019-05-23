@@ -79,7 +79,7 @@ if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty(
     WHERE Gebruikersnaam = ?';
     $sql2 = "delete from voorkeur where gebruikersnaam = ?";
     $sql3 = "INSERT into voorkeur(categorie,gebruikersnaam) values (?,?),(?,?),(?,?)";
-    $sql3= "update Gebruikerstelefoon 
+    $sql4= "update Gebruikerstelefoon 
     set Telefoonnummer = ?
     where Gebruiker IN(
     select top 1 Gebruiker from Gebruikerstelefoon
@@ -93,11 +93,11 @@ if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty(
                     if ($sth2->execute(array($gebruikersnaam))) {
                         if ($sth3 = $dbh->prepare($sql3)) {
                             if ($sth3->execute(array($voorkeur1, $gebruikersnaam, $voorkeur2, $gebruikersnaam, $voorkeur3, $gebruikersnaam))) {
-                                // if ($sth4 = $dbh->prepare($sql4)) {
-                                //     if ($sth4->execute(array($Telefoonnummer,$gebruikersnaam))) {
+                                if ($sth4 = $dbh->prepare($sql4)) {
+                                    if ($sth4->execute(array($Telefoonnummer,$gebruikersnaam))) {
 
-                                //      }
-                                // }
+                                     }
+                                }
 
                                 header("location: ../index.php");
                                 exit();

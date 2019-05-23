@@ -161,7 +161,7 @@
                     $bieder = "";
                     if ($sth->execute(array($_GET["ID"]))) {
                         while ($alles = $sth->fetch()) {
-                            $bod .= "<p>$alles[BodBedrag]</p>";
+                            $bod .= "<p>" . (double)$alles['BodBedrag'] . "</p>";
                             $bieder .= "<p>$alles[Gebruiker]</p>";
                             $datumTijd .= "<p>" . substr($alles['BodDagTijd'], 0, 19) . " </p>";
                         }
@@ -215,7 +215,7 @@
                                                         $minimumVerhoging =  $minimumVerhoging + 5;
                                                     } else if ($bod > 1000 && $bod <= 5000) {
                                                         $minimumVerhoging =  $bod + 10;
-                                                    } else {
+                                                    } else if ($bod >  5000 ) {
                                                         $minimumVerhoging = $minimumVerhoging  + 50;
                                                     }
                                                 }

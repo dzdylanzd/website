@@ -113,7 +113,7 @@
 
                                 echo '<div class="uk-width-1-1 uk-width-1-3@s veilingbox">';
                                 echo '<h3>' . $titel . '...</h3>';
-                                echo '<a href="productPage.php?ID=.'. $voorwerpnummer . '"><img class="mijn-veilingen-thumbnail" src="'.$thumbnail.'" alt="Thumbnail"></a><br>';
+                                echo '<a href="productPage.php?ID='. $voorwerpnummer . '"><img class="mijn-veilingen-thumbnail" src="'.$thumbnail.'" alt="Thumbnail"></a><br>';
                                 echo "<h3 class=\"mijn-veilingen\"> Tijd resterend: <br>  
                                         <div class=\"margin-left uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $looptijd\">
                                             <div>

@@ -34,7 +34,7 @@ $foto4 = str_replace("uploud/","", $_SESSION['fotos'][3]);
 if(empty($titel) || empty($staat) || empty($message)|| empty($prijs) || empty($verzendkosten) || empty($plaatsnaam)){
   header("location: ../veiling-Maken.php?error=leeg");
   exit();
-}else if($foto1 = "https://via.placeholder.com/150"){
+}else if($_SESSION['fotos'][0]== "https://via.placeholder.com/150"){
   header("location: ../veiling-Maken.php?error=geenFoto");
   exit();
 }
@@ -80,6 +80,8 @@ try {
   }
   $_SESSION['fotos'] = array("https://via.placeholder.com/150", "https://via.placeholder.com/150", "https://via.placeholder.com/150", "https://via.placeholder.com/150");
   $_SESSION['index'] = 0;
+  header("location: ../mijn-veilingen.php");
+  exit();
 } 
 catch (PDOException $e) {	 
   $error = $e->getMessage();
