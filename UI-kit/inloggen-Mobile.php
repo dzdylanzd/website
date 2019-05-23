@@ -33,7 +33,7 @@
 
                     <div class="uk-margin">
                         <div class="uk-inline registreerbox">
-                            <h2>Inloggen</h2>
+                            <h1>Inloggen</h1>
                             <label class="registreerlabel" for="gebruikersnaam">Gebruikersnaam</label><br>
                             <input class="uk-input input-registratie" name="gebruikersnaam" type="text"><br>
                             <label class="registreerlabel" for="wachtwoord">Wachtwoord</label><br>
@@ -41,14 +41,17 @@
 
                             <button class="knop-registreren uk-width-1-1 uk-button uk-button-default " name="login-submit" type="submit">Login</button><br>
                 </form>
-                <a class="uk-link-muted" href="wachtwoordVergeten.php">Wachtwoord vergeten?</a><br>
-                <a class="uk-link-muted" href="email-Bevestiging.php">Heeft u nog geen account? U kunt hier registreren.</a>
+                <a class="uk-link-muted" href="wachtwoordVergeten.php">
+                    <p class="witte-tekst">Wachtwoord vergeten?</p>
+                </a><br>
+                <a class="uk-link-muted" href="email-Bevestiging.php">
+                    <p class="witte-tekst">Heeft u nog geen account? U kunt hier registreren.</p>
+                </a>
             </div>
         </div>
     </div>
-</div>
-</div>
-
+    </div>
+    </div>
     <?php include 'includes/footer.inc.php'; ?>
 </body>
 
