@@ -101,7 +101,7 @@
                     }
                 }
                 ?>
-                <p class="mijngegevens"> </p>
+                <p class="mijngegevens"> <a href="telefoonnummerToevoegen.php">telefoon nummer toevoegen</a></p>
                  
                     </div>
                     <div class="registreerbox">
