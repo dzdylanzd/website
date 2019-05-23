@@ -133,7 +133,7 @@
                                             </div>
                                             <div class=\"countdown-getal-klein uk-countdown-separator\">s</div>
                                         </div></h3>";
-                                echo '<h3>Huidig bod: ' . $valuta . $huidigbod;
+                                echo '<h3>Huidig bod: ' . $valuta . (double)$huidigbod;
                                 echo '</div></h3>';
                             }
                         }
