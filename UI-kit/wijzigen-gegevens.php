@@ -93,7 +93,7 @@
                         <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum" value="<?php echo $geboortedatum;  ?>"><br>
                         <label class="registreerlabel" for="Email">Email </label><br>
                         <input class="uk-input input-registratie" type="text" id="Email" name="Email" value="<?php echo $email;  ?>"><br>
-
+<!-- 
                            <?php       
                 $sql = 'SELECT Telefoonnummer FROM Gebruikerstelefoon WHERE gebruiker = ?';
                 if ($sth = $dbh->prepare($sql)) {
@@ -107,7 +107,7 @@
                         }
                     }
                 }
-                ?>
+                ?> -->
                    
                     </div>
                     <div class="registreerbox">

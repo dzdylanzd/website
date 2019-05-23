@@ -49,7 +49,7 @@ if ($sth = $dbh->prepare($sql)) {
   }
 }
 
-$sql = 'insert into Voorwerp(VoorwerpNummer,Titel,Beschrijving,StartPrijs,Betalingswijze, BetalingsInstructie,Plaatsnaam,Land,Looptijd,LooptijdBegin,Verzendkosten,Verkoper,LooptijdEinde,IsVeilingGesloten,Staat,Valuta)
+$sql = 'insert into Voorwerp(VoorwerpNummer,Titel,Beschrijving,StartPrijs,Betalingswijze, BetalingsInstructie,Plaatsnaam,Land,Looptijd,LooptijdBegin,Verzendkosten,Verkoper,LooptijdEinde,IsVeilingGesloten,Staat,Valuta,,VerzendInstructies)
 values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
 $sqlImage = 'insert into Illustraties(VoorwerpNummer,Illustratiefile)
 values(?,?)';
@@ -60,7 +60,7 @@ values(?,?)';
 
 try {
   if ($sth = $dbh->prepare($sql)) {
-    $sth->execute(array( $VoorwerpNummer,$titel,$message,$prijs,$betalingswijze,$betalingsinstructies,$plaatsnaam,$land,$lengte,$date,$verzendkosten,$_SESSION['userId'],$eindDatum,0,$staat,$valuta));
+    $sth->execute(array( $VoorwerpNummer,$titel,$message,$prijs,$betalingswijze,$betalingsinstructies,$plaatsnaam,$land,$lengte,$date,$verzendkosten,$_SESSION['userId'],$eindDatum,0,$staat,$valuta,$verzendinstructies));
     
   }
   if ($sth = $dbh->prepare($sqlImage)) {
