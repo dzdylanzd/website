@@ -12,6 +12,17 @@
 </head>
 
 <body>
+    <?php
+    session_start();
+if(isset( $_SESSION['userId'])){
+
+    header("location: index.php");
+    exit();
+}else{
+    session_destroy();
+}
+
+    ?>
     <?php include 'includes\nav-L-M.php';
     require_once('includes/database.php'); ?>
     <div class="page-container">
@@ -36,32 +47,8 @@
                     </div>
                 </nav>
             </div>
-            <?php
-            if (isset($_GET['error'])) {
-                $errorBericht = ($_GET['error']);
-                switch ($errorBericht) {
-                    case 1:
-                        echo '<p class="errors">Vul alle velden in</p>';
-                        break;
-                    case 3:
-                        echo '<p class="errors">De gebruikersnaam is al in gebruik</p>';
-                    case 4:
-                        echo '<p class="errors">De wachtwoorden komen niet overeen</p>';
-                        break;
-                    case 5:
-                        echo '<p class="errors">Een of meerdere invoervelden bevatten teveel tekens</p>';
-                        break;
-                    case 6:
-                        echo '<p class="errors">De gebruikersnaam bevat een speciaal teken</p>';
-                        break;
-                    case 7:
-                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
-                        break;
-                    default:
-                        echo '<p class="errors">Onverwachte error, probeer het opnieuw';
-                }
-            }
-            ?> <form method="post" action="includes/login.inc.php">
+            
+            <form method="post" action="includes/login.inc.php">
 
                 <div class="uk-margin">
                     <div class="uk-inline">
@@ -81,26 +68,6 @@
             </form>
             <a class="uk-link-muted" href="wachtwoordVergeten.php">Wachtwoord vergeten?</a><br>
             <a class="uk-link-muted" href="email-Bevestiging.php">Heeft u nog geen account? U kunt hier registreren.</a>
-            
-            <?php
-            if (isset($_GET["errorLogin"])) {
-                if ($_GET["errorLogin"] == "leeg") {
-                    echo "<br> <p class=\"errorLogin\"> Niet alle velden zijn ingevuld </p>";
-                }
-                if ($_GET["errorLogin"] == "GebruikerBestaatNiet") {
-                    echo "<br> <p class=\"errorLogin\"> Deze gebruiker bestaat niet </p>";
-                }
-                if ($_GET["errorLogin"] == "verkeerdwachtwoord") {
-                    echo "<br> <p class=\"errorLogin\"> Onjuist wachtwoord </p>";
-                }
-                if ($_GET["errorLogin"] == "sql") {
-                    echo "<br> <p class=\"errorLogin\"> Er is een fout opgelopen, probeer het opnieuw </p>";
-                 }
-            }else{
-                header("location: index.php");
-            }
-            ?>
-        </div>
     </div>
 
     <?php include 'includes/footer.inc.php'; ?>
