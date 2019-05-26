@@ -15,17 +15,70 @@
                             if(!isset( $_SESSION['userId'])){
                            echo' <a class="uk-margin-left" href="inloggen-Mobile.php" uk-icon="icon: user"></a>';
                             }else{
-                                echo '<div class="uk-inline">
-                                <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span> </button>
-                                <div class="mobileNavigatie" uk-dropdown="offset: 21" >
-                                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
-                                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-Biedingen.php\'">Mijn biedingen</button>
-                                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-Veilingen.php\'">Mijn veilingen</button>
-                                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>
-                                </div>                                
-                                </div>';
-                                
+                           
+
+
+                                $gebruikersnaam = $_SESSION['userId'];
+
+                $sql = 'SELECT Gebruikersnaam FROM Gebruiker WHERE gebruikersnaam = ?';
+                if ($sth = $dbh->prepare($sql)) {
+                    if ($sth->execute(array($gebruikersnaam))) {
+                        while ($row = $sth->fetch()) {
+                            $gebruikersnaam = $row['Gebruikersnaam'];
+                        }
+                    }
+                }
+                $sql = 'SELECT SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
+                if ($sth = $dbh->prepare($sql)) {
+                    if ($sth->execute(array($gebruikersnaam))) {
+                        while ($row = $sth->fetch()) {
+                            if ($row['SoortGebruiker'] == 'V') {
+                                $verkoper = true;
+                            } else {
+                                $verkoper = false;
                             }
+                        }
+                    }
+                }
+                $sql = 'SELECT SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
+                if ($sth = $dbh->prepare($sql)) {
+                    if ($sth->execute(array($gebruikersnaam))) {
+                        while ($row = $sth->fetch()) {
+                            if ($row['SoortGebruiker'] == 'A') {
+                                $activatie = true;
+                            } else {
+                                $activatie = false;
+                            }
+                        }
+                    }
+                }
+
+                if ($verkoper) {
+                    echo '<div class="uk-inline">
+                    <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span> </button>
+                <div uk-dropdown="mode: click"><button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
+                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
+                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-veilingen.php\'">Mijn veilingen</button>
+                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button></div> </div>';
+                } else if ($activatie) {
+                    echo '<div class="uk-inline">
+                    <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span> </button>
+                    <div uk-dropdown="mode: click"><button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
+                    <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
+                    <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'VerkoperActiveren.php\'">Verkoper activeren</button>
+                    <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button></div> </div>';
+                } else {
+                    echo '<div class="uk-inline">
+                    <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span> </button>
+                <div uk-dropdown="mode: click"><button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
+                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
+                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'VerkoperWorden.php\'">Verkoper worden</button>
+                <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button></div> </div>';
+                }
+          
+            }
+                                
+                            
 ?>
                         </div>
                     </div>
