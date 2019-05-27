@@ -51,7 +51,7 @@ function displayCategorie($nummer, $dbh, $hoeveel) {
             SELECT Rubrieknummer FROM Rubriek WHERE Volgnr= $nummer or Rubrieknummer = $nummer ) or Rubrieknummer = any(
             
             SELECT Rubrieknummer FROM Rubriek WHERE Volgnr= $nummer or Rubrieknummer = $nummer ))))
-            ) order by newid()";
+            ) and IsVeilingGesloten = 0 order by newid()";
 // prepared statement 
 $sth = $dbh->prepare($sql);
 if($sth->execute(array())){
@@ -106,20 +106,22 @@ switch ($valuta) {
         $valuta = '$';
         break;
 }
-
-$alles["StartPrijs"] = (double)$alles["StartPrijs"];
-$text = $text . "
-<li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">
-<div class=\"uk-panel\">
-   <a href=\"productPage.php?ID=$alles[VoorwerpNummer]\" > <img  class=\"image-square\" src=\"$image[Thumbnailfile]\" alt=\"\"> </a>
-    <div class=\"uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom\">
-        <h3 class=\"uk-margin-remove\">";
-        $text = $text . substr($alles["Titel"],0,10);
-        $text = $text . "... </h3>
-        <p class=\"uk-margin-remove\"> $valuta $alles[StartPrijs]</p>
+if(!$alles['IsVeilingGesloten']){
+    $alles["StartPrijs"] = (double)$alles["StartPrijs"];
+    $text = $text . "
+    <li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">
+    <div class=\"uk-panel\">
+       <a href=\"productPage.php?ID=$alles[VoorwerpNummer]\" > <img  class=\"image-square\" src=\"$image[Thumbnailfile]\" alt=\"\"> </a>
+        <div class=\"uk-overlay uk-overlay-primary uk-position-bottom uk-text-center uk-transition-slide-bottom\">
+            <h3 class=\"uk-margin-remove\">";
+            $text = $text . substr($alles["Titel"],0,10);
+            $text = $text . "... </h3>
+            <p class=\"uk-margin-remove\"> $valuta $alles[StartPrijs]</p>
+        </div>
     </div>
-</div>
-</li>"; 
+    </li>"; 
+}
+
 
   
 }

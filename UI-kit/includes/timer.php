@@ -6,7 +6,7 @@ if($sth->execute(array($_GET["ID"]))){
        
         if($row["isVeilingGesloten"] == 0){
             echo"<p class=\"witte-tekst\">De veiling is geopend</p>";
-            $tijd =   substr(substr_replace($row["LooptijdEinde"], "T", 11,0),0,20) . "+01:00";
+            $tijd =   substr(substr_replace($row["LooptijdEinde"], "T", 11,0),0,20) . "+00:00";
             $tijd =  str_replace(" ","",$tijd);
           
             echo "<h3 class=\"timer\"><div class=\"uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $tijd\">

@@ -37,7 +37,7 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
         }
     } else if (isset($_POST['bank']) && isset($_POST['rekeningnummer'])) {
 
-        if (empty($_POST['bank']) || empty($_POST['rekenignummer'])) {
+        if (empty($_POST['bank']) || empty($_POST['rekeningnummer'])) {
             header("location: ../VerkoperWorden.php?errorVerkoper=leegVeld");
             exit();
         }
@@ -52,7 +52,7 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
             if ($query->execute(array("A", $Gebruiksernaam))) {
                 $query = $dbh->prepare($sql2);
                 if ($query->execute(array($Gebruiksernaam, $identificatieMethode, $bank, $rekeningnummer))) {
-                    header("location: ../zendActivatieMail.php");
+                    header("location: zendActivatieMail.php");
                     exit();
                 }
             }
