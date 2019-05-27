@@ -255,6 +255,16 @@
                                     echo "<h2>Verkoper: $alles[Verkoper]</h2>";
                                 }
                             }
+
+                            $sql = "SELECT DatumMakenAccount from Gebruiker where Gebruikersnaam in (
+                                select Verkoper from Voorwerp where VoorwerpNummer = ?
+                                )";
+                            $sth = $dbh->prepare($sql);
+                            if ($sth->execute(array($_GET["ID"]))) {
+                                while ($alles = $sth->fetch()) {
+                                    echo "<h4>lid sinds: $alles[DatumMakenAccount]</h4>";
+                                }
+                            }
                             ?>
                         </div>
                         <div class="uk-width-1-2@s uk-wdith-1-1 Plaats-Bod">
