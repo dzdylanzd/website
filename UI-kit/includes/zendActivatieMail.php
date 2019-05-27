@@ -36,7 +36,7 @@ iConcepts
 </html>
 ';
 
-$sql = "INSERT  INTO Verificatiecode(Gebruikersnaam,Verificatiecode) VALUES (?, ?)";
+$sql = "INSERT  INTO VerificatiecodeVerkoper(Gebruikersnaam,Verificatiecode) VALUES (?, ?)";
 try {
     $query = $dbh->prepare($sql);
     if ($query->execute(array($Gebruiksernaam, $random_hash))) { }

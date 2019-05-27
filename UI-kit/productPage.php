@@ -51,6 +51,8 @@
                             <ul class="uk-slideshow-items ">';
                         $knoppenFotos = '<div class="imagePreview uk-flex">';
                         $index = 0;
+                        if($sth->fetch()){
+                            $sth->execute(array($_GET["ID"]));
                         while ($alles = $sth->fetch()) {
                             if (strpos($alles['IllustratieFile'], "dt_") !== false) {
                                 $alles['IllustratieFile'] = "http://iproject5.icasites.nl/pics/" .  $alles['IllustratieFile'];
@@ -64,6 +66,25 @@
                             $knoppenFotos = "$knoppenFotos <img $image class=\"uk-width-1-4 \" alt=\"D\" onclick=\"UIkit.slideshow('.uk-slideshow').show($index);\">";
                             $index++;
                         }
+                    }else{
+                        $sql = "SELECT TOP 4 ThumbnailFile FROM Thumbnail WHERE Voorwerpnummer = ? ";
+                        $sth = $dbh->prepare($sql);
+                        if ($sth->execute(array($_GET["ID"]))) {
+                            while ($alles = $sth->fetch()) {
+                                if (strpos($alles['ThumbnailFile'], "img") !== false) {
+                                    $alles['ThumbnailFile'] = "http://iproject5.icasites.nl/thumbnails/" .  $alles['ThumbnailFile'];
+                                } else {
+                                    $alles['ThumbnailFile'] =   $alles['ThumbnailFile'];
+                                }
+                                $image = "src=\"$alles[ThumbnailFile]\" ";
+                                $sliderFotos = "$sliderFotos <li class=\"Image-Border\">
+                                    <img $image alt=\"\" uk-cover>
+                                </li>";
+                                $knoppenFotos = "$knoppenFotos <img $image class=\"uk-width-1-4 \" alt=\"D\" onclick=\"UIkit.slideshow('.uk-slideshow').show($index);\">";
+                                $index++;
+                            }
+                        }
+                    }
                         $sliderFotos = $sliderFotos . ' </ul>
 
                             <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>

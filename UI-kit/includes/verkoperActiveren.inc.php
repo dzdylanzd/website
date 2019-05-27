@@ -5,7 +5,7 @@ if (isset($_POST['verkoopaccountActiveren'])) {
     $Gebruiksernaam = $_SESSION['userId'];
 
     $verificatiecode = $_POST['verificatiecode'];
-    $sql = 'SELECT Verificatiecode FROM Verificatiecode WHERE Gebruikersnaam = ?';
+    $sql = 'SELECT Verificatiecode FROM VerificatiecodeVerkoper WHERE Gebruikersnaam = ?';
     if($query = $dbh->prepare($sql)){
         if ($query->execute(array($Gebruiksernaam)))
         while($row = $query->fetch()){
