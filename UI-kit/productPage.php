@@ -12,6 +12,10 @@
 </head>
 
 <body>
+<?php
+    $url1=$_SERVER['REQUEST_URI'];
+    header("Refresh: 5; URL=$url1");
+?>
     <?php include 'includes\nav-L-M.php';
     include 'includes/defaultMobileNav.php';
     require_once('includes/database.php');
