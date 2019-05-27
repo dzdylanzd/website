@@ -31,6 +31,12 @@
                         <label for="wachtwoorVergetenEmail">E-mail:</label><br>
                         <input class="uk-input input-registratie" type="email" name="wachtwoorVergetenEmail" id="wachtwoorVergetenEmail"><br>
                         <label for="beveiligingsvraag">Antwoord op de beveiligingsvraag:</label><br>
+                        <?php
+
+
+
+
+                        ?>
                         <input class="uk-input input-registratie" type="password" name="beveiligingsvraag" id="beveiligingsvraag"><br>
                         <button class="uk-button knop-email">Bevestigen</button>
                     </div>
