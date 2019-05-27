@@ -26,10 +26,10 @@ $land = $_POST['land'];
 $date = date("Y-m-d H:i:s");
 $eindDatum = date("Y-m-d H:i:s", strtotime($date. " + $lengte days"));
 
-$foto1 = str_replace("upload/","", $_SESSION['fotos'][0]);
-$foto2 = str_replace("upload/","", $_SESSION['fotos'][1]);
-$foto3 = str_replace("upload/","", $_SESSION['fotos'][2]);
-$foto4 = str_replace("upload/","", $_SESSION['fotos'][3]);
+$foto1 =  $_SESSION['fotos'][0];
+$foto2 =  $_SESSION['fotos'][1];
+$foto3 =  $_SESSION['fotos'][2];
+$foto4 =  $_SESSION['fotos'][3);
 
 if(empty($titel) || empty($staat) || empty($message)|| empty($prijs) || empty($verzendkosten) || empty($plaatsnaam)){
   header("location: ../veiling-Maken.php?error=leeg");
@@ -66,12 +66,12 @@ try {
   if ($sth = $dbh->prepare($sqlImage)) {
     for ($i = 0; $i <= 3; $i++) {
       if( $_SESSION['fotos'][$i] != 'https://via.placeholder.com/150')
-      $sth->execute(array($VoorwerpNummer,str_replace("upload/","", $_SESSION['fotos'][$i])));
+      $sth->execute(array($VoorwerpNummer, $_SESSION['fotos'][$i]));
   }
     
   }
   if ($sth = $dbh->prepare($sqlThumbnail)) {
-    $sth->execute(array($VoorwerpNummer,str_replace("upload/","", $_SESSION['fotos'][0] )));
+    $sth->execute(array($VoorwerpNummer,$_SESSION['fotos'][0] ));
     
   }
   if ($sth = $dbh->prepare($sqlRubriek)) {
