@@ -147,7 +147,7 @@
                 $huidigbod = '';
 
                 // Haal het huidige bod op
-                $sqlBod = 'SELECT BodBedrag FROM Bod WHERE Voorwerp = ?';
+                $sqlBod = 'SELECT BodBedrag FROM Bod WHERE Voorwerp = ? order by BodDagTijd  ';
                 if ($sthBod = $dbh->prepare($sqlBod)) {
                     if ($sthBod->execute(array($_GET["ID"]))) {
                         while ($rowBod = $sthBod->fetch()) {
@@ -244,17 +244,17 @@
                                                 while ($row = $sth->fetch()) {
                                                     $minimumVerhoging = $row['StartPrijs'];
                                                     $bod =  $minimumVerhoging;
-                                                    if ($bod > 1 && $bod <= 50) {
-                                                        $minimumVerhoging = $minimumVerhoging + 0.5;
-                                                    } else if ($bod > 50 && $bod <= 500) {
-                                                        $minimumVerhoging = $minimumVerhoging + 1;
-                                                    } else if ($bod > 500 && $bod <= 1000) {
-                                                        $minimumVerhoging =  $minimumVerhoging + 5;
-                                                    } else if ($bod > 1000 && $bod <= 5000) {
-                                                        $minimumVerhoging =  $bod + 10;
-                                                    } else if ($bod >  5000) {
-                                                        $minimumVerhoging = $minimumVerhoging  + 50;
-                                                    }
+                                                    // if ($bod > 1 && $bod <= 50) {
+                                                    //     $minimumVerhoging = $minimumVerhoging + 0.5;
+                                                    // } else if ($bod > 50 && $bod <= 500) {
+                                                    //     $minimumVerhoging = $minimumVerhoging + 1;
+                                                    // } else if ($bod > 500 && $bod <= 1000) {
+                                                    //     $minimumVerhoging =  $minimumVerhoging + 5;
+                                                    // } else if ($bod > 1000 && $bod <= 5000) {
+                                                    //     $minimumVerhoging =  $bod + 10;
+                                                    // } else if ($bod >  5000) {
+                                                    //     $minimumVerhoging = $minimumVerhoging  + 50;
+                                                    // }
                                                 }
                                             }
                                         }
