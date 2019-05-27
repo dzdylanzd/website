@@ -39,6 +39,7 @@
                     $looptijd = '';
                     $thumbnail = '';
                     $huidigbod = '';
+                    $bodGebruiker = '';
 
                     // Haal unieke voorwerpen op
                     $sqlDistinctVoorwerp = 'SELECT DISTINCT (Voorwerp) FROM Bod WHERE Gebruiker = ?';
@@ -115,6 +116,16 @@
                                                 }
                                             }
 
+                                            // Haal het bod van de gebruiker op
+                                            $sqlBodGebruiker = 'SELECT BodBedrag FROM Bod WHERE Gebruiker = ?';
+                                            if ($sthBodGebruiker = $dbh->prepare($sqlBodGebruiker)) {
+                                                if ($sthBodGebruiker->execute(array($gebruikersnaam))) {
+                                                    while ($rowBodGebruiker = $sthBodGebruiker->fetch()) {
+                                                        $bodGebruiker = $rowBodGebruiker['BodBedrag'];
+                                                    }
+                                                }
+                                            }
+
                                             // Haal op hoevaak er is geboden
                                             $sqlAantalBiedingen = 'SELECT COUNT(BodBedrag) AS \'AantalBiedingen\' FROM Bod WHERE Voorwerp = ?';
                                             if ($sthAantalBiedingen = $dbh->prepare($sqlAantalBiedingen)) {
@@ -147,8 +158,14 @@
                                                         </div>
                                                         <div class=\"countdown-getal-klein uk-countdown-separator\">s</div>
                                                     </div></h3>";
-                                            echo '<h3>Huidig bod ('.$aantalBiedingen.'): ' . $valuta . (double)$huidigbod;
-                                            echo '</div></h3>';
+                                            echo '<h3>Huidig bod ('.$aantalBiedingen.'): ' . $valuta . (double)$huidigbod . '</h3>';
+                                            echo '<h3>Uw bod: ' . $valuta . (double)$bodGebruiker . '</h3>';
+                                            if ($huidigbod == $bodGebruiker) {
+                                                echo '<h3 class=succes> U heeft het hoogste bod! </h3>';
+                                            } else {
+                                                echo '<h3 class=errors> U heeft niet het hoogste bod! </h3>';
+                                            }
+                                            echo '</div>';
                                         }
                                     }
                                 }
