@@ -48,11 +48,11 @@
             <div class=" uk-width-expand ">
               <div class="  uk-width-expand uk-height-small@s ">
                 <div class="flex-column-phone ">
-                  <img class=" uk-height-small@s uk-width-1-3@s uk-width-1-1" src="<?php echo $_SESSION['fotos'][1];  ?>" alt="Foto 2">
+                  <img class="maximg400 uk-height-small@s uk-width-1-3@s uk-width-1-1" src="<?php echo $_SESSION['fotos'][1];  ?>" alt="Foto 2">
                 
-                  <img class=" uk-height-small@s uk-width-1-3@s uk-width-1-1 " src="<?php echo $_SESSION['fotos'][2];  ?>" alt="Foto 3">
+                  <img class="maximg400 uk-height-small@s uk-width-1-3@s uk-width-1-1 " src="<?php echo $_SESSION['fotos'][2];  ?>" alt="Foto 3">
         
-                  <img class="uk-width-1-3@s uk-width-1-1 uk-height-small@s" src="<?php echo $_SESSION['fotos'][3];  ?>" alt="Foto 4">
+                  <img class="maximg400 uk-width-1-3@s uk-width-1-1 uk-height-small@s" src="<?php echo $_SESSION['fotos'][3];  ?>" alt="Foto 4">
                 </div>
               </div>
               <form class="upload-form" action="includes/uploadFoto.php" method="post" enctype="multipart/form-data"><div class="uk-hidden@s"><br></div>
