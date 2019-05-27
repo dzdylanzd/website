@@ -14,7 +14,8 @@
 <body>
     <?php include 'includes\nav-L-M.php';
     include 'includes/defaultMobileNav.php';
-    require_once('includes/database.php'); ?>
+    require_once('includes/database.php');
+    ?>
     <div class="page-container">
         <div class="content-wrap">
 
@@ -26,18 +27,24 @@
                     <div class=" witte-tekst registreerbox ">
                         <h3>Wachtwoord vergeten</h3>
                         <p>Beste bezoeker,<br> Voordat u uw wachtwoord kunt wijzigen, moet u uw e-mailadres ingeven. <br>
-                            Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken. Ook moet u uw antwoord op de beveiliginsvraag ingeven.
+                            Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken. Ook moet u uw antwoord op de beveiligingsvraag ingeven.
                         </p>
                         <label for="wachtwoorVergetenEmail">E-mail:</label><br>
                         <input class="uk-input input-registratie" type="email" name="wachtwoorVergetenEmail" id="wachtwoorVergetenEmail"><br>
                         <label for="beveiligingsvraag">Antwoord op de beveiligingsvraag:</label><br>
-                        <?php
-
-
-
-
-                        ?>
-                        <input class="uk-input input-registratie" type="password" name="beveiligingsvraag" id="beveiligingsvraag"><br>
+                        <select class="uk-select input-registratie" name="bevestigingsvraag">
+                            <?php
+                            // Haal de beveiligingsvraag op
+                            $sql = "SELECT * from Vraag ORDER BY Vraagnummer ASC";
+                            if ($sth = $dbh->prepare($sql)) {
+                                if ($sth->execute(array())) {
+                                    while ($vraag = $sth->fetch()) {
+                                        echo '<option value=' . $vraag[' Vraagnummer'] . '>' . $vraag['TekstVraag'] . '</option>';
+                                    }
+                                }
+                            }
+                            ?>
+                        </select> <input class="uk-input input-registratie" type="password" name="beveiligingsvraag" id="beveiligingsvraag"><br>
                         <button class="uk-button knop-email">Bevestigen</button>
                     </div>
                 </form>
