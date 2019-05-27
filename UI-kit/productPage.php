@@ -67,16 +67,16 @@
                             $index++;
                         }
                     }else{
-                        $sql = "SELECT TOP 4 IllustratieFile FROM Thumbnail WHERE Voorwerpnummer = ? ";
+                        $sql = "SELECT TOP 4 ThumbnailFile FROM Thumbnail WHERE Voorwerpnummer = ? ";
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
                             while ($alles = $sth->fetch()) {
-                                if (strpos($alles['IllustratieFile'], "dt_") !== false) {
-                                    $alles['IllustratieFile'] = "http://iproject5.icasites.nl/pics/" .  $alles['IllustratieFile'];
+                                if (strpos($alles['ThumbnailFile'], "img") !== false) {
+                                    $alles['ThumbnailFile'] = "http://iproject5.icasites.nl/thumbnails/" .  $alles['ThumbnailFile'];
                                 } else {
-                                    $alles['IllustratieFile'] =   $alles['IllustratieFile'];
+                                    $alles['ThumbnailFile'] =   $alles['ThumbnailFile'];
                                 }
-                                $image = "src=\"$alles[IllustratieFile]\" ";
+                                $image = "src=\"$alles[ThumbnailFile]\" ";
                                 $sliderFotos = "$sliderFotos <li class=\"Image-Border\">
                                     <img $image alt=\"\" uk-cover>
                                 </li>";

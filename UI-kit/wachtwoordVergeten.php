@@ -23,7 +23,7 @@
                     <h2>Wachtwoord vergeten</h2>
                 </div>
                 <form method="post" action="includes/zendWachtwoordVergetenMail.php">
-                    <div class="registreerbox witte-tekst">
+                    <div class=" witte-tekst registreerbox ">
                         <h3>Wachtwoord vergeten</h3>
                         <p>Beste bezoeker,<br> Voordat u uw wachtwoord kunt wijzigen moet u uw e-mailadres ingeven. <br>
                             Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken. Ook moet u uw antwoord op de beveiliginsvraag ingeven.
