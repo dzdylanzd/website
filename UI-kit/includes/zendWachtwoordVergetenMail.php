@@ -43,7 +43,7 @@ if ($pwdCheck) {
 <body>
 Beste meneer/mevrouw,<br> 
 Hieronder vindt u een nieuw wachtwoord.<br>
-Deze kunt u wijzigen door in te loggen met dit wachtwoord en dan naar de pagina \'Mijn gegevens\' te gaan en uw wachtwoord aan te passen.<br>
+Deze kunt u wijzigen door <a href="http://iproject37.icasites.nl/wachtwoordVergeten.php">in te loggen</a> met dit wachtwoord en dan naar de pagina \'Mijn gegevens\' te gaan en uw wachtwoord aan te passen.<br>
 Het nieuwe wachtwoord is:  <strong>' . $random_hash . '
 <br>
 <br>
