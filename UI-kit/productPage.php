@@ -108,7 +108,7 @@
 
                             echo "<h4 class= \"uk-text-emphasis\">Staat: $alles[Staat] </h4><br> 
                             <h4 class=\"conditie\">Startprijs: $valuta " . $startprijs . "</h4><br>
-                            <h4 class=\"conditie\">Verzendkosten: $valuta ". (double)$alles['Verzendkosten'] . "</h4><br>
+                            <h4 class=\"conditie\">Verzendkosten: $valuta " . (double)$alles['Verzendkosten'] . "</h4><br>
                             <h4 class=\"conditie\">VerzendInstructies:  " . $alles['VerzendInstructies'] . "</h4><br>
                             <h4 class=\"conditie\">BetalingsInstructie:  " . $alles['BetalingsInstructie'] . "</h4>";
                         }
@@ -145,7 +145,7 @@
 
                 <?php
                 $huidigbod = '';
-                
+
                 // Haal het huidige bod op
                 $sqlBod = 'SELECT BodBedrag FROM Bod WHERE Voorwerp = ?';
                 if ($sthBod = $dbh->prepare($sqlBod)) {
@@ -170,7 +170,7 @@
                         </div>
                         <div class="uk-width-1-2">
                             <h3>Huidig bod: </h3>
-                            <?php echo "<h1>". $valuta . $huidigbod . "</h1>"; ?>
+                            <?php echo "<h1>" . $valuta . (double)$huidigbod . "</h1>"; ?>
                         </div>
                     </div>
                     <?php
