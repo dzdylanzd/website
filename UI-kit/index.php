@@ -42,11 +42,13 @@
                     <?php
                     /* Tijdelijke Laatste kans en nieuw box */
                     echo '<div class="ItemsSliderGroen">';
+                
                     echo "<h1> Laatste kans! </h1>";
-                    
+                  
                     echo '</div>';
                     echo '<div class="ItemsSliderGroen">';
                     echo "<h1> Nieuw </h1>";
+                    include('includes/nieuweVeilingen.php');
                     echo '</div>';
 
                     // Favoriete rubrieken 
