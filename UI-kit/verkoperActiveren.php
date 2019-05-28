@@ -21,7 +21,7 @@
             <div class="verkoper" uk-filter="target: .js-filter">
                 <?php 
                 if (isset($_GET["error"])) {
-                    if ($_GET["errorLogin"] == "leeg") {
+                    if ($_GET["error"] == "leeg") {
                         echo "<br> <p class=\"error\"> Gelieve alle velden in te vullen. </p>";
                     }
                 }

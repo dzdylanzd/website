@@ -106,6 +106,20 @@ switch ($valuta) {
         $valuta = '$';
         break;
 }
+
+$sql5 = "SELECT TOP 1 * FROM bod WHERE Voorwerp = ? ORDER BY BodDagTijd desc ";
+if ($sth5 = $dbh->prepare($sql5)) {
+    if ($sth5->execute(array($alles['VoorwerpNummer']))) {
+      if ($prijsje = $sth5->fetch()) {
+        $prijs = (double)$prijsje['BodBedrag'];
+        $geboden = "Huidig bod:";
+       }else{
+            $prijs = (double)$alles['StartPrijs'] ;
+            $geboden = "Startprijs:";
+       }
+    }
+  }
+
 if(!$alles['IsVeilingGesloten']){
     $alles["StartPrijs"] = (double)$alles["StartPrijs"];
     $text = $text . "
@@ -116,7 +130,7 @@ if(!$alles['IsVeilingGesloten']){
             <h3 class=\"uk-margin-remove\">";
             $text = $text . substr($alles["Titel"],0,10);
             $text = $text . "... </h3>
-            <p class=\"uk-margin-remove\"> $valuta $alles[StartPrijs]</p>
+            <p class=\"uk-margin-remove\"> $geboden $valuta $prijs</p>
         </div>
     </div>
     </li>"; 
