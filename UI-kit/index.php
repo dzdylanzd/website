@@ -44,7 +44,7 @@
                     echo '<div class="ItemsSliderGroen">';
                 
                     echo "<h1> Laatste kans! </h1>";
-                  
+                    include('includes/laatsteKansVeilingen.php');
                     echo '</div>';
                     echo '<div class="ItemsSliderGroen">';
                     echo "<h1> Nieuw </h1>";
