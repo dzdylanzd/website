@@ -364,6 +364,18 @@ h4 {
   border-radius: 20px;
 }
 
+.zoekbox {
+  background-color: #a7ca9b;
+  text-align: center;
+  width: 29%;
+  margin: 10px;
+  padding-top: 5px;
+  
+  padding: 8px;
+  padding-bottom: 25px;
+  border-radius: 20px;
+}
+
 .veiling-maken-box {
   background-color: #a7ca9b;
   text-align: center;
@@ -447,6 +459,7 @@ margin: auto;
 
 .mijn-veilingen-thumbnail {
   width: 90%;
+  max-height: 300px;
   height: auto;
   margin-bottom: -10px;
 }

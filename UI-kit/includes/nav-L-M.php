@@ -14,7 +14,18 @@ include 'database.php' ?>
         <div class="uk-navbar-center">
             <div class="uk-navbar-nav">
                 <div class="uk-navbar-item ">
-                    <form action="productpage.php">
+
+                
+                <?php  
+                if(isset($_GET['root'])){
+                    $fromSearchAction = "zoeken.php?root=$_GET[root]";
+                }else{
+                    $fromSearchAction = "zoeken.php";
+                }
+                
+                ?>
+
+                    <form method="post" action="<?php echo$fromSearchAction; ?>">
 
                         <div class="uk-inline">
                             <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
@@ -150,7 +161,16 @@ include 'database.php' ?>
 
         <div class="uk-navbar-nav">
             <div class="uk-navbar-item ">
-                <form action="productpage.php">
+            <?php  
+                if(isset($_GET['root'])){
+                    $fromSearchAction = "zoeken.php?root=$_GET[root]";
+                }else{
+                    $fromSearchAction = "zoeken.php";
+                }
+                
+                ?>
+
+                    <form method="post" action="<?php echo$fromSearchAction; ?>">
 
                     <div class="uk-inline">
                         <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
