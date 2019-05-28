@@ -444,6 +444,13 @@ margin: auto;
 .mijn-veilingen-titel {
   margin-left: 8%;
 }
+.verkoop-Email{
+  margin-top: -50px;
+}
+
+.verkoop-Telefoon{
+  margin-top: -7px;
+}
 
 .mijn-veilingen-thumbnail {
   width: 90%;

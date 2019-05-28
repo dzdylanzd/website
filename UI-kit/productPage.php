@@ -12,10 +12,10 @@
 </head>
 
 <body>
-<?php
-    $url1=$_SERVER['REQUEST_URI'];
-    header("Refresh: 5; URL=$url1");
-?>
+    <?php
+    // $url1 = $_SERVER['REQUEST_URI'];
+    // header("Refresh: 5; URL=$url1");
+    ?>
     <?php include 'includes\nav-L-M.php';
     include 'includes/defaultMobileNav.php';
     require_once('includes/database.php');
@@ -51,40 +51,40 @@
                             <ul class="uk-slideshow-items ">';
                         $knoppenFotos = '<div class="imagePreview uk-flex">';
                         $index = 0;
-                        if($sth->fetch()){
+                        if ($sth->fetch()) {
                             $sth->execute(array($_GET["ID"]));
-                        while ($alles = $sth->fetch()) {
-                            if (strpos($alles['IllustratieFile'], "dt_") !== false) {
-                                $alles['IllustratieFile'] = "http://iproject5.icasites.nl/pics/" .  $alles['IllustratieFile'];
-                            } else {
-                                $alles['IllustratieFile'] =   $alles['IllustratieFile'];
-                            }
-                            $image = "src=\"$alles[IllustratieFile]\" ";
-                            $sliderFotos = "$sliderFotos <li class=\"Image-Border\">
+                            while ($alles = $sth->fetch()) {
+                                if (strpos($alles['IllustratieFile'], "dt_") !== false) {
+                                    $alles['IllustratieFile'] = "http://iproject5.icasites.nl/pics/" .  $alles['IllustratieFile'];
+                                } else {
+                                    $alles['IllustratieFile'] =   $alles['IllustratieFile'];
+                                }
+                                $image = "src=\"$alles[IllustratieFile]\" ";
+                                $sliderFotos = "$sliderFotos <li class=\"Image-Border\">
                                 <img $image alt=\"\" uk-cover>
                             </li>";
-                            $knoppenFotos = "$knoppenFotos <img $image class=\"uk-width-1-4 \" alt=\"D\" onclick=\"UIkit.slideshow('.uk-slideshow').show($index);\">";
-                            $index++;
-                        }
-                    }else{
-                        $sql = "SELECT TOP 4 ThumbnailFile FROM Thumbnail WHERE Voorwerpnummer = ? ";
-                        $sth = $dbh->prepare($sql);
-                        if ($sth->execute(array($_GET["ID"]))) {
-                            while ($alles = $sth->fetch()) {
-                                if (strpos($alles['ThumbnailFile'], "img") !== false) {
-                                    $alles['ThumbnailFile'] = "http://iproject5.icasites.nl/thumbnails/" .  $alles['ThumbnailFile'];
-                                } else {
-                                    $alles['ThumbnailFile'] =   $alles['ThumbnailFile'];
-                                }
-                                $image = "src=\"$alles[ThumbnailFile]\" ";
-                                $sliderFotos = "$sliderFotos <li class=\"Image-Border\">
-                                    <img $image alt=\"\" uk-cover>
-                                </li>";
                                 $knoppenFotos = "$knoppenFotos <img $image class=\"uk-width-1-4 \" alt=\"D\" onclick=\"UIkit.slideshow('.uk-slideshow').show($index);\">";
                                 $index++;
                             }
+                        } else {
+                            $sql = "SELECT TOP 4 ThumbnailFile FROM Thumbnail WHERE Voorwerpnummer = ? ";
+                            $sth = $dbh->prepare($sql);
+                            if ($sth->execute(array($_GET["ID"]))) {
+                                while ($alles = $sth->fetch()) {
+                                    if (strpos($alles['ThumbnailFile'], "img") !== false) {
+                                        $alles['ThumbnailFile'] = "http://iproject5.icasites.nl/thumbnails/" .  $alles['ThumbnailFile'];
+                                    } else {
+                                        $alles['ThumbnailFile'] =   $alles['ThumbnailFile'];
+                                    }
+                                    $image = "src=\"$alles[ThumbnailFile]\" ";
+                                    $sliderFotos = "$sliderFotos <li class=\"Image-Border\">
+                                    <img $image alt=\"\" uk-cover>
+                                </li>";
+                                    $knoppenFotos = "$knoppenFotos <img $image class=\"uk-width-1-4 \" alt=\"D\" onclick=\"UIkit.slideshow('.uk-slideshow').show($index);\">";
+                                    $index++;
+                                }
+                            }
                         }
-                    }
                         $sliderFotos = $sliderFotos . ' </ul>
 
                             <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
@@ -256,15 +256,18 @@
                                 }
                             }
 
-                            $sql = "SELECT DatumMakenAccount from Gebruiker where Gebruikersnaam in (
+                            $sql = "SELECT DatumMakenAccount FROM Gebruiker where Gebruikersnaam in (
                                 select Verkoper from Voorwerp where VoorwerpNummer = ?
                                 )";
                             $sth = $dbh->prepare($sql);
                             if ($sth->execute(array($_GET["ID"]))) {
                                 while ($alles = $sth->fetch()) {
-                                    echo "<h4>lid sinds: $alles[DatumMakenAccount]</h4>";
+                                    echo "<h4>Lid sinds: $alles[DatumMakenAccount]</h4>";
+                                    
                                 }
                             }
+
+                        
                             ?>
                         </div>
                         <div class="uk-width-1-2@s uk-wdith-1-1 Plaats-Bod">
@@ -324,21 +327,29 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    <div class="reviews">
+                    <div>
                         <?php
-                        $sql = "SELECT Verkoper FROM Voorwerp WHERE VoorwerpNummer = ? ";
+                         $sql = "SELECT Mailadres from Gebruiker where Gebruikersnaam in (
+                            select Verkoper from Voorwerp where VoorwerpNummer = ?
+                            )";
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
                             while ($alles = $sth->fetch()) {
-                                echo "<h2>Reviews over $alles[Verkoper]</h2>";
+                                echo "<h4 class=\"verkoop-Email\"> Emailadres: $alles[Mailadres]</h4>";
+                                
+                            }
+                        }
+
+                         $sql = "SELECT Telefoonnummer from Gebruikerstelefoon where Gebruiker in (
+                            select Verkoper from Voorwerp where VoorwerpNummer = ?)";
+                        $sth = $dbh->prepare($sql);
+                        if ($sth->execute(array($_GET["ID"]))) {
+                            while ($alles = $sth->fetch()) {
+                                echo "<h4 class=\"verkoop-Telefoon\">Telefoonnummer: $alles[Telefoonnummer]</h4>";
                             }
                         }
                         ?>
-
-                    </div>
-                    <div class="uk-container">
 
                     </div>
                 </div>
