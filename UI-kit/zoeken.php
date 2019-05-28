@@ -166,13 +166,13 @@
                 </div>
                 <div class="uk-width-3-4">
                     <?php
- if (isset($_GET['root'])) {
-    $nummer = $_GET['root'];
-} else {
-    $nummer = -1;
-}
+                    if (isset($_GET['root'])) {
+                        $nummer = $_GET['root'];
+                    } else {
+                        $nummer = -1;
+                    }
 
-$naarBenedenNav = "and Rubriekoplaagsteniveau in(
+                    $naarBenedenNav = "and Rubriekoplaagsteniveau in(
     SELECT Rubrieknummer from Rubriek where Volgnr = any(
     select Rubrieknummer from Rubriek where Volgnr = any(
     select Rubrieknummer from Rubriek where Volgnr = any(
@@ -223,11 +223,11 @@ $naarBenedenNav = "and Rubriekoplaagsteniveau in(
     ) and IsVeilingGesloten = 0";
 
 
-                   
+
 
                     if (isset($_POST['search'])) {
                         $_SESSION['search'] = $_POST['search'];
-                    }else if( !isset($_SESSION['search'])){
+                    } else if (!isset($_SESSION['search'])) {
                         $_SESSION['search'] = "";
                     }
 
@@ -236,80 +236,117 @@ $naarBenedenNav = "and Rubriekoplaagsteniveau in(
 
 
                     if (isset($_POST['prijsVan'])) {
-                        if(empty($_POST['prijsVan'])){
+                        if (empty($_POST['prijsVan'])) {
                             $prijsvan = 0;
-                        }else{
-                        $prijsvan = $_POST['prijsVan'];
+                        } else {
+                            $prijsvan = $_POST['prijsVan'];
                         }
                     } else {
                         $prijsvan = 0;
                     }
 
                     if (isset($_POST['prijsTot'])) {
-                        if(empty($_POST['prijsTot'])){
+                        if (empty($_POST['prijsTot'])) {
                             $prijstot = 999999999;
-                        }else{
-                        $prijstot = $_POST['prijsTot'];
+                        } else {
+                            $prijstot = $_POST['prijsTot'];
                         }
                     } else {
                         $prijstot = 9999999999;
                     }
 
                     if (!empty($_POST['staat'])) {
-                     
+
                         $staat = $_POST['staat'];
                         echo $staat;
 
-                       
-                         $sql = "SELECT * from Voorwerp inner join Thumbnail on Thumbnail.VoorwerpNummer = Voorwerp.VoorwerpNummer inner join VoorwerpInRubriek on VoorwerpInRubriek.Voorwerp = Voorwerp.VoorwerpNummer
-                         where Titel like ? and Voorwerp.StartPrijs BETWEEN ? AND ?  ". $naarBenedenNav;
+
+                        $sql = "SELECT * from Voorwerp inner join Thumbnail on Thumbnail.VoorwerpNummer = Voorwerp.VoorwerpNummer inner join VoorwerpInRubriek on VoorwerpInRubriek.Voorwerp = Voorwerp.VoorwerpNummer
+                         where Titel like ? and Voorwerp.StartPrijs BETWEEN ? AND ?  " . $naarBenedenNav;
                         if ($sth = $dbh->prepare($sql)) {
-                            
-                            if ($sth->execute(array("%{$_SESSION['search']}%",$prijsvan,$prijstot))) {
+
+                            if ($sth->execute(array("%{$_SESSION['search']}%", $prijsvan, $prijstot))) {
                                 $gelukt = true;
-                               
-                            }else{
+                            } else {
                                 $gelukt = false;
                             }
                         }
-                      
                     } else {
                         $sql = "SELECT * from Voorwerp inner join Thumbnail on Thumbnail.VoorwerpNummer = Voorwerp.VoorwerpNummer inner join VoorwerpInRubriek on VoorwerpInRubriek.Voorwerp = Voorwerp.VoorwerpNummer
-                        where Titel like ? and Voorwerp.StartPrijs BETWEEN ? AND ?  ". $naarBenedenNav;
+                        where Titel like ? and Voorwerp.StartPrijs BETWEEN ? AND ?  " . $naarBenedenNav;
                         if ($sth = $dbh->prepare($sql)) {
-                           
-                            if ($sth->execute(array("%{$_SESSION['search']}%",$prijsvan,$prijstot))) {
+
+                            if ($sth->execute(array("%{$_SESSION['search']}%", $prijsvan, $prijstot))) {
                                 $gelukt = true;
-                              
-                            }else{
+                            } else {
                                 $gelukt = false;
                             }
                         }
                     }
 
-                   if($gelukt){
-                    echo '<div class="flex-column-phone uk-flex-center uk-flex-wrap uk-flex-wrap-around">';
-            
-                          while ($alles = $sth->fetch()) {
+                    if ($gelukt) {
+                        echo '<div class="flex-column-phone uk-flex-center uk-flex-wrap uk-flex-wrap-around">';
 
-                            if(strpos($alles['Thumbnailfile'],"img") !== false){
-                                $alles['Thumbnailfile'] = "http://iproject5.icasites.nl/thumbnails/". $alles['Thumbnailfile'];
-                            }else{
+                        while ($alles = $sth->fetch()) {
+
+                            if (strpos($alles['Thumbnailfile'], "img") !== false) {
+                                $alles['Thumbnailfile'] = "http://iproject5.icasites.nl/thumbnails/" . $alles['Thumbnailfile'];
+                            } else {
                                 $alles['Thumbnailfile'] = $alles['Thumbnailfile'];
                             }
-                           
-                            $thumbnail = $alles['Thumbnailfile'];
 
-                            echo"<br>";
+                            $thumbnail = $alles['Thumbnailfile'];
+                            $valuta = $alles['Valuta'];
+                            switch ($valuta) {
+                                case 'EUR':
+                                    $valuta = '€';
+                                    break;
+                            
+                                case 'GBP':
+                                    $valuta = '£';
+                                    break;
+                            
+                                case 'AUD':
+                                    $valuta = 'A$';
+                                    break;
+                            
+                                case 'CAD':
+                                    $valuta = 'C$';
+                                    break;
+                            
+                                case 'INR':
+                                    $valuta = '₹';
+                                    break;
+                            
+                                case 'USD':
+                                    $valuta = '$';
+                                    break;
+                            }
+
+                            $sql5 = "SELECT TOP 1 * FROM bod WHERE Voorwerp = ? ORDER BY BodDagTijd desc ";
+                            if ($sth5 = $dbh->prepare($sql5)) {
+                                if ($sth5->execute(array($alles['VoorwerpNummer']))) {
+                                    if ($prijsje = $sth5->fetch()) {
+                                        $prijs = (double)$prijsje['BodBedrag'];
+                                        $geboden = "Huidig bod:";
+                                    } else {
+                                        $prijs = (double)$alles['StartPrijs'];
+                                        $geboden = "Startprijs:";
+                                    }
+                                }
+                            }
+
+                            echo "<br>";
                             echo '<div class=" zoekbox">';
                             echo $alles['Titel'];
-                            echo '<a href="productPage.php?ID='. $alles['VoorwerpNummer'] . '"><img class="mijn-veilingen-thumbnail" src="' . $alles['Thumbnailfile'] . '" alt="Thumbnail"></a><br>';
+                            echo '<a href="productPage.php?ID=' . $alles['VoorwerpNummer'] . '"><img class="mijn-veilingen-thumbnail" src="' . $alles['Thumbnailfile'] . '" alt="Thumbnail"></a><br>';
+                            echo "<p>  $geboden $valuta $prijs</p>";
                             echo '</div>';
-                          }
                         }
+                    }
 
-                        echo '</div>'
-                         
+                    echo '</div>'
+
 
 
 
