@@ -1,7 +1,7 @@
 <?php
 $sql ="select isVeilingGesloten, LooptijdEinde  from Voorwerp where VoorwerpNummer = ?";
 $sth = $dbh->prepare($sql);
-if($sth->execute(array($_GET["ID"]))){
+if($sth->execute(array($_SESSION['PID']))){
     while ($row = $sth->fetch()) {
        
         if($row["isVeilingGesloten"] == 0){
