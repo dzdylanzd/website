@@ -147,7 +147,7 @@
                         ?>
 
                     </div>
-                    <button action="wijzigen-gegevens.php" type="submit" name="bevestigings-button" class="uk-button veiling-maken-button">Gegevens wijzigen</button>
+                    <button action="wijzigen-gegevens.php" type="submit" name="bevestigings-button" class="uk-button knop-registreren">Gegevens wijzigen</button>
                 </form>
             </div>
         </div>

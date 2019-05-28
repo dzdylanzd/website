@@ -29,7 +29,7 @@ $eindDatum = date("Y-m-d H:i:s", strtotime($date. " + $lengte days"));
 $foto1 =  $_SESSION['fotos'][0];
 $foto2 =  $_SESSION['fotos'][1];
 $foto3 =  $_SESSION['fotos'][2];
-$foto4 =  $_SESSION['fotos'][3);
+$foto4 =  $_SESSION['fotos'][3];
 
 if(empty($titel) || empty($staat) || empty($message)|| empty($prijs) || empty($verzendkosten) || empty($plaatsnaam)){
   header("location: ../veiling-Maken.php?error=leeg");

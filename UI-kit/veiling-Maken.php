@@ -21,11 +21,11 @@
    <?php 
    if(isset($_GET['error'])){
    if ($_GET['error'] == "geenFoto") {
-   echo '<p class="errors">uw moet een foto kiezen</p>';
+   echo '<p class="errors">U moet een foto kiezen.</p>';
    }else if ($_GET['error'] == "leeg") {
-    echo '<p class="errors">uw heeft een veld niet ingevuld</p>';
+    echo '<p class="errors">U heeft een veld niet ingevuld.</p>';
     }else if ($_GET['error'] == "geenCatogorie") {
-      echo '<p class="errors">uw moet een catogorie kiezen</p>';
+      echo '<p class="errors">U moet een catogorie kiezen.</p>';
       }
   }
 
@@ -189,7 +189,7 @@
         </div>
         <div class="veiling-maken-box">
           <h3>Veilinginformatie</h3>
-          <label class="registreerlabel" for="lengte">lengte van de veiling</label><br>
+          <label class="registreerlabel" for="lengte">Lengte van de veiling</label><br>
           <select class="uk-select input-registratie" name="lengte"><br>
             <option value="1">1 dag</option>
             <option value='3'>3 dagen</option>
@@ -217,7 +217,7 @@
           <input class="uk-input input-registratie" type="number" min="0.00" max="10000.00" step="0.01" id="prijs" name="prijs"><br>
           <label class="registreerlabel" for="verzendkosten">Verzendkosten</label><br>
           <input class="uk-input input-registratie" type="number" min="0.00" max="10000.00" step="0.01" id="verzendkosten" name="verzendkosten"><br>
-          <label class="registreerlabel" for="verzendinstructies">verzendinstructies</label><br>
+          <label class="registreerlabel" for="verzendinstructies">Verzendinstructies</label><br>
           <input class="uk-input input-registratie" type="text" id="verzendinstructies" name="verzendinstructies"><br>
           <label class="registreerlabel" for="betalingswijze">Betalingswijze</label><br>
           <select class="uk-select input-registratie" name="betalingswijze"><br>
@@ -253,7 +253,7 @@
             ?>
           </select><br>
         </div>
-        <button type="submit" name="veiling-maken-button" class="uk-button veiling-maken-button ">Veiling plaatsen</button>
+        <button type="submit" name="veiling-maken-button" class="uk-button knop-registreren ">Veiling plaatsen</button>
         </form>
       </div>
     </div>
