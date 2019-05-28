@@ -47,7 +47,7 @@
                             while ($row = $sth->fetch()) {
                                 $titel = $row['Titel'];
                                 $titel = substr($titel, 0, 30);
-                                $looptijdEinde = $row['LooptijdEinde'];
+                                
                                 $voorwerpnummer = $row['VoorwerpNummer'];
                                 $valuta = $row['Valuta'];
 
@@ -79,6 +79,7 @@
                                 }
 
                                 // Bereken de looptijd
+                                $looptijdEinde = $row['LooptijdEinde'];
                                 $looptijd = substr(substr_replace($looptijdEinde, "T", 11, 0), 0, 20) . "+01:00";
                                 $looptijd =  str_replace(" ", "", $looptijd);
 

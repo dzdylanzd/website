@@ -52,6 +52,9 @@ if ($sth = $dbh->prepare($sql)) {
                }
             }
           }
+          $looptijdEinde = $alles['LooptijdEinde'];
+          $looptijd = substr(substr_replace($looptijdEinde, "T", 11, 0), 0, 20) . "+01:00";
+          $looptijd =  str_replace(" ", "", $looptijd);
           
 
           $alles["StartPrijs"] = (double)$alles["StartPrijs"];
@@ -63,7 +66,25 @@ if ($sth = $dbh->prepare($sql)) {
                   <h3 class=\"uk-margin-remove\">";
                   $text = $text . substr($alles["Titel"],0,10);
                   $text = $text . "... </h3>
-                  <p class=\"uk-margin-remove\"> $geboden $valuta $prijs</p>
+                  <p class=\"uk-margin-remove\"> $geboden $valuta $prijs</p>" ;
+                  $text = $text ."<h3 class=\"mijn-veilingen\">
+                  <div class=\"margin-left uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $looptijd\">
+                     
+                      
+                      <div>
+                          <div class=\"countdown-getal-klein uk-countdown-number uk-countdown-hours\"></div>
+                      </div>
+                      <div class=\"countdown-getal-klein uk-countdown-separator\">u</div>
+                      <div>
+                          <div class=\"countdown-getal-klein uk-countdown-number uk-countdown-minutes\"></div>
+                      </div>
+                      <div class=\"countdown-getal-klein uk-countdown-separator\">m</div>
+                      <div>
+                          <div class=\"countdown-getal-klein uk-countdown-number uk-countdown-seconds\"></div>
+                      </div>
+                      <div class=\"countdown-getal-klein uk-countdown-separator\">s</div>
+                  </div></h3>";
+                  $text = $text . "
               </div>
           </div>
           </li>"; 
