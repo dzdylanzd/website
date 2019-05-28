@@ -80,7 +80,7 @@
 
                                 // Bereken de looptijd
                                 $looptijdEinde = $row['LooptijdEinde'];
-                                $looptijd = substr(substr_replace($looptijdEinde, "T", 11, 0), 0, 20) . "+01:00";
+                                $looptijd = substr(substr_replace($looptijdEinde, "T", 11, 0), 0, 20) . "+02:00";
                                 $looptijd =  str_replace(" ", "", $looptijd);
 
 

@@ -302,7 +302,7 @@
                                             if ($sth->execute(array($_GET["ID"]))) {
                                                 while ($row = $sth->fetch()) {
                                                     $bod = $row['BodBedrag'];
-                                                    if ($bod > 1 && $bod <= 50) {
+                                                    if ($bod <= 50) {
                                                         $minimumVerhoging = $row['BodBedrag'] + 0.5;
                                                     } else if ($bod > 50 && $bod <= 500) {
                                                         $minimumVerhoging = $row['BodBedrag'] + 1;
