@@ -178,11 +178,11 @@ async function refresh() {
   setTimeout(refresh,5000);
 } </script>
 
-<div id="staticPart">Here is static part of page
+<div id="staticPart">
   <button id="btn" onclick="refresh()">Start refreshing (4s)</button>
 </div>
 
-<div id="dynamicPart">Dynamic part</div>
+<div id="dynamicPart"></div>
 
 <script>refresh() </script>
 

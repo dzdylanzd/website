@@ -1,6 +1,8 @@
 <!-- navigatiebalk Desktop -->
 <?php session_start();
-include 'database.php' ?>
+include 'database.php';
+
+include 'meldingen.php';?>
 <div class="uk-visible@m sticky">
 
 
