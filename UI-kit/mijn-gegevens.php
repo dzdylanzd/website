@@ -147,19 +147,17 @@
                         ?>
 
                     </div>
+                    <button action="wijzigen-gegevens.php" type="submit" name="bevestigings-button" class="uk-button knop-registreren">Gegevens wijzigen</button>
                     <button class="uk-button knop-registreren" uk-toggle="target: #my-id" type="button">Account verwijderen</button>
-
-                    <!-- This is the modal -->
                     <div id="my-id" uk-modal>
                         <div class="uk-modal-dialog uk-modal-body">
                             <h2 class="uk-modal-title">Weet u zeker dat u uw account wilt verwijderen?</h2>
                             <div class="uk-flex">
-                            <button class="uk-button " onclick="window.location.href='includes/verwijderAccount.inc.php'" type="button">account verwijderen</button>
-                            <button class="uk-button uk-modal-close" type="button">Nee</button>
-                    </div>
+                                <button class="uk-button " onclick="window.location.href='includes/verwijderAccount.inc.php'" type="button">Account verwijderen</button>
+                                <button class="uk-button uk-modal-close" type="button">Nee</button>
+                            </div>
                         </div>
                     </div>
-                    <button action="wijzigen-gegevens.php" type="submit" name="bevestigings-button" class="uk-button knop-registreren">Gegevens wijzigen</button>
                 </form>
             </div>
         </div>

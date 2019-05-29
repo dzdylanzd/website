@@ -15,22 +15,31 @@
     <?php
     session_start();
     if (isset($_SESSION['userId'])) {
-
         header("location: index.php");
         exit();
     } else {
         session_destroy();
     }
-
     ?>
+
     <?php include 'includes\nav-L-M.php';
     require_once('includes/database.php');
     include 'includes/defaultMobileNav.php'; ?>
+
+    <!-- Error handlers -->
+    <?php if (isset($_GET['errorLogin'])) {
+        if ($_GET['errorLogin'] == "leeg") {
+            echo '<p class="errorLogin"> Gelieve alle velden in te vullen. </p>';
+        } else if ($_GET['errorLogin'] == "sql") {
+            echo '<p class="errorLogin"> De ingevulde gegevens zijn onjuist. </p>';
+        }
+    }
+    ?>
+
     <div class="page-container">
         <div class="content-wrap">
             <div class="inloggen">
                 <form method="post" action="includes/login.inc.php">
-
                     <div class="uk-margin">
                         <div class="uk-inline registreerbox">
                             <h1>Inloggen</h1>

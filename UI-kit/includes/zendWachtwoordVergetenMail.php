@@ -2,7 +2,7 @@
 include "database.php";
 session_start();
 $random_hash = bin2hex(random_bytes(4));
-$to = $_POST['wachtwoorVergetenEmail'];
+$to = $_POST['wachtwoordVergetenEmail'];
 $subject = "Wachtwoord wijzigen";
 $antwoord =  $_POST['beveiligingsvraag'];
 
@@ -63,16 +63,14 @@ iConcepts
 
 
 
-    if (empty($_POST['wachtwoorVergetenEmail'])) {
+    if (empty($_POST['wachtwoordVergetenEmail'])) {
         header("Location: ../wachtwoordVergeten.php?error=legeemail");
     } else {
         if ($pwdCheck) {
-
             mail($to, $subject, $message, $headers);
             header("Location: ../index.php");
-        }else{
+        } else {
             header("Location: ../wachtwoordVergeten.php?error=fout");
             exit();
         }
-        
     }

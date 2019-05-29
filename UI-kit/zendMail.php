@@ -33,7 +33,12 @@ if (!$query = $dbh->prepare($sql)) {
 
 
 
-$sql = "INSERT  INTO VerificatiecodeEmail(Mailadres,VerificatiecodeEmail) VALUES (?, ?)";
+
+$sql = "INSERT INTO VerificatiecodeEmail(Mailadres,VerificatiecodeEmail) VALUES (?, ?)";
+if (empty($to)) {
+    header("location: ./email-Bevestiging.php?error=legeEmail");
+    exit();
+}
 try {
     $query = $dbh->prepare($sql);
     if ($query->execute(array($to, $emailCode))) { }

@@ -301,23 +301,23 @@
                                 case 'EUR':
                                     $valuta = '€';
                                     break;
-                            
+
                                 case 'GBP':
                                     $valuta = '£';
                                     break;
-                            
+
                                 case 'AUD':
                                     $valuta = 'A$';
                                     break;
-                            
+
                                 case 'CAD':
                                     $valuta = 'C$';
                                     break;
-                            
+
                                 case 'INR':
                                     $valuta = '₹';
                                     break;
-                            
+
                                 case 'USD':
                                     $valuta = '$';
                                     break;
@@ -336,41 +336,19 @@
                                 }
                             }
 
-                            echo "<br>";
+                            echo '<br>';
                             echo '<div class=" zoekbox">';
-                            echo $alles['Titel'];
-                            echo "<br>";
+                            echo '<h3>' . substr($alles['Titel'], 0, 30) . '...</h3>';
+                            echo '<br>';
                             echo '<a href="productPage.php?ID=' . $alles['VoorwerpNummer'] . '"><img class="mijn-veilingen-thumbnail" src="' . $alles['Thumbnailfile'] . '" alt="Thumbnail"></a><br>';
-                            echo "<p>  $geboden $valuta $prijs</p>";
+                            echo '<h3>' .  $geboden . $valuta . $prijs . '</h3>';
                             echo '</div>';
                         }
                     }
-
-                    echo '</div>'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    echo '</div>';
                     ?>
-
                 </div>
             </div>
-
         </div>
     </div>
     </div>
