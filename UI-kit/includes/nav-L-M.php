@@ -91,18 +91,16 @@ include 'meldingen.php';?>
                     } else {
                         $gebruikersnaam = $_SESSION['userId'];
 
-                        $sql = 'SELECT Gebruikersnaam FROM Gebruiker WHERE gebruikersnaam = ?';
+                        $sql = 'SELECT Gebruikersnaam,SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
                         if ($sth = $dbh->prepare($sql)) {
                             if ($sth->execute(array($gebruikersnaam))) {
                                 while ($row = $sth->fetch()) {
                                     $gebruikersnaam = $row['Gebruikersnaam'];
-                                }
-                            }
-                        }
-                        $sql = 'SELECT SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
-                        if ($sth = $dbh->prepare($sql)) {
-                            if ($sth->execute(array($gebruikersnaam))) {
-                                while ($row = $sth->fetch()) {
+                                    if ($row['SoortGebruiker'] == 'A') {
+                                        $activatie = true;
+                                    } else {
+                                        $activatie = false;
+                                    }
                                     if ($row['SoortGebruiker'] == 'V') {
                                         $verkoper = true;
                                     } else {
@@ -111,18 +109,7 @@ include 'meldingen.php';?>
                                 }
                             }
                         }
-                        $sql = 'SELECT SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
-                        if ($sth = $dbh->prepare($sql)) {
-                            if ($sth->execute(array($gebruikersnaam))) {
-                                while ($row = $sth->fetch()) {
-                                    if ($row['SoortGebruiker'] == 'A') {
-                                        $activatie = true;
-                                    } else {
-                                        $activatie = false;
-                                    }
-                                }
-                            }
-                        }
+                  
 
                         if ($verkoper) {
                             echo '<div class="uk-inline">
@@ -245,30 +232,16 @@ include 'meldingen.php';?>
 
                 $gebruikersnaam = $_SESSION['userId'];
 
-                $sql = 'SELECT Gebruikersnaam FROM Gebruiker WHERE gebruikersnaam = ?';
+                $sql = 'SELECT Gebruikersnaam,SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
                 if ($sth = $dbh->prepare($sql)) {
                     if ($sth->execute(array($gebruikersnaam))) {
                         while ($row = $sth->fetch()) {
                             $gebruikersnaam = $row['Gebruikersnaam'];
-                        }
-                    }
-                }
-                $sql = 'SELECT SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
-                if ($sth = $dbh->prepare($sql)) {
-                    if ($sth->execute(array($gebruikersnaam))) {
-                        while ($row = $sth->fetch()) {
                             if ($row['SoortGebruiker'] == 'V') {
                                 $verkoper = true;
                             } else {
                                 $verkoper = false;
                             }
-                        }
-                    }
-                }
-                $sql = 'SELECT SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
-                if ($sth = $dbh->prepare($sql)) {
-                    if ($sth->execute(array($gebruikersnaam))) {
-                        while ($row = $sth->fetch()) {
                             if ($row['SoortGebruiker'] == 'A') {
                                 $activatie = true;
                             } else {
@@ -277,6 +250,7 @@ include 'meldingen.php';?>
                         }
                     }
                 }
+               
 
                 if ($verkoper) {
                     echo '<div class="uk-inline">
