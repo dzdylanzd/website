@@ -23,5 +23,5 @@ if ($sth2 = $dbh->prepare($sql2)) {
 }
 
 }else{
-    echo"test";
+  
 }

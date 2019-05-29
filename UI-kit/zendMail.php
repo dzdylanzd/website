@@ -30,6 +30,19 @@ if (!$query = $dbh->prepare($sql)) {
     } else { }
 }
 
+$sql = "SELECT Mailadres from Verificatiecode where Mailadres = ?";
+if (!$query = $dbh->prepare($sql)) {
+    header("location: ./email-Bevestiging.php?error=7");
+    exit();
+} else {
+    $query = $dbh->prepare($sql);
+    $query->execute(array($to));
+    if ($query->fetch()) {
+        header("location: ./email-Bevestiging.php?error=emailInGebruik");
+        exit();
+    } else { }
+}
+
 $message = '
 <!DOCTYPE html>
 <html>
