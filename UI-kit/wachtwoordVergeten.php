@@ -19,6 +19,18 @@
     <div class="page-container">
         <div class="content-wrap">
 
+            <?php
+            if (isset($_GET['error'])) {
+                $errorBericht = ($_GET['error']);
+                if ($errorBericht == 'legeemail') {
+                    echo '<p class="errors">Vul alle velden in</p>';
+                }
+                else if ($errorBericht == 'fout') {
+                    echo '<p class="errors">De ingevoerde velden zijn incorrect</p>';
+                }
+            }
+            ?>
+
             <div class="uk-flex-center uk-flex-column">
                 <div class="registreren">
                     <h2>Wachtwoord vergeten</h2>
@@ -29,10 +41,10 @@
                         <p>Beste bezoeker,<br> Voordat u uw wachtwoord kunt wijzigen, moet u uw e-mailadres ingeven. <br>
                             Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken. Ook moet u uw antwoord op de beveiligingsvraag ingeven.
                         </p>
-                        <label for="wachtwoorVergetenEmail">E-mail:</label><br>
-                        <input class="uk-input input-registratie" type="email" name="wachtwoorVergetenEmail" id="wachtwoorVergetenEmail"><br>
+                        <label for="wachtwoordVergetenEmail">E-mail:</label><br>
+                        <input class="uk-input input-registratie" type="email" name="wachtwoordVergetenEmail" id="wachtwoordVergetenEmail"><br>
                         <label for="beveiligingsvraag">Antwoord op de beveiligingsvraag:</label><br>
-                        <select class="uk-select input-registratie" name="bevestigingsvraag">
+                        <select class="uk-select input-registratie margin-bottom" name="bevestigingsvraag">
                             <?php
                             // Haal de beveiligingsvraag op
                             $sql = "SELECT * from Vraag ORDER BY Vraagnummer ASC";

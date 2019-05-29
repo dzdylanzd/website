@@ -18,18 +18,18 @@
   <div class="page-container">
     <div class="content-wrap">
 
-   <?php 
-   if(isset($_GET['error'])){
-   if ($_GET['error'] == "geenFoto") {
-   echo '<p class="errors">U moet een foto kiezen.</p>';
-   }else if ($_GET['error'] == "leeg") {
-    echo '<p class="errors">U heeft een veld niet ingevuld.</p>';
-    }else if ($_GET['error'] == "geenCatogorie") {
-      echo '<p class="errors">U moet een catogorie kiezen.</p>';
+      <?php
+      if (isset($_GET['error'])) {
+        if ($_GET['error'] == "geenFoto") {
+          echo '<p class="errors">U moet een foto kiezen.</p>';
+        } else if ($_GET['error'] == "leeg") {
+          echo '<p class="errors">U heeft een veld niet ingevuld.</p>';
+        } else if ($_GET['error'] == "geenCategorie") {
+          echo '<p class="errors">U moet een categorie kiezen.</p>';
+        }
       }
-  }
 
-     ?>
+      ?>
 
       <div class="uk-flex-center uk-flex-column">
         <div class="registreren">
@@ -49,15 +49,17 @@
               <div class="  uk-width-expand uk-height-small@s ">
                 <div class="flex-column-phone ">
                   <img class="maximg400 uk-height-small@s uk-width-1-3@s uk-width-1-1" src="<?php echo $_SESSION['fotos'][1];  ?>" alt="Foto 2">
-                
+
                   <img class="maximg400 uk-height-small@s uk-width-1-3@s uk-width-1-1 " src="<?php echo $_SESSION['fotos'][2];  ?>" alt="Foto 3">
-        
+
                   <img class="maximg400 uk-width-1-3@s uk-width-1-1 uk-height-small@s" src="<?php echo $_SESSION['fotos'][3];  ?>" alt="Foto 4">
                 </div>
               </div>
-              <form class="upload-form" action="includes/uploadFoto.php" method="post" enctype="multipart/form-data"><div class="uk-hidden@s"><br></div>
+              <form class="upload-form" action="includes/uploadFoto.php" method="post" enctype="multipart/form-data">
+                <div class="uk-hidden@s"><br></div>
                 Selecteer een bestand om te uploaden:
-                <input type="file" name="fileToUpload" id="fileToUpload"><div class="uk-hidden@s"><br></div>
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <div class="uk-hidden@s"><br></div>
                 <input type="submit" value="Foto uploaden" name="submit">
               </form>
             </div>
@@ -68,12 +70,12 @@
             <div class="uk-width-1-3 uk-visible@s"> </div>
             <div class="uk-width-1-3@s uk-wdith-1-1 uk-text-left">
               <form action="includes\veiling-maken.inc.php" method="post">
-              <h3 class="rubriek">Rubrieken</h3>
+                <h3 class="rubriek">Rubrieken</h3>
                 <?php
                 require_once('includes\database.php');
                 if (!isset($_GET["root"])) {
                   $stmt = $dbh->prepare("SELECT * from Rubriek where Volgnr = ?");
-                  
+
                   if ($stmt->execute(array(-1))) {
                     echo "<ul class=\"noDots\">";
                     while ($row = $stmt->fetch()) {
@@ -159,9 +161,9 @@
             <div class="uk-width-1-3  uk-visible@s"> </div>
           </div>
         </div>
-       
-        
-      
+
+
+
         <div class="veiling-maken-box">
 
           <h3>Algemene informatie</h3>
@@ -170,19 +172,19 @@
           <label class="registreerlabel" for="staat">Staat van het product</label><br>
           <input class="uk-input input-registratie" type="text" id="staat" name="staat"><br>
 
-             <!-- <?php
-            // $sql = "select distinct Staat from Voorwerp where staat != ''";
-            // if ($sth = $dbh->prepare($sql)) {
-            //   if ($sth->execute(array())) {
-            //     while ($alles = $sth->fetch()) {
+          <!-- <?php
+                // $sql = "select distinct Staat from Voorwerp where staat != ''";
+                // if ($sth = $dbh->prepare($sql)) {
+                //   if ($sth->execute(array())) {
+                //     while ($alles = $sth->fetch()) {
 
-            //       $tekst = "<option value='$alles[Staat]'>$alles[Staat]</option>";
+                //       $tekst = "<option value='$alles[Staat]'>$alles[Staat]</option>";
 
-            //       echo $tekst;
-            //     }
-            //   }
-            // }
-            ?> -->
+                //       echo $tekst;
+                //     }
+                //   }
+                // }
+                ?> -->
           </select><br>
           <label class="registreerlabel" for="beschrijving">Beschrijving</label><br>
           <textarea class="uk-textarea beschrijving" name="message" rows="5" cols="20"></textarea>

@@ -29,7 +29,7 @@
                         echo '<p class="errors"> Dit e-mailadres is helaas al in gebruik. </p>';
                     } else if ($_GET['error'] == "codeNietMeerValide") {
                         echo '<p class="errors"> De ingevoerde code is niet meer geldig. </p>';
-                    } else if ($_GET['error'] == "nietDeGoedeCode") {
+                    } else if ($_GET['error'] == "foutecode") {
                         echo '<p class="errors"> De code is onjuist, gelieve een juiste code in te vullen. </p>';
                     } else if ($_GET['error'] == "succes") {
                         echo '<p class="succes"> Er is een code naar uw e-mailadres verzonden. </p>';

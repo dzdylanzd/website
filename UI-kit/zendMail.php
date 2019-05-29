@@ -7,7 +7,11 @@ $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_POST['emailbevestiging'];
 $_SESSION["Email"] = $to;
 $subject = "EenmaalAndermaal Verificatiecode";
-$sql = "INSERT  INTO VerificatiecodeEmail(Mailadres,VerificatiecodeEmail) VALUES (?, ?)";
+$sql = "INSERT INTO VerificatiecodeEmail(Mailadres,VerificatiecodeEmail) VALUES (?, ?)";
+if (empty($to)) {
+    header("location: ./email-Bevestiging.php?error=legeEmail");
+    exit();
+}
 try {
     $query = $dbh->prepare($sql);
     if ($query->execute(array($to, $emailCode))) { }
