@@ -7,6 +7,32 @@ $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_POST['emailbevestiging'];
 $_SESSION["Email"] = $to;
 $subject = "EenmaalAndermaal Verificatiecode";
+
+
+
+$sql = "SELECT *  from VerificatiecodeEmail where Mailadres = ?";
+if (!$query = $dbh->prepare($sql)) {
+    header("location: ./email-Bevestiging.php?error=7");
+    exit();
+} else {
+    $query = $dbh->prepare($sql);
+    $query->execute(array($to));
+    while ($alles = $query->fetch()) {  
+        if( $alles['DatumEinde'] > getdate()) {
+            $sqlDeleteCode = 'delete VerificatiecodeEmail where Mailadres = ?';
+            $query2 = $dbh->prepare($sqlDeleteCode);
+            $query2->execute(array($to));
+        }else{
+            header("location: ./email-Bevestiging.php?error=CodeAlOntvangen");
+            exit();
+        }
+    }
+}
+
+
+
+
+
 $sql = "INSERT  INTO VerificatiecodeEmail(Mailadres,VerificatiecodeEmail) VALUES (?, ?)";
 try {
     $query = $dbh->prepare($sql);
@@ -30,18 +56,7 @@ if (!$query = $dbh->prepare($sql)) {
     } else { }
 }
 
-$sql = "SELECT Mailadres from Verificatiecode where Mailadres = ?";
-if (!$query = $dbh->prepare($sql)) {
-    header("location: ./email-Bevestiging.php?error=7");
-    exit();
-} else {
-    $query = $dbh->prepare($sql);
-    $query->execute(array($to));
-    if ($query->fetch()) {
-        header("location: ./email-Bevestiging.php?error=emailInGebruik");
-        exit();
-    } else { }
-}
+
 
 $message = '
 <!DOCTYPE html>
