@@ -1,5 +1,20 @@
 <?php
-$sql ="select isVeilingGesloten, LooptijdEinde  from Voorwerp where VoorwerpNummer = ?";
+
+
+$sql = "SELECT top 1 * from bod where Voorwerp = ? order by BodBedrag desc";
+if ($sth = $dbh->prepare($sql)) {
+    if ($sth->execute(array($_SESSION['PID']))) {
+        while ($alles = $sth->fetch()) {
+         $koper = $alles['Gebruiker'];
+         $koopBedrag = $alles['BodBedrag'];
+        }
+    }
+}
+
+
+
+
+$sql ="select isVeilingGesloten, LooptijdEinde, Verkoper  from Voorwerp where VoorwerpNummer = ?";
 $sth = $dbh->prepare($sql);
 if($sth->execute(array($_SESSION['PID']))){
     while ($row = $sth->fetch()) {
@@ -31,14 +46,33 @@ if($sth->execute(array($_SESSION['PID']))){
             </div>
         </div></h3>";
         if(strtotime($row["LooptijdEinde"]) < strtotime("today")){
-           
+           if(isset($koper)){
             $sqlchangeIsGesloten = "update Voorwerp
-            set  isVeilingGesloten = 1
+            set  isVeilingGesloten = 1 , Koper = ? , Verkoopprijs = ?
             where VoorwerpNummer = ?";
-            $changeIsGesloten = $dbh->prepare($sqlchangeIsGesloten);
-            if($changeIsGesloten->execute(array($_GET["ID"]))){
-            echo"<script> window.location.reload();</script>";
+        }else{
+            $sqlchangeIsGesloten = "update Voorwerp
+            set  isVeilingGesloten = 1 
+            where VoorwerpNummer = ?";
+        }
+            $sql3 = "INSERT into meldingen(bericht,ontvanger) values(?,?)";
+           if( $melding = $dbh->prepare($sql3)){
+            $melding->execute(array('uw <a href="productPage.php?ID='. $_SESSION['PID'] . '">veiling</a> is gesloten',$row["Verkoper"]));
+            if(isset($koper)){
+            $melding->execute('uw <a href="productPage.php?ID='. $_SESSION['PID'] . '">veiling</a> heeft deze veiling gewonnen',$koper);
             }
+        }
+            $changeIsGesloten = $dbh->prepare($sqlchangeIsGesloten);
+            if(isset($koper)){
+                if($changeIsGesloten->execute(array($koper,$koopBedrag, $_SESSION['PID']))){
+                    echo"<script> window.location.reload();</script>";
+                    }
+            }else{
+                if($changeIsGesloten->execute(array($_SESSION['PID']))){
+                    echo"<script> window.location.reload();</script>";
+                    }
+            }     
+           
         }
         }else{
             
