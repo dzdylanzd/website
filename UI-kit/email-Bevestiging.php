@@ -33,7 +33,7 @@
                         echo '<p class="errors"> De code is onjuist, gelieve een juiste code in te vullen. </p>';
                     } else if ($_GET['error'] == "codeAlOntvangen") {
                         echo '<p class="errors"> U heeft al een code ontvangen, kijk in uw e-mail. </p>';
-                        echo '<p class="errorsLogin"><i> Vergeet niet in de mappen junk/spam te kijken! </i></p>';
+                        echo '<p class="errorLogin"><i> Vergeet niet in de mappen junk/spam te kijken! </i></p>';
                     } else if ($_GET['error'] == "succes") {
                         echo '<p class="succes"> Er is een code naar uw e-mailadres verzonden. </p>';
                     } 
