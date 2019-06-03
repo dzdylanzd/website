@@ -26,6 +26,21 @@
             <!-- =========================================== -->
             <!--                    DESKTOP                  -->
             <!-- =========================================== -->
+            <?php
+            $sql = "SELECT Geblokkeerd from Voorwerp where VoorwerpNummer = ?";
+            $sth = $dbh->prepare($sql);
+            if ($sth->execute(array($_SESSION['PID']))) {
+                while ($alles = $sth->fetch()) {
+                    $geblokkeerd = $alles['Geblokkeerd'];
+                }
+            }
+
+
+            if ($geblokkeerd) {
+                echo '<p class="errors"> Deze veiling is geblokkeerd door een beheerder</p>';
+            }
+            ?>
+
 
             <div class="flex-column-phone">
                 <div class="uk-width-1-1 uk-width-1-3@s Card-Empty">
@@ -169,22 +184,26 @@
                 <div class="Vertical_Line"></div>
                 <div class="uk-width-1-1 uk-width-2-3@s Card-Empty">
 
-<script>let url="biedingen.php"
+                    <script>
+                        let url = "biedingen.php"
 
-async function refresh() {
-  btn.style.visibility= "hidden";
- 
-  dynamicPart.innerHTML=await(await fetch(url)).text();
-  setTimeout(refresh,5000);
-} </script>
+                        async function refresh() {
+                            btn.style.visibility = "hidden";
 
-<div id="staticPart">
-  <button id="btn" onclick="refresh()">Start refreshing (4s)</button>
-</div>
+                            dynamicPart.innerHTML = await (await fetch(url)).text();
+                            setTimeout(refresh, 5000);
+                        }
+                    </script>
 
-<div id="dynamicPart"></div>
+                    <div id="staticPart">
+                        <button id="btn" onclick="refresh()">Start refreshing (4s)</button>
+                    </div>
 
-<script>refresh() </script>
+                    <div id="dynamicPart"></div>
+
+                    <script>
+                        refresh()
+                    </script>
 
 
 
@@ -192,7 +211,7 @@ async function refresh() {
 
                     <div class="flex-column-phone Verkoper">
                         <div class="uk-width-1-2@s uk-wdith-1-1 ">
-                    
+
                             <?php
                             $sql = "SELECT Verkoper FROM Voorwerp WHERE VoorwerpNummer = ? ";
                             $sth = $dbh->prepare($sql);
@@ -209,11 +228,10 @@ async function refresh() {
                             if ($sth->execute(array($_GET["ID"]))) {
                                 while ($alles = $sth->fetch()) {
                                     echo "<h4>Lid sinds: $alles[DatumMakenAccount]</h4>";
-                                    
                                 }
                             }
 
-                        
+
                             ?>
                         </div>
                         <div class="uk-width-1-2@s uk-wdith-1-1 Plaats-Bod">
@@ -276,18 +294,17 @@ async function refresh() {
                     </div>
                     <div>
                         <?php
-                         $sql = "SELECT Mailadres from Gebruiker where Gebruikersnaam in (
+                        $sql = "SELECT Mailadres from Gebruiker where Gebruikersnaam in (
                             select Verkoper from Voorwerp where VoorwerpNummer = ?
                             )";
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
                             while ($alles = $sth->fetch()) {
                                 echo "<h4 class=\"verkoop-Email\"> Emailadres: $alles[Mailadres]</h4>";
-                                
                             }
                         }
 
-                         $sql = "SELECT Telefoonnummer from Gebruikerstelefoon where Gebruiker in (
+                        $sql = "SELECT Telefoonnummer from Gebruikerstelefoon where Gebruiker in (
                             select Verkoper from Voorwerp where VoorwerpNummer = ?)";
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
@@ -300,6 +317,14 @@ async function refresh() {
                     </div>
                 </div>
             </div>
+            <?php
+                    if(isset( $_SESSION['soortGebruiker'])){
+                        if($_SESSION['soortGebruiker'] == 'B'){
+                            $html = '<button  class=" uk-button knop-registreren" type="button" onclick="window.location.href=\'includes/blokeerVeiling.php\'" >blokeer deze veiling </button>';
+                        echo $html ;
+                        }
+                    }
+                    ?>
         </div>
     </div>
     <?php include 'includes/footer.inc.php'; ?>
