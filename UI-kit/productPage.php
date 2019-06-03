@@ -26,6 +26,21 @@
             <!-- =========================================== -->
             <!--                    DESKTOP                  -->
             <!-- =========================================== -->
+            <?php
+            $sql = "SELECT Geblokkeerd from Voorwerp where VoorwerpNummer = ?";
+            $sth = $dbh->prepare($sql);
+            if ($sth->execute(array($_SESSION['PID']))) {
+                while ($alles = $sth->fetch()) {
+                    $geblokkeerd = $alles['Geblokkeerd'];
+                }
+            }
+
+
+            if ($geblokkeerd) {
+                echo '<p class="errors"> Deze veiling is geblokkeerd door een beheerder</p>';
+            }
+            ?>
+
 
             <div class="flex-column-phone">
                 <div class="uk-width-1-1 uk-width-1-3@s Card-Empty">
@@ -302,6 +317,14 @@
                     </div>
                 </div>
             </div>
+            <?php
+                    if(isset( $_SESSION['soortGebruiker'])){
+                        if($_SESSION['soortGebruiker'] == 'B'){
+                            $html = '<button  class=" uk-button knop-registreren" type="button" onclick="window.location.href=\'includes/blokeerVeiling.php\'" >blokeer deze veiling </button>';
+                        echo $html ;
+                        }
+                    }
+                    ?>
         </div>
     </div>
     <?php include 'includes/footer.inc.php'; ?>

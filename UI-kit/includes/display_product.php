@@ -51,7 +51,7 @@ function displayCategorie($nummer, $dbh, $hoeveel) {
             SELECT Rubrieknummer FROM Rubriek WHERE Volgnr= $nummer or Rubrieknummer = $nummer ) or Rubrieknummer = any(
             
             SELECT Rubrieknummer FROM Rubriek WHERE Volgnr= $nummer or Rubrieknummer = $nummer ))))
-            ) and IsVeilingGesloten = 0 order by newid()";
+            ) and IsVeilingGesloten = 0 and Geblokkeerd = 0 order by newid()";
 // prepared statement 
 $sth = $dbh->prepare($sql);
 if($sth->execute(array())){

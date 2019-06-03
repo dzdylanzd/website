@@ -40,7 +40,7 @@ if (isset($_POST['veiling-maken-button'])) {
   }
 
 
-  $sql = "select top 1 VoorwerpNummer from Voorwerp order by VoorwerpNummer desc";
+  $sql = "SELECT top 1 VoorwerpNummer from Voorwerp order by VoorwerpNummer desc";
   if ($sth = $dbh->prepare($sql)) {
     if ($sth->execute(array())) {
       while ($alles = $sth->fetch()) {

@@ -38,7 +38,7 @@ if (isset($_POST['login-submit'])) {
                     session_start();
                     $_SESSION['userId'] = $row['Gebruikersnaam'];
                     $_SESSION['userUid'] = $row['Mailadres'];
-                    $_SESSION['userUid'] = $row['SoortGebruiker'];
+                    $_SESSION['soortGebruiker'] = $row['SoortGebruiker'];
                     echo "<script> history.go(-1); </script> ";
                     exit();
                 } else {
