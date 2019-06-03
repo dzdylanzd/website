@@ -12,6 +12,25 @@ if(!isset($_SESSION['userId'])){
     exit();
 }else if(!empty($bod)){
 
+
+    $sqlVorigeBod = 'SELECT top 1 * from bod where Voorwerp = ? and BodDagTijd not in (
+        select top 1 BodDagTijd from bod where Voorwerp = ? order by BodDagTijd desc
+        )order by BodDagTijd desc';
+if ($sth = $dbh->prepare($sqlVorigeBod)) {
+    if ($sth->execute(array($productid,$productid))) {
+        while ($row = $sth->fetch()) {
+$vorigeBieder = $row['Gebruiker'];
+$vorigeBod = $row['BodBedrag'];
+        }
+    }
+}
+
+$sql3 = "INSERT into meldingen(bericht,ontvanger) values(?,?)";
+if( $melding = $dbh->prepare($sql3)){
+ $melding->execute(array('U bent overboden op  <a href= "productPage.php?ID='. $_SESSION['PID'] . '">deze veiling</a> het huidige bod = ' . $bod .   '',$vorigeBieder));
+}
+
+
 $sql = 'insert into bod(Voorwerp,BodBedrag,Gebruiker,BodDagTijd)
 Values (?,?,?,?)';
 

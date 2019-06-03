@@ -18,6 +18,7 @@ $sql ="select isVeilingGesloten, LooptijdEinde, Verkoper  from Voorwerp where Vo
 $sth = $dbh->prepare($sql);
 if($sth->execute(array($_SESSION['PID']))){
     while ($row = $sth->fetch()) {
+        $verkoper = $row['Verkoper'];
        
         if($row["isVeilingGesloten"] == 0){
             echo"<p class=\"witte-tekst\">De veiling is geopend</p>";
@@ -45,7 +46,7 @@ if($sth->execute(array($_SESSION['PID']))){
                 <div class=\"uk-countdown-label uk-margin-small uk-text-center uk-visible@s\">Seconden</div>
             </div>
         </div></h3>";
-        if(strtotime($row["LooptijdEinde"]) < strtotime("today")){
+        if(strtotime($row["LooptijdEinde"]) < strtotime("now")){
            if(isset($koper)){
             $sqlchangeIsGesloten = "update Voorwerp
             set  isVeilingGesloten = 1 , Koper = ? , Verkoopprijs = ?
@@ -57,9 +58,10 @@ if($sth->execute(array($_SESSION['PID']))){
         }
             $sql3 = "INSERT into meldingen(bericht,ontvanger) values(?,?)";
            if( $melding = $dbh->prepare($sql3)){
-            $melding->execute(array('uw <a href="productPage.php?ID='. $_SESSION['PID'] . '">veiling</a> is gesloten',$row["Verkoper"]));
+            $melding->execute(array('uw <a href="productPage.php?ID='. $_SESSION['PID'] . '">veiling</a> is gesloten',$verkoper));
             if(isset($koper)){
-            $melding->execute('uw <a href="productPage.php?ID='. $_SESSION['PID'] . '">veiling</a> heeft deze veiling gewonnen',$koper);
+                $melding = $dbh->prepare($sql3);
+            $melding->execute(array('U heeft deze <a href="productPage.php?ID='. $_SESSION['PID'] . '">veiling</a> gewonnen',$koper));
             }
         }
             $changeIsGesloten = $dbh->prepare($sqlchangeIsGesloten);
