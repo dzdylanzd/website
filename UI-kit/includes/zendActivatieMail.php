@@ -1,12 +1,23 @@
 <?php
 include "database.php";
 session_start();
-$Gebruiksernaam = $_SESSION['userId'];
+$gebruiksernaam = $_SESSION['userId'];
 $random_hash = bin2hex(random_bytes(4));
 $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_SESSION['userUid'];
 $_SESSION["Email"] = $to;
-$subject = "verificatie code verkoper";
+$subject = "Activatie verkoopaccount - EenmaalAndermaal";
+
+$sql = 'SELECT * FROM Gebruiker WHERE Gebruikersnaam = ?';
+if ($sth = $dbh->prepare($sql)) {
+    if ($sth->execute(array($gebruikersnaam))) {
+        while ($row = $sth->fetch()) {
+            $voorletter = substr($row['Voornaam'], 0, 1);
+            $achternaam = $row['Achternaam'];
+        }
+    }
+}
+
 $message = '
 <!DOCTYPE html>
 <html>
@@ -22,11 +33,17 @@ $message = '
 </head>
 
 <body>
-Beste '.$Gebruikersnaam.',<br> 
-Bedankt dat u voor EenmaalAndermaal heeft gekozen.<br>
-Hieronder vindt u de code om uw verkoopaccount te activeren.<br>
-Dit kunt u doen door op \'Verkoopaccount activeren\' te klikken<br>
-De verificatiecode is:  <strong>' . $random_hash . '</strong>
+Beste ' . $voorletter . '. ' . $achternaam . ',<br><br>
+
+U heeft een verzoek gedaan tot het activeren van uw verkoopaccount.<br><br>
+
+Hieronder vindt u de activatiecode om uw account te veranderen tot verkoopaccount. 
+Dit kunt u doen door op \'Verkoopaccount activeren\' te klikken 
+of door op de onderstaande link te klikken. <br><br>
+
+Uw activatiecode is: <strong' . $random_hash . '</strong><br><br>
+
+
 <br>
 <br>
 Bedankt dat u voor ons heeft gekozen!<br>
