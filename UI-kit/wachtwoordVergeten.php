@@ -13,48 +13,53 @@
 
 <body>
     <?php include 'includes\nav-L-M.php';
-    require_once('includes/database.php'); ?>
+    include 'includes/defaultMobileNav.php';
+    require_once('includes/database.php');
+    ?>
     <div class="page-container">
         <div class="content-wrap">
 
-            <!-- header -->
-            <div class="uk-hidden@s">
-                <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
-                    </div>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <div class="uk-navbar-item ">
-                            <form action="productpage.php">
-                                <div class="uk-inline">
-                                    <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                                    <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
-                                </div>
-                            </form>
-                            <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
+            <?php
+            if (isset($_GET['error'])) {
+                $errorBericht = ($_GET['error']);
+                if ($errorBericht == 'legeemail') {
+                    echo '<p class="errors">Vul alle velden in</p>';
+                }
+                else if ($errorBericht == 'fout') {
+                    echo '<p class="errors">De ingevoerde velden zijn incorrect</p>';
+                }
+            }
+            ?>
+
             <div class="uk-flex-center uk-flex-column">
                 <div class="registreren">
                     <h2>Wachtwoord vergeten</h2>
                 </div>
                 <form method="post" action="includes/zendWachtwoordVergetenMail.php">
-                    <div class="email-box">
+                    <div class=" witte-tekst registreerbox ">
                         <h3>Wachtwoord vergeten</h3>
-                        <p>Beste bezoeker,<br> voordat u uw wachtwoord kunt wijzigen moet u uw e-mailadres ingeven. <br>
-                            Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken. Ook moet u uw antwoord op de beveiliginsvraag ingeven.
+                        <p>Beste bezoeker,<br> Voordat u uw wachtwoord kunt wijzigen, moet u uw e-mailadres ingeven. <br>
+                            Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken. Ook moet u uw antwoord op de beveiligingsvraag ingeven.
                         </p>
-                        <label for="wachtwoorVergetenEmail">E-mail:</label><br>
-                        <input class="uk-input input-registratie" type="email" name="wachtwoorVergetenEmail" id="wachtwoorVergetenEmail"><br>
+                        <label for="wachtwoordVergetenEmail">E-mail:</label><br>
+                        <input class="uk-input input-registratie" type="email" name="wachtwoordVergetenEmail" id="wachtwoordVergetenEmail"><br>
                         <label for="beveiligingsvraag">Antwoord op de beveiligingsvraag:</label><br>
-                        <input class="uk-input input-registratie" type="password" name="beveiligingsvraag" id="beveiligingsvraag"><br>
+                        <select class="uk-select input-registratie margin-bottom" name="bevestigingsvraag">
+                            <?php
+                            // Haal de beveiligingsvraag op
+                            $sql = "SELECT * from Vraag ORDER BY Vraagnummer ASC";
+                            if ($sth = $dbh->prepare($sql)) {
+                                if ($sth->execute(array())) {
+                                    while ($vraag = $sth->fetch()) {
+                                        echo '<option value=' . $vraag[' Vraagnummer'] . '>' . $vraag['TekstVraag'] . '</option>';
+                                    }
+                                }
+                            }
+                            ?>
+                        </select> <input class="uk-input input-registratie" type="password" name="beveiligingsvraag" id="beveiligingsvraag"><br>
                         <button class="uk-button knop-email">Bevestigen</button>
                     </div>
                 </form>
-
-
             </div>
         </div>
     </div>

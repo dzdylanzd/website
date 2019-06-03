@@ -31,20 +31,21 @@ if (isset($_POST['login-submit'])) {
                     if (strpos($_SERVER['HTTP_REFERER'], '?') != false) {
                         header("location: $_SERVER[HTTP_REFERER]&errorLogin=verkeerdwachtwoord");
                     } else {
-                        header("location: $_SERVER[HTTP_REFERER]?errorLogin=vekeerdwachtwoord");
+                        header("location: $_SERVER[HTTP_REFERER]?errorLogin=verkeerdwachtwoord");
                     }
                     exit();
                 } else if ($pwdCheck == true) {
                     session_start();
                     $_SESSION['userId'] = $row['Gebruikersnaam'];
                     $_SESSION['userUid'] = $row['Mailadres'];
+                    $_SESSION['soortGebruiker'] = $row['SoortGebruiker'];
                     echo "<script> history.go(-1); </script> ";
                     exit();
                 } else {
                     if (strpos($_SERVER['HTTP_REFERER'], '?') != false) {
                         header("location: $_SERVER[HTTP_REFERER]&errorLogin=verkeerdwachtwoord");
                     } else {
-                        header("location: $_SERVER[HTTP_REFERER]?errorLogin=vekeerdwachtwoord");
+                        header("location: $_SERVER[HTTP_REFERER]?errorLogin=verkeerdwachtwoord");
                     }
                 }
             } else {

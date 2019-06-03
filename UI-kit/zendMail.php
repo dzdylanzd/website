@@ -2,23 +2,66 @@
 include "includes/database.php";
 session_start();
 $random_hash = bin2hex(random_bytes(3));
-$_SESSION["emailCode"] = $random_hash;
+$emailCode = $random_hash;
 $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_POST['emailbevestiging'];
 $_SESSION["Email"] = $to;
-$subject = "verificatie code";
-    $sql = "SELECT Mailadres from Gebruiker where Mailadres = ?";
-    if (!$query = $dbh->prepare($sql)) {
-        header("location: ./email-Bevestiging.php?error=7");
-        exit();
-    } else {
-        $query = $dbh->prepare($sql);
-        $query->execute(array($to));
-        if ($query->fetch()) {
-            header("location: ./email-Bevestiging.php?error=13");
+$subject = "EenmaalAndermaal Verificatiecode";
+
+
+
+$sql = "SELECT *  from VerificatiecodeEmail where Mailadres = ?";
+if (!$query = $dbh->prepare($sql)) {
+    header("location: ./email-Bevestiging.php?error=7");
+    exit();
+} else {
+    $query = $dbh->prepare($sql);
+    $query->execute(array($to));
+    while ($alles = $query->fetch()) {  
+        if( $alles['DatumEinde'] > getdate()) {
+            $sqlDeleteCode = 'delete VerificatiecodeEmail where Mailadres = ?';
+            $query2 = $dbh->prepare($sqlDeleteCode);
+            $query2->execute(array($to));
+        }else{
+            header("location: ./email-Bevestiging.php?error=CodeAlOntvangen");
             exit();
-        } else { }
+        }
     }
+}
+
+
+
+
+
+
+$sql = "INSERT INTO VerificatiecodeEmail(Mailadres,VerificatiecodeEmail) VALUES (?, ?)";
+if (empty($to)) {
+    header("location: ./email-Bevestiging.php?error=legeEmail");
+    exit();
+}
+try {
+    $query = $dbh->prepare($sql);
+    if ($query->execute(array($to, $emailCode))) { }
+} catch (PDOException $e) {
+    $error = $e->getMessage();
+    header("location: ./email-Bevestiging.php?error=$error");
+    exit();
+}
+
+$sql = "SELECT Mailadres from Gebruiker where Mailadres = ?";
+if (!$query = $dbh->prepare($sql)) {
+    header("location: ./email-Bevestiging.php?error=7");
+    exit();
+} else {
+    $query = $dbh->prepare($sql);
+    $query->execute(array($to));
+    if ($query->fetch()) {
+        header("location: ./email-Bevestiging.php?error=emailInGebruik");
+        exit();
+    } else { }
+}
+
+
 
 $message = '
 <!DOCTYPE html>
@@ -39,7 +82,7 @@ Beste meneer/mevrouw,<br>
 Bedankt dat u voor EenmaalAndermaal heeft gekozen.<br>
 Hieronder vindt u de code om uw e-mailadres te bevestigen.<br>
 Dit kunt u doen door op \'registeren\' te klikken of door op de onderstaande link te klikken<br>
-De bevestigingscode is:  <strong>' . $random_hash . '
+De bevestigingscode is:  <strong>' . $emailCode . '
 
 </strong><br>
 <a href="http://iproject37.icasites.nl/email-Bevestiging.php">Bevestig e-mailadres</a>
@@ -63,8 +106,8 @@ $headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
 
 
 if (empty($_POST['emailbevestiging'])) {
-    header("Location: email-Bevestiging.php?error=legeemail");
+    header("Location: email-Bevestiging.php?error=legeEmail");
 } else {
-    mail($to,$subject,$message,$headers);
+    mail($to, $subject, $message, $headers);
     header("Location: email-Bevestiging.php?error=succes");
 }

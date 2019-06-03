@@ -1,15 +1,31 @@
 <?php
-$sql ="select isVeilingGesloten, LooptijdEinde  from Voorwerp where VoorwerpNummer = ?";
+
+
+$sql = "SELECT top 1 * from bod where Voorwerp = ? order by BodBedrag desc";
+if ($sth = $dbh->prepare($sql)) {
+    if ($sth->execute(array($_SESSION['PID']))) {
+        while ($alles = $sth->fetch()) {
+         $koper = $alles['Gebruiker'];
+         $koopBedrag = $alles['BodBedrag'];
+        }
+    }
+}
+
+
+
+
+$sql ="select isVeilingGesloten, LooptijdEinde, Verkoper  from Voorwerp where VoorwerpNummer = ?";
 $sth = $dbh->prepare($sql);
-if($sth->execute(array($_GET["ID"]))){
+if($sth->execute(array($_SESSION['PID']))){
     while ($row = $sth->fetch()) {
+        $verkoper = $row['Verkoper'];
        
         if($row["isVeilingGesloten"] == 0){
-            echo"de veiling is open";
-            $tijd =   substr(substr_replace($row["LooptijdEinde"], "T", 11,0),0,20) . "+01:00";
+            echo"<p class=\"witte-tekst\">De veiling is geopend</p>";
+            $tijd =   substr(substr_replace($row["LooptijdEinde"], "T", 11,0),0,20) . "+02:00";
             $tijd =  str_replace(" ","",$tijd);
           
-            echo "<div class=\"uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $tijd\">
+            echo "<h3 class=\"timer\"><div class=\"uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $tijd\">
             <div>
                 <div class=\"uk-countdown-number uk-countdown-days\"></div>
                 <div class=\"uk-countdown-label uk-margin-small uk-text-center uk-visible@s\">Dagen</div>
@@ -29,16 +45,36 @@ if($sth->execute(array($_GET["ID"]))){
                 <div class=\"uk-countdown-number uk-countdown-seconds\"></div>
                 <div class=\"uk-countdown-label uk-margin-small uk-text-center uk-visible@s\">Seconden</div>
             </div>
-        </div>";
-        if(strtotime($row["LooptijdEinde"]) < strtotime("today")){
-           
+        </div></h3>";
+        if(strtotime($row["LooptijdEinde"]) < strtotime("now")){
+           if(isset($koper)){
             $sqlchangeIsGesloten = "update Voorwerp
-            set  isVeilingGesloten = 1
+            set  isVeilingGesloten = 1 , Koper = ? , Verkoopprijs = ?
             where VoorwerpNummer = ?";
-            $changeIsGesloten = $dbh->prepare($sqlchangeIsGesloten);
-            if($changeIsGesloten->execute(array($_GET["ID"]))){
-            echo"<script> window.location.reload();</script>";
+        }else{
+            $sqlchangeIsGesloten = "update Voorwerp
+            set  isVeilingGesloten = 1 
+            where VoorwerpNummer = ?";
+        }
+            $sql3 = "INSERT into meldingen(bericht,ontvanger) values(?,?)";
+           if( $melding = $dbh->prepare($sql3)){
+            $melding->execute(array('uw <a href="productPage.php?ID='. $_SESSION['PID'] . '">veiling</a> is gesloten',$verkoper));
+            if(isset($koper)){
+                $melding = $dbh->prepare($sql3);
+            $melding->execute(array('U heeft deze <a href="productPage.php?ID='. $_SESSION['PID'] . '">veiling</a> gewonnen',$koper));
             }
+        }
+            $changeIsGesloten = $dbh->prepare($sqlchangeIsGesloten);
+            if(isset($koper)){
+                if($changeIsGesloten->execute(array($koper,$koopBedrag, $_SESSION['PID']))){
+                    echo"<script> window.location.reload();</script>";
+                    }
+            }else{
+                if($changeIsGesloten->execute(array($_SESSION['PID']))){
+                    echo"<script> window.location.reload();</script>";
+                    }
+            }     
+           
         }
         }else{
             

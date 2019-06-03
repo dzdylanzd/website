@@ -13,31 +13,12 @@
 
 <body>
     <?php include 'includes\nav-L-M.php';
+    include 'includes/defaultMobileNav.php';
     require_once('includes/database.php');
     ?>
 
     <div class="page-container">
         <div class="content-wrap">
-
-            <!-- header -->
-            <div class="uk-hidden@s">
-                <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
-                    </div>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <div class="uk-navbar-item ">
-                            <form action="productpage.php">
-                                <div class="uk-inline">
-                                    <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                                    <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
-                                </div>
-                            </form>
-                            <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
             <?php
             if (isset($_GET['error'])) {
                 $errorBericht = ($_GET['error']);
@@ -65,10 +46,19 @@
             }
             ?>
             <?php
-            // Haal gegevens van database en zet ze in variabelen
+            // Haal gegevens van de database en zet ze in variabelen
             if (isset($_SESSION['userId']) && isset($_SESSION['userUid'])) {
                 $gebruikersnaam = $_SESSION['userId'];
                 $email = $_SESSION['userUid'];
+
+                $sql = 'SELECT Telefoonnummer FROM Gebruikerstelefoon WHERE gebruiker = ?';
+                if ($sth = $dbh->prepare($sql)) {
+                    if ($sth->execute(array($gebruikersnaam))) {
+                        while ($row = $sth->fetch()) {
+                            $telefoonnummer = $row['Telefoonnummer'];
+                        }
+                    }
+                }
 
                 $sql = 'SELECT * FROM Gebruiker WHERE gebruikersnaam = ?';
                 if ($sth = $dbh->prepare($sql)) {
@@ -81,7 +71,8 @@
                             $postcode = $row['Postcode'];
                             $plaats = $row['Plaatsnaam'];
                             $land = $row['Land'];
-
+                            $vraag = $row["Vraagnummer"];
+                            $accountType = $row["SoortGebruiker"];
                         }
                     }
                 }
@@ -91,88 +82,82 @@
                 <div class="registreren">
                     <h2>Mijn gegevens</h2>
                 </div>
-                <form method="post" action="includes/registreren.inc.php">
+                <form method="post" action="wijzigen-gegevens.php">
                     <div class="registreerbox">
                         <h3>Persoonsgegevens</h3>
-                        <p class="mijngegevens">Voornaam:  <?php echo $voornaam?> </p><br>
-                        <p class="mijngegevens">Achternaam:  <?php echo $achternaam?> </p><br>
-                        <p class="mijngegevens">Geboortedatum:  <?php echo $geboortedatum?> </p><br>
+                        <p class="mijngegevens">Voornaam: <?php echo $voornaam ?> </p><br>
+                        <p class="mijngegevens">Achternaam: <?php echo $achternaam ?> </p><br>
+                        <p class="mijngegevens">Geboortedatum: <?php echo $geboortedatum ?> </p><br>
+
+                        <?php
+                        $sql = 'SELECT Telefoonnummer FROM Gebruikerstelefoon WHERE gebruiker = ?';
+                        if ($sth = $dbh->prepare($sql)) {
+                            if ($sth->execute(array($gebruikersnaam))) {
+                                while ($row = $sth->fetch()) {
+                                    echo "<p class=\"mijngegevens\">Telefoonnummer:";
+                                    echo " $row[Telefoonnummer]";
+                                    echo "</p><br>";
+                                }
+                            }
+                        }
+                        ?>
+                        <p class="mijngegevens"> <a href="telefoonnummerToevoegen.php">Telefoonnummer toevoegen</a></p>
+
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
-                        <p class="mijngegevens">Straat en huisnummer: <?php echo $straat?></p><br>
-                        <p class="mijngegevens">Postcode: <?php echo $postcode?></p><br>
-                        <p class="mijngegevens">Plaats: <?php echo $plaats?></p><br>
-                        <p class="mijngegevens">Land: <?php echo $land?></p><br>
+                        <p class="mijngegevens">Straat en huisnummer: <?php echo $straat ?></p><br>
+                        <p class="mijngegevens">Postcode: <?php echo $postcode ?></p><br>
+                        <p class="mijngegevens">Plaats: <?php echo $plaats ?></p><br>
+                        <p class="mijngegevens">Land: <?php echo $land ?></p><br>
                     </div>
+
                     <div class="registreerbox">
-                        <h3>Inloggegevens</h3>
-                        <label class="registreerlabel" for="gebruikersnaam">Gebruikersnaam</label><br>
-                        <input class="uk-input input-registratie" type="text" id="gebruikersnaam" name="gebruikersnaam"><br>
-                        <label class="registreerlabel" for="wachtwoord">Wachtwoord</label><br>
-                        <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord"><br>
-                        <label class="registreerlabel" for="bevestigWachtwoord">Wachtwoord herhalen</label><br>
-                        <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
-                        <label class="registreerlabel" for="bevestigingsvraag">Bevestigingsvraag</label><br>
-                        <select class="uk-select input-registratie" name="bevestigingsvraag">
-                            <?php
-                            $sql = "SELECT * from vraag ORDER BY vraagnummer ASC";
-                            if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array())) {
-                                    while ($vraag = $sth->fetch()) {
-                                        $tekst = "<option value=$vraag[Vraagnummer] >$vraag[TekstVraag]</option>";
-                                        echo $tekst;
-                                    }
-                                }
-                            }
-                            ?>
-                        </select><br>
-                        <label class="registreerlabel" for="antwoord">Antwoord</label><br>
-                        <input class="uk-input input-registratie" type="password" id="antwoord" name="antwoord"><br>
+                        <h3>Accountgegevens</h3>
+                        <p class="mijngegevens">Account type: <?php if ($accountType == 'K') {
+                                                                    echo "Koper";
+                                                                } else if ($accountType == 'V') {
+                                                                    echo "Verkoper";
+                                                                } else if ($accountType == 'A') {
+                                                                    echo "Activatie";
+                                                                } else if ($accountType == 'B') {
+                                                                    echo "Beheerder";
+                                                                } else {
+                                                                    echo "?";
+                                                                }  ?></p><br>
+                        <p class="mijngegevens">Gebruikersnaam: <?php echo $gebruikersnaam ?></p><br>
+                        <p class="mijngegevens">E-mailadres: <?php echo $email ?></p><br>
+
                     </div>
+
                     <div class="registreerbox">
                         <h3>Voorkeuren</h3>
-                        <select class="uk-select input-registratie" name="voorkeur1">
-                            <?php
-                            $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
-                            if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array(-1, -1))) {
-                                    while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
-                                        echo $tekst;
-                                    }
+
+                        <?php
+                        $sql = "select Rubrieknaam from Rubriek where Rubrieknummer in(
+
+                                select categorie from voorkeur where gebruikersnaam = ?)";
+                        if ($sth = $dbh->prepare($sql)) {
+                            if ($sth->execute(array($gebruikersnaam))) {
+                                while ($row = $sth->fetch()) {
+                                    echo "<p class=\"mijngegevens\">$row[Rubrieknaam]</p> <br>";
                                 }
                             }
-                            ?>
-                        </select><br>
-                        <select class="uk-select input-registratie" name="voorkeur2">
-                            <?php
-                            $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
-                            if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array(-1, -1))) {
-                                    while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
-                                        echo $tekst;
-                                    }
-                                }
-                            }
-                            ?>
-                        </select><br>
-                        <select class="uk-select input-registratie" name="voorkeur3">
-                            <?php
-                            $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
-                            if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array(-1, -1))) {
-                                    while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
-                                        echo $tekst;
-                                    }
-                                }
-                            }
-                            ?>
-                        </select><br>
+                        }
+                        ?>
+
                     </div>
                     <button action="wijzigen-gegevens.php" type="submit" name="bevestigings-button" class="uk-button knop-registreren">Gegevens wijzigen</button>
+                    <button class="uk-button knop-registreren" uk-toggle="target: #my-id" type="button">Account verwijderen</button>
+                    <div id="my-id" uk-modal>
+                        <div class="uk-modal-dialog uk-modal-body">
+                            <h2 class="uk-modal-title">Weet u zeker dat u uw account wilt verwijderen?</h2>
+                            <div class="uk-flex">
+                                <button class="uk-button " onclick="window.location.href='includes/verwijderAccount.inc.php'" type="button">Account verwijderen</button>
+                                <button class="uk-button uk-modal-close" type="button">Nee</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

@@ -13,42 +13,29 @@
 
 <body>
     <?php include 'includes\nav-L-M.php';
+    include 'includes/defaultMobileNav.php';
     require_once('includes/database.php'); ?>
     <div class="page-container">
         <div class="content-wrap">
 
-            <!-- header -->
-            <div class="uk-hidden@s">
-                <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
-                    </div>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <div class="uk-navbar-item ">
-                            <form action="productpage.php">
-                                <div class="uk-inline">
-                                    <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                                    <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
-                                </div>
-                            </form>
-                            <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
             <div class="uk-flex-center uk-flex-column">
                 <!-- Error handlers -->
                 <?php if (isset($_GET['error'])) {
                     if ($_GET['error'] == "leegveld") {
-                        echo '<p class="errors"> Voer een code in </p>';
-                    } else if ($_GET['error'] == "legeemail") {
-                        echo '<p class="errors"> Voer uw e-mailadres in </p>';
+                        echo '<p class="errors"> Gelieve een code in te vullen. </p>';
+                    } else if ($_GET['error'] == "legeEmail") {
+                        echo '<p class="errors">  Gelieve een e-mailadres in te vullen. </p>';
+                    } else if ($_GET['error'] == "emailInGebruik") {
+                        echo '<p class="errors"> Dit e-mailadres is helaas al in gebruik. </p>';
                     } else if ($_GET['error'] == "codeNietMeerValide") {
-                        echo '<p class="errors"> De ingevoerde code is niet meer geldig </p>';
-                    } else if ($_GET['error'] == "nietDeGoedeCode") {
-                        echo '<p class="errors"> De ingevoerde code wordt niet herkent </p>';
+                        echo '<p class="errors"> De ingevoerde code is niet meer geldig. </p>';
+                    } else if ($_GET['error'] == "foutecode") {
+                        echo '<p class="errors"> De code is onjuist, gelieve een juiste code in te vullen. </p>';
+                    } else if ($_GET['error'] == "codeAlOntvangen") {
+                        echo '<p class="errors"> U heeft al een code ontvangen, kijk in uw e-mail. </p>';
+                        echo '<p class="errorLogin"><i> Vergeet niet in de mappen junk/spam te kijken! </i></p>';
                     } else if ($_GET['error'] == "succes") {
-                        echo '<p class="succes"> Er is een code naar uw e-mailadres verzonden </p>';
+                        echo '<p class="succes"> Er is een code naar uw e-mailadres verzonden. </p>';
                     } 
                 }
                 ?>
@@ -58,7 +45,7 @@
                 <form method="post" action="zendMail.php">
                     <div class="registreerbox">
                         <h3>E-mail bevestiging</h3>
-                        <p>Beste bezoeker,<br> voordat u een gebruiker aan kunt maken moet u eerst uw e-mail adres bevestigen. <br>
+                        <p>Beste bezoeker,<br> Voordat u een gebruiker aan kunt maken moet u eerst uw e-mail adres bevestigen. <br>
                             Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken.
                         </p>
                         <label for="emailbevestiging">E-mail:</label><br>

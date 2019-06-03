@@ -2,9 +2,10 @@
 include "database.php";
 session_start();
 $random_hash = bin2hex(random_bytes(4));
-$to = $_POST['wachtwoorVergetenEmail'];
+$to = $_POST['wachtwoordVergetenEmail'];
 $subject = "Wachtwoord wijzigen";
 $antwoord =  $_POST['beveiligingsvraag'];
+
 $sql = "SELECT AntwoordTekst FROM Gebruiker WHERE Mailadres = ?";
 if ($query = $dbh->prepare($sql)) {
     if ($query->execute(array($to))) {
@@ -16,8 +17,6 @@ if ($query = $dbh->prepare($sql)) {
         }
     }
 }
-
-
 
 if ($pwdCheck) {
     $hashedPwd = password_hash($random_hash, PASSWORD_DEFAULT);
@@ -44,12 +43,8 @@ if ($pwdCheck) {
 <body>
 Beste meneer/mevrouw,<br> 
 Hieronder vindt u een nieuw wachtwoord.<br>
-Deze kunt u wijzigen door in te loggen met dit wachtwoord en dan naar de pagina \'Mijn gegevens\' te gaan en uw wachtwoord aan te passen.<br>
+Deze kunt u wijzigen door <a href="http://iproject37.icasites.nl/wachtwoordVergeten.php">in te loggen</a> met dit wachtwoord en dan naar de pagina \'Mijn gegevens\' te gaan en uw wachtwoord aan te passen.<br>
 Het nieuwe wachtwoord is:  <strong>' . $random_hash . '
-
-</strong><br>
-<a href="http://iproject37.icasites.nl/email-Bevestiging.php">Bevestig e-mailadres</a>
-
 <br>
 <br>
 Bedankt dat u voor ons heeft gekozen!<br>
@@ -68,16 +63,14 @@ iConcepts
 
 
 
-    if (empty($_POST['wachtwoorVergetenEmail'])) {
+    if (empty($_POST['wachtwoordVergetenEmail'])) {
         header("Location: ../wachtwoordVergeten.php?error=legeemail");
     } else {
         if ($pwdCheck) {
-
             mail($to, $subject, $message, $headers);
             header("Location: ../index.php");
-        }else{
+        } else {
             header("Location: ../wachtwoordVergeten.php?error=fout");
             exit();
         }
-        
     }

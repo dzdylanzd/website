@@ -25,35 +25,20 @@ if (!isset($_SESSION["gevalideert"])) {
 
 <body>
     <?php include 'includes\nav-L-M.php';
+    include 'includes/defaultMobileNav.php';
     require_once('includes/database.php'); ?>
     <div class="page-container">
         <div class="content-wrap">
 
-            <!-- header -->
-            <div class="uk-hidden@s">
-                <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
-                    </div>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <div class="uk-navbar-item ">
-                            <form action="productpage.php">
-                                <div class="uk-inline">
-                                    <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                                    <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
-                                </div>
-                            </form>
-                            <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
             <?php
             if (isset($_GET['error'])) {
                 $errorBericht = ($_GET['error']);
                 switch ($errorBericht) {
                     case 1:
                         echo '<p class="errors">Vul alle velden in</p>';
+                        break;
+                    case 2:
+                        echo '<p class="errors">Dit is geen correct e-mailadres</p>';
                         break;
                     case 3:
                         echo '<p class="errors">De gebruikersnaam is al in gebruik</p>';
@@ -69,6 +54,18 @@ if (!isset($_SESSION["gevalideert"])) {
                     case 7:
                         echo '<p class="errors">SQL error, probeer het opnieuw</p>';
                         break;
+                    case 8:
+                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        break;
+                    case 9:
+                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        break;
+                    case 10:
+                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        break;
+                    case 11:
+                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        break;
                     default:
                         echo '<p class="errors">Onverwachte error, probeer het opnieuw';
                 }
@@ -82,22 +79,26 @@ if (!isset($_SESSION["gevalideert"])) {
                     <div class="registreerbox">
 
                         <h3>Persoonsgegevens</h3>
-                        <label class="registreerlabel" for="voornaam">Voornaam</label><br>
+                        <label class="registreerlabel" for="voornaam">Voornaam *</label><br>
                         <input class="uk-input input-registratie" type="text" id="voornaam" name="voornaam"><br>
-                        <label class="registreerlabel" for="achternaam">Achternaam</label><br>
+                        <label class="registreerlabel" for="achternaam">Achternaam *</label><br>
                         <input class="uk-input input-registratie" type="text" id="achternaam" name="achternaam"><br>
-                        <label class="registreerlabel" for="geboortedatum">Geboortedatum</label><br>
+                        <label class="registreerlabel" for="geboortedatum">Geboortedatum *</label><br>
                         <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum"><br>
+                        <label class="registreerlabel" for="telefoonnummer">Telefoonnummer *</label><br>
+                        <input class="uk-input input-registratie" type="number" id="telefoonnummer" name="telefoonnummer"><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
-                        <label class="registreerlabel" for="adres1">Straat en huisnummer</label><br>
+                        <label class="registreerlabel" for="adres1">Straat en huisnummer *</label><br>
                         <input class="uk-input input-registratie" type="text" id="adres1" name="adres1"><br>
-                        <label class="registreerlabel" for="postcode">Postcode</label><br>
+                        <label class="registreerlabel" for="postcode">Postcode *</label><br>
                         <input class="uk-input input-registratie" type="text" id="postcode" name="postcode"><br>
-                        <label class="registreerlabel" for="plaats">Plaats</label><br>
+                        <label class="registreerlabel" for="plaats">Plaats *</label><br>
                         <input class="uk-input input-registratie" type="text" id="plaats" name="plaats"><br>
-                        <label class="registreerlabel" for="land">Land</label><br>
+                        <label class="registreerlabel" for="adresregel2">Adresregel 2</label><br>
+                        <input class="uk-input input-registratie" type="text" id="adresregel2" name="adresregel2"><br>
+                        <label class="registreerlabel" for="land">Land *</label><br>
                         <select class="uk-select input-registratie" name="land">
                             <?php
                             $sql = "SELECT LandNaam FROM Landen ORDER BY LandNaam ASC";
@@ -118,13 +119,13 @@ if (!isset($_SESSION["gevalideert"])) {
                     </div>
                     <div class="registreerbox">
                         <h3>Inloggegevens</h3>
-                        <label class="registreerlabel" for="gebruikersnaam">Gebruikersnaam</label><br>
+                        <label class="registreerlabel" for="gebruikersnaam">Gebruikersnaam *</label><br>
                         <input class="uk-input input-registratie" type="text" id="gebruikersnaam" name="gebruikersnaam"><br>
-                        <label class="registreerlabel" for="wachtwoord">Wachtwoord</label><br>
-                        <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord"><br>
-                        <label class="registreerlabel" for="bevestigWachtwoord">Wachtwoord herhalen</label><br>
+                        <label class="registreerlabel" for="wachtwoord">Wachtwoord *</label><br>
+                        <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord" placeholder="Minimaal acht tekens, één hoofdletter en één cijfer"><br>
+                        <label class="registreerlabel" for="bevestigWachtwoord">Wachtwoord herhalen *</label><br>
                         <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
-                        <label class="registreerlabel" for="bevestigingsvraag">Bevestigingsvraag</label><br>
+                        <label class="registreerlabel" for="bevestigingsvraag">Bevestigingsvraag *</label><br>
                         <select class="uk-select input-registratie" name="bevestigingsvraag">
                             <?php
                             $sql = "SELECT * from vraag ORDER BY vraagnummer ASC";
@@ -138,11 +139,12 @@ if (!isset($_SESSION["gevalideert"])) {
                             }
                             ?>
                         </select><br>
-                        <label class="registreerlabel" for="antwoord">Antwoord</label><br>
+                        <label class="registreerlabel" for="antwoord">Antwoord *</label><br>
                         <input class="uk-input input-registratie" type="password" id="antwoord" name="antwoord"><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Voorkeuren</h3>
+                        <p class="voorwaarden">Voorkeuren mogen niet hetzelfde zijn</p>
                         <select class="uk-select input-registratie" name="voorkeur1">
                             <?php
                             $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
@@ -155,6 +157,7 @@ if (!isset($_SESSION["gevalideert"])) {
                                 }
                             }
                             ?>
+
                         </select><br>
                         <select class="uk-select input-registratie" name="voorkeur2">
                             <?php
@@ -183,6 +186,7 @@ if (!isset($_SESSION["gevalideert"])) {
                             ?>
                         </select><br>
                     </div>
+                    <p class="registreer">Velden met een * zijn verplicht.</p>
                     <button type="submit" name="bevestigings-button" class="uk-button knop-registreren">Registreren</button>
                 </form>
             </div>

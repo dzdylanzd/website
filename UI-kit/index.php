@@ -13,36 +13,20 @@
 
 <body>
     <?php include 'includes\nav-L-M.php';
-    include 'includes/display_product.php'; ?>
+    include 'includes/display_product.php'; 
+    include 'includes/defaultMobileNav.php';
+    ?>
+
     <div class="page-container">
         <div class="content-wrap">
-            <!-- navigatie balk Mobile -->
-            <div class="uk-hidden@s">
-                <nav class="uk-navbar-container uk-flex-center uk-flex-column" uk-navbar>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
-                    </div>
-                    <div class="uk-navbar-nav  uk-flex-center">
-                        <div class="uk-navbar-item ">
-                            <form action="productpage.php">
-                                <div class="uk-inline">
-                                    <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                                    <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
-                                </div>
-                            </form>
-                            <a class="uk-margin-left" href="index.php" uk-icon="icon: user"></a>
-                        </div>
-                    </div>
-            </div>
-
-            <div class="  flex-column-phone">
+            <div class="flex-column-phone">
                 <div class="uk-width-1-5@m uk-text-center@s uk-text-left@m ">
                     <button class="uk-button uk-button-default uk-hidden@s" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
                     <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body uk-hidden@s">
                         <div class="categorieNavHomepagina">
-                            <script>
+                            <!-- <script>
                                 UIkit.toggle('.uk-card').toggle();
-                            </script>
+                            </script> -->
                             <h1>Rubrieken</h1>
                             <?php require_once('includes\categorie _nav.php'); ?>
                         </div>
@@ -57,13 +41,17 @@
                     <div class="margin"> </div>
                     <?php
                     /* Tijdelijke Laatste kans en nieuw box */
-                    echo '<div class="ItemsSliderHomepagina">';
+                    echo '<div class="ItemsSliderGroen">';
+                
                     echo "<h1> Laatste kans! </h1>";
-                    
+                    include('includes/laatsteKansVeilingen.php');
                     echo '</div>';
-                    echo '<div class="ItemsSliderHomepagina">';
+                    echo '<div class="ItemsSliderGroen">';
                     echo "<h1> Nieuw </h1>";
+                    include('includes/nieuweVeilingen.php');
                     echo '</div>';
+
+                    // Favoriete rubrieken 
                     $nietLatenZien = array(0, 0, 0);
                     if (isset($_SESSION['userId'])) {
                         $sql = "select * from voorkeur where gebruikersnaam = ?";
@@ -71,14 +59,14 @@
                             if ($sth->execute(array($_SESSION['userId']))) {
                                 $index = 0;
                                 while ($row = $sth->fetch()) {
-                                    $nietLatenZien[$index] = $row['catogorie'];
+                                    $nietLatenZien[$index] = $row['Categorie'];
                                     $sth2 = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
 
-                                    if ($sth2->execute(array($row['catogorie']))) {
+                                    if ($sth2->execute(array($row['Categorie']))) {
                                         while ($row2 = $sth2->fetch()) {
                                             if ($row2["Rubrieknummer"] != -1) {
                                                 $text = "";
-                                                $text = $text . '<div class="ItemsSliderDonkerGroen">';
+                                                $text = $text . '<div class="ItemsSliderGroen">';
                                                 $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row2[Rubrieknummer]\"> <h1>  $row2[Rubrieknaam] </h1> </a>";
                                                 if (displayCategorie($row2["Rubrieknummer"], $dbh, 100) != 123) {
                                                     $text = $text . displayCategorie($row2["Rubrieknummer"], $dbh, 100);
@@ -93,7 +81,7 @@
                             }
                         }
                     }
-
+                    // Display producten alle rubrieken, deze hebben een zandkleur
                     if (isset($_GET["root"])) {
 
                         $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");
@@ -101,8 +89,7 @@
                         if ($sth->execute(array($_GET["root"]))) {
                             while ($row = $sth->fetch()) {
                                 if ($row["Rubrieknummer"] != -1) {
-                                    $text = "";
-                                    $text = $text . '<div class="ItemsSliderDonkerGroen">';
+                                    $text = $text . '<div class="ItemsSlider">';
                                     $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
                                     if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
                                         if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
@@ -111,7 +98,7 @@
                                             echo $text;
                                         }
                                     } else {
-                                        echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze catogorie</h4>";
+                                        echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze categorie</h4>";
                                     }
                                 }
                             }
@@ -122,8 +109,8 @@
                             while ($row = $sth->fetch()) {
                                 if ($row["Rubrieknummer"] != -1) {
                                     $text = "";
-                                    $text = $text . '<div class="ItemsSliderGroen">';
-                                    $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
+                                    $text = $text . '<div class="ItemsSlider">';
+                                    $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
                                     if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
                                         if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
                                             $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
@@ -142,7 +129,7 @@
                             while ($row = $sth->fetch()) {
                                 if ($row["Rubrieknummer"] != -1) {
                                     $text = "";
-                                    $text = $text . '<div class="ItemsSliderDonkerGroen">';
+                                    $text = $text . '<div class="ItemsSlider">';
                                     $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
                                     if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
                                         if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
@@ -151,7 +138,7 @@
                                             echo $text;
                                         }
                                     } else {
-                                        echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze catogorie</h4>";
+                                        echo "<h4 class=\"geenProducten\"> excusses er zijn geen veilingen in deze categorie</h4>";
                                     }
                                 }
                             }
@@ -162,8 +149,8 @@
                             while ($row = $sth->fetch()) {
                                 if ($row["Rubrieknummer"] != -1) {
                                     $text = "";
-                                    $text = $text . '<div class="ItemsSliderDonkerGroen">';
-                                    $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h3>  $row[Rubrieknaam] </h3> </a>";
+                                    $text = $text . '<div class="ItemsSlider">';
+                                    $text = $text . "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\"> <h1>  $row[Rubrieknaam] </h1> </a>";
                                     if ((displayCategorie($row["Rubrieknummer"], $dbh, 100) != 123)) {
                                         if (!($nietLatenZien[0] == $row["Rubrieknummer"] || $nietLatenZien[1] == $row["Rubrieknummer"] || $nietLatenZien[2] == $row["Rubrieknummer"])) {
                                             $text = $text . displayCategorie($row["Rubrieknummer"], $dbh, 100);
