@@ -25,18 +25,18 @@ if (isset($koper)) {
 
 
 
-
-$sql = "select isVeilingGesloten, LooptijdEinde, Verkoper  from Voorwerp where VoorwerpNummer = ?";
+$sql ="select isVeilingGesloten, LooptijdEinde, Verkoper,Titel  from Voorwerp where VoorwerpNummer = ?";
 $sth = $dbh->prepare($sql);
 if ($sth->execute(array($_SESSION['PID']))) {
     while ($row = $sth->fetch()) {
         $verkoper = $row['Verkoper'];
-
-        if ($row["isVeilingGesloten"] == 0) {
-            echo "<p class=\"witte-tekst\">De veiling is geopend</p>";
-            $tijd =   substr(substr_replace($row["LooptijdEinde"], "T", 11, 0), 0, 20) . "+02:00";
-            $tijd =  str_replace(" ", "", $tijd);
-
+        $titel = $row['Titel'];
+       
+        if($row["isVeilingGesloten"] == 0){
+            echo"<p class=\"witte-tekst\">De veiling is geopend</p>";
+            $tijd =   substr(substr_replace($row["LooptijdEinde"], "T", 11,0),0,20) . "+02:00";
+            $tijd =  str_replace(" ","",$tijd);
+          
             echo "<h3 class=\"timer\"><div class=\"uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $tijd\">
                     <div>
                         <div class=\"uk-countdown-number uk-countdown-days\"></div>

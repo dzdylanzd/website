@@ -42,7 +42,7 @@ Hieronder vindt u de activatiecode om uw account te veranderen tot verkoopaccoun
 Dit kunt u doen door op \'Verkoopaccount activeren\' te klikken 
 of door op de onderstaande link te klikken. <br><br>
 
-Uw activatiecode is: <strong' . $random_hash . '</strong><br><br>
+Uw activatiecode is: <strong>' . $random_hash . '</strong><br><br>
 
 <a href="http://iproject37.icasites.nl/verkoperActiveren.php">Verkoopaccount activeren</a><br><br>
 
