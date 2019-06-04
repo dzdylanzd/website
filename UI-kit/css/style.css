@@ -51,6 +51,16 @@ p {
   margin-left: 20px;
 }
 
+.margin-lr {
+  margin: 8%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
 .image-square {
   width:500px;
   height:300px;
