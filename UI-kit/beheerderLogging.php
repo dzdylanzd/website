@@ -29,8 +29,8 @@
                 <h2> Beheerder logging </h2>
                 <p class="voorwaarden"></p>
                 <ul class="uk-subnav uk-subnav-pill">
-                    <li class="uk-active" uk-filter-control=".tag-email"><a href="#">activiteit</a></li>
-                    <li uk-filter-control=".tag-creditcard"><a href="#">verdachte gebruikers</a></li>
+                    <li  uk-filter-control=".tag-email"><a href="#">activiteit</a></li>
+                    <li class="uk-active" uk-filter-control=".tag-creditcard"><a href="#">verdachte gebruikers</a></li>
                 </ul>
 
                 <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid>

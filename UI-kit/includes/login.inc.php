@@ -17,21 +17,30 @@ if (isset($_POST['login-submit'])) {
         $sql = "SELECT * from Gebruiker where Gebruikersnaam = ? ";
         if (!$query = $dbh->prepare($sql)) {
             if (strpos($_SERVER['HTTP_REFERER'], '?') != false) {
+                exit();
                 header("location: $_SERVER[HTTP_REFERER]&errorLogin=GebruikerBestaatNiet");
             } else {
                 header("location: $_SERVER[HTTP_REFERER]?errorLogin=GebruikerBestaatNiet");
+                exit();
             }
             exit();
         } else {
             $query = $dbh->prepare($sql);
             $query->execute(array($gebruikersnaam));
+           
             if ($row = $query->fetch()) {
+                if($row['Geblokeerd']){
+                    header("location: $_SERVER[HTTP_REFERER]?errorLogin=geblokeerd");
+                exit();
+                }
                 $pwdCheck = password_verify($password, $row['Wachtwoord']);
                 if ($pwdCheck == false) {
                     if (strpos($_SERVER['HTTP_REFERER'], '?') != false) {
                         header("location: $_SERVER[HTTP_REFERER]&errorLogin=verkeerdwachtwoord");
+                        exit();
                     } else {
                         header("location: $_SERVER[HTTP_REFERER]?errorLogin=verkeerdwachtwoord");
+                        exit();
                     }
                     exit();
                 } else if ($pwdCheck == true) {
