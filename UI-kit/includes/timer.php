@@ -76,18 +76,27 @@ if ($sth->execute(array($_SESSION['PID']))) {
                         $melding->execute(array('U heeft deze <a href="productPage.php?ID=' . $_SESSION['PID'] . '">veiling</a> gewonnen', $koper));
 
                         $to = $kopermail;
-                        $subject = "HTML email";
+                        $subject = "U heeft een veiling gewonnen!";
 
-                        $message = "
+                        $message = '
                             <html>
                             <head>
-                            <title>HTML email</title>
+                            <title>EenmaalAndermaal</title>
                             </head>
                             <body>
                             
+                            Beste ' . $voorletter . '. ' . $achternaam . ',<br><br>
+
+                            Gefeliciteerd! U heeft de veiling ' . $titel . ' gewonnen!<br><br>
+                            
+                            U kan de veiling vinden op de \'Mijn biedingen\' pagina, of via onderstaande link.<br><br>
+
+                            <a href="http://iproject37.icasites.nl/productPage.php?ID=' . $_SESSION['PID'] . '"
+
+
                             </body>
                             </html>
-                            ";
+                            ';
 
                         // Always set content-type when sending HTML email
                         $headers = "MIME-Version: 1.0" . "\r\n";
