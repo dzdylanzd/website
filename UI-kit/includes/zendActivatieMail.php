@@ -1,7 +1,8 @@
 <?php
 include "database.php";
 session_start();
-$gebruiksernaam = $_SESSION['userId'];
+$gebruikersnaam = 'test';
+$gebruikersnaam = $_SESSION['userId'];
 $random_hash = bin2hex(random_bytes(4));
 $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_SESSION['userUid'];
@@ -18,7 +19,7 @@ if ($sth = $dbh->prepare($sql)) {
     }
 }
 
-$message = '
+$bericht = '
 <!DOCTYPE html>
 <html>
 
@@ -57,10 +58,10 @@ Heyendaalseweg 98<br>
 </html>
 ';
 
-$sql = "INSERT  INTO VerificatiecodeVerkoper(Gebruikersnaam,VerificatiecodeVerkoper) VALUES (?, ?)";
+$sql = "INSERT INTO VerificatiecodeVerkoper(Gebruikersnaam,VerificatiecodeVerkoper) VALUES (?, ?)";
 try {
     $query = $dbh->prepare($sql);
-    if ($query->execute(array($Gebruiksernaam, $random_hash))) { }
+    if ($query->execute(array($gebruikersnaam, $random_hash))) { }
 } catch (PDOException $e) {
     $error = $e->getMessage();
     header("location: ../verkoperWorden.php?error=$error");
@@ -73,5 +74,5 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 // More headers
 $headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
-mail($to, $subject, $message, $headers);
+mail($to, $subject, $bericht, $headers);
 header("Location: ../VerkoperActiveren.php");
