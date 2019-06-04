@@ -1,7 +1,7 @@
 <?php
 require_once('database.php');
 
-$sql = "SELECT TOP 25 * FROM Voorwerp inner join Thumbnail on Voorwerp.VoorwerpNummer = Thumbnail.VoorwerpNummer ORDER BY LooptijdBegin DESC";
+$sql = "SELECT TOP 25 * FROM Voorwerp inner join Thumbnail on Voorwerp.VoorwerpNummer = Thumbnail.VoorwerpNummer where  IsVeilingGesloten = 0 and Geblokkeerd = 0  ORDER BY LooptijdBegin DESC";
 if ($sth = $dbh->prepare($sql)) {
     if ($sth->execute(array())) {
         $text ='<div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider="clsActivated: uk-transition-active; ">

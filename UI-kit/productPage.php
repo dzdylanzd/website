@@ -170,7 +170,7 @@
                                         $substring = substr($beschrijving, strpos($beschrijving, "<style"), strpos($beschrijving, "</style>"));
                                         $beschrijving = str_replace($substring, "", $beschrijving);
                                         $beschrijving = str_replace(array("\t", "\r", "\n"), "", $beschrijving);
-                                        $beschrijving = trim($beschrijving);
+                                        // $beschrijving = trim($beschrijving);
 
                                         echo $beschrijving;
                                     }
