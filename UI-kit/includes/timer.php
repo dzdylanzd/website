@@ -91,9 +91,16 @@ if ($sth->execute(array($_SESSION['PID']))) {
                             
                             U kan de veiling vinden op de \'Mijn biedingen\' pagina, of via onderstaande link.<br><br>
 
-                            <a href="http://iproject37.icasites.nl/productPage.php?ID=' . $_SESSION['PID'] . '"
+                            <a href="http://iproject37.icasites.nl/productPage.php?ID=' . $_SESSION['PID'] . '">Productpagina gewonnen veiling</a><br><br><br>
 
 
+                            Met vriendelijke groeten,<br>
+                            iConcepts<br>
+                            Heyendaalseweg 98<br>
+                            6525 EE Nijmegen<br>
+                            <a href=http://iproject37.icasites.nl>EenmaalAndermaal</a><br>
+
+                            <img src="http://iproject37.icasites.nl/media/logomail.png" alt="Logo" height="150px" width="150px">
                             </body>
                             </html>
                             ';
