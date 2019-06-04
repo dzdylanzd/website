@@ -8,7 +8,10 @@ $to = $_POST['emailbevestiging'];
 $_SESSION["Email"] = $to;
 $subject = "E-mailbevestiging - EenmaalAndermaal";
 
-
+if (!filter_var($to, FILTER_VALIDATE_EMAIL)) {
+    header("location: ./email-Bevestiging.php?error=fouteEmail");
+    exit();
+  } 
 
 $sql = "SELECT *  from VerificatiecodeEmail where Mailadres = ?";
 if (!$query = $dbh->prepare($sql)) {
