@@ -50,7 +50,7 @@ Heyendaalseweg 98<br>
 6525 EE Nijmegen<br>
 <a href=http://iproject37.icasites.nl>EenmaalAndermaal</a><br>
 
-<img src="http://iproject37.icasites.nl/media/logo.png" alt="Logo" height="150px" width="150px">
+<img src="http://iproject37.icasites.nl/media/logomail.png" alt="Logo" height="150px" width="150px">
 
 </body>
 
