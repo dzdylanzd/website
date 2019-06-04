@@ -170,22 +170,12 @@
           <label class="registreerlabel" for="titel">Titel</label><br>
           <input class="uk-input input-registratie" type="text" id="titel" name="titel"><br>
           <label class="registreerlabel" for="staat">Staat van het product</label><br>
-          <input class="uk-input input-registratie" type="text" id="staat" name="staat"><br>
-
-          <!-- <?php
-                // $sql = "select distinct Staat from Voorwerp where staat != ''";
-                // if ($sth = $dbh->prepare($sql)) {
-                //   if ($sth->execute(array())) {
-                //     while ($alles = $sth->fetch()) {
-
-                //       $tekst = "<option value='$alles[Staat]'>$alles[Staat]</option>";
-
-                //       echo $tekst;
-                //     }
-                //   }
-                // }
-                ?> -->
+          <select class="uk-select input-registratie" name="staat"><br>
+            <option value="1">Nieuw</option>
+            <option value='3'>Zo goed als nieuw</option>
+            <option value='5'>Gebruikt</option>
           </select><br>
+
           <label class="registreerlabel" for="beschrijving">Beschrijving</label><br>
           <textarea class="uk-textarea beschrijving" name="message" rows="5" cols="20"></textarea>
         </div>
