@@ -10,6 +10,17 @@ if ($sth = $dbh->prepare($sql)) {
         }
     }
 }
+if(isset($koper)){
+$sql = "select * from Gebruiker where Gebruikersnaam = ?";
+if ($sth = $dbh->prepare($sql)) {
+    if ($sth->execute(array($_SESSION['PID']))) {
+        while ($alles = $sth->fetch()) {
+         $kopermail = $alles['Mailadres'];
+      
+        }
+    }
+}
+}
 
 
 
@@ -62,6 +73,40 @@ if($sth->execute(array($_SESSION['PID']))){
             if(isset($koper)){
                 $melding = $dbh->prepare($sql3);
             $melding->execute(array('U heeft deze <a href="productPage.php?ID='. $_SESSION['PID'] . '">veiling</a> gewonnen',$koper));
+
+            $to = $kopermail;
+$subject = "HTML email";
+
+$message = "
+<html>
+<head>
+<title>HTML email</title>
+</head>
+<body>
+<p>This email contains HTML Tags!</p>
+<table>
+<tr>
+<th>Firstname</th>
+<th>Lastname</th>
+</tr>
+<tr>
+<td>John</td>
+<td>Doe</td>
+</tr>
+</table>
+</body>
+</html>
+";
+
+// Always set content-type when sending HTML email
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+// More headers
+$headers .= 'From: <webmaster@example.com>' . "\r\n";
+$headers .= 'Cc: myboss@example.com' . "\r\n";
+
+mail($to,$subject,$message,$headers);
             }
         }
             $changeIsGesloten = $dbh->prepare($sqlchangeIsGesloten);
