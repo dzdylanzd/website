@@ -25,7 +25,7 @@ $vorigeBod = $row['BodBedrag'];
     }
 }
 if(isset($vorigeBieder)){
-$sql3 = "INSERT into meldingen(bericht,ontvanger) values(?,?)";
+$sql3 = "INSERT into Meldingen(Bericht,Ontvanger) values(?,?)";
 if( $melding = $dbh->prepare($sql3)){
  $melding->execute(array('U bent overboden op  <a href= "productPage.php?ID='. $_SESSION['PID'] . '">deze veiling</a> het huidige bod = ' . $bod .   '',$vorigeBieder));
 }

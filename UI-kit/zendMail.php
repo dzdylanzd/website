@@ -6,9 +6,12 @@ $emailCode = $random_hash;
 $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_POST['emailbevestiging'];
 $_SESSION["Email"] = $to;
-$subject = "EenmaalAndermaal Verificatiecode";
+$subject = "E-mailbevestiging - EenmaalAndermaal";
 
-
+if (!filter_var($to, FILTER_VALIDATE_EMAIL)) {
+    header("location: ./email-Bevestiging.php?error=fouteEmail");
+    exit();
+  } 
 
 $sql = "SELECT *  from VerificatiecodeEmail where Mailadres = ?";
 if (!$query = $dbh->prepare($sql)) {
@@ -28,11 +31,6 @@ if (!$query = $dbh->prepare($sql)) {
         }
     }
 }
-
-
-
-
-
 
 $sql = "INSERT INTO VerificatiecodeEmail(Mailadres,VerificatiecodeEmail) VALUES (?, ?)";
 if (empty($to)) {
@@ -61,8 +59,6 @@ if (!$query = $dbh->prepare($sql)) {
     } else { }
 }
 
-
-
 $message = '
 <!DOCTYPE html>
 <html>
@@ -78,19 +74,25 @@ $message = '
 </head>
 
 <body>
-Beste meneer/mevrouw,<br> 
-Bedankt dat u voor EenmaalAndermaal heeft gekozen.<br>
-Hieronder vindt u de code om uw e-mailadres te bevestigen.<br>
-Dit kunt u doen door op \'registeren\' te klikken of door op de onderstaande link te klikken<br>
-De bevestigingscode is:  <strong>' . $emailCode . '
+Beste ' . $to . '<br><br>
 
-</strong><br>
-<a href="http://iproject37.icasites.nl/email-Bevestiging.php">Bevestig e-mailadres</a>
+Bedankt dat u voor EenmaalAndermaal heeft gekozen. <br><br>
 
-<br>
-<br>
-Bedankt dat u voor ons heeft gekozen!<br>
-iConcepts
+Hieronder vindt u de code om uw e-mailadres te bevestigen. 
+Dit kunt u doen door de code in te voeren op de website of door op onderstaande link te klikken.<br><br>
+
+Uw bevestigingscode is: <strong>' . $emailCode . '</strong><br><br>
+
+<a href="http://iproject37.icasites.nl/email-Bevestiging.php">Bevestig e-mailadres</a><br><br><br>
+
+
+Met vriendelijke groeten,<br>
+iConcepts<br>
+Heyendaalseweg 98<br>
+6525 EE Nijmegen<br>
+<a href=http://iproject37.icasites.nl>EenmaalAndermaal</a><br>
+
+<img src="http://iproject37.icasites.nl/media/logomail.png" alt="Logo" height="150px" width="150px">
 </body>
 
 </html>
