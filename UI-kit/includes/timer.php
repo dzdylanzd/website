@@ -16,6 +16,7 @@ if ($sth = $dbh->prepare($sql)) {
     if ($sth->execute(array($_SESSION['PID']))) {
         while ($alles = $sth->fetch()) {
          $kopermail = $alles['Mailadres'];
+
       
         }
     }
