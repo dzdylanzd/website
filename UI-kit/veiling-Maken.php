@@ -176,20 +176,6 @@
             <option value='5'>Gebruikt</option>
           </select><br>
 
-          <!-- <?php
-                // $sql = "select distinct Staat from Voorwerp where staat != ''";
-                // if ($sth = $dbh->prepare($sql)) {
-                //   if ($sth->execute(array())) {
-                //     while ($alles = $sth->fetch()) {
-
-                //       $tekst = "<option value='$alles[Staat]'>$alles[Staat]</option>";
-
-                //       echo $tekst;
-                //     }
-                //   }
-                // }
-                ?> -->
-          </select><br>
           <label class="registreerlabel" for="beschrijving">Beschrijving</label><br>
           <textarea class="uk-textarea beschrijving" name="message" rows="5" cols="20"></textarea>
         </div>
