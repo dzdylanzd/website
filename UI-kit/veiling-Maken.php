@@ -170,7 +170,11 @@
           <label class="registreerlabel" for="titel">Titel</label><br>
           <input class="uk-input input-registratie" type="text" id="titel" name="titel"><br>
           <label class="registreerlabel" for="staat">Staat van het product</label><br>
-          <input class="uk-input input-registratie" type="text" id="staat" name="staat"><br>
+          <select class="uk-select input-registratie" name="staat"><br>
+            <option value="1">Nieuw</option>
+            <option value='3'>Zo goed als nieuw</option>
+            <option value='5'>Gebruikt</option>
+          </select><br>
 
           <!-- <?php
                 // $sql = "select distinct Staat from Voorwerp where staat != ''";
