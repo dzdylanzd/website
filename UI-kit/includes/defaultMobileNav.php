@@ -49,6 +49,11 @@
                             } else {
                                 $activatie = false;
                             }
+                            if ($row['SoortGebruiker'] == 'B') {
+                                $beheerder = true;
+                            } else {
+                                $beheerder = false;
+                            }
                         }
                     }
                 }
@@ -66,6 +71,14 @@
                     <div uk-dropdown="mode: click"><button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                     <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
                     <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'VerkoperActiveren.php\'">Verkoper activeren</button>
+                    <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button></div> </div>';
+                }if($beheerder){
+                    echo '<div class="uk-inline">
+                    <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span> </button>
+                    <div uk-dropdown="mode: click"><button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
+                    <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
+                    <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'VerkoperActiveren.php\'">Verkoper activeren</button>
+                    <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'beheerderLogging.php\'">Beheerder logging</button>
                     <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button></div> </div>';
                 } else {
                     echo '<div class="uk-inline">

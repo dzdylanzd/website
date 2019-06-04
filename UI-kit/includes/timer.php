@@ -26,11 +26,12 @@ if ($sth = $dbh->prepare($sql)) {
 
 
 
-$sql ="select isVeilingGesloten, LooptijdEinde, Verkoper  from Voorwerp where VoorwerpNummer = ?";
+$sql ="select isVeilingGesloten, LooptijdEinde, Verkoper,Titel  from Voorwerp where VoorwerpNummer = ?";
 $sth = $dbh->prepare($sql);
 if($sth->execute(array($_SESSION['PID']))){
     while ($row = $sth->fetch()) {
         $verkoper = $row['Verkoper'];
+        $titel = $row['Titel'];
        
         if($row["isVeilingGesloten"] == 0){
             echo"<p class=\"witte-tekst\">De veiling is geopend</p>";

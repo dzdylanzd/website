@@ -14,7 +14,12 @@
 <body>
     <?php include 'includes\nav-L-M.php';
     include 'includes/defaultMobileNav.php';
-    require_once('includes/database.php'); ?>
+    require_once('includes/database.php');
+    
+    if($_SESSION['soortGebruiker'] !== 'B'){
+        header("Location: index.php");
+        exit();
+    }?>
     <div class="page-container">
         <div class="content-wrap">
 
