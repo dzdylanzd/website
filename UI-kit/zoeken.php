@@ -32,10 +32,11 @@
                         </div>
                         <h3> Staat</h3>
                         <form class="FilterenStaat" action="categorieen.php" method="post">
-                            <input type="radio" name="staat" value="Nieuw"> Nieuw<br>
-                            <input type="radio" name="staat" value="bijnaNieuw"> Zo goed als nieuw<br>
-                            <input type="radio" name="staat" value="Gebruikt"> Gebruikt<br>
-
+                            <select class="uk-select input-registratie" name="staat" id="staat"><br>
+                                <option value="Nieuw">Nieuw</option>
+                                <option value='Zo goed als nieuw'>Zo goed als nieuw</option>
+                                <option value='Gebruikt'>Gebruikt</option>
+                            </select><br>
                             <h3> Prijs</h3>
 
                             <label for="prijsVan"> Van</label>
@@ -151,8 +152,11 @@
                         ?>
                         <form class="FilterenStaat" action="<?php echo $fromAction ?>" method="post">
                             <h3> Staat</h3>
-                            <input class="uk-input input-registratie" type="text" id="staat" name="staat"><br>
-
+                            <select class="uk-select input-registratie" name="staat" id="staat"><br>
+                                <option value="Nieuw">Nieuw</option>
+                                <option value='Zo goed als nieuw'>Zo goed als nieuw</option>
+                                <option value='Gebruikt'>Gebruikt</option>
+                            </select><br>
 
                             <h3> Prijs</h3>
 
@@ -258,20 +262,21 @@
                     if (!empty($_POST['staat'])) {
 
                         $staat = $_POST['staat'];
-                        echo $staat;
+                       
 
 
                         $sql = "SELECT * from Voorwerp inner join Thumbnail on Thumbnail.VoorwerpNummer = Voorwerp.VoorwerpNummer inner join VoorwerpInRubriek on VoorwerpInRubriek.Voorwerp = Voorwerp.VoorwerpNummer
-                         where Titel like ? and Voorwerp.StartPrijs BETWEEN ? AND ?  " . $naarBenedenNav;
+                         where Titel like ? and Staat = ? and Voorwerp.StartPrijs BETWEEN ? AND ?  " . $naarBenedenNav;
                         if ($sth = $dbh->prepare($sql)) {
 
-                            if ($sth->execute(array("%{$_SESSION['search']}%", $prijsvan, $prijstot))) {
+                            if ($sth->execute(array("%{$_SESSION['search']}%",$staat, $prijsvan, $prijstot))) {
                                 $gelukt = true;
                             } else {
                                 $gelukt = false;
                             }
                         }
-                    } else {
+                    }
+                     else {
                         $sql = "SELECT * from Voorwerp inner join Thumbnail on Thumbnail.VoorwerpNummer = Voorwerp.VoorwerpNummer inner join VoorwerpInRubriek on VoorwerpInRubriek.Voorwerp = Voorwerp.VoorwerpNummer
                         where Titel like ? and Voorwerp.StartPrijs BETWEEN ? AND ?  " . $naarBenedenNav;
                         if ($sth = $dbh->prepare($sql)) {
