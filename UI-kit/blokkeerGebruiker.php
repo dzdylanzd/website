@@ -33,7 +33,7 @@
                 </div>
                 <div class="registreerbox">
                 <h3>Gebruiker blokkeren</h3>
-                                <form method="post" action="includes\blacklistBeheer.php">
+                                <form method="post" action="includes\blokkeerGebruiker.php">
                                     <label for="gebruikersnaam">Gebruikersnaam</label><br>
                                     <input class="uk-input input-registratie" type="text" name="gebruikersnaam" id="gebruikersnaam"><br>
                                     <button name="GebruikerBlokkeren" type="submit" class="uk-button knop-lang">gebruiker blokkeren</button>
