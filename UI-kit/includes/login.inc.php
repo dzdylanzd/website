@@ -35,11 +35,20 @@ if (isset($_POST['login-submit'])) {
                     }
                     exit();
                 } else if ($pwdCheck == true) {
+
+                    
                     session_start();
                     $_SESSION['userId'] = $row['Gebruikersnaam'];
                     $_SESSION['userUid'] = $row['Mailadres'];
                     $_SESSION['soortGebruiker'] = $row['SoortGebruiker'];
-                    echo "<script> history.go(-1); </script> ";
+                    $sql = 'insert into LoginActiviteit(Gebruikersnaam)
+                    values (?)';
+                    $sth = $dbh->prepare($sql);
+                    if ($sth->execute(array( $row['Gebruikersnaam']))) {
+                        echo "<script> history.go(-1); </script> ";
+                    }
+
+                 
                     exit();
                 } else {
                     if (strpos($_SERVER['HTTP_REFERER'], '?') != false) {
