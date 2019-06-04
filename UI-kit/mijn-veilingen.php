@@ -85,6 +85,7 @@
                                 $looptijdEinde = $row['LooptijdEinde'];
                                 $looptijd = substr(substr_replace($looptijdEinde, "T", 11, 0), 0, 20) . "+02:00";
                                 $looptijd =  str_replace(" ", "", $looptijd);
+  
 
 
                                 // Haal thumbnail op
@@ -120,7 +121,7 @@
                                 echo '<a href="productPage.php?ID=' . $voorwerpnummer . '"><img class="mijn-veilingen-thumbnail" src="' . $thumbnail . '" alt="Thumbnail"></a><br>';
                                 if ($isVeilingGesloten == 0) {
                                     echo '<h3 class="mijn-veilingen"> Tijd resterend: <br>  
-                                            <div class="margin-left uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date:  $looptijd">
+                                            <div class="margin-left uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date:'. $looptijd . '">
                                                 <div>
                                                     <div class="countdown-getal-klein uk-countdown-number uk-countdown-daysf"></div>
                                                 </div>
