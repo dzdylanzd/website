@@ -1,5 +1,4 @@
 <?php
-echo $_SESSION['userId'];
 require_once('database.php');
 $sql = 'select * from Meldingen where Ontvanger = ? and Ontvangen = 0';
 $sql2 = '	update Meldingen
