@@ -2,9 +2,10 @@
 require_once('database.php');
 
 $gebruiker = $_POST['gebruikersnaam'];
-if(issest($_POST('GebruikerDeblokkeren'))){
+
+if(isset($_POST['GebruikerDeblokkeren'])){
 $BlokkeerStatus = 0;
-}else if(issest($_POST('GebruikerBlokkeren'))){
+}else if(isset($_POST['GebruikerBlokkeren'])){
   
   $BlokkeerStatus = 1;
 
