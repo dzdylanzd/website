@@ -4,13 +4,27 @@
                         <a class=" uk-logo uk-navbar-item " href="index.php"><img src="media\logo.png" alt="logo" width=100em></a>
                     </div>
                     <div class="uk-navbar-nav  uk-flex-center">
-                        <div class="uk-navbar-item ">
-                            <form action="productpage.php">
-                                <div class="uk-inline">
-                                    <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                                    <input class="uk-input" type="text" name="search" placeholder="Waar bent u naar op zoek?">
-                                </div>
-                            </form>
+                    <div class="uk-navbar-item ">
+
+                
+<?php  
+if(isset($_GET['root'])){
+    $fromSearchAction = "zoeken.php?root=$_GET[root]";
+}else{
+    $fromSearchAction = "zoeken.php";
+}
+
+?>
+
+    <form method="post" action="<?php echo$fromSearchAction; ?>">
+
+        <div class="uk-inline">
+            <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
+            <input class="uk-input  " type="text" name="search" placeholder="Waar bent u naar op zoek?">
+        </div>
+    </form>
+
+                            
                             <?php
                             if(!isset( $_SESSION['userId'])){
                            echo' <a class="uk-margin-left" href="inloggen-Mobile.php" uk-icon="icon: user"></a>';
