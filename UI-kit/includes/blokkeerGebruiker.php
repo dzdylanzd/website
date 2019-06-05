@@ -29,4 +29,7 @@ catch (PDOException $e) {
   }
 
 
+  // hidde hier moet mail van blokeer gebruiker
+
+
 ?>

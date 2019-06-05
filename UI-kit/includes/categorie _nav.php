@@ -7,6 +7,7 @@
       echo "<ul class=\"noDots\">";
       while ($row = $stmt->fetch()) {
         if ($row["Rubrieknummer"] != -1) {
+          
           echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\">  $row[Rubrieknaam] </a></li>";
         }
       }
@@ -28,6 +29,7 @@
 
             if ($stmt2->execute(array($parent))) {
               while ($row2 = $stmt2->fetch()) {
+                //breadcrumb
                 $text =  "<a class=\"uk-link-heading\" href=\"categorieen.php?root=$row2[Rubrieknummer]\">  $row2[Rubrieknaam] </a> /  $text";
                 $parent = $row2["Volgnr"];
               }
@@ -50,6 +52,7 @@
 
         while ($row = $stmt->fetch()) {
           if ($row["Volgnr"] == -1) {
+            // terug knop
             echo "<li> <a class=\"categorie-terug\" href=\"index.php\"> <span uk-icon=\"icon: arrow-left\"></span>terug</a></li>  ";
           } else {
             echo "<li> <a class=\"categorie-terug\" href=\"categorieen.php?root=$row[Volgnr]\"> <span uk-icon=\"icon: arrow-left\"></span>terug</a></li>  ";
@@ -64,6 +67,7 @@
         $stmt->execute(array($_GET["root"]));
         while ($row = $stmt->fetch()) {
           if ($row["Rubrieknummer"] != -1) {
+            // link naar rubriek
             echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Rubrieknummer]\">  $row[Rubrieknaam] </a> </li>  ";
           }
         }
@@ -74,6 +78,7 @@
 
           while ($row = $stmt->fetch()) {
             if ($row["Rubrieknummer"] != -1) {
+              //link naar parent rubriek
               echo "<li> <a class=\"uk-link-heading\" href=\"categorieen.php?root=$row[Volgnr]\">  $row[Rubrieknaam] </a> </li>  ";
             }
           }

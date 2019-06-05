@@ -340,7 +340,7 @@
             <?php
                     if(isset( $_SESSION['soortGebruiker'])){
                         if($_SESSION['soortGebruiker'] == 'B'){
-                            $html = '<button  class=" uk-button knop-registreren" type="button" onclick="window.location.href=\'includes/blokeerVeiling.php\'" >blokeer deze veiling </button>';
+                            $html = '<button  class=" uk-button knop-registreren" type="button" onclick="window.location.href=\'includes/blokeerVeiling.php\'" >blokkeer / deblokkeer deze veiling </button>';
                         echo $html ;
                         }
                     }
