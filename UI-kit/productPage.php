@@ -23,10 +23,23 @@
     ?>
     <div class="page-container">
         <div class="content-wrap">
-            <!-- =========================================== -->
-            <!--                    DESKTOP                  -->
-            <!-- =========================================== -->
+
+            <!-- Errorhandlers -->
             <?php
+            if (isset($_GET['error'])) {
+                $errorBericht = ($_GET['error']);
+                if ($errorBericht == 'leeg') {
+                    echo '<p class="errors">Vul eerst een bod in</p>';
+                }
+                else if ($errorBericht == 'fout') {
+                    echo '<p class="errors">De ingevoerde velden zijn incorrect</p>';
+                }
+            }
+
+            // <!-- =========================================== -->
+            // <!--                    DESKTOP                  -->
+            // <!-- =========================================== -->
+            
             $sql = "SELECT Geblokkeerd from Voorwerp where VoorwerpNummer = ?";
             $sth = $dbh->prepare($sql);
             if ($sth->execute(array($_SESSION['PID']))) {

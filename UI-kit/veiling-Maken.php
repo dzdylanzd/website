@@ -171,9 +171,9 @@
           <input class="uk-input input-registratie" type="text" id="titel" name="titel"><br>
           <label class="registreerlabel" for="staat">Staat van het product</label><br>
           <select class="uk-select input-registratie" name="staat"><br>
-            <option value="1">Nieuw</option>
-            <option value='3'>Zo goed als nieuw</option>
-            <option value='5'>Gebruikt</option>
+            <option value="Nieuw">Nieuw</option>
+            <option value="Zo goed als nieuw">Zo goed als nieuw</option>
+            <option value="Gebruikt">Gebruikt</option>
           </select><br>
 
           <label class="registreerlabel" for="beschrijving">Beschrijving</label><br>
