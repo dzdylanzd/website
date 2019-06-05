@@ -29,8 +29,8 @@ if (isset($_POST['login-submit'])) {
             $query->execute(array($gebruikersnaam));
            
             if ($row = $query->fetch()) {
-                if($row['Geblokeerd']){
-                    header("location: $_SERVER[HTTP_REFERER]?errorLogin=geblokeerd");
+                if($row['Geblokkeerd']){
+                    header("location: $_SERVER[HTTP_REFERER]?errorLogin=geblokkeerd");
                 exit();
                 }
                 $pwdCheck = password_verify($password, $row['Wachtwoord']);

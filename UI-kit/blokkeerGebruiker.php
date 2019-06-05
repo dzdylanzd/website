@@ -47,7 +47,7 @@
                         if ($sth->execute(array(1))) {
                             while ($row = $sth->fetch()) {
                                 $geblokeerdeGebruiker = $row['Gebruikersnaam'];
-                                echo $geblokeerdeGebruiker;
+                                echo $geblokeerdeGebruiker.'<br>';
                             }
                         }
                     }
