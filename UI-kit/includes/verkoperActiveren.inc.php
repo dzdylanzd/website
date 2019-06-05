@@ -31,11 +31,14 @@ if (isset($_POST['verkoopaccountActiveren'])) {
     }
     
     if ($verificatiecode == $verificatiecodeTabel) {
-        $sql2 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?';
+        $sql2 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?
+        delete VerificatiecodeVerkoper
+where Gebruikersnaam = ?';
         $query = $dbh->prepare($sql2);
-        if ($query->execute(array("V", $Gebruiksernaam))) {
+        if ($query->execute(array("V", $Gebruiksernaam,$Gebruiksernaam))) {
 
 // hidde hier moet de mail
+
 
             header("location: ../index.php?succes=uBentVerkoper");
             exit();
