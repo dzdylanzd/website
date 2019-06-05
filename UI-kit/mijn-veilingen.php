@@ -123,7 +123,7 @@
                                     echo '<h3 class="mijn-veilingen"> Tijd resterend: <br>  
                                             <div class="margin-left uk-grid-small uk-child-width-auto" uk-grid uk-countdown="date:'. $looptijd . '">
                                                 <div>
-                                                    <div class="countdown-getal-klein uk-countdown-number uk-countdown-daysf"></div>
+                                                    <div class="countdown-getal-klein uk-countdown-number uk-countdown-days"></div>
                                                 </div>
                                                 <div class="countdown-getal-klein uk-countdown-separator">d</div>
                                                 <div>
