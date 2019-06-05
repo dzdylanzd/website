@@ -7,7 +7,7 @@ $random_hash = bin2hex(random_bytes(4));
 $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_SESSION['userUid'];
 $_SESSION["Email"] = $to;
-$subject = "Activatie verkoopaccount - EenmaalAndermaal";
+$subject = "Veiling geblokkeerd - EenmaalAndermaal";
 
 $sql = 'SELECT * FROM Gebruiker WHERE Gebruikersnaam = ?';
 if ($sth = $dbh->prepare($sql)) {
@@ -15,6 +15,15 @@ if ($sth = $dbh->prepare($sql)) {
         while ($row = $sth->fetch()) {
             $voorletter = substr($row['Voornaam'], 0, 1);
             $achternaam = $row['Achternaam'];
+        }
+    }
+}
+
+$sql = 'SELECT * FROM Voorwerp WHERE Verkoper = ? AND Geblokkeerd = ?';
+if ($sth = $dbh->prepare($sql)) {
+    if ($sth->execute(array($gebruikersnaam, 1))) {
+        while ($row = $sth->fetch()) {
+            $titelGeblokkeerd = $row['Titel'];
         }
     }
 }
@@ -36,15 +45,14 @@ $bericht = '
 <body>
 Beste ' . $voorletter . '. ' . $achternaam . ',<br><br>
 
-U heeft een verzoek gedaan tot het activeren van uw verkoopaccount.<br><br>
+Wegens ongepast gedrag heeft een beheerder besloten een van uw veilingen
+te blokkeren. We hopen voor uw begrip.<br><br>
 
-Hieronder vindt u de activatiecode om uw account te veranderen tot verkoopaccount. 
-Dit kunt u doen door op \'Verkoopaccount activeren\' te klikken 
-of door op de onderstaande link te klikken. <br><br>
+Het gaat om de veiling ' . $titelGeblokkeerd . '.<br><br>
 
-Uw activatiecode is: <strong>' . $random_hash . '</strong><br><br>
+Er kan nu niet meer op deze veiling worden geboden en hij kan door niemand worden gezien behalve u.<br><br>
 
-<a href="http://iproject37.icasites.nl/verkoperActiveren.php">Verkoopaccount activeren</a><br><br><br>
+Vindt u deze actie onterecht? Neem dan contact met ons op.<br><br><br>
 
 
 Met vriendelijke groeten,<br>
@@ -58,16 +66,6 @@ Heyendaalseweg 98<br>
 
 </html>
 ';
-
-$sql = "INSERT INTO VerificatiecodeVerkoper(Gebruikersnaam,VerificatiecodeVerkoper) VALUES (?, ?)";
-try {
-    $query = $dbh->prepare($sql);
-    if ($query->execute(array($gebruikersnaam, $random_hash))) { }
-} catch (PDOException $e) {
-    $error = $e->getMessage();
-    header("location: ../verkoperWorden.php?error=$error");
-    exit();
-}
 
 // Always set content-type when sending HTML email
 $headers = "MIME-Version: 1.0" . "\r\n";

@@ -64,6 +64,7 @@ Uw nieuw, tijdelijke wachtwoord is: <strong>' . $random_hash . '</strong>
 
 <a href="http://iproject37.icasites.nl/wachtwoordVergeten.php">Wijzig wachtwoord link</a><br><br><br>
 
+
 Met vriendelijke groeten,<br>
 iConcepts<br>
 Heyendaalseweg 98<br>
