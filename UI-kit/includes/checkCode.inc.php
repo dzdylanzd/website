@@ -8,11 +8,7 @@ if ($sth = $dbh->prepare($sql)) {
   if ($sth->execute(array($Mailadres))) {
       while ($code = $sth->fetch()) {
         if($code['DatumEinde']  < date("Y-m-d H:i:s")){
-          $sqlVerwijder = 'delete VerificatiecodeEmail
-          where Mailadres = ?';
-          if ($sth = $dbh->prepare($sqlVerwijder)) {
-            $sth->execute(array($_SESSION["Email"]));
-          }
+         
 
           header("Location: ../email-Bevestiging.php?error=codeNietMeerGeldig");
           exit();
