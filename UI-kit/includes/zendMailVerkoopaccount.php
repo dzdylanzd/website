@@ -3,10 +3,10 @@ include "database.php";
 session_start();
 $gebruikersnaam = 'test';
 $gebruikersnaam = $_SESSION['userId'];
-$random_hash = bin2hex(random_bytes(4));
-$_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
+
+
 $to = $_SESSION['userUid'];
-$_SESSION["Email"] = $to;
+
 $subject = "Verkoopaccount bevestiging - EenmaalAndermaal";
 
 $sql = 'SELECT * FROM Gebruiker WHERE Gebruikersnaam = ?';
@@ -61,4 +61,4 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 // More headers
 $headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
 mail($to, $subject, $bericht, $headers);
-header("Location: ../VerkoperActiveren.php");
+
