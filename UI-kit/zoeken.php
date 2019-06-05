@@ -153,6 +153,7 @@
                         <form class="FilterenStaat" action="<?php echo $fromAction ?>" method="post">
                             <h3> Staat</h3>
                             <select class="uk-select input-registratie" name="staat" id="staat"><br>
+                            <option value="">...</option>
                                 <option value="Nieuw">Nieuw</option>
                                 <option value='Zo goed als nieuw'>Zo goed als nieuw</option>
                                 <option value='Gebruikt'>Gebruikt</option>
