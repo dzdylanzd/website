@@ -31,8 +31,14 @@
                 if ($errorBericht == 'leeg') {
                     echo '<p class="errors">Vul eerst een bod in</p>';
                 }
-                else if ($errorBericht == 'fout') {
-                    echo '<p class="errors">De ingevoerde velden zijn incorrect</p>';
+                else if ($errorBericht == 'teLaagBod') {
+                    echo '<p class="errors">Dit bod is te laag, voer een hoger bod in</p>';
+                }
+                else if ($errorBericht == 'veilingGesloten') {
+                    echo '<p class="errors">Deze veiling is gesloten, u kan hier niet op bieden</p>';
+                }
+                else if ($errorBericht == 'nietOpEigenVeiling') {
+                    echo '<p class="errors">U kan niet op uw eigen veiling bieden!</p>';
                 }
             }
 
