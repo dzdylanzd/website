@@ -55,16 +55,19 @@ if (!isset($_SESSION["gevalideert"])) {
                         echo '<p class="errors">SQL error, probeer het opnieuw</p>';
                         break;
                     case 8:
-                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        echo '<p class="errors">Uw wachtwoord is te kort</p>';
                         break;
                     case 9:
-                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        echo '<p class="errors">Er moet een hoofletter in het wachtwoord zitten</p>';
                         break;
                     case 10:
-                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        echo '<p class="errors">Er moet een cijfer in het wachtwoord zitten</p>';
                         break;
                     case 11:
-                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        echo '<p class="errors">Een voorkeur is hetzelfde</p>';
+                        break;
+                        case 12:
+                        echo '<p class="errors">Uw telefoonNummer is te kort</p>';
                         break;
                     default:
                         echo '<p class="errors">Onverwachte error, probeer het opnieuw';

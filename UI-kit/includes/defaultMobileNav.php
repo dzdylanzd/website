@@ -92,6 +92,7 @@ if(isset($_GET['root'])){
                     <div uk-dropdown="mode: click"><button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                     <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
                     <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-veilingen.php\'">Mijn veilingen</button>
+                    <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'gebruikerBlokkeren.php\'">Gebruiker blokkeren</button>
                     <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'beheerderLogging.php\'">Beheerder logging</button>
                     <button class="mobileNav uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button></div> </div>';
                 } else {
