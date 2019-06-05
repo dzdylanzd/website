@@ -31,8 +31,14 @@
                 if ($errorBericht == 'leeg') {
                     echo '<p class="errors">Vul eerst een bod in</p>';
                 }
-                else if ($errorBericht == 'fout') {
-                    echo '<p class="errors">De ingevoerde velden zijn incorrect</p>';
+                else if ($errorBericht == 'teLaagBod') {
+                    echo '<p class="errors">Dit bod is te laag, voer een hoger bod in</p>';
+                }
+                else if ($errorBericht == 'veilingGesloten') {
+                    echo '<p class="errors">Deze veiling is gesloten, u kan hier niet op bieden</p>';
+                }
+                else if ($errorBericht == 'nietOpEigenVeiling') {
+                    echo '<p class="errors">U kan niet op uw eigen veiling bieden!</p>';
                 }
             }
 
@@ -293,6 +299,7 @@
                                                 }
                                             }
                                         }
+                                        $_SESSION['minimumVerhoging'] = $minimumVerhoging;
                                         echo " <input class=\"uk-input Bod-Veld\" type=\"number\" min=\"$minimumVerhoging\" max=\"10000000\" step=\"0.01\" name=\"bod\" placeholder=\"bod .....\">";
                                         ?>
 
@@ -333,7 +340,7 @@
             <?php
                     if(isset( $_SESSION['soortGebruiker'])){
                         if($_SESSION['soortGebruiker'] == 'B'){
-                            $html = '<button  class=" uk-button knop-registreren" type="button" onclick="window.location.href=\'includes/blokeerVeiling.php\'" >blokeer deze veiling </button>';
+                            $html = '<button  class=" uk-button knop-registreren" type="button" onclick="window.location.href=\'includes/blokeerVeiling.php\'" >blokkeer / deblokkeer deze veiling </button>';
                         echo $html ;
                         }
                     }

@@ -2,6 +2,7 @@
 require_once('database.php');
 session_start();
 
+//stuur de verkoper een melding
 $sql = 'select Verkoper  from Voorwerp where VoorwerpNummer = ?';
 $sql3 = "INSERT into meldingen(bericht,ontvanger) values(?,?)";
 if ($sth = $dbh->prepare($sql)) {
@@ -18,9 +19,9 @@ if ($sth = $dbh->prepare($sql)) {
 
 
 
-
+//blokeer / deblokeer de veiling
 $sql = 'update Voorwerp
-Set Geblokkeerd = 1 , IsVeilingGesloten = 1
+Set Geblokkeerd = ~Geblokkeerd , IsVeilingGesloten = ~IsVeilingGesloten 
 where VoorwerpNummer = ?';
 try {
    
@@ -34,7 +35,4 @@ try {
 catch (PDOException $e) {	 
 $error = $e->getMessage();
 header("location: $_SERVER[HTTP_REFERER]&error=$error");
-} 
-
-
-?>
+}

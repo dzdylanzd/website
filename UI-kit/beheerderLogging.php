@@ -35,61 +35,62 @@
 
                 <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid>
                     <li class="tag-creditcard verkoopbox">
-                       
-                            
-                                <h3>Blacklist:</h3>
 
-                                <?php
-                                $sqlBlacklistGet = 'select * from Blacklist';
-                                $sth = $dbh->prepare($sqlBlacklistGet);
-                                if ($sth->execute(array())) {
-                                    while ($alles = $sth->fetch()) {
-                                        echo " $alles[Item]  <br>";
-                                    }
-                                }
 
-                                ?>
-                                <h3>Blacklist item toevoegen</h3>
-                                <form method="post" action="includes\blacklistBeheer.php">
-                                    <label for="blacklistItemT">Blacklist Item</label><br>
-                                    <input class="uk-input input-registratie" type="text" name="blacklistItemT" id="blacklistItemT"><br>
-                                    <button name="Toevoegen" type="submit" class="uk-button knop-lang">blacklist item toevoegen</button>
-                                </form>
-                                <br>
-                                <h3>Blacklist item verwijderen</h3>
-                                <form method="post" action="includes\blacklistBeheer.php">
-                                    <label for="blacklistItemV">Blacklist Item</label><br>
-                                    <input class="uk-input input-registratie" type="text" name="blacklistItemV" id="blacklistItemV"><br>
-                                    <button name="Verwijderen" type="submit" class="uk-button knop-lang">blacklist item verwijderen</button>
-                                </form>
-                                <br>
-                                <h3>Verdachte gebruikers:</h3>
+                        <h3>Blacklist:</h3>
 
-                                <?php
-                                $sqlVerdacht = "select distinct Verkoper from Voorwerp where Titel not like '%%'";
+                        <?php
+                        $sqlBlacklistGet = 'select * from Blacklist';
+                        $sth = $dbh->prepare($sqlBlacklistGet);
+                        if ($sth->execute(array())) {
+                            while ($alles = $sth->fetch()) {
+                                echo " $alles[Item]  <br>";
+                            }
+                        }
 
-                                $sqlBlacklistGet = 'select * from Blacklist';
-                                $sth = $dbh->prepare($sqlBlacklistGet);
-                                if ($sth->execute(array())) {
-                                    while ($alles = $sth->fetch()) {
+                        ?>
+                        <h3>Blacklist item toevoegen</h3>
+                        <form method="post" action="includes\blacklistBeheer.php">
+                            <label for="blacklistItemT">Blacklist Item</label><br>
+                            <input class="uk-input input-registratie" type="text" name="blacklistItemT" id="blacklistItemT"><br>
+                            <button name="Toevoegen" type="submit" class="uk-button knop-lang">blacklist item toevoegen</button>
+                        </form>
+                        <br>
+                        <h3>Blacklist item verwijderen</h3>
+                        <form method="post" action="includes\blacklistBeheer.php">
+                            <label for="blacklistItemV">Blacklist Item</label><br>
+                            <input class="uk-input input-registratie" type="text" name="blacklistItemV" id="blacklistItemV"><br>
+                            <button name="Verwijderen" type="submit" class="uk-button knop-lang">blacklist item verwijderen</button>
+                        </form>
+                        <br>
+                        <h3>Verdachte gebruikers:</h3>
 
-                                        $sqlVerdacht .= "or Titel like '% $alles[Item] %' ";
-                                    }
-                                }
-                                $sth = $dbh->prepare($sqlVerdacht);
-                                if ($sth->execute(array())) {
-                                    while ($alles = $sth->fetch()) {
+                        <?php
+                        $sqlVerdacht = "select distinct Verkoper from Voorwerp where Titel not like '%%'";
 
-                                        echo "$alles[Verkoper] <br>";
-                                    }
-                                }
+                        $sqlBlacklistGet = 'select * from Blacklist';
+                        $sth = $dbh->prepare($sqlBlacklistGet);
+                        if ($sth->execute(array())) {
+                            while ($alles = $sth->fetch()) {
 
-                                ?>
-                            
-                        
+                                $sqlVerdacht .= "or Titel like '% $alles[Item] %' ";
+                            }
+                        }
+                        $sth = $dbh->prepare($sqlVerdacht);
+                        if ($sth->execute(array())) {
+                            while ($alles = $sth->fetch()) {
+
+                                echo "$alles[Verkoper] <br>";
+                            }
+                        }
+
+                        ?>
+
+
                     </li>
                     <li class="tag-email verkoopbox">
-                        <div >
+                        <div>
+                            <h3>activiteit per dag per uur in procenten</h3>
                             <div class="uk-flex uk-flex-center uk-flex-wrap uk-flex-wrap-around">
                                 <?php
 
@@ -128,6 +129,22 @@ having FORMAT(Datum, \'dddd\') = ?';
                             </div>
 
                         </div>
+                    </li>
+                    <li class="tag-email verkoopbox">
+                        <h3>aantal actieve gebruikers</h3>
+                        <?php
+                        $sql = 'SELECT COUNT(DISTINCT Gebruikersnaam) AS AantalIngelogd
+FROM LoginActiviteit
+WHERE Datum BETWEEN DATEADD(HOUR, -1, GETDATE()) AND GETDATE()';
+                        $sth = $dbh->prepare($sql);
+                        if ($sth->execute(array())) {
+                            while ($alles = $sth->fetch()) {
+                                echo " $alles[AantalIngelogd]";
+                            }
+                        }
+
+
+                        ?>
                     </li>
                 </ul>
             </div>

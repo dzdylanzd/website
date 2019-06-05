@@ -3,6 +3,8 @@ require_once('database.php');
 $sqlT = 'insert into Blacklist
 values(?)';
 $sqlV = 'delete from Blacklist where item = ?';
+
+//als je een item wilt toevoegen
 if(isset($_POST['blacklistItemT'])){
 $item = $_POST['blacklistItemT'];
 if(empty($_POST['blacklistItemT'])){
@@ -24,7 +26,7 @@ catch (PDOException $e) {
   }
 }
 
-
+//als je een item wilt verwijderen
 if(isset($_POST['blacklistItemV'])){
     $item = $_POST['blacklistItemV'];
     if(empty($_POST['blacklistItemV'])){
