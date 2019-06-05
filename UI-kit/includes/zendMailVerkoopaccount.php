@@ -54,16 +54,6 @@ Heyendaalseweg 98<br>
 </html>
 ';
 
-$sql = "INSERT INTO VerificatiecodeVerkoper(Gebruikersnaam,VerificatiecodeVerkoper) VALUES (?, ?)";
-try {
-    $query = $dbh->prepare($sql);
-    if ($query->execute(array($gebruikersnaam, $random_hash))) { }
-} catch (PDOException $e) {
-    $error = $e->getMessage();
-    header("location: ../verkoperWorden.php?error=$error");
-    exit();
-}
-
 // Always set content-type when sending HTML email
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
