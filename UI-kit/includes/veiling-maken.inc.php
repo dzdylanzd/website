@@ -17,6 +17,7 @@ if (isset($_POST['veiling-maken-button'])) {
   $lengte = $_POST['lengte'];
   $valuta = $_POST['valuta'];
   $prijs = $_POST['prijs'];
+  $verzendkosten = 0;
   $verzendkosten = $_POST['verzendkosten'];
   $verzendinstructies = $_POST['verzendinstructies'];
   $betalingswijze = $_POST['betalingswijze'];
@@ -31,7 +32,7 @@ if (isset($_POST['veiling-maken-button'])) {
   $foto3 =  $_SESSION['fotos'][2];
   $foto4 =  $_SESSION['fotos'][3];
 
-  if (empty($titel) || empty($staat) || empty($message) || empty($prijs) || empty($verzendkosten) || empty($plaatsnaam)) {
+  if (empty($titel) || empty($staat) || empty($message) || empty($prijs)  || empty($plaatsnaam)) {
     header("location: ../veiling-Maken.php?error=leeg");
     exit();
   } else if ($_SESSION['fotos'][0] == "https://via.placeholder.com/150") {

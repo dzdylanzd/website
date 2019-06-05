@@ -452,7 +452,7 @@ h4 {
 }
 
 .submit-button{
-width: 80%;
+width: 60%;
 }
 
 .input-registratie {
@@ -502,6 +502,9 @@ background-color: #739F65;
 }
 .productPageMobile {
   width: 94%;
+}
+.bruin{
+  background-color: #C6AE91;
 }
 
 .button-mobile {
@@ -568,7 +571,7 @@ background-color: #739F65;
     margin-left: 50px;
   }
   .submit-button{
-    width: 100px;
+    width: 60%;
   }
 
   .verkoper{
@@ -596,8 +599,13 @@ background-color: #739F65;
     width: 94%;
   }
 
-  .uk-button {
+  /* .uk-button {
     width: 90%;
+  } */
+  .zoekbox{
+    width: 120%;
+    margin: auto;
+    margin-left: 40%;
   }
 
   .uk-button-categorieen {
