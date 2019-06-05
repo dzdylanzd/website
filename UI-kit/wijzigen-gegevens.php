@@ -142,7 +142,7 @@
                         <label class="registreerlabel" for="oudWachtwoord">Oud wachtwoord</label><br>
                         <input class="uk-input input-registratie" type="password" id="oudWachtwoord" name="oudWachtwoord"><br>
                         <label class="registreerlabel" for="wachtwoord">Wachtwoord</label><br>
-                        <input class="uk-input input-registratie" type="password" id="wachtwoord" name="wachtwoord"><br>
+                        <input class="uk-input input-registratie" placeholder="Minimaal acht tekens, één hoofdletter en één cijfer" type="password" id="wachtwoord" name="wachtwoord"><br>
                         <label class="registreerlabel" for="bevestigWachtwoord">Wachtwoord herhalen</label><br>
                         <input class="uk-input input-registratie" type="password" id="bevestigWachtwoord" name="bevestigWachtwoord"><br>
 

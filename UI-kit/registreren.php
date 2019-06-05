@@ -86,7 +86,7 @@ if (!isset($_SESSION["gevalideert"])) {
                         <label class="registreerlabel" for="geboortedatum">Geboortedatum *</label><br>
                         <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum"><br>
                         <label class="registreerlabel" for="telefoonnummer">Telefoonnummer *</label><br>
-                        <input class="uk-input input-registratie" type="number" id="telefoonnummer" name="telefoonnummer"><br>
+                        <input class="uk-input input-registratie" type="number"  placeholder="minimaal 8 tekens" id="telefoonnummer" name="telefoonnummer"><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
