@@ -26,8 +26,12 @@ if (!$query = $dbh->prepare($sql)) {
             $query2 = $dbh->prepare($sqlDeleteCode);
             $query2->execute(array($to));
         }else{
-            header("location: ./email-Bevestiging.php?error=CodeAlOntvangen");
-            exit();
+            $sqlVerwijder = 'delete VerificatiecodeEmail
+            where Mailadres = ?';
+            if ($sth = $dbh->prepare($sqlVerwijder)) {
+              $sth->execute(array($_SESSION["Email"]));
+            }
+           
         }
     }
 }
