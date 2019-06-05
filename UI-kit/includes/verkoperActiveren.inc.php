@@ -11,7 +11,7 @@ if (isset($_POST['verkoopaccountActiveren'])) {
         if ($query->execute(array($Gebruiksernaam)))
         while($row = $query->fetch()){
             $verificatiecodeTabel = $row['VerificatiecodeVerkoper'];
-            if( strtotime($alles['DatumEinde']) < strtotime("now")) {
+            if( strtotime($row['DatumEinde']) < strtotime("now")) {
                 $sqlVerwijder = 'delete from Verkoper
                 where Gebruiker = ?
                 
@@ -24,7 +24,8 @@ if (isset($_POST['verkoopaccountActiveren'])) {
                 if ($sth = $dbh->prepare($sqlVerwijder)) {
                   $sth->execute(array($Gebruiksernaam,$Gebruiksernaam,$Gebruiksernaam));
                 }
-                header("location: ../verkoperWorden.php?error=codeVerlopen");
+              
+                header("location: ../verkoperWorden.php?error=codeNietMeerGeldig");
                 exit();
             }
         }
