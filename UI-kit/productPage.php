@@ -13,8 +13,7 @@
 
 <body>
     <?php
-    // $url1 = $_SERVER['REQUEST_URI'];
-    // header("Refresh: 5; URL=$url1");
+
     ?>
     <?php include 'includes\nav-L-M.php';
     include 'includes/defaultMobileNav.php';
@@ -30,14 +29,11 @@
                 $errorBericht = ($_GET['error']);
                 if ($errorBericht == 'leeg') {
                     echo '<p class="errors">Vul eerst een bod in</p>';
-                }
-                else if ($errorBericht == 'teLaagBod') {
+                } else if ($errorBericht == 'teLaagBod') {
                     echo '<p class="errors">Dit bod is te laag, voer een hoger bod in</p>';
-                }
-                else if ($errorBericht == 'veilingGesloten') {
+                } else if ($errorBericht == 'veilingGesloten') {
                     echo '<p class="errors">Deze veiling is gesloten, u kan hier niet op bieden</p>';
-                }
-                else if ($errorBericht == 'nietOpEigenVeiling') {
+                } else if ($errorBericht == 'nietOpEigenVeiling') {
                     echo '<p class="errors">U kan niet op uw eigen veiling bieden!</p>';
                 }
             }
@@ -45,7 +41,7 @@
             // <!-- =========================================== -->
             // <!--                    DESKTOP                  -->
             // <!-- =========================================== -->
-            
+
             $sql = "SELECT Geblokkeerd from Voorwerp where VoorwerpNummer = ?";
             $sth = $dbh->prepare($sql);
             if ($sth->execute(array($_SESSION['PID']))) {
@@ -265,17 +261,6 @@
                                                 while ($row = $sth->fetch()) {
                                                     $minimumVerhoging = $row['StartPrijs'];
                                                     $bod =  $minimumVerhoging;
-                                                    // if ($bod > 1 && $bod <= 50) {
-                                                    //     $minimumVerhoging = $minimumVerhoging + 0.5;
-                                                    // } else if ($bod > 50 && $bod <= 500) {
-                                                    //     $minimumVerhoging = $minimumVerhoging + 1;
-                                                    // } else if ($bod > 500 && $bod <= 1000) {
-                                                    //     $minimumVerhoging =  $minimumVerhoging + 5;
-                                                    // } else if ($bod > 1000 && $bod <= 5000) {
-                                                    //     $minimumVerhoging =  $bod + 10;
-                                                    // } else if ($bod >  5000) {
-                                                    //     $minimumVerhoging = $minimumVerhoging  + 50;
-                                                    // }
                                                 }
                                             }
                                         }
@@ -338,13 +323,13 @@
                 </div>
             </div>
             <?php
-                    if(isset( $_SESSION['soortGebruiker'])){
-                        if($_SESSION['soortGebruiker'] == 'B'){
-                            $html = '<button  class=" uk-button knop-registreren" type="button" onclick="window.location.href=\'includes/blokeerVeiling.php\'" >blokkeer / deblokkeer deze veiling </button>';
-                        echo $html ;
-                        }
-                    }
-                    ?>
+            if (isset($_SESSION['soortGebruiker'])) {
+                if ($_SESSION['soortGebruiker'] == 'B') {
+                    $html = '<button  class=" uk-button knop-registreren" type="button" onclick="window.location.href=\'includes/blokeerVeiling.php\'" >blokkeer / deblokkeer deze veiling </button>';
+                    echo $html;
+                }
+            }
+            ?>
         </div>
     </div>
     <?php include 'includes/footer.inc.php'; ?>

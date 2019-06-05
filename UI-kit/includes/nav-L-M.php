@@ -133,7 +133,8 @@ include 'meldingen.php';?>
                             <button class=" knop-lang uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                             <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                             <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
-                            <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'BeheerderLogging.php\'">beheerder logging</button>
+                            <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'BeheerderLogging.php\'">Beheerder logging</button>
+                            <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'blokkeerGebruiker.php\'">Gebruiker blokkeren</button>
                             <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-veilingen.php\'">Mijn veilingen</button></div> </div>';
                         } else {
                             echo '<div class="uk-inline">
@@ -287,6 +288,7 @@ include 'meldingen.php';?>
                 <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                 <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
                 <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'beheerderLogging.php\'">Beheerder logging</button>
+                <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'blokkeerGebruiker.php\'">Blokkeer Gebruiker</button>
                 <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-veilingen.php\'">Mijn veilingen</button></div> </div>';
                 } else {
                     echo '<div class="uk-inline">
