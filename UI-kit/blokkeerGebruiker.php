@@ -39,15 +39,17 @@
                         <button name="GebruikerBlokkeren" type="submit" class="submit-button uk-button ">gebruiker blokkeren</button>
                     </form>
                 </div>
-                <div class="registreerbox">
-                    <h3>Geblokeerde gebruikers</h3>
+                <div class="registreerbox scrollbox bruin">
+                    <h3>Geblokkeerde gebruikers</h3>
                     <?php
                     $sql = 'SELECT Gebruikersnaam FROM Gebruiker WHERE Geblokkeerd = ?';
                     if ($sth = $dbh->prepare($sql)) {
                         if ($sth->execute(array(1))) {
                             while ($row = $sth->fetch()) {
-                                $geblokeerdeGebruiker = $row['Gebruikersnaam'];
-                                echo $geblokeerdeGebruiker.'<br>';
+                                $geblokkeerdeGebruiker = $row['Gebruikersnaam'];
+                                echo '<ul>';
+                                echo '<li>'. $geblokkeerdeGebruiker.'</li>';
+                                echo '</ul>';
                             }
                         }
                     }
