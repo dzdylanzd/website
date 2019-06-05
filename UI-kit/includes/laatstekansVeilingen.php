@@ -46,7 +46,7 @@ if ($sth = $dbh->prepare($sql)) {
               if ($prijsje = $sth5->fetch()) {
                 $prijs = (double)$prijsje['BodBedrag'];
                 $geboden = "Huidig bod:";
-               }else{
+               } else {
                     $prijs = (double)$alles['StartPrijs'] ;
                     $geboden = "Startprijs:";
                }
@@ -98,6 +98,3 @@ if ($sth = $dbh->prepare($sql)) {
 echo$text;
     }
   }
-
-    
-    ?>

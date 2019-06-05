@@ -11,7 +11,7 @@ $BlokkeerStatus = 0;
 
 }
 $sql = 'update Gebruiker 
-set Geblokeerd = ? 
+set Geblokkeerd = ? 
 where Gebruikersnaam = ?'; 
 
 try {
@@ -24,7 +24,7 @@ try {
 } 
 catch (PDOException $e) {
     $error = $e->getMessage();
-    header("location: ../blokkeerGebruiker.php?error=dezeGebruikerBestaatNiet");
+    header("location: ../blokkeerGebruiker.php?error=$error");
     exit();
   }
 
