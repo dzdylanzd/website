@@ -93,11 +93,11 @@
                             <div class="uk-flex uk-flex-center uk-flex-wrap uk-flex-wrap-around">
                                 <?php
 
-                                $sqlWeekdagen = 'DECLARE @totaal decimal(1, 0) = (select  count(Gebruikersnaam) from LoginActiviteit)
-select count(Gebruikersnaam) / @totaal * 100 as percentage,count(Gebruikersnaam) as totaal,  FORMAT(Datum, \'dddd\') as dag from LoginActiviteit
+                                $sqlWeekdagen = 'DECLARE @totaal int = (select  count(Gebruikersnaam) from LoginActiviteit)
+select count(Gebruikersnaam) * 100 / @totaal  as percentage,count(Gebruikersnaam) as totaal,  FORMAT(Datum, \'dddd\') as dag from LoginActiviteit
 group by FORMAT(Datum, \'dddd\')  ';
 
-                                $sqlUren = 'DECLARE @totaal decimal(1, 0)= ?
+                                $sqlUren = 'DECLARE @totaal int= ?
 select count(Gebruikersnaam) * 100 / @totaal  as percentage,  FORMAT(Datum, \'dddd\') as dag,DATEPART(HOUR,Datum) as uur from LoginActiviteit
 group by FORMAT(Datum, \'dddd\') ,DATEPART(HOUR,Datum)
 having FORMAT(Datum, \'dddd\') = ?';
