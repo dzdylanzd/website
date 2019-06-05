@@ -27,7 +27,7 @@ if(isset($_GET['root'])){
                             
                             <?php
                             if(!isset( $_SESSION['userId'])){
-                           echo' <a class="uk-margin-left" href="inloggen-Mobile.php" uk-icon="icon: user"></a>';
+                          echo' <a class="uk-margin-left" href="inloggen-Mobile.php" uk-icon="icon: user"></a>';
                             }else{
                            
 

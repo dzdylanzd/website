@@ -48,7 +48,7 @@
                             <label class="registreerlabel" for="wachtwoord">Wachtwoord</label><br>
                             <input class="uk-input input-registratie" name="wachtwoord" type="password"><br>
 
-                            <button class="knop-registreren uk-width-1-1 uk-button uk-button-default " name="login-submit" type="submit">Login</button><br>
+                            <button class="knop-inloggen uk-width-1-1 uk-button uk-button-default " name="login-submit" type="submit">Login</button><br>
                 </form>
                 <a class="uk-link-muted" href="wachtwoordVergeten.php">
                     <p class="witte-tekst">Wachtwoord vergeten?</p>
