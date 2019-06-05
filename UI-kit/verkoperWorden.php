@@ -29,7 +29,7 @@
                 }
             }
             ?>
-
+<div class="uk-flex "
             <div class="verkoper" uk-filter="target: .js-filter">
                 <h2> Aanmaken verkoopaccount </h2>
                 <p class="voorwaarden">Kies hieronder uw gewenste identificatie methode.</p>
@@ -40,25 +40,26 @@
 
                 <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid>
                     <li class="tag-creditcard verkoopbox">
-                        <div class="verkoopbox">
+                       
                             <h3>Identificatiemethode creditcard:</h3>
                             <form method="post" action="includes/verkoperWorden.inc.php">
                                 <label for="creditcard">Creditcardnummer</label><br>
                                 <input class="uk-input input-registratie" type="number" name="creditcard" id="creditcard"><br>
-                                <button name="verkoopaccountAanvragen" type="submit" class="uk-button knop-lang">Verkoopaccount activeren</button>
+                                <button name="verkoopaccountAanvragen" type="submit" class="submit-button uk-button">Verkoopaccount activeren</button>
                             </form>
-                        </div>
+                        
                     </li>
                     <li class="tag-email verkoopbox">
-                        <div class="verkoopbox">
+                        
                             <h3>Identificatiemethode email:</h3>
                             <form method="post" action="includes/verkoperWorden.inc.php">
                                 <label for="bank">Bank</label><br>
                                 <input class="uk-input input-registratie" type="text" name="bank" id="bank"><br>
                                 <label for="rekeningnummer">Rekeningnummer</label><br>
                                 <input class="uk-input input-registratie" type="text" name="rekeningnummer" id="rekeningnummer"><br>
-                                <button name="verkoopaccountAanvragen" type="submit" class="uk-button knop-lang">Verkoopaccount aanvragen</button>
+                                <button name="verkoopaccountAanvragen" type="submit" class="submit-button uk-button">Verkoopaccount aanvragen</button>
                             </form>
+       
                     </li>
                 </ul>
             </div>

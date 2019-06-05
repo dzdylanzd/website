@@ -36,7 +36,7 @@
                                 <form method="post" action="includes\blokkeerGebruiker.php">
                                     <label for="gebruikersnaam">Gebruikersnaam</label><br>
                                     <input class="uk-input input-registratie" type="text" name="gebruikersnaam" id="gebruikersnaam"><br>
-                                    <button name="GebruikerBlokkeren" type="submit" class="uk-button knop-lang">gebruiker blokkeren</button>
+                                    <button name="GebruikerBlokkeren" type="submit" class="submit-button uk-button ">gebruiker blokkeren</button>
                                 </form>
                 </div>
                 <div class="registreerbox">
@@ -44,7 +44,7 @@
                                 <form method="post" action="includes\blokkeerGebruiker.php">
                                     <label for="gebruikersnaam">Gebruikersnaam</label><br>
                                     <input class="uk-input input-registratie" type="text" name="gebruikersnaam" id="gebruikersnaam"><br>
-                                    <button name="GebruikerDeblokkeren" type="submit" class="uk-button knop-lang">gebruiker deblokkeren</button>
+                                    <button name="GebruikerDeblokkeren"  type="submit" class="submit-button uk-button ">gebruiker deblokkeren</button>
                                 </form>
                 </div>
             

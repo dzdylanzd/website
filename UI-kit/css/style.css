@@ -361,12 +361,14 @@ h4 {
   background-color: #a7ca9b;
   color: white;
   text-align: center;
-  width: 100%;
+  width: 110%;
   margin: auto;
   margin-bottom: 20px;
   padding-top: 5px;
   padding-bottom: 15px;
+  padding-left: 0px;
   border-radius: 20px;
+  padding: 15px;
 }
 
 .veilingbox {
@@ -447,6 +449,10 @@ margin: auto;
 
 .knop-lang{
   width: 250px;
+}
+
+.submit-button{
+width: 80%;
 }
 
 .input-registratie {
@@ -561,6 +567,14 @@ background-color: #739F65;
     width: 100%;
     margin-left: 50px;
   }
+  .submit-button{
+    width: 100px;
+  }
+
+  .verkoper{
+    width: 70%;
+  margin: auto;
+  }
 
   .image-square {
     height: 400px;
@@ -583,7 +597,7 @@ background-color: #739F65;
   }
 
   .uk-button {
-    width: 98%;
+    width: 90%;
   }
 
   .uk-button-categorieen {
