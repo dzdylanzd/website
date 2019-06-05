@@ -602,6 +602,11 @@ background-color: #739F65;
   .uk-button {
     width: 90%;
   }
+  .zoekbox{
+    width: 120%;
+    margin: auto;
+    margin-left: 40%;
+  }
 
   .uk-button-categorieen {
     border: none;

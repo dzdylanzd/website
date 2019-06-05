@@ -29,7 +29,7 @@
                 }
             }
             ?>
-<div class="uk-flex "
+<div class="uk-flex uk-flex-center ">
             <div class="verkoper" uk-filter="target: .js-filter">
                 <h2> Aanmaken verkoopaccount </h2>
                 <p class="voorwaarden">Kies hieronder uw gewenste identificatie methode.</p>
@@ -63,6 +63,7 @@
                     </li>
                 </ul>
             </div>
+</div>
         </div>
     </div>
 
