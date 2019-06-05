@@ -15,11 +15,11 @@
     <?php include 'includes\nav-L-M.php';
     include 'includes/defaultMobileNav.php';
     require_once('includes/database.php');
-    
-    if($_SESSION['soortGebruiker'] !== 'B'){
+
+    if ($_SESSION['soortGebruiker'] !== 'B') {
         header("Location: index.php");
         exit();
-    }?>
+    } ?>
     <div class="page-container">
         <div class="content-wrap">
 
@@ -29,14 +29,14 @@
                 <h2> Beheerder logging </h2>
                 <p class="voorwaarden"></p>
                 <ul class="uk-subnav uk-subnav-pill">
-                    <li  uk-filter-control=".tag-email"><a href="#">activiteit</a></li>
+                    <li uk-filter-control=".tag-email"><a href="#">activiteit</a></li>
                     <li class="uk-active" uk-filter-control=".tag-creditcard"><a href="#">verdachte gebruikers</a></li>
                 </ul>
 
                 <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid>
                     <li class="tag-creditcard verkoopbox">
-                        <div class="verkoopbox">
-                            <div class="verkoopbox">
+                       
+                            
                                 <h3>Blacklist:</h3>
 
                                 <?php
@@ -85,11 +85,11 @@
                                 }
 
                                 ?>
-                            </div>
-                        </div>
+                            
+                        
                     </li>
                     <li class="tag-email verkoopbox">
-                        <div class="verkoopbox">
+                        <div >
                             <div class="uk-flex uk-flex-center uk-flex-wrap uk-flex-wrap-around">
                                 <?php
 

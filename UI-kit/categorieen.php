@@ -32,9 +32,12 @@
                         </div>
                         <h3> Staat</h3>
                         <form class="FilterenStaat" action="categorieen.php" method="post">
-                            <input type="radio" name="staat" value="Nieuw"> Nieuw<br>
-                            <input type="radio" name="staat" value="bijnaNieuw"> Zo goed als nieuw<br>
-                            <input type="radio" name="staat" value="Gebruikt"> Gebruikt<br>
+                        <select class="uk-select input-registratie" name="staat" id="staat"><br>
+                            <option value="">...</option>
+                                <option value="Nieuw">Nieuw</option>
+                                <option value='Zo goed als nieuw'>Zo goed als nieuw</option>
+                                <option value='Gebruikt'>Gebruikt</option>
+                            </select>
                        
                         <h3> Prijs</h3>
                     
