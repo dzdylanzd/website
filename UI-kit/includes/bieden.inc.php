@@ -35,7 +35,7 @@ if( $melding = $dbh->prepare($sql3)){
 $sql = 'insert into bod(Voorwerp,BodBedrag,Gebruiker,BodDagTijd)
 Values (?,?,?,?)';
 
-
+// bepaald de miniumumVerhoging
 $sql2 = "SELECT StartPrijs FROM Voorwerp WHERE VoorwerpNummer = ?";
 if ($sth = $dbh->prepare($sql2)) {
     if ($sth->execute(array($_GET["ID"]))) {
