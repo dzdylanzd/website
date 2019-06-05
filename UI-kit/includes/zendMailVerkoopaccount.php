@@ -3,10 +3,10 @@ include "database.php";
 session_start();
 $gebruikersnaam = 'test';
 $gebruikersnaam = $_SESSION['userId'];
-$random_hash = bin2hex(random_bytes(4));
-$_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
+
+
 $to = $_SESSION['userUid'];
-$_SESSION["Email"] = $to;
+
 $subject = "Verkoopaccount bevestiging - EenmaalAndermaal";
 
 $sql = 'SELECT * FROM Gebruiker WHERE Gebruikersnaam = ?';
@@ -54,15 +54,6 @@ Heyendaalseweg 98<br>
 </html>
 ';
 
-$sql = "INSERT INTO VerificatiecodeVerkoper(Gebruikersnaam,VerificatiecodeVerkoper) VALUES (?, ?)";
-try {
-    $query = $dbh->prepare($sql);
-    if ($query->execute(array($gebruikersnaam, $random_hash))) { }
-} catch (PDOException $e) {
-    $error = $e->getMessage();
-    header("location: ../verkoperWorden.php?error=$error");
-    exit();
-}
 
 // Always set content-type when sending HTML email
 $headers = "MIME-Version: 1.0" . "\r\n";
@@ -71,4 +62,4 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 // More headers
 $headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
 mail($to, $subject, $bericht, $headers);
-header("Location: ../VerkoperActiveren.php");
+

@@ -40,7 +40,7 @@ where Gebruikersnaam = ?';
 
 // hidde hier moet de mail
 
-
+require_once('zendMailVerkoopaccount.php');
             header("location: ../index.php?succes=uBentVerkoper");
             exit();
         }

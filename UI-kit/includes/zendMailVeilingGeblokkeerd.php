@@ -3,10 +3,10 @@ include "database.php";
 session_start();
 $gebruikersnaam = 'test';
 $gebruikersnaam = $_SESSION['userId'];
-$random_hash = bin2hex(random_bytes(4));
-$_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
+
+
 $to = $_SESSION['userUid'];
-$_SESSION["Email"] = $to;
+
 $subject = "Veiling geblokkeerd - EenmaalAndermaal";
 
 $sql = 'SELECT * FROM Gebruiker WHERE Gebruikersnaam = ?';
@@ -19,11 +19,12 @@ if ($sth = $dbh->prepare($sql)) {
     }
 }
 
-$sql = 'SELECT * FROM Voorwerp WHERE Verkoper = ? AND Geblokkeerd = ?';
+$sql = 'SELECT * FROM Voorwerp WHERE VoorwerpNummer = ? ';
 if ($sth = $dbh->prepare($sql)) {
-    if ($sth->execute(array($gebruikersnaam, 1))) {
+    if ($sth->execute(array( $_SESSION['PID']))) {
         while ($row = $sth->fetch()) {
             $titelGeblokkeerd = $row['Titel'];
+            $geblokkeerd = $row['Geblokkeerd'];
         }
     }
 }
@@ -73,5 +74,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 // More headers
 $headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
+if( $geblokkeerd ){
 mail($to, $subject, $bericht, $headers);
-header("Location: ../VerkoperActiveren.php");
+}
+
