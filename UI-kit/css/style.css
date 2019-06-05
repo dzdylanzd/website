@@ -600,7 +600,7 @@ background-color: #739F65;
   }
 
   /* .uk-button {
-    width: 90%;
+    width: 98%;
   } */
   .zoekbox{
     width: 120%;
@@ -642,7 +642,7 @@ background-color: #739F65;
   }
   .knop-registreren{
     margin-left: 4%;
-    width: 60%;
+    width: 92%;
   }
   .mobileNav{
     margin: 1%;
@@ -657,6 +657,9 @@ background-color: #739F65;
   }
   .veiling-maken-box{
     width: 75%;
+  }
+  .knop-inloggen{
+    width: 60%;
   }
 
   .veiling-maken-button{
