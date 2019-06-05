@@ -299,6 +299,7 @@
                                                 }
                                             }
                                         }
+                                        $_SESSION['minimumVerhoging'] = $minimumVerhoging;
                                         echo " <input class=\"uk-input Bod-Veld\" type=\"number\" min=\"$minimumVerhoging\" max=\"10000000\" step=\"0.01\" name=\"bod\" placeholder=\"bod .....\">";
                                         ?>
 
