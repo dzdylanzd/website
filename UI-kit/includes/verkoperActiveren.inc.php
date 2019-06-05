@@ -11,7 +11,7 @@ if (isset($_POST['verkoopaccountActiveren'])) {
         if ($query->execute(array($Gebruiksernaam)))
         while($row = $query->fetch()){
             $verificatiecodeTabel = $row['VerificatiecodeVerkoper'];
-            if( $alles['DatumEinde'] < getdate()) {
+            if( strtotime($alles['DatumEinde']) < strtotime("now")) {
                 $sqlVerwijder = 'delete from Verkoper
                 where Gebruiker = ?
                 
