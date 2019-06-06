@@ -37,7 +37,7 @@
                     echo '<p class="errors">Deze veiling is gesloten, u kan hier niet op bieden</p>';
                 } else if ($errorBericht == 'nietOpEigenVeiling') {
                     echo '<p class="errors">U kan niet op uw eigen veiling bieden!</p>';
-                } 
+                }
             }
 
             // <!-- =========================================== -->
@@ -52,7 +52,7 @@
                 }
             }
 
-
+            // check of de veiling geblokkerd is
             if ($geblokkeerd) {
                 echo '<p class="errors"> Deze veiling is geblokkeerd door een beheerder</p>';
             }
@@ -197,7 +197,7 @@
                         </li>
                     </ul>
                 </div>
-
+                <!-- auto refres biedingen en timer -->
                 <div class="Vertical_Line"></div>
                 <div class="uk-width-1-1 uk-width-2-3@s Card-Empty">
 
@@ -267,7 +267,7 @@
                                             }
                                         }
 
-
+                                        // haal minimum bod op
                                         if ($sth = $dbh->prepare($sql)) {
                                             if ($sth->execute(array($_GET["ID"]))) {
                                                 while ($row = $sth->fetch()) {

@@ -34,11 +34,13 @@
                 </ul>
 
                 <ul class="js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid>
+
+                    <!-- verdachte gebruikers -->
                     <li class="tag-creditcard verkoopbox">
 
 
                         <h3>Blacklist:</h3>
-
+                        <!-- display blacklist -->
                         <?php
                         $sqlBlacklistGet = 'select * from Blacklist';
                         $sth = $dbh->prepare($sqlBlacklistGet);
@@ -67,7 +69,7 @@
 
                         <?php
                         $sqlVerdacht = "select distinct Verkoper from Voorwerp where Titel not like '%%'";
-
+                        // maak sql sript verdachte Gebruikes
                         $sqlBlacklistGet = 'select * from Blacklist';
                         $sth = $dbh->prepare($sqlBlacklistGet);
                         if ($sth->execute(array())) {
@@ -76,6 +78,7 @@
                                 $sqlVerdacht .= "or Titel like '% $alles[Item] %' ";
                             }
                         }
+                        // display verdachte gebruikers
                         $sth = $dbh->prepare($sqlVerdacht);
                         if ($sth->execute(array())) {
                             while ($alles = $sth->fetch()) {
@@ -88,6 +91,12 @@
 
 
                     </li>
+
+
+
+
+
+                    <!-- activiteit logging -->
                     <li class="tag-email verkoopbox">
                         <div>
                             <h3>Activiteit per dag per uur in procenten</h3>
@@ -108,7 +117,7 @@ having FORMAT(Datum, \'dddd\') = ?';
 
 
 
-
+// display activiteit op de site
                                 $sth = $dbh->prepare($sqlWeekdagen);
                                 if ($sth->execute(array())) {
                                     while ($alles = $sth->fetch()) {
@@ -133,6 +142,7 @@ having FORMAT(Datum, \'dddd\') = ?';
                     </li>
                     <li class="tag-email verkoopbox">
                         <h3>aantal actieve gebruikers</h3>
+                        <!-- display actieve gebruikers het afgelopen uur -->
                         <?php
                         $sql = 'SELECT COUNT(DISTINCT Gebruikersnaam) AS AantalIngelogd
 FROM LoginActiviteit

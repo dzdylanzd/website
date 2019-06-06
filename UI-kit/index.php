@@ -13,7 +13,7 @@
 
 <body>
     <?php include 'includes\nav-L-M.php';
-    include 'includes/display_product.php'; 
+    include 'includes/display_product.php';
     include 'includes/defaultMobileNav.php';
     ?>
 
@@ -24,9 +24,7 @@
                     <button class="uk-button uk-button-default knop-rubrieken uk-hidden@s" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
                     <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body uk-hidden@s">
                         <div class="categorieNavHomepagina">
-                            <!-- <script>
-                                UIkit.toggle('.uk-card').toggle();
-                            </script> -->
+
                             <h1>Rubrieken</h1>
                             <?php require_once('includes\categorie _nav.php'); ?>
                         </div>
@@ -42,7 +40,7 @@
                     <?php
                     /* Tijdelijke Laatste kans en nieuw box */
                     echo '<div class="ItemsSliderGroen">';
-                
+
                     echo "<h1> Laatste kans! </h1>";
                     include('includes/laatsteKansVeilingen.php');
                     echo '</div>';

@@ -23,9 +23,7 @@
                 <button class="uk-button-categorieen uk-button-default" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
                 <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body">
                     <div class=" CategorieNavigatieBox">
-                        <!-- <script>
-                            UIkit.toggle('.uk-card').toggle();
-                        </script> -->
+                        
                         <h1>Rubrieken</h1>
                         <div class="scrollbox categorieNav">
                             <?php require_once('includes\categorie _nav.php'); ?>
@@ -51,7 +49,8 @@
                   
                     </div>
                 </div>
-            </div> <!-- categorie nav M (desktop) -->
+            </div> 
+            <!-- categorie nav M (desktop) -->
             <div class="uk-flex">
                 <div class="uk-width-1-3 uk-visible@m">
                     <div class=" CategorieNavigatieBox">
@@ -85,6 +84,7 @@
                 </div>
                 <div class="uk-width-3-4">
                     <?php
+                    // display producten
                     if (isset($_GET["root"])) {
 
                         $sth = $dbh->prepare("SELECT * FROM Rubriek WHERE Rubrieknummer  = ? ");

@@ -31,6 +31,7 @@ if (!isset($_SESSION["gevalideert"])) {
         <div class="content-wrap">
 
             <?php
+            // error handlers
             if (isset($_GET['error'])) {
                 $errorBericht = ($_GET['error']);
                 switch ($errorBericht) {
@@ -148,46 +149,27 @@ if (!isset($_SESSION["gevalideert"])) {
                     <div class="registreerbox">
                         <h3>Voorkeuren</h3>
                         <p class="voorwaarden">Voorkeuren mogen niet hetzelfde zijn</p>
-                        <select class="uk-select input-registratie" name="voorkeur1">
+                        
                             <?php
+                            // haal rubrieken op voor voorkeur
                             $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
                             if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array(-1, -1))) {
-                                    while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
-                                        echo $tekst;
+                                for ($x = 1; $x <= 3; $x++) {
+                                    echo '<select class="uk-select input-registratie" name="voorkeur'.$x .'">';
+                                    if ($sth->execute(array(-1, -1))) {
+                                        while ($row = $sth->fetch()) {
+                                            $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
+                                            echo $tekst;
+                                        }
                                     }
-                                }
+                                    echo'</select><br>';
+                                } 
+                               
                             }
                             ?>
 
-                        </select><br>
-                        <select class="uk-select input-registratie" name="voorkeur2">
-                            <?php
-                            $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
-                            if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array(-1, -1))) {
-                                    while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
-                                        echo $tekst;
-                                    }
-                                }
-                            }
-                            ?>
-                        </select><br>
-                        <select class="uk-select input-registratie" name="voorkeur3">
-                            <?php
-                            $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
-                            if ($sth = $dbh->prepare($sql)) {
-                                if ($sth->execute(array(-1, -1))) {
-                                    while ($row = $sth->fetch()) {
-                                        $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
-                                        echo $tekst;
-                                    }
-                                }
-                            }
-                            ?>
-                        </select><br>
+                        
+                      
                     </div>
                     <p class="registreer">Velden met een * zijn verplicht.</p>
                     <button type="submit" name="bevestigings-button" class="uk-button knop-registreren">Registreren</button>

@@ -1,8 +1,8 @@
 
                 <?php
-
-
-
+// //////////////////////////////////////////////
+// auto refresh pagina biedingen en timer
+// //////////////////////////////////////////////
                 session_start();
 require_once('includes/database.php');
 
@@ -49,9 +49,7 @@ $sql = "SELECT Staat, StartPrijs, Valuta, Verzendkosten,VerzendInstructies,Betal
                     if ($sthBod->execute(array( $_SESSION['PID']))) {
                         while ($rowBod = $sthBod->fetch()) {
                             $huidigbod = $rowBod['BodBedrag'];
-                            // if ($huidigbod <= $startprijs) {
-                            //     $huidigbod = $startprijs;
-                            // }
+                            
                         }
                     }
                 }

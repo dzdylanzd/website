@@ -19,6 +19,7 @@
     <div class="content-wrap">
 
       <?php
+      // error handlers
       if (isset($_GET['error'])) {
         if ($_GET['error'] == "geenFoto") {
           echo '<p class="errors">U moet een foto kiezen.</p>';
@@ -38,11 +39,13 @@
         <div class="veiling-maken-box">
           <h3>Foto's</h3>
           <?php
+          // als foto's nog niet is aangemaakt maak het aan
           if (!isset($_SESSION['fotos']) && !isset($_SESSION['index'])) {
             $_SESSION['fotos'] = array("https://via.placeholder.com/150", "https://via.placeholder.com/150", "https://via.placeholder.com/150", "https://via.placeholder.com/150");
             $_SESSION['index'] = 0;
           }
           ?>
+          <!-- display foto -->
           <div class="flex-column-phone">
             <div class="uk-card uk-card-default  uk-width-2-5@s uk-width-1-1  uk-height-medium@s "><img class="uk-width-1-1 uk-height-1-1" src="<?php echo $_SESSION['fotos'][0];  ?>" alt="Foto 1"></div>
             <div class=" uk-width-expand ">
@@ -70,7 +73,9 @@
             <div class="uk-width-1-3 uk-visible@s"> </div>
             <div class="uk-width-1-3@s uk-wdith-1-1 uk-text-left">
               <form action="includes\veiling-maken.inc.php" method="post">
-                <h3 class="rubriek">Rubrieken</h3>
+               
+              <!-- rubriek laten zien begin -->
+              <h3 class="rubriek">Rubrieken</h3>
                 <?php
                 require_once('includes\database.php');
                 if (!isset($_GET["root"])) {
@@ -161,7 +166,7 @@
             <div class="uk-width-1-3  uk-visible@s"> </div>
           </div>
         </div>
-
+<!-- rubriek laten zien einde -->
 
 
         <div class="veiling-maken-box">

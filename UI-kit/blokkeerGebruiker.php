@@ -42,6 +42,7 @@
                 <div class="registreerbox scrollbox bruin">
                     <h3>Geblokkeerde gebruikers</h3>
                     <?php
+                    // haal geblokkerde gebruikes op
                     $sql = 'SELECT Gebruikersnaam FROM Gebruiker WHERE Geblokkeerd = ?';
                     if ($sth = $dbh->prepare($sql)) {
                         if ($sth->execute(array(1))) {

@@ -18,6 +18,7 @@
     <div class="page-container">
         <div class="content-wrap">
             <div class="registreerbox">
+                <!-- telefoonnummer toevoegen form -->
                 <form method="post" action="includes\telefoonNummerToevoegen.inc.php">
                     <label class="registreerlabel" for="telefoonNummer"><h3>Telefoonnummer toevoegen</h3></label><br>
                     <input class="uk-input input-registratie" type="number" id="telefoonNummer" name="telefoonNummer" placeholder="Vul hier uw telefoonnummer in">

@@ -20,6 +20,7 @@
     <div class="page-container">
         <div class="content-wrap">
             <?php
+            // error handlers
             if (isset($_GET['error'])) {
                 $errorBericht = ($_GET['error']);
                 switch ($errorBericht) {
@@ -59,7 +60,7 @@
                         }
                     }
                 }
-
+// haal gegevens gebruiker op
                 $sql = 'SELECT * FROM Gebruiker WHERE gebruikersnaam = ?';
                 if ($sth = $dbh->prepare($sql)) {
                     if ($sth->execute(array($gebruikersnaam))) {
@@ -114,6 +115,7 @@
 
                     <div class="registreerbox">
                         <h3>Accountgegevens</h3>
+                        <!-- echo het accounttype -->
                         <p class="mijngegevens">Account type: <?php if ($accountType == 'K') {
                                                                     echo "Koper";
                                                                 } else if ($accountType == 'V') {
@@ -150,6 +152,8 @@
                     <button action="wijzigen-gegevens.php" type="submit" name="bevestigings-button" class="uk-button knop-registreren">Gegevens wijzigen</button>
                     <button class="uk-button knop-registreren" uk-toggle="target: #my-id" type="button">Account verwijderen</button>
                     <div id="my-id" uk-modal>
+
+                    <!-- account verwijderen -->
                         <div class="uk-modal-dialog uk-modal-body">
                             <h2 class="uk-modal-title">Weet u zeker dat u uw account wilt verwijderen?</h2>
                             <div class="uk-flex">
