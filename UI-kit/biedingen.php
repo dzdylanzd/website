@@ -80,7 +80,7 @@ if ($sth->execute(array($_SESSION['PID']))) {
         $text .= '<tr>';
         $text .= "<td><p>$alles[Gebruiker]</p></td>";
         $text .= "<td><p>" . $valuta . (double)$alles['BodBedrag'] . "</p></td>";
-        $text .= "<td><p>" . substr($alles['BodDagTijd'], 0, 19) . " </p></td>";
+        $text .= "<td class=\"geenborder\"><p>" . substr($alles['BodDagTijd'], 0, 19) . " </p></td>";
         $text .= '</tr>';
     }
 }
@@ -105,7 +105,7 @@ if ($sth->execute(array($_SESSION['PID']))) {
         <tr>
             <th><h3>Naam</h3></th>
             <th><h3>Bod</h3></th>
-            <th><h3>Datum</h3></th>
+            <th class="geenborder"><h3>Datum</h3></th>
         </tr>
         <?php echo $text ?>
     </table>

@@ -115,7 +115,7 @@
                                         }
                                     }
                                 }
-
+ 
                                 echo '<div class="veilingbox">';
                                 echo '<h3>' . $titel . '...</h3>';
                                 echo '<a href="productPage.php?ID=' . $voorwerpnummer . '"><img class="mijn-veilingen-thumbnail" src="' . $thumbnail . '" alt="Thumbnail"></a><br>';
