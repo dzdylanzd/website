@@ -69,7 +69,16 @@
 
                         ?>
                         <h3> Staat</h3>
-                        <form class="FilterenStaat" action="categorieen.php" method="post">
+                        
+                        <?php
+                        if (isset($_GET['root'])) {
+                            $fromAction = "zoeken.php?root=$_GET[root]";
+                        } else {
+                            $fromAction = "zoeken.php";
+                        }
+
+                        ?>
+                        <form class="FilterenStaat" action="<?php echo $fromAction ?>" method="post">
                             <select class="uk-select input-registratie" name="staat" id="staat"><br>
                                 <option value="">...</option>
                                 <option value="Nieuw">Nieuw</option>
