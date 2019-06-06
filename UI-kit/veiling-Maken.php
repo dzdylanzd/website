@@ -212,7 +212,7 @@
             ?>
           </select><br>
           <label class="registreerlabel" for="prijs">Startprijs</label><br>
-          <input class="uk-input input-registratie" type="number" min="0.00" max="10000.00" step="0.01" id="prijs" name="prijs"><br>
+          <input class="uk-input input-registratie" type="number" min="0.00"  step="0.01" id="prijs" name="prijs"><br>
           <label class="registreerlabel" for="verzendkosten">Verzendkosten</label><br>
           <input class="uk-input input-registratie" type="number" min="0.00" max="10000.00" step="0.01" id="verzendkosten" name="verzendkosten"><br>
           <label class="registreerlabel" for="verzendinstructies">Verzendinstructies</label><br>
