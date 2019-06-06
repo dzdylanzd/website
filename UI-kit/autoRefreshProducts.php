@@ -31,19 +31,113 @@ session_start();
             
                     <div class="registreerbox">
 
-                        <h3>Persoonsgegevens</h3>
-                        <label class="registreerlabel" for="voornaam">Voornaam *</label><br>
-                        <input class="uk-input input-registratie" type="text" id="voornaam" name="voornaam"><br>
-                        <label class="registreerlabel" for="achternaam">Achternaam *</label><br>
-                        <input class="uk-input input-registratie" type="text" id="achternaam" name="achternaam"><br>
-                        <label class="registreerlabel" for="geboortedatum">Geboortedatum *</label><br>
-                        <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum"><br>
-                        <label class="registreerlabel" for="telefoonnummer">Telefoonnummer *</label><br>
-                        <input class="uk-input input-registratie" type="number" placeholder="minimaal 8 tekens" id="telefoonnummer" name="telefoonnummer"><br>
+                        <h3>auto Refresh</h3>
+                        <?php
+
+                        // haal koper en koopBedrag op
+$sql = "SELECT top 1 * from bod where Voorwerp = ? order by BodBedrag desc";
+if ($sth = $dbh->prepare($sql)) {
+    if ($sth->execute(array($_SESSION['PID']))) {
+        while ($alles = $sth->fetch()) {
+            $koper = $alles['Gebruiker'];
+            $koopBedrag = $alles['BodBedrag'];
+        }
+    }
+}
+//  haal kopermail op
+if (isset($koper)) {
+    $sql = "select * from Gebruiker where Gebruikersnaam = ?";
+    if ($sth = $dbh->prepare($sql)) {
+        if ($sth->execute(array($_SESSION['PID']))) {
+            while ($alles = $sth->fetch()) {
+                $kopermail = $alles['Mailadres'];
+            }
+        }
+    }
+}
+
+if (isset($koper)) {
+    $sqlchangeIsGesloten = "update Voorwerp
+        set  isVeilingGesloten = 1 , Koper = ? , Verkoopprijs = ?
+        where VoorwerpNummer = ?";
+} else {
+    $sqlchangeIsGesloten = "update Voorwerp
+        set  isVeilingGesloten = 1 
+        where VoorwerpNummer = ?";
+}
+// stuur een meldig naar de verkoper
+$sql3 = "INSERT into meldingen(bericht,ontvanger) values(?,?)";
+if ($melding = $dbh->prepare($sql3)) {
+    $melding->execute(array('uw <a href="productPage.php?ID=' . $_SESSION['PID'] . '">veiling</a> is gesloten', $verkoper));
+    // stuur een melding naar de koper
+    if (isset($koper)) {
+        $melding = $dbh->prepare($sql3);
+        $melding->execute(array('U heeft deze <a href="productPage.php?ID=' . $_SESSION['PID'] . '">veiling</a> gewonnen', $koper));
+
+        $to = $kopermail;
+        $subject = "U heeft een veiling gewonnen!";
+        // email bericht
+        $message = '
+            <html>
+            <head>
+            <title>EenmaalAndermaal</title>
+            </head>
+            <body>
+            
+            Beste ' . $voorletter . '. ' . $achternaam . ',<br><br>
+
+            Gefeliciteerd! U heeft de veiling ' . $titel . ' gewonnen!<br><br>
+            
+            U kan de veiling vinden op de \'Mijn biedingen\' pagina, of via onderstaande link.<br><br>
+
+            <a href="http://iproject37.icasites.nl/productPage.php?ID=' . $_SESSION['PID'] . '">Productpagina gewonnen veiling</a><br><br><br>
+
+
+            Met vriendelijke groeten,<br>
+            iConcepts<br>
+            Heyendaalseweg 98<br>
+            6525 EE Nijmegen<br>
+            <a href=http://iproject37.icasites.nl>EenmaalAndermaal</a><br>
+
+            <img src="http://iproject37.icasites.nl/media/logomail.png" alt="Logo" height="150px" width="150px">
+            </body>
+            </html>
+            ';
+
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+
+        // More headers
+        $headers .= 'From: <webmaster@example.com>' . "\r\n";
+        $headers .= 'Cc: myboss@example.com' . "\r\n";
+        // zend email naar koper
+        mail($to, $subject, $message, $headers);
+    }
+}
+// sluit de veiling
+$changeIsGesloten = $dbh->prepare($sqlchangeIsGesloten);
+if (isset($koper)) {
+    if ($changeIsGesloten->execute(array($koper, $koopBedrag, $_SESSION['PID']))) {
+        echo "<script> window.location.reload();</script>";
+    }
+} else {
+    if ($changeIsGesloten->execute(array($_SESSION['PID']))) {
+        echo "<script> window.location.reload();</script>";
+    }
+}
+
+
+
+
+                        ?>
+                        
                     </div>
                     
             </div>
         </div>
+    </div>
+
         <?php include 'includes/footer.inc.php'; ?>
 </body>
 
