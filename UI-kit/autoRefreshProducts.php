@@ -1,11 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["gevalideert"])) {
-    header("Location: email-Bevestiging.php");
-    die();
-} else {
-    session_abort();
-}
+
 
 ?>
 
