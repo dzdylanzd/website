@@ -73,7 +73,7 @@ if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty(
 } else if (($voorkeur1 == $voorkeur2 || $voorkeur1 == $voorkeur3) || ($voorkeur2 == $voorkeur3)){
     header("location: ../wijzigen-gegevens.php?error=11");
     exit();
-}else if (strlen($telefoonnummer) < 9) {
+}else if (strlen($telefoonnummer) < 8) {
     header("location: ../wijzigen-gegevens.php?error=8");
     exit();
 } else if (!filter_var($Mailadres, FILTER_VALIDATE_EMAIL)) {
