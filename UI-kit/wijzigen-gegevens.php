@@ -39,6 +39,9 @@
                     case 7:
                         echo '<p class="errors">SQL error, probeer het opnieuw</p>';
                         break;
+                        case 8:
+                        echo '<p class="errors">Het telefoonnummer is te kort.</p>';
+                        break;
                     default:
                         echo '<p class="errors">Onverwachte error, probeer het opnieuw';
                 }

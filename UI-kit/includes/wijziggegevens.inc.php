@@ -67,8 +67,11 @@ if (!empty($oudWachtwoord) && !empty($Wachtwoord) && !empty($WachtwoordHerhaal))
 if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty($Postcode) || empty($Plaatsnaam) || empty($Land) || empty($Geboortedag) || empty($Mailadres)) {
     header("location: ../wijzigen-gegevens.php?error=1");
     exit();
-} else if (($voorkeur1 == $voorkeur2 || $voorkeur1 == $voorkeur3) || ($voorkeur2 == $voorkeur1 || $voorkeur2 == $voorkeur3) || ($voorkeur3 == $voorkeur1 || $voorkeur3 == $voorkeur2)) {
+} else if (($voorkeur1 == $voorkeur2 || $voorkeur1 == $voorkeur3) || ($voorkeur2 == $voorkeur3)){
     header("location: ../wijzigen-gegevens.php?error=11");
+    exit();
+}else if (strlen($telefoonnummer) < 9) {
+    header("location: ../wijzigen-gegevens.php?error=8");
     exit();
 } else if (!filter_var($Mailadres, FILTER_VALIDATE_EMAIL)) {
     header("location: ../wijzigen-gegevens.php?error=2");

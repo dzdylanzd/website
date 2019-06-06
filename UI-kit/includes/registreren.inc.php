@@ -57,6 +57,9 @@ if (isset($_POST['bevestigings-button'])) {
   } else if (strlen($StraatHuisnummer) > 30) {
     header("location: ../registreren.php?error=5");
     exit();
+  }else if (strlen($telefoonnummer) < 9) {
+      header("location: ../registreren.php?error=12");
+      exit();
   } else if (strlen($Postcode) > 30) {
     header("location: ../registreren.php?error=5");
     exit();
@@ -84,7 +87,7 @@ if (isset($_POST['bevestigings-button'])) {
   } else if ($Wachtwoord !== $WachtwoordHerhaal) {
     header("location: ../registreren.php?error=4");
     exit();
-  } else if (($voorkeur1 == $voorkeur2 || $voorkeur1 == $voorkeur3) || ($voorkeur2 == $voorkeur1 || $voorkeur2 == $voorkeur3) || ($voorkeur3 == $voorkeur1 || $voorkeur3 == $voorkeur2)) {
+  } else if (($voorkeur1 == $voorkeur2 || $voorkeur1 == $voorkeur3) || $voorkeur2 == $voorkeur3) {
     header("location: ../registreren.php?error=11");
     exit();
   } else {

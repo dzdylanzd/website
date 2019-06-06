@@ -45,6 +45,7 @@
                             <input class="FilterenPrijs" type="text" name="prijs" id="prijsVan">
                             <label for="prijsTot"> Tot</label>
                             <input class="FilterenPrijs" type="text" name="prijs" id="prijsTot">
+                            <button type="submit" name="bevestigings-button" class="uk-button uk-button-default">filteren</button>
                         </form>
                        
                   

@@ -405,8 +405,8 @@ h4 {
 }
 
 .verkoper{
-  width: 50%;
-  margin: auto;
+width: 50%;
+margin: auto;
 }
 
 .countdown-getal-klein {
@@ -597,6 +597,10 @@ background-color: #739F65;
 
   .categorieNavHomepagina {
     width: 94%;
+  }
+
+  .knop-rubrieken{
+    width: 97%;
   }
 
   /* .uk-button {

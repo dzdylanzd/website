@@ -17,6 +17,9 @@ try {
         if ($sth->execute(array($gebruiker,$telefoonNummer))) {
             header("location: ../telefoonnummerToevoegen.php");
             exit();
+        }else if (strlen($telefoonnummer) < 9) {
+            header("location: ../telefoonnummerToevoegen.php?error=8");
+            exit();
         }
     }
 } 

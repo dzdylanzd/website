@@ -21,7 +21,7 @@
         <div class="content-wrap">
             <div class="flex-column-phone">
                 <div class="uk-width-1-5@m uk-text-center@s uk-text-left@m ">
-                    <button class="uk-button uk-button-default uk-hidden@s" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
+                    <button class="uk-button uk-button-default knop-rubrieken uk-hidden@s" type="button" uk-toggle="target: #toggle-animation-multiple; animation: uk-animation-slide-bottom">Rubrieken</button>
                     <div id="toggle-animation-multiple" class="uk-card uk-card-default uk-card-body uk-hidden@s">
                         <div class="categorieNavHomepagina">
                             <!-- <script>
