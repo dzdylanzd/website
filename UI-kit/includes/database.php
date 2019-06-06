@@ -1,5 +1,7 @@
 <?php
-
+////////////////////
+//database local
+///////////////////
 $hostname = "(local)";
 $dbname = 'IProject';
 $username = 'iproject37';
@@ -13,6 +15,9 @@ catch (PDOException $e) {
 die ( "Fout met de database: {$e->getMessage()} " );
 }
 
+////////////////////
+//database server
+///////////////////
 // $hostname = "mssql.iproject.icasites.nl";
 // $dbname = 'iproject37';
 // $username = 'iproject37';

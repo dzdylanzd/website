@@ -24,7 +24,7 @@ if ($sth = $dbh->prepare($sql)) {
 
 
 
-//blokeer / deblokeer de veiling
+//  blokeer/deblokeer de veiling
 $sql = 'update Voorwerp
 Set Geblokkeerd = ~Geblokkeerd , IsVeilingGesloten = ~IsVeilingGesloten 
 where VoorwerpNummer = ?';

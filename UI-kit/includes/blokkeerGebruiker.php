@@ -19,7 +19,7 @@ try {
     if ($sth->execute(array( $BlokkeerStatus,$gebruiker))) {
 
 
-
+//zend mail naar geblokeerde gebruiker
       require_once('zendMailAccountGeblokkeerd.php' );
 
 
@@ -30,6 +30,7 @@ try {
 
 } 
 catch (PDOException $e) {
+  //error melding
     $error = $e->getMessage();
     header("location: ../blokkeerGebruiker.php?error=$error");
     exit();
