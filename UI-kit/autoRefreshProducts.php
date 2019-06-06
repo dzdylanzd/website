@@ -39,7 +39,7 @@ session_start();
                             if ($sth12->execute(array())) {
                                 if($alles = $sth12->fetch() ){
                                     $sth12->execute(array());
-                                while ($alles = $sth->fetch()) {
+                                while ($alles = $sth12->fetch()) {
                                $voorwerpNummer = $row['VoorwerpNummer'];
 
                         // haal koper en koopBedrag op
