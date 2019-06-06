@@ -19,6 +19,7 @@
         <div class="content-wrap">
 
             <?php
+            // error handlers
             if (isset($_GET['errorVerkoper'])) {
                 $errorBericht = ($_GET['errorVerkoper']);
                 if ($errorBericht == 'leegVeld') {

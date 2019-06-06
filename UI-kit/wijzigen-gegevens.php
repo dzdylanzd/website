@@ -19,6 +19,7 @@
         <div class="content-wrap">
 
             <?php
+            // error handlers
             if (isset($_GET['error'])) {
                 $errorBericht = ($_GET['error']);
                 switch ($errorBericht) {
@@ -39,7 +40,7 @@
                     case 7:
                         echo '<p class="errors">SQL error, probeer het opnieuw</p>';
                         break;
-                        case 8:
+                    case 8:
                         echo '<p class="errors">Het telefoonnummer is te kort.</p>';
                         break;
                     default:
@@ -51,6 +52,7 @@
                 <div class="registreren">
                     <h2>Wijzigen gegevens</h2>
                     <?php
+                    // haal gegevens op
                     if (isset($_SESSION['userId']) && isset($_SESSION['userUid'])) {
                         $gebruikersnaam = $_SESSION['userId'];
                         $email = $_SESSION['userUid'];
@@ -83,7 +85,7 @@
                     ?>
                 </div>
                 <form method="post" action="includes\wijziggegevens.inc.php">
-                <!-- <form method="get" action="index.php"> -->
+
                     <div class="registreerbox">
 
                         <h3>Persoonsgegevens</h3>
@@ -96,22 +98,22 @@
                         <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum" value="<?php echo $geboortedatum;  ?>"><br>
                         <label class="registreerlabel" for="Email">Email </label><br>
                         <input class="uk-input input-registratie" type="text" id="Email" name="Email" value="<?php echo $email;  ?>"><br>
-<!-- 
-                           <?php       
-                $sql = 'SELECT Telefoonnummer FROM Gebruikerstelefoon WHERE gebruiker = ?';
-                if ($sth = $dbh->prepare($sql)) {
-                    if ($sth->execute(array($gebruikersnaam))) {
-                        while ($row = $sth->fetch()) {
-                            echo"   <label class=\"registreerlabel\" for=\"telefoonnummer\">Telefoonnummer</label><br>
+
+                        <?php
+                        //  haal telefoonnummer op
+                        $sql = 'SELECT Telefoonnummer FROM Gebruikerstelefoon WHERE gebruiker = ?';
+                        if ($sth = $dbh->prepare($sql)) {
+                            if ($sth->execute(array($gebruikersnaam))) {
+                                while ($row = $sth->fetch()) {
+                                    echo "   <label class=\"registreerlabel\" for=\"telefoonnummer\">Telefoonnummer</label><br>
                             <input class=\"uk-input input-registratie\" type=\"number\" id=\"telefoonnummer\" name=\"telefoonnummer\" value=\"";
-                            echo $row['Telefoonnummer'];
-                            echo"\"><br>";
-                            
+                                    echo $row['Telefoonnummer'];
+                                    echo "\"><br>";
+                                }
+                            }
                         }
-                    }
-                }
-                ?> -->
-                   
+                        ?>
+
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
@@ -156,21 +158,21 @@
 
 
                         <?php
-                        
+
                         $sql2 = "select categorie from voorkeur where gebruikersnaam = ?";
                         if ($sth2 = $dbh->prepare($sql2)) {
                             if ($sth2->execute(array($gebruikersnaam))) {
                                 $index = 1;
                                 while ($row2 = $sth2->fetch()) {
-                                    
+// haal voorkeur op
                                     echo "<select class=\"uk-select input-registratie\" name=\"voorkeur$index\">";
                                     $sql = "SELECT * FROM rubriek WHERE volgnr = ? AND rubrieknummer != ?";
                                     if ($sth = $dbh->prepare($sql)) {
                                         if ($sth->execute(array(-1, -1))) {
                                             while ($row = $sth->fetch()) {
-                                                if($row['Rubrieknummer'] == $row2['categorie']){
-                                                $tekst = "<option value='$row[Rubrieknummer]' selected>$row[Rubrieknaam]</option><br>";
-                                                }else{
+                                                if ($row['Rubrieknummer'] == $row2['categorie']) {
+                                                    $tekst = "<option value='$row[Rubrieknummer]' selected>$row[Rubrieknaam]</option><br>";
+                                                } else {
                                                     $tekst = "<option value='$row[Rubrieknummer]'>$row[Rubrieknaam]</option><br>";
                                                 }
                                                 echo $tekst;

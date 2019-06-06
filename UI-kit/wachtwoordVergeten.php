@@ -20,6 +20,7 @@
         <div class="content-wrap">
 
             <?php
+            // error handlers
             if (isset($_GET['error'])) {
                 $errorBericht = ($_GET['error']);
                 if ($errorBericht == 'legeemail') {

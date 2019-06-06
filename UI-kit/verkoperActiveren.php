@@ -20,6 +20,7 @@
 
             <div class="verkoper" uk-filter="target: .js-filter">
                 <?php 
+                // error handlers
                 if (isset($_GET["error"])) {
                     if ($_GET["error"] == "leeg") {
                         echo "<br> <p class=\"error\"> Gelieve alle velden in te vullen. </p>";

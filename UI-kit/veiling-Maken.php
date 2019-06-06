@@ -197,6 +197,7 @@
           <label class="registreerlabel" for="valuta">Valuta</label><br>
           <select class="uk-select input-registratie" name="valuta"><br>
             <?php
+            // haal valuta op
             $sql = "select distinct Valuta from Voorwerp";
             if ($sth = $dbh->prepare($sql)) {
               if ($sth->execute(array())) {
@@ -234,6 +235,7 @@
           <label class="registreerlabel" for="land">Land</label><br>
           <select class="uk-select input-registratie" name="land"><br>
             <?php
+            // haal landen op
             $sql = "SELECT LandNaam FROM Landen ORDER BY LandNaam ASC";
             if ($sth = $dbh->prepare($sql)) {
               if ($sth->execute(array())) {

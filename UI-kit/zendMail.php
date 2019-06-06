@@ -12,7 +12,7 @@ if (!filter_var($to, FILTER_VALIDATE_EMAIL)) {
     header("location: ./email-Bevestiging.php?error=fouteEmail");
     exit();
   } 
-
+// haal alles op van VerificatiecodeEmail
 $sql = "SELECT *  from VerificatiecodeEmail where Mailadres = ?";
 if (!$query = $dbh->prepare($sql)) {
     header("location: ./email-Bevestiging.php?error=7");
@@ -21,11 +21,13 @@ if (!$query = $dbh->prepare($sql)) {
     $query = $dbh->prepare($sql);
     $query->execute(array($to));
     while ($alles = $query->fetch()) {  
+        // check of de code nog geldig is
         if( $alles['DatumEinde'] > getdate()) {
             $sqlDeleteCode = 'delete VerificatiecodeEmail where Mailadres = ?';
             $query2 = $dbh->prepare($sqlDeleteCode);
             $query2->execute(array($to));
         }else{
+
             $sqlVerwijder = 'delete VerificatiecodeEmail
             where Mailadres = ?';
             if ($sth = $dbh->prepare($sqlVerwijder)) {
@@ -35,7 +37,7 @@ if (!$query = $dbh->prepare($sql)) {
         }
     }
 }
-
+// voeg verificatiecode toe aan database
 $sql = "INSERT INTO VerificatiecodeEmail(Mailadres,VerificatiecodeEmail) VALUES (?, ?)";
 if (empty($to)) {
     header("location: ./email-Bevestiging.php?error=legeEmail");
@@ -110,7 +112,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
 
 
-
+// stuur mail
 if (empty($_POST['emailbevestiging'])) {
     header("Location: email-Bevestiging.php?error=legeEmail");
 } else {

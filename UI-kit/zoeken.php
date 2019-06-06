@@ -178,7 +178,7 @@
                     } else {
                         $nummer = -1;
                     }
-
+// algoritme
                     $naarBenedenNav = "and Rubriekoplaagsteniveau in(
     SELECT Rubrieknummer from Rubriek where Volgnr = any(
     select Rubrieknummer from Rubriek where Volgnr = any(
@@ -231,7 +231,7 @@
 
 
 
-
+// zet zoek
                     if (isset($_POST['search'])) {
                         $_SESSION['search'] = $_POST['search'];
                     } else if (!isset($_SESSION['search'])) {
@@ -241,7 +241,7 @@
 
 
 
-
+// zet prijs van
                     if (isset($_POST['prijsVan'])) {
                         if (empty($_POST['prijsVan'])) {
                             $prijsvan = 0;
@@ -251,7 +251,7 @@
                     } else {
                         $prijsvan = 0;
                     }
-
+// zet prijs tot
                     if (isset($_POST['prijsTot'])) {
                         if (empty($_POST['prijsTot'])) {
                             $prijstot = 999999999;
@@ -302,7 +302,7 @@
                             } else {
                                 $alles['Thumbnailfile'] = $alles['Thumbnailfile'];
                             }
-
+// haal valuta op
                             $thumbnail = $alles['Thumbnailfile'];
                             $valuta = $alles['Valuta'];
                             switch ($valuta) {
@@ -330,7 +330,7 @@
                                     $valuta = '$';
                                     break;
                             }
-
+// haal prijs of hoogste bod op
                             $sql5 = "SELECT TOP 1 * FROM bod WHERE Voorwerp = ? ORDER BY BodDagTijd desc ";
                             if ($sth5 = $dbh->prepare($sql5)) {
                                 if ($sth5->execute(array($alles['VoorwerpNummer']))) {
