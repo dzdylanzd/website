@@ -54,7 +54,7 @@ if (isset($_POST['bevestigings-button'])) {
   } else if (strlen($StraatHuisnummer) > 30) {
     header("location: ../registreren.php?error=5");
     exit();
-  }else if (strlen($telefoonnummer) < 9) {
+  }else if (strlen($telefoonnummer) < 8) {
       header("location: ../registreren.php?error=12");
       exit();
   } else if (strlen($Postcode) > 30) {
