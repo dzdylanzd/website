@@ -8,6 +8,7 @@ if (isset($_POST['veiling-maken-button'])) {
     header("location: ../veiling-Maken.php?error=geenCategorie");
     exit();
   }
+  // haal variabellen op
   $betalingsinstructies = "";
   $verzendinstructies = "";
   $rubriek = $_POST['Rubriek'];
@@ -31,16 +32,18 @@ if (isset($_POST['veiling-maken-button'])) {
   $foto2 =  $_SESSION['fotos'][1];
   $foto3 =  $_SESSION['fotos'][2];
   $foto4 =  $_SESSION['fotos'][3];
-
+// check of velden leeg zijn
   if (empty($titel) || empty($staat) || empty($message) || empty($prijs)  || empty($plaatsnaam)) {
     header("location: ../veiling-Maken.php?error=leeg");
     exit();
-  } else if ($_SESSION['fotos'][0] == "https://via.placeholder.com/150") {
+  } 
+  // check of je een fotot hebt geuploud
+  else if ($_SESSION['fotos'][0] == "https://via.placeholder.com/150") {
     header("location: ../veiling-Maken.php?error=geenFoto");
     exit();
   }
 
-
+// haal voorwerpNummer op
   $sql = "SELECT top 1 VoorwerpNummer from Voorwerp order by VoorwerpNummer desc";
   if ($sth = $dbh->prepare($sql)) {
     if ($sth->execute(array())) {
@@ -49,7 +52,7 @@ if (isset($_POST['veiling-maken-button'])) {
       }
     }
   }
-
+// maak het voorwerp aan
   $sql = 'insert into Voorwerp(VoorwerpNummer,Titel,Beschrijving,StartPrijs,Betalingswijze, BetalingsInstructie,Plaatsnaam,Land,Looptijd,LooptijdBegin,Verzendkosten,Verkoper,LooptijdEinde,IsVeilingGesloten,Staat,Valuta,VerzendInstructies)
 values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
   $sqlImage = 'insert into Illustraties(VoorwerpNummer,Illustratiefile)

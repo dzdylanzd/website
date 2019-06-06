@@ -1,6 +1,6 @@
 <?php
 require_once('database.php');
-
+// haal nieuwe veiligen op
 $sql = "SELECT TOP 25 * FROM Voorwerp inner join Thumbnail on Voorwerp.VoorwerpNummer = Thumbnail.VoorwerpNummer where  IsVeilingGesloten = 0 and Geblokkeerd = 0  ORDER BY LooptijdBegin DESC";
 if ($sth = $dbh->prepare($sql)) {
     if ($sth->execute(array())) {
@@ -12,6 +12,7 @@ if ($sth = $dbh->prepare($sql)) {
         }else{
             $alles['Thumbnailfile'] =  $alles['Thumbnailfile'];
         }
+        // haal valuta op
         $valuta = $alles['Valuta'];
         switch ($valuta) {
             case 'EUR':
@@ -38,7 +39,7 @@ if ($sth = $dbh->prepare($sql)) {
                 $valuta = '$';
                 break;
         }
-        
+        // haal bod of startprijs op
         $sql5 = "SELECT TOP 1 * FROM bod WHERE Voorwerp = ? ORDER BY BodDagTijd desc ";
         if ($sth5 = $dbh->prepare($sql5)) {
             if ($sth5->execute(array($alles['VoorwerpNummer']))) {
@@ -52,7 +53,7 @@ if ($sth = $dbh->prepare($sql)) {
             }
           }
           
-
+// echo het product
           $alles["StartPrijs"] = (double)$alles["StartPrijs"];
           $text = $text . "
           <li class=\"uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s\">

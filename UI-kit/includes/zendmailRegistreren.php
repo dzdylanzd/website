@@ -6,7 +6,7 @@ $gebruikersnaam = $_SESSION['userId'];
 $to = $_SESSION['userUid'];
 
 $subject = "Bedankt voor uw registratie! - EenmaalAndermaal";
-
+// haal voornaam en achternaam op
 $sql = 'SELECT * FROM Gebruiker WHERE Gebruikersnaam = ?';
 if ($sth = $dbh->prepare($sql)) {
     if ($sth->execute(array($gebruikersnaam))) {
@@ -59,7 +59,7 @@ Heyendaalseweg 98<br>
 ';
 
 
-
+// zend mail
 if (mail($to, $subject, $message, $headers)) {
     header("Location: ../index.php");
     exit();

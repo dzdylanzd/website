@@ -1,8 +1,8 @@
 <?php
 
 function displayCategorie($nummer, $dbh, $hoeveel) {
-    $text= 123 ;
-    
+    $text= 123 ;  // empty value
+    //algoritme 
         $sql= "SELECT top $hoeveel * FROM Voorwerp V LEFT JOIN Voorwerpinrubriek VR ON V.VoorwerpNummer = VR.Voorwerp where Rubriekoplaagsteniveau in(
             SELECT Rubrieknummer from Rubriek where Volgnr = any(
             select Rubrieknummer from Rubriek where Volgnr = any(
@@ -107,6 +107,7 @@ switch ($valuta) {
         break;
 }
 
+//haal hoogste bod op
 $sql5 = "SELECT TOP 1 * FROM bod WHERE Voorwerp = ? ORDER BY BodDagTijd desc ";
 if ($sth5 = $dbh->prepare($sql5)) {
     if ($sth5->execute(array($alles['VoorwerpNummer']))) {
@@ -120,6 +121,7 @@ if ($sth5 = $dbh->prepare($sql5)) {
     }
   }
 
+// echo product met hoogste bod
 if(!$alles['IsVeilingGesloten']){
     $alles["StartPrijs"] = (double)$alles["StartPrijs"];
     $text = $text . "
@@ -139,6 +141,7 @@ if(!$alles['IsVeilingGesloten']){
 
   
 }
+//slider buttons
 $text = $text .'</ul>
 
 <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>

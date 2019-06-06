@@ -4,11 +4,8 @@ if (isset($_POST['bevestigings-button'])) {
   require_once('database.php');
 
 
-  // $username = $_POST['uid'];
-  // $email = $_POST['mail'];
-  // $password = $_POST{"pwd"};
-  // $passwordRepeat = $_POST['pwd-repeat'];
 
+//variabelen maken
   $Gebruiksernaam = $_POST['gebruikersnaam'];
   $voornaam = $_POST['voornaam'];
   $Achternaam = $_POST["achternaam"];

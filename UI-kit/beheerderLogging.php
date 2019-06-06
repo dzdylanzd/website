@@ -96,7 +96,8 @@
 
                                 $sqlWeekdagen = 'DECLARE @totaal int = (select  count(Gebruikersnaam) from LoginActiviteit)
 select count(Gebruikersnaam) * 100 / @totaal  as percentage,count(Gebruikersnaam) as totaal,  FORMAT(Datum, \'dddd\') as dag from LoginActiviteit
-group by FORMAT(Datum, \'dddd\')  ';
+group by FORMAT(Datum, \'dddd\')
+order by (count(Gebruikersnaam) * 100 / @totaal )';
 
                                 $sqlUren = 'DECLARE @totaal int= ?
 select count(Gebruikersnaam) * 100 / @totaal  as percentage,  FORMAT(Datum, \'dddd\') as dag,DATEPART(HOUR,Datum) as uur from LoginActiviteit

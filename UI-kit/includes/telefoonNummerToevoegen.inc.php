@@ -11,7 +11,7 @@ echo$gebruiker;
 $sql = "
 insert into Gebruikerstelefoon(Gebruiker,Telefoonnummer)
 values(?,?);";
-
+// telefoonnumer toevoegen
 try {
     if ($sth = $dbh->prepare($sql)) {
         if ($sth->execute(array($gebruiker,$telefoonNummer))) {

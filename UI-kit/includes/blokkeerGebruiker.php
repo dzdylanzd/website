@@ -2,7 +2,7 @@
 require_once('database.php');
 
 $gebruiker = $_POST['gebruikersnaam'];
-
+$_SESSION['GeblokkerdeGebruiker'] = $gebruiker;
 if(isset($_POST['GebruikerDeblokkeren'])){
 $BlokkeerStatus = 0;
 }else if(isset($_POST['GebruikerBlokkeren'])){

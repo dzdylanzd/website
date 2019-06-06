@@ -5,18 +5,18 @@ $random_hash = bin2hex(random_bytes(4));
 $to = $_POST['wachtwoordVergetenEmail'];
 $subject = "Wachtwoord vergeten - EenmaalAndermaal";
 $antwoord =  $_POST['beveiligingsvraag'];
-
+// haal het antwoord op
 $sql = "SELECT AntwoordTekst FROM Gebruiker WHERE Mailadres = ?";
 if ($query = $dbh->prepare($sql)) {
     if ($query->execute(array($to))) {
 
         while ($alles = $query->fetch()) {
-
+            // check of de vraag klopt
             $pwdCheck = password_verify($antwoord, $alles['AntwoordTekst']);
         }
     }
 }
-
+// als de vraag klopt zet niet random wachtwoord
 if ($pwdCheck) {
     $hashedPwd = password_hash($random_hash, PASSWORD_DEFAULT);
     $sql = "UPDATE Gebruiker SET Wachtwoord = ? WHERE Mailadres = ?";
@@ -24,7 +24,7 @@ if ($pwdCheck) {
         $query->execute(array($hashedPwd, $to));
     }
 }
-
+// bepaal voor en achternaam
 $sql = 'SELECT * FROM Gebruiker WHERE Gebruikersnaam = ?';
 if ($sth = $dbh->prepare($sql)) {
     if ($sth->execute(array($gebruikersnaam))) {
@@ -88,6 +88,7 @@ $headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
 if (empty($_POST['wachtwoordVergetenEmail'])) {
     header("Location: ../wachtwoordVergeten.php?error=legeemail");
 } else {
+    // stuur mail
     if ($pwdCheck) {
         mail($to, $subject, $message, $headers);
         header("Location: ../index.php");

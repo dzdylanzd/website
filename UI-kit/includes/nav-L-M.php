@@ -1,11 +1,13 @@
+<!--                       -->
 <!-- navigatiebalk Desktop -->
+<!--                       -->
 <?php session_start();
 include 'database.php';
-
-include 'meldingen.php';?>
+//haal meldingen op
+include 'meldingen.php'; ?>
 <div class="uk-visible@m sticky">
 
-
+    <!-- navbar -->
     <nav class="uk-navbar-container marginRemove" uk-navbar>
         <div class="uk-navbar-left">
             <div class="uk-navbar-nav">
@@ -17,17 +19,17 @@ include 'meldingen.php';?>
             <div class="uk-navbar-nav">
                 <div class="uk-navbar-item ">
 
-                
-                <?php  
-                if(isset($_GET['root'])){
-                    $fromSearchAction = "zoeken.php?root=$_GET[root]";
-                }else{
-                    $fromSearchAction = "zoeken.php";
-                }
-                
-                ?>
+                    <!-- haal op form action zoekbalk -->
+                    <?php
+                    if (isset($_GET['root'])) {
+                        $fromSearchAction = "zoeken.php?root=$_GET[root]";
+                    } else {
+                        $fromSearchAction = "zoeken.php";
+                    }
 
-                    <form method="post" action="<?php echo$fromSearchAction; ?>">
+                    ?>
+                    <!-- zoek balk -->
+                    <form method="post" action="<?php echo $fromSearchAction; ?>">
 
                         <div class="uk-inline">
                             <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
@@ -41,6 +43,7 @@ include 'meldingen.php';?>
             <div class="uk-navbar-nav">
                 <div class=" uk-navbar-item ">
                     <?php
+                    // inlog knop met foutmeldingen
                     if (!isset($_SESSION['userId'])) {
                         echo ' <div class="uk-inline">
                                 <button class="uk-button uk-button-primary " type="button">Inloggen</button>
@@ -90,7 +93,7 @@ include 'meldingen.php';?>
                                 </div>';
                     } else {
                         $gebruikersnaam = $_SESSION['userId'];
-
+                        // haal soort gebruiker op 
                         $sql = 'SELECT Gebruikersnaam,SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
                         if ($sth = $dbh->prepare($sql)) {
                             if ($sth->execute(array($gebruikersnaam))) {
@@ -114,8 +117,8 @@ include 'meldingen.php';?>
                                 }
                             }
                         }
-                  
 
+                        // gebruikers navigatie gebaseerd op accounttype
                         if ($verkoper) {
                             echo '<div class="uk-inline">
                         <button class=" knop-lang uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
@@ -128,7 +131,7 @@ include 'meldingen.php';?>
                             <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                             <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
                             <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'VerkoperActiveren.php\'">Verkoper activeren</button></div> </div>';
-                        } else if($beheerder){
+                        } else if ($beheerder) {
                             echo '<div class="uk-inline">
                             <button class=" knop-lang uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                             <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
@@ -148,7 +151,31 @@ include 'meldingen.php';?>
                     ?>
     </nav>
 </div>
-<!-- navigatiebalk Mobile -->
+
+
+\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--                      -->
+<!-- navigatiebalk tablet -->
+<!--                      -->
 <div class="uk-visible@s uk-hidden@m sticky ">
 
 
@@ -163,16 +190,16 @@ include 'meldingen.php';?>
 
         <div class="uk-navbar-nav">
             <div class="uk-navbar-item ">
-            <?php  
-                if(isset($_GET['root'])){
+                <!-- haal op form action zoekbalk -->
+                <?php
+                if (isset($_GET['root'])) {
                     $fromSearchAction = "zoeken.php?root=$_GET[root]";
-                }else{
+                } else {
                     $fromSearchAction = "zoeken.php";
                 }
-                
                 ?>
-
-                    <form method="post" action="<?php echo$fromSearchAction; ?>">
+                <!-- nav bar -->
+                <form method="post" action="<?php echo $fromSearchAction; ?>">
 
                     <div class="uk-inline">
                         <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
@@ -182,9 +209,10 @@ include 'meldingen.php';?>
             </div>
         </div>
 
-
+        <!-- navigatie balk -->
         <div class="uk-navbar-nav">
             <div class=" uk-navbar-item ">
+                <!-- login kop met foutmeldingen -->
                 <?php
                 if (!isset($_SESSION['userId'])) {
                     echo ' <div class="uk-inline">
@@ -208,7 +236,7 @@ include 'meldingen.php';?>
             <button class="loginknop uk-width-1-1 uk-button uk-button-default " name="login-submit" type="submit">Login</button>
         </form>
         <a class="uk-link-muted" href="wachtwoordVergeten.php">Wachtwoord vergeten?</a>';
-
+                    // foutmeldingen
                     if (isset($_GET["errorLogin"])) {
                         if ($_GET["errorLogin"] == "leeg") {
                             echo "<br> <p class=\"errorLogin\"> Niet alle velden zijn ingevuld </p>";
@@ -236,71 +264,67 @@ include 'meldingen.php';?>
                                 </div>
                             </div>';
                 } else {
-                    // echo '<div class="uk-inline">
-                    // <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
-                    // <div uk-dropdown="mode: click"><button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">mijn gegevens</button>
-                    // <button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">mijn gegevens</button></div> </div>';
-                    // echo '<button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>';
-               
 
-                $gebruikersnaam = $_SESSION['userId'];
+                    // haal op soort
+                    $gebruikersnaam = $_SESSION['userId'];
 
-                $sql = 'SELECT Gebruikersnaam,SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
-                if ($sth = $dbh->prepare($sql)) {
-                    if ($sth->execute(array($gebruikersnaam))) {
-                        while ($row = $sth->fetch()) {
-                            $gebruikersnaam = $row['Gebruikersnaam'];
-                            if ($row['SoortGebruiker'] == 'V') {
-                                $verkoper = true;
-                            } else {
-                                $verkoper = false;
-                            }
-                            if ($row['SoortGebruiker'] == 'A') {
-                                $activatie = true;
-                            } else {
-                                $activatie = false;
-                            }
-                            if ($row['SoortGebruiker'] == 'B') {
-                                $beheerder = true;
-                            } else {
-                                $beheerder = false;
+                    $sql = 'SELECT Gebruikersnaam,SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
+                    if ($sth = $dbh->prepare($sql)) {
+                        if ($sth->execute(array($gebruikersnaam))) {
+                            while ($row = $sth->fetch()) {
+                                $gebruikersnaam = $row['Gebruikersnaam'];
+                                if ($row['SoortGebruiker'] == 'V') {
+                                    $verkoper = true;
+                                } else {
+                                    $verkoper = false;
+                                }
+                                if ($row['SoortGebruiker'] == 'A') {
+                                    $activatie = true;
+                                } else {
+                                    $activatie = false;
+                                }
+                                if ($row['SoortGebruiker'] == 'B') {
+                                    $beheerder = true;
+                                } else {
+                                    $beheerder = false;
+                                }
                             }
                         }
                     }
-                }
-               
 
-                if ($verkoper) {
-                    echo '<div class="uk-inline">
+                    // gebruikers navigatie gebaseerd op accounttype
+                    if ($verkoper) {
+                        echo '<div class="uk-inline">
                     <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                 <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                 <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
                 <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-veilingen.php\'">Mijn veilingen</button></div> </div>';
-                } else if ($activatie) {
-                    echo '<div class="uk-inline">
+                    } else if ($activatie) {
+                        echo '<div class="uk-inline">
                     <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                     <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                     <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
                     <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'VerkoperActiveren.php\'">Verkoper activeren</button></div> </div>';
-                }if($beheerder){
-                    echo '<div class="uk-inline">
+                    }
+                    if ($beheerder) {
+                        echo '<div class="uk-inline">
                     <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                 <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                 <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
                 <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'beheerderLogging.php\'">Beheerder logging</button>
                 <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'blokkeerGebruiker.php\'">Blokkeer Gebruiker</button>
                 <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-veilingen.php\'">Mijn veilingen</button></div> </div>';
-                } else {
-                    echo '<div class="uk-inline">
+                    } else {
+                        echo '<div class="uk-inline">
                     <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span>' . $gebruikersnaam . ' </button>
                 <div uk-dropdown="mode: click"><button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-gegevens.php\'">Mijn gegevens</button>
                 <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'mijn-biedingen.php\'">Mijn biedingen</button>
                 <button class="knop-lang uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'VerkoperWorden.php\'">Verkoper worden</button></div> </div>';
+                    }
+                    echo '<button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>';
                 }
-                echo '<button class="uk-button uk-button-primary uk-margin-right" onclick="window.location.href=\'includes/logout.php\'">uitloggen</button>';
-            }
-            ?>
-                
+                ?>
+
 
             </div>
 

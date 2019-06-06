@@ -18,14 +18,14 @@ WHERE Gebruiker = ?
 
 DELETE FROM VerificatiecodeEmail
 WHERE Mailadres = ?";
-
+// verwijder en update tabbelen om gebruiker te verwijderen
 if ($sth = $dbh->prepare($sqlUpdates)) {
     if ($sth->execute(array($gebruiker,$gebruiker,$gebruiker,$email))) {
     }
 }
 
 $gebruiker =  $_SESSION['userId'];
-
+// verwijder gebruiker
 if ($sth = $dbh->prepare($sql)) {
     if ($sth->execute(array($gebruiker))) {
         header("location: logout.php");

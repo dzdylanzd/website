@@ -1,6 +1,6 @@
 <?php
 
-
+// haal koper en koopBedrag op
 $sql = "SELECT top 1 * from bod where Voorwerp = ? order by BodBedrag desc";
 if ($sth = $dbh->prepare($sql)) {
     if ($sth->execute(array($_SESSION['PID']))) {
@@ -10,7 +10,7 @@ if ($sth = $dbh->prepare($sql)) {
         }
     }
 }
-
+//  haal kopermail op
 if (isset($koper)) {
     $sql = "select * from Gebruiker where Gebruikersnaam = ?";
     if ($sth = $dbh->prepare($sql)) {
@@ -24,19 +24,19 @@ if (isset($koper)) {
 
 
 
-
-$sql ="select isVeilingGesloten, LooptijdEinde, Verkoper,Titel  from Voorwerp where VoorwerpNummer = ?";
+// haal de tijd, titel, verkoper, isVeiligGesloten op
+$sql = "select isVeilingGesloten, LooptijdEinde, Verkoper,Titel  from Voorwerp where VoorwerpNummer = ?";
 $sth = $dbh->prepare($sql);
 if ($sth->execute(array($_SESSION['PID']))) {
     while ($row = $sth->fetch()) {
         $verkoper = $row['Verkoper'];
         $titel = $row['Titel'];
-       
-        if($row["isVeilingGesloten"] == 0){
-            echo"<p class=\"witte-tekst\">De veiling is geopend</p>";
-            $tijd =   substr(substr_replace($row["LooptijdEinde"], "T", 11,0),0,20) . "+02:00";
-            $tijd =  str_replace(" ","",$tijd);
-          
+        // check of de veiling is gesloten
+        if ($row["isVeilingGesloten"] == 0) {
+            echo "<p class=\"witte-tekst\">De veiling is geopend</p>";
+            $tijd =   substr(substr_replace($row["LooptijdEinde"], "T", 11, 0), 0, 20) . "+02:00";
+            $tijd =  str_replace(" ", "", $tijd);
+            // echo de timer
             echo "<h3 class=\"timer\"><div class=\"uk-grid-small uk-child-width-auto\" uk-grid uk-countdown=\"date:  $tijd\">
                     <div>
                         <div class=\"uk-countdown-number uk-countdown-days\"></div>
@@ -58,6 +58,7 @@ if ($sth->execute(array($_SESSION['PID']))) {
                         <div class=\"uk-countdown-label uk-margin-small uk-text-center uk-visible@s\">Seconden</div>
                     </div>
                 </div></h3>";
+            // check of de timer is afgelopen
             if (strtotime($row["LooptijdEinde"]) < strtotime("now")) {
                 if (isset($koper)) {
                     $sqlchangeIsGesloten = "update Voorwerp
@@ -68,17 +69,18 @@ if ($sth->execute(array($_SESSION['PID']))) {
                         set  isVeilingGesloten = 1 
                         where VoorwerpNummer = ?";
                 }
+                // stuur een meldig naar de verkoper
                 $sql3 = "INSERT into meldingen(bericht,ontvanger) values(?,?)";
                 if ($melding = $dbh->prepare($sql3)) {
                     $melding->execute(array('uw <a href="productPage.php?ID=' . $_SESSION['PID'] . '">veiling</a> is gesloten', $verkoper));
-                    
+                    // stuur een melding naar de koper
                     if (isset($koper)) {
                         $melding = $dbh->prepare($sql3);
                         $melding->execute(array('U heeft deze <a href="productPage.php?ID=' . $_SESSION['PID'] . '">veiling</a> gewonnen', $koper));
 
                         $to = $kopermail;
                         $subject = "U heeft een veiling gewonnen!";
-
+                        // email bericht
                         $message = '
                             <html>
                             <head>
@@ -113,10 +115,11 @@ if ($sth->execute(array($_SESSION['PID']))) {
                         // More headers
                         $headers .= 'From: <webmaster@example.com>' . "\r\n";
                         $headers .= 'Cc: myboss@example.com' . "\r\n";
-
+                        // zend email naar koper
                         mail($to, $subject, $message, $headers);
                     }
                 }
+                // sluit de veiling
                 $changeIsGesloten = $dbh->prepare($sqlchangeIsGesloten);
                 if (isset($koper)) {
                     if ($changeIsGesloten->execute(array($koper, $koopBedrag, $_SESSION['PID']))) {

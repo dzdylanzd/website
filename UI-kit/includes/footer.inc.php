@@ -1,4 +1,6 @@
 
+
+<!-- foooter -->
 <footer>
     <a href="faq.php">Hulp nodig?</a>
     <br><br>

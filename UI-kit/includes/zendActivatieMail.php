@@ -58,7 +58,7 @@ Heyendaalseweg 98<br>
 
 </html>
 ';
-
+// zet code in database
 $sql = "INSERT INTO VerificatiecodeVerkoper(Gebruikersnaam,VerificatiecodeVerkoper) VALUES (?, ?)";
 try {
     $query = $dbh->prepare($sql);
@@ -69,11 +69,9 @@ try {
     exit();
 }
 
-// Always set content-type when sending HTML email
+//  headers
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-// More headers
 $headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
 mail($to, $subject, $bericht, $headers);
 header("Location: ../VerkoperActiveren.php");

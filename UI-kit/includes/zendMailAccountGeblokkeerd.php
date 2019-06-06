@@ -2,7 +2,7 @@
 include "database.php";
 session_start();
 $gebruikersnaam = 'test';
-$gebruikersnaam = $_SESSION['userId'];
+$gebruikersnaam = $_SESSION['GeblokkerdeGebruiker'];
 $random_hash = bin2hex(random_bytes(4));
 $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
 $to = $_SESSION['userUid'];

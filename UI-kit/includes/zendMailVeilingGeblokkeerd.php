@@ -67,12 +67,10 @@ Heyendaalseweg 98<br>
 
 </html>
 ';
+// headers
 
-// Always set content-type when sending HTML email
 $headers = "MIME-Version: 1.0" . "\r\n";
 $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-
-// More headers
 $headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
 if( $geblokkeerd ){
 mail($to, $subject, $bericht, $headers);

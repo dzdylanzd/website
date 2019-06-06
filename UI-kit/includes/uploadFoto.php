@@ -1,6 +1,10 @@
 <?php
 session_start();
+// maximale bestands grote van een foto 
+$maxImageSize = 10000000;  
+// doelmap
 $target_dir = "../upload/";
+// check of je het maximum hebt behaald 
 if( $_SESSION['index'] >= 4){
     header("location: ../veiling-Maken.php?error=maxFotos");
     exit();
@@ -37,7 +41,7 @@ while (file_exists($target_file)) {
 }
 
 // Check de grootte van het bestand
-if ($_FILES["fileToUpload"]["size"] > 10000000) {
+if ($_FILES["fileToUpload"]["size"] > $maxImageSize) {
     
     echo "Sorry, deze foto is te groot.";
     $uploadOk = 0;
@@ -64,10 +68,7 @@ if ($uploadOk == 0) {
         echo "Het bestand ". basename( $_FILES["fileToUpload"]["name"]). " is geüpload.";
         $_SESSION['fotos'][$_SESSION['index']] = $file;
         $_SESSION['index']++;
-        // rond gaan
-        // if( $_SESSION['index'] == 4){
-        //     $_SESSION['index'] = 0;
-        // }
+       
         header("location: ../veiling-Maken.php");
         exit();
     } else {

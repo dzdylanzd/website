@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('database.php');
+// haal gegevens op
 $voornaam = $_POST['voornaam'];
 $Achternaam = $_POST["achternaam"];
 $Telefoonnummer = $_POST['telefoonnummer'];
@@ -18,6 +19,8 @@ $voorkeur2 =  $_POST['voorkeur2'];
 $voorkeur3 =  $_POST['voorkeur3'];
 $gebruikersnaam = $_SESSION['userId'];
 
+
+// als je je wachtwoord probeert te wijzigen
 if (!empty($oudWachtwoord) && !empty($Wachtwoord) && !empty($WachtwoordHerhaal)) {
     $sql = "SELECT Wachtwoord FROM Gebruiker WHERE Gebruikersnaam = ?";
     if ($query = $dbh->prepare($sql)) {

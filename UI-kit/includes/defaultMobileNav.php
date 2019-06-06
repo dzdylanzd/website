@@ -17,6 +17,7 @@
 
                 ?>
 
+                <!-- Zoek balk -->
                 <form method="post" action="<?php echo $fromSearchAction; ?>">
 
                     <div class="uk-inline">
@@ -25,7 +26,7 @@
                     </div>
                 </form>
 
-
+<!-- inloggen mobile -->
                 <?php
                 if (!isset($_SESSION['userId'])) {
                     echo ' <a class="uk-margin-left" href="inloggen-Mobile.php" uk-icon="icon: user"></a>';
@@ -35,30 +36,17 @@
 
                     $gebruikersnaam = $_SESSION['userId'];
 
-                    $sql = 'SELECT Gebruikersnaam FROM Gebruiker WHERE gebruikersnaam = ?';
+                  //bepaal soort gebruiker
+                    $sql = 'SELECT SoortGebruiker,Gebruikersnaam FROM Gebruiker WHERE gebruikersnaam = ?';
                     if ($sth = $dbh->prepare($sql)) {
                         if ($sth->execute(array($gebruikersnaam))) {
                             while ($row = $sth->fetch()) {
-                                $gebruikersnaam = $row['Gebruikersnaam'];
-                            }
-                        }
-                    }
-                    $sql = 'SELECT SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
-                    if ($sth = $dbh->prepare($sql)) {
-                        if ($sth->execute(array($gebruikersnaam))) {
-                            while ($row = $sth->fetch()) {
+                              
                                 if ($row['SoortGebruiker'] == 'V') {
                                     $verkoper = true;
                                 } else {
                                     $verkoper = false;
                                 }
-                            }
-                        }
-                    }
-                    $sql = 'SELECT SoortGebruiker FROM Gebruiker WHERE gebruikersnaam = ?';
-                    if ($sth = $dbh->prepare($sql)) {
-                        if ($sth->execute(array($gebruikersnaam))) {
-                            while ($row = $sth->fetch()) {
                                 if ($row['SoortGebruiker'] == 'A') {
                                     $activatie = true;
                                 } else {
@@ -72,7 +60,8 @@
                             }
                         }
                     }
-
+                   
+//echo nav afhankelijk van accounttype
                     if ($verkoper) {
                         echo '<div class="uk-inline">
                     <button class="uk-button uk-button-default" type="button"><span uk-icon="user"></span> </button>
