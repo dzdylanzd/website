@@ -90,7 +90,7 @@
                     </li>
                     <li class="tag-email verkoopbox">
                         <div>
-                            <h3>activiteit per dag per uur in procenten</h3>
+                            <h3>Activiteit per dag per uur in procenten</h3>
                             <div class="uk-flex uk-flex-center uk-flex-wrap uk-flex-wrap-around">
                                 <?php
 

@@ -37,7 +37,7 @@ while (file_exists($target_file)) {
 }
 
 // Check de grootte van het bestand
-if ($_FILES["fileToUpload"]["size"] > 3000000) {
+if ($_FILES["fileToUpload"]["size"] > 10000000) {
     
     echo "Sorry, deze foto is te groot.";
     $uploadOk = 0;

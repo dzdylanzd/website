@@ -11,7 +11,7 @@ if (isset($_POST['verkoopaccountActiveren'])) {
         if ($query->execute(array($Gebruiksernaam)))
         while($row = $query->fetch()){
             $verificatiecodeTabel = $row['VerificatiecodeVerkoper'];
-            if( $alles['DatumEinde'] < getdate()) {
+            if( strtotime($row['DatumEinde']) < strtotime("now")) {
                 $sqlVerwijder = 'delete from Verkoper
                 where Gebruiker = ?
                 
@@ -24,19 +24,23 @@ if (isset($_POST['verkoopaccountActiveren'])) {
                 if ($sth = $dbh->prepare($sqlVerwijder)) {
                   $sth->execute(array($Gebruiksernaam,$Gebruiksernaam,$Gebruiksernaam));
                 }
-                header("location: ../verkoperWorden.php?error=codeVerlopen");
+              
+                header("location: ../verkoperWorden.php?error=codeNietMeerGeldig");
                 exit();
             }
         }
     }
     
     if ($verificatiecode == $verificatiecodeTabel) {
-        $sql2 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?';
+        $sql2 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?
+        delete VerificatiecodeVerkoper
+where Gebruikersnaam = ?';
         $query = $dbh->prepare($sql2);
-        if ($query->execute(array("V", $Gebruiksernaam))) {
+        if ($query->execute(array("V", $Gebruiksernaam,$Gebruiksernaam))) {
 
 // hidde hier moet de mail
 
+require_once('zendMailVerkoopaccount.php');
             header("location: ../index.php?succes=uBentVerkoper");
             exit();
         }

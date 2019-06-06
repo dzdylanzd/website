@@ -1,11 +1,13 @@
 <?php
+include "database.php";
 session_start();
-include 'database.php';
-
+$gebruikersnaam = 'test';
 $gebruikersnaam = $_SESSION['userId'];
+
+
 $to = $_SESSION['userUid'];
 
-$subject = "Bedankt voor uw registratie! - EenmaalAndermaal";
+$subject = "Veiling geblokkeerd - EenmaalAndermaal";
 
 $sql = 'SELECT * FROM Gebruiker WHERE Gebruikersnaam = ?';
 if ($sth = $dbh->prepare($sql)) {
@@ -17,13 +19,17 @@ if ($sth = $dbh->prepare($sql)) {
     }
 }
 
-// Always set content-type when sending HTML email
-$headers = "MIME-Version: 1.0" . "\r\n";
-$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-// More headers
-$headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
+$sql = 'SELECT * FROM Voorwerp WHERE VoorwerpNummer = ? ';
+if ($sth = $dbh->prepare($sql)) {
+    if ($sth->execute(array( $_SESSION['PID']))) {
+        while ($row = $sth->fetch()) {
+            $titelGeblokkeerd = $row['Titel'];
+            $geblokkeerd = $row['Geblokkeerd'];
+        }
+    }
+}
 
-$message = '
+$bericht = '
 <!DOCTYPE html>
 <html>
 
@@ -39,10 +45,15 @@ $message = '
 
 <body>
 Beste ' . $voorletter . '. ' . $achternaam . ',<br><br>
-Bedankt dat u een account heeft gemaakt op EenmaalAndermaal, u kunt nu beginnen met het bieden op veilingen!<br><br>
-Wilt u inloggen? Dit kan door op de inlogknop te klikken en uw gegevens in te vullen.<br><br>
-Uw gebruikersnaam is: ' . $gebruikersnaam . '<br><br>
-U kunt ten alle tijden uw gegevens wijzigen op de pagina: ‘Mijn gegevens’ onder uw profiel.<br><br><br>
+
+Wegens ongepast gedrag heeft een beheerder besloten een van uw veilingen
+te blokkeren. We hopen voor uw begrip.<br><br>
+
+Het gaat om de veiling ' . $titelGeblokkeerd . '.<br><br>
+
+Er kan nu niet meer op deze veiling worden geboden en hij kan door niemand worden gezien behalve u.<br><br>
+
+Vindt u deze actie onterecht? Neem dan contact met ons op.<br><br><br>
 
 
 Met vriendelijke groeten,<br>
@@ -52,15 +63,18 @@ Heyendaalseweg 98<br>
 <a href=http://iproject37.icasites.nl>EenmaalAndermaal</a><br>
 
 <img src="http://iproject37.icasites.nl/media/logomail.png" alt="Logo" height="150px" width="150px">
-
 </body>
 
 </html>
 ';
 
+// Always set content-type when sending HTML email
+$headers = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
-
-if (mail($to, $subject, $message, $headers)) {
-    header("Location: ../index.php");
-    exit();
+// More headers
+$headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
+if( $geblokkeerd ){
+mail($to, $subject, $bericht, $headers);
 }
+

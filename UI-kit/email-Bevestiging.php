@@ -49,7 +49,7 @@
                             Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken.
                         </p>
                         <label for="emailbevestiging">E-mail:</label><br>
-                        <input class="uk-input input-registratie" type="email" name="emailbevestiging" id="emailbevestiging">
+                        <input class="uk-input input-registratie" placeholder="maximaal 60 tekens" type="email" name="emailbevestiging" id="emailbevestiging">
                         <button class="uk-button knop-email">E-mail bevestigen</button>
                     </div>
                 </form>

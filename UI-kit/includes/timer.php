@@ -71,6 +71,7 @@ if ($sth->execute(array($_SESSION['PID']))) {
                 $sql3 = "INSERT into meldingen(bericht,ontvanger) values(?,?)";
                 if ($melding = $dbh->prepare($sql3)) {
                     $melding->execute(array('uw <a href="productPage.php?ID=' . $_SESSION['PID'] . '">veiling</a> is gesloten', $verkoper));
+                    
                     if (isset($koper)) {
                         $melding = $dbh->prepare($sql3);
                         $melding->execute(array('U heeft deze <a href="productPage.php?ID=' . $_SESSION['PID'] . '">veiling</a> gewonnen', $koper));

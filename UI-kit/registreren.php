@@ -55,16 +55,19 @@ if (!isset($_SESSION["gevalideert"])) {
                         echo '<p class="errors">SQL error, probeer het opnieuw</p>';
                         break;
                     case 8:
-                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        echo '<p class="errors">Uw wachtwoord is te kort</p>';
                         break;
                     case 9:
-                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        echo '<p class="errors">Er moet een hoofletter in het wachtwoord zitten</p>';
                         break;
                     case 10:
-                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        echo '<p class="errors">Er moet een cijfer in het wachtwoord zitten</p>';
                         break;
                     case 11:
-                        echo '<p class="errors">SQL error, probeer het opnieuw</p>';
+                        echo '<p class="errors">Een voorkeur is hetzelfde</p>';
+                        break;
+                        case 12:
+                        echo '<p class="errors">Uw telefoonNummer is te kort</p>';
                         break;
                     default:
                         echo '<p class="errors">Onverwachte error, probeer het opnieuw';
@@ -86,7 +89,7 @@ if (!isset($_SESSION["gevalideert"])) {
                         <label class="registreerlabel" for="geboortedatum">Geboortedatum *</label><br>
                         <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum"><br>
                         <label class="registreerlabel" for="telefoonnummer">Telefoonnummer *</label><br>
-                        <input class="uk-input input-registratie" type="number" id="telefoonnummer" name="telefoonnummer"><br>
+                        <input class="uk-input input-registratie" type="number"  placeholder="minimaal 8 tekens" id="telefoonnummer" name="telefoonnummer"><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
