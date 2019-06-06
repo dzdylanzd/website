@@ -34,10 +34,16 @@ session_start();
                         <h3>auto Refresh</h3>
                         <?php
 
+                        $sql12= "select * from Voorwerp where LooptijdEinde < getdate() and IsVeilingGesloten = 0";
+                        if ($sth12 = $dbh->prepare($sql12)) {
+                            if ($sth12->execute(array())) {
+                                while ($alles = $sth->fetch()) {
+                               $voorwerpNummer = $row['VoorwerpNummer'];
+
                         // haal koper en koopBedrag op
 $sql = "SELECT top 1 * from bod where Voorwerp = ? order by BodBedrag desc";
 if ($sth = $dbh->prepare($sql)) {
-    if ($sth->execute(array($_SESSION['PID']))) {
+    if ($sth->execute(array($voorwerpNummer))) {
         while ($alles = $sth->fetch()) {
             $koper = $alles['Gebruiker'];
             $koopBedrag = $alles['BodBedrag'];
@@ -48,7 +54,7 @@ if ($sth = $dbh->prepare($sql)) {
 if (isset($koper)) {
     $sql = "select * from Gebruiker where Gebruikersnaam = ?";
     if ($sth = $dbh->prepare($sql)) {
-        if ($sth->execute(array($_SESSION['PID']))) {
+        if ($sth->execute(array($voorwerpNummer))) {
             while ($alles = $sth->fetch()) {
                 $kopermail = $alles['Mailadres'];
             }
@@ -68,11 +74,11 @@ if (isset($koper)) {
 // stuur een meldig naar de verkoper
 $sql3 = "INSERT into meldingen(bericht,ontvanger) values(?,?)";
 if ($melding = $dbh->prepare($sql3)) {
-    $melding->execute(array('uw <a href="productPage.php?ID=' . $_SESSION['PID'] . '">veiling</a> is gesloten', $verkoper));
+    $melding->execute(array('uw <a href="productPage.php?ID=' . $voorwerpNummer. '">veiling</a> is gesloten', $verkoper));
     // stuur een melding naar de koper
     if (isset($koper)) {
         $melding = $dbh->prepare($sql3);
-        $melding->execute(array('U heeft deze <a href="productPage.php?ID=' . $_SESSION['PID'] . '">veiling</a> gewonnen', $koper));
+        $melding->execute(array('U heeft deze <a href="productPage.php?ID=' . $voorwerpNummer . '">veiling</a> gewonnen', $koper));
 
         $to = $kopermail;
         $subject = "U heeft een veiling gewonnen!";
@@ -90,7 +96,7 @@ if ($melding = $dbh->prepare($sql3)) {
             
             U kan de veiling vinden op de \'Mijn biedingen\' pagina, of via onderstaande link.<br><br>
 
-            <a href="http://iproject37.icasites.nl/productPage.php?ID=' . $_SESSION['PID'] . '">Productpagina gewonnen veiling</a><br><br><br>
+            <a href="http://iproject37.icasites.nl/productPage.php?ID=' . $voorwerpNummer . '">Productpagina gewonnen veiling</a><br><br><br>
 
 
             Met vriendelijke groeten,<br>
@@ -118,17 +124,19 @@ if ($melding = $dbh->prepare($sql3)) {
 // sluit de veiling
 $changeIsGesloten = $dbh->prepare($sqlchangeIsGesloten);
 if (isset($koper)) {
-    if ($changeIsGesloten->execute(array($koper, $koopBedrag, $_SESSION['PID']))) {
+    if ($changeIsGesloten->execute(array($koper, $koopBedrag, $voorwerpNummer))) {
         echo "<script> window.location.reload();</script>";
     }
 } else {
-    if ($changeIsGesloten->execute(array($_SESSION['PID']))) {
+    if ($changeIsGesloten->execute(array($voorwerpNummer))) {
         echo "<script> window.location.reload();</script>";
     }
 }
 
 
-
+}
+}
+}
 
                         ?>
                         
