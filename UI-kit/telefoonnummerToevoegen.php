@@ -15,6 +15,20 @@
     <?php include 'includes\nav-L-M.php';
     include 'includes/defaultMobileNav.php';
     require_once('includes/database.php'); ?>
+
+<?php
+            if (isset($_GET['error'])) {
+                $errorBericht = ($_GET['error']);
+                switch ($errorBericht) {
+                        case 8:
+                        echo '<p class="errors">Het telefoonnummer is te kort.</p>';
+                        break;
+                    default:
+                        echo '<p class="errors">Onverwachte error, probeer het opnieuw';
+                }
+            }
+            ?>
+
     <div class="page-container">
         <div class="content-wrap">
             <div class="registreerbox">

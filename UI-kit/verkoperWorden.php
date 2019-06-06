@@ -27,6 +27,9 @@
                 else if ($errorBericht == 'onjuisteCreditcard') {
                     echo '<p class="errors">Het ingevulde creditcardnummer is ongeldig</p>';
                 }
+                else if ($errorBericht == 'teKortBank') {
+                    echo '<p class="errors">Het ingevulde bankrekeningnummer is te kort</p>';
+                }
             }
             ?>
 <div class="uk-flex uk-flex-center ">
