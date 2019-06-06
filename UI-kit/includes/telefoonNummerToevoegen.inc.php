@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
 insert into Gebruikerstelefoon(Gebruiker,Telefoonnummer)
 values(?,?);";
 // telefoonnumer checken
-    if (strlen($telefoonnummer) < 9) {
+    if (strlen($telefoonnummer) < 8) {
         header("location: ../telefoonnummerToevoegen.php?error=8");
         exit();
     }
