@@ -197,7 +197,7 @@
                         </li>
                     </ul>
                 </div>
-                <!-- auto refres biedingen en timer -->
+                <!-- auto refresh biedingen en timer -->
                 <div class="Vertical_Line"></div>
                 <div class="uk-width-1-1 uk-width-2-3@s Card-Empty">
 
