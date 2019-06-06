@@ -17,7 +17,7 @@ session_start();
     <script src="js/uikit.min.js"></script>
     <script src="js/uikit-icons.min.js"></script>
 </head>
-
+<meta http-equiv="refresh" content="10" > 
 <body>
     <?php include 'includes\nav-L-M.php';
     include 'includes/defaultMobileNav.php';
@@ -37,6 +37,8 @@ session_start();
                         $sql12= "select * from Voorwerp where LooptijdEinde < getdate() and IsVeilingGesloten = 0";
                         if ($sth12 = $dbh->prepare($sql12)) {
                             if ($sth12->execute(array())) {
+                                if($alles = $sth->fetch() > 0){
+                                    $sth12->execute(array());
                                 while ($alles = $sth->fetch()) {
                                $voorwerpNummer = $row['VoorwerpNummer'];
 
@@ -135,6 +137,7 @@ if (isset($koper)) {
 
 
 }
+                                }
 }
 }
 
