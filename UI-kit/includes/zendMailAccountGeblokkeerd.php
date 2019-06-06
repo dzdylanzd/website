@@ -3,10 +3,22 @@ include "database.php";
 session_start();
 $gebruikersnaam = 'test';
 $gebruikersnaam = $_SESSION['GeblokkerdeGebruiker'];
+$to = $_SESSION['userUid'];
+$sql = 'SELECT Mailadres from Gebruiker where Gebruikersnaam = ?';
+if ($sth = $dbh->prepare($sql)) {
+    if ($sth->execute(array($_SESSION['GeblokkerdeGebruiker']))) {
+        while ($row = $sth->fetch()) {
+          $to =  $row['Mailadres'];
+        }
+    }
+}
+
+
+
 $random_hash = bin2hex(random_bytes(4));
 $_SESSION["EmailDateTime"] = date("Y-m-d H:i:s");
-$to = $_SESSION['userUid'];
-$_SESSION["Email"] = $to;
+
+
 $subject = "Account geblokkeerd - EenmaalAndermaal";
 
 $sql = 'SELECT * FROM Gebruiker WHERE Gebruikersnaam = ?';

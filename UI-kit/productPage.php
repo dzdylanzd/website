@@ -183,11 +183,11 @@
                                 if ($sth->execute(array($_GET["ID"]))) {
                                     while ($alles = $sth->fetch()) {
                                         $beschrijving = $alles['Beschrijving'];
-                                        // $beschrijving = strip_tags($beschrijving, "<style>");
-                                        // $substring = substr($beschrijving, strpos($beschrijving, "<style"), strpos($beschrijving, "</style>"));
-                                        // $beschrijving = str_replace($substring, "", $beschrijving);
-                                        // $beschrijving = str_replace(array("\t", "\r", "\n"), "", $beschrijving);
-                                        // $beschrijving = trim($beschrijving);
+                                        $beschrijving = strip_tags($beschrijving, "<style>");
+                                        $substring = substr($beschrijving, strpos($beschrijving, "<style"), strpos($beschrijving, "</style>"));
+                                        $beschrijving = str_replace($substring, "", $beschrijving);
+                                        $beschrijving = str_replace(array("\t", "\r", "\n"), "", $beschrijving);
+                                        $beschrijving = trim($beschrijving);
 
                                         echo $beschrijving;
                                     }
