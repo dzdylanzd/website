@@ -409,6 +409,14 @@ width: 50%;
 margin: auto;
 }
 
+td, th {
+  border-right: 3px solid #dfc09d;
+}
+
+.geenborder {
+  border-right: none;
+}
+
 .countdown-getal-klein {
   font-size: 0.9em;
   line-height: 10px;

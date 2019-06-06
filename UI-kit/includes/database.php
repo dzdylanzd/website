@@ -1,7 +1,7 @@
 <?php
-////////////////////
-//database local
-///////////////////
+// //////////////////
+// database local
+// /////////////////
 $hostname = "(local)";
 $dbname = 'IProject';
 $username = 'iproject37';

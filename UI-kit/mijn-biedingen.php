@@ -134,7 +134,7 @@
                                                         $aantalBiedingen = $rowAantalBiedingen['AantalBiedingen'];
                                                     }
                                                 }
-                                            }
+                                            } 
 
                                             echo '<div class="uk-width-1-1 uk-width-1-3@s veilingbox">';
                                             echo '<h3>' . $titel . '...</h3>';

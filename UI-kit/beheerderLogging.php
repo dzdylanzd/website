@@ -26,7 +26,7 @@
 
 
             <div class="verkoper" uk-filter="target: .js-filter">
-                <h2> Beheerder logging </h2>
+                <h2> Beheerderlogging </h2>
                 <p class="voorwaarden"></p>
                 <ul class="uk-subnav uk-subnav-pill">
                     <li uk-filter-control=".tag-email"><a href="#">activiteit</a></li>

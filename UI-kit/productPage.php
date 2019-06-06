@@ -289,8 +289,6 @@
                                         $_SESSION['minimumVerhoging'] = $minimumVerhoging;
                                         echo " <input class=\"uk-input Bod-Veld\" type=\"number\" min=\"$minimumVerhoging\" max=\"10000000\" step=\"0.01\" name=\"bod\" placeholder=\"bod .....\">";
                                         ?>
-
-
                                 </div>
                                 <div class="uk-button uk-width-1-3@s uk-wdith-1-1">
                                     <input type="submit" class="Bod-Plaatsen" value="Plaats bod">
@@ -320,14 +318,13 @@
                             }
                         }
                         ?>
-
                     </div>
                 </div>
             </div>
             <?php
             if (isset($_SESSION['soortGebruiker'])) {
                 if ($_SESSION['soortGebruiker'] == 'B') {
-                    $html = '<button  class=" uk-button knop-registreren" type="button" onclick="window.location.href=\'includes/blokeerVeiling.php\'" >blokkeer / deblokkeer deze veiling </button>';
+                    $html = '<button  class=" uk-button knop-registreren" type="button" onclick="window.location.href=\'includes/blokeerVeiling.php\'" >Blokkeer / deblokkeer deze veiling </button>';
                     echo $html;
                 }
             }
