@@ -37,7 +37,7 @@ session_start();
                         $sql12= "select * from Voorwerp where LooptijdEinde < getdate() and IsVeilingGesloten = 0";
                         if ($sth12 = $dbh->prepare($sql12)) {
                             if ($sth12->execute(array())) {
-                                if($alles = $sth->fetch() > 0){
+                                if($alles = $sth->fetch() ){
                                     $sth12->execute(array());
                                 while ($alles = $sth->fetch()) {
                                $voorwerpNummer = $row['VoorwerpNummer'];
