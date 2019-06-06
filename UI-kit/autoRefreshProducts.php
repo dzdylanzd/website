@@ -12,7 +12,7 @@
     <script src="js/uikit.min.js"></script>
     <script src="js/uikit-icons.min.js"></script>
 </head>
-<meta http-equiv="refresh" content="10" > 
+<meta http-equiv="refresh" content="1000000" > 
 <body>
     <?php include 'includes\nav-L-M.php';
     include 'includes/defaultMobileNav.php';
