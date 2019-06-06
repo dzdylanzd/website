@@ -66,8 +66,8 @@ if (!isset($_SESSION["gevalideert"])) {
                     case 11:
                         echo '<p class="errors">Een voorkeur is hetzelfde</p>';
                         break;
-                        case 12:
-                        echo '<p class="errors">Uw telefoonNummer is te kort</p>';
+                    case 12:
+                        echo '<p class="errors">Uw telefoonnummer is te kort</p>';
                         break;
                     default:
                         echo '<p class="errors">Onverwachte error, probeer het opnieuw';
@@ -89,7 +89,7 @@ if (!isset($_SESSION["gevalideert"])) {
                         <label class="registreerlabel" for="geboortedatum">Geboortedatum *</label><br>
                         <input class="uk-input input-registratie" type="date" id="geboortedatum" name="geboortedatum"><br>
                         <label class="registreerlabel" for="telefoonnummer">Telefoonnummer *</label><br>
-                        <input class="uk-input input-registratie" type="number"  placeholder="minimaal 8 tekens" id="telefoonnummer" name="telefoonnummer"><br>
+                        <input class="uk-input input-registratie" type="number" placeholder="minimaal 8 tekens" id="telefoonnummer" name="telefoonnummer"><br>
                     </div>
                     <div class="registreerbox">
                         <h3>Adresgegevens</h3>
