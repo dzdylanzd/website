@@ -153,9 +153,6 @@ include 'meldingen.php'; ?>
 </div>
 
 
-\
-
-
 
 
 

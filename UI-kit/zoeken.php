@@ -33,7 +33,7 @@
                         <h3> Staat</h3>
                         <form class="FilterenStaat" action="categorieen.php" method="post">
                             <select class="uk-select input-registratie" name="staat" id="staat"><br>
-                            <option value="">...</option>
+                                <option value="">...</option>
                                 <option value="Nieuw">Nieuw</option>
                                 <option value='Zo goed als nieuw'>Zo goed als nieuw</option>
                                 <option value='Gebruikt'>Gebruikt</option>
@@ -155,7 +155,7 @@
                         <form class="FilterenStaat" action="<?php echo $fromAction ?>" method="post">
                             <h3> Staat</h3>
                             <select class="uk-select input-registratie" name="staat" id="staat"><br>
-                            <option value="">...</option>
+                                <option value="">...</option>
                                 <option value="Nieuw">Nieuw</option>
                                 <option value='Zo goed als nieuw'>Zo goed als nieuw</option>
                                 <option value='Gebruikt'>Gebruikt</option>
@@ -178,7 +178,7 @@
                     } else {
                         $nummer = -1;
                     }
-// algoritme
+                    // algoritme
                     $naarBenedenNav = "and Rubriekoplaagsteniveau in(
     SELECT Rubrieknummer from Rubriek where Volgnr = any(
     select Rubrieknummer from Rubriek where Volgnr = any(
@@ -231,7 +231,7 @@
 
 
 
-// zet zoek
+                    // zet zoek
                     if (isset($_POST['search'])) {
                         $_SESSION['search'] = $_POST['search'];
                     } else if (!isset($_SESSION['search'])) {
@@ -241,7 +241,7 @@
 
 
 
-// zet prijs van
+                    // zet prijs van
                     if (isset($_POST['prijsVan'])) {
                         if (empty($_POST['prijsVan'])) {
                             $prijsvan = 0;
@@ -251,7 +251,7 @@
                     } else {
                         $prijsvan = 0;
                     }
-// zet prijs tot
+                    // zet prijs tot
                     if (isset($_POST['prijsTot'])) {
                         if (empty($_POST['prijsTot'])) {
                             $prijstot = 999999999;
@@ -265,21 +265,20 @@
                     if (!empty($_POST['staat'])) {
 
                         $staat = $_POST['staat'];
-                       
+
 
 
                         $sql = "SELECT * from Voorwerp inner join Thumbnail on Thumbnail.VoorwerpNummer = Voorwerp.VoorwerpNummer inner join VoorwerpInRubriek on VoorwerpInRubriek.Voorwerp = Voorwerp.VoorwerpNummer
                          where Titel like ? and Staat = ? and Voorwerp.StartPrijs BETWEEN ? AND ?  " . $naarBenedenNav;
                         if ($sth = $dbh->prepare($sql)) {
 
-                            if ($sth->execute(array("%{$_SESSION['search']}%",$staat, $prijsvan, $prijstot))) {
+                            if ($sth->execute(array("%{$_SESSION['search']}%", $staat, $prijsvan, $prijstot))) {
                                 $gelukt = true;
                             } else {
                                 $gelukt = false;
                             }
                         }
-                    }
-                     else {
+                    } else {
                         $sql = "SELECT * from Voorwerp inner join Thumbnail on Thumbnail.VoorwerpNummer = Voorwerp.VoorwerpNummer inner join VoorwerpInRubriek on VoorwerpInRubriek.Voorwerp = Voorwerp.VoorwerpNummer
                         where Titel like ? and Voorwerp.StartPrijs BETWEEN ? AND ?  " . $naarBenedenNav;
                         if ($sth = $dbh->prepare($sql)) {
@@ -302,7 +301,7 @@
                             } else {
                                 $alles['Thumbnailfile'] = $alles['Thumbnailfile'];
                             }
-// haal valuta op
+                            // haal valuta op
                             $thumbnail = $alles['Thumbnailfile'];
                             $valuta = $alles['Valuta'];
                             switch ($valuta) {
@@ -330,7 +329,7 @@
                                     $valuta = '$';
                                     break;
                             }
-// haal prijs of hoogste bod op
+                            // haal prijs of hoogste bod op
                             $sql5 = "SELECT TOP 1 * FROM bod WHERE Voorwerp = ? ORDER BY BodDagTijd desc ";
                             if ($sth5 = $dbh->prepare($sql5)) {
                                 if ($sth5->execute(array($alles['VoorwerpNummer']))) {
