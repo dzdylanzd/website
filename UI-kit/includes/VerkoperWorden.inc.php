@@ -30,6 +30,7 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
                     exit();
                 }
             }
+            $rekeningnummer = $_POST['rekeningnummer'];
         } catch (PDOException $e) {
             $error = $e->getMessage();
             header("location: ../VerkoperWorden.php?error=$error");
@@ -37,32 +38,35 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
         }
     } else if (isset($_POST['bank']) && isset($_POST['rekeningnummer'])) {
 
-        if (empty($_POST['bank']) || empty($_POST['rekeningnummer'])) {
+        if (empty($_POST['bank']) || empty($rekeningnummer)) {
             header("location: ../VerkoperWorden.php?errorVerkoper=leegVeld");
             exit();
-        }
-
-        $bank = $_POST['bank'];
-        $rekeningnummer = $_POST['rekeningnummer'];
-        $identificatieMethode = "Post";
-        $sql2 = "INSERT  INTO Verkoper( Gebruiker, ControleOptie, Bank, Bankrekening) VALUES (?, ?, ?, ?)";
-        $sql1 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?';
-        try {
-            $query = $dbh->prepare($sql1);
-            if ($query->execute(array("A", $Gebruiksernaam))) {
-                $query = $dbh->prepare($sql2);
-                if ($query->execute(array($Gebruiksernaam, $identificatieMethode, $bank, $rekeningnummer))) {
-                    header("location: zendActivatieMail.php");
-                    exit();
-                }
-            }
-        } catch (PDOException $e) {
-            $error = $e->getMessage();
-            header("location: ../VerkoperWorden.php?error=$error");
+        } else if (strlen($rekeningnummer) < 16) {
+            header("location: ../VerkoperWorden.php?errorVerkoper=teKortBank");
             exit();
         }
-    } else {
-        header("location: ../index.php");
+    }
+
+    $bank = $_POST['bank'];
+    $rekeningnummer = $_POST['rekeningnummer'];
+    $identificatieMethode = "Post";
+    $sql2 = "INSERT  INTO Verkoper( Gebruiker, ControleOptie, Bank, Bankrekening) VALUES (?, ?, ?, ?)";
+    $sql1 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?';
+    try {
+        $query = $dbh->prepare($sql1);
+        if ($query->execute(array("A", $Gebruiksernaam))) {
+            $query = $dbh->prepare($sql2);
+            if ($query->execute(array($Gebruiksernaam, $identificatieMethode, $bank, $rekeningnummer))) {
+                header("location: zendActivatieMail.php");
+                exit();
+            }
+        }
+    } catch (PDOException $e) {
+        $error = $e->getMessage();
+        header("location: ../VerkoperWorden.php?error=$error");
         exit();
     }
+} else {
+    header("location: ../index.php");
+    exit();
 }
