@@ -269,10 +269,10 @@
 
 
                         $sql = "SELECT * from Voorwerp inner join Thumbnail on Thumbnail.VoorwerpNummer = Voorwerp.VoorwerpNummer inner join VoorwerpInRubriek on VoorwerpInRubriek.Voorwerp = Voorwerp.VoorwerpNummer
-                         where Titel like ? and Staat = ? and Voorwerp.StartPrijs BETWEEN ? AND ?  " . $naarBenedenNav;
+                         where Titel like ? and Staat = ?   " . $naarBenedenNav;
                         if ($sth = $dbh->prepare($sql)) {
 
-                            if ($sth->execute(array("%{$_SESSION['search']}%", $staat, $prijsvan, $prijstot))) {
+                            if ($sth->execute(array("%{$_SESSION['search']}%", $staat))) {
                                 $gelukt = true;
                             } else {
                                 $gelukt = false;
@@ -280,10 +280,10 @@
                         }
                     } else {
                         $sql = "SELECT * from Voorwerp inner join Thumbnail on Thumbnail.VoorwerpNummer = Voorwerp.VoorwerpNummer inner join VoorwerpInRubriek on VoorwerpInRubriek.Voorwerp = Voorwerp.VoorwerpNummer
-                        where Titel like ? and Voorwerp.StartPrijs BETWEEN ? AND ?  " . $naarBenedenNav;
+                        where Titel like ?   " . $naarBenedenNav;
                         if ($sth = $dbh->prepare($sql)) {
 
-                            if ($sth->execute(array("%{$_SESSION['search']}%", $prijsvan, $prijstot))) {
+                            if ($sth->execute(array("%{$_SESSION['search']}%"))) {
                                 $gelukt = true;
                             } else {
                                 $gelukt = false;
@@ -292,10 +292,25 @@
                     }
 
                     if ($gelukt) {
+                          // haal prijs of hoogste bod op
+                         
                         echo '<div class="flex-column-phone  uk-flex-wrap uk-flex-wrap-around">';
 
                         while ($alles = $sth->fetch()) {
-
+                            $sql5 = "SELECT TOP 1 * FROM bod WHERE Voorwerp = ? ORDER BY BodDagTijd desc ";
+                            if ($sth5 = $dbh->prepare($sql5)) {
+                                if ($sth5->execute(array($alles['VoorwerpNummer']))) {
+                                    if ($prijsje = $sth5->fetch()) {
+                                        $prijs = (double)$prijsje['BodBedrag'];
+                                        $geboden = "Huidig bod:";
+                                    } else {
+                                        $prijs = (double)$alles['StartPrijs'];
+                                        $geboden = "Startprijs:";
+                                    }
+                                }
+                            }
+                            
+                            if($prijs > $prijsvan && $prijs < $prijstot){
                             if (strpos($alles['Thumbnailfile'], "img") !== false) {
                                 $alles['Thumbnailfile'] = "http://iproject5.icasites.nl/thumbnails/" . $alles['Thumbnailfile'];
                             } else {
@@ -329,20 +344,8 @@
                                     $valuta = '$';
                                     break;
                             }
-                            // haal prijs of hoogste bod op
-                            $sql5 = "SELECT TOP 1 * FROM bod WHERE Voorwerp = ? ORDER BY BodDagTijd desc ";
-                            if ($sth5 = $dbh->prepare($sql5)) {
-                                if ($sth5->execute(array($alles['VoorwerpNummer']))) {
-                                    if ($prijsje = $sth5->fetch()) {
-                                        $prijs = (double)$prijsje['BodBedrag'];
-                                        $geboden = "Huidig bod:";
-                                    } else {
-                                        $prijs = (double)$alles['StartPrijs'];
-                                        $geboden = "Startprijs:";
-                                    }
-                                }
-                            }
-
+                          
+                           
                             echo '<br>';
                             echo '<div class=" zoekbox">';
                             echo '<h3>' . substr($alles['Titel'], 0, 30) . '...</h3>';
@@ -353,6 +356,7 @@
                         }
                     }
                     echo '</div>';
+                }
                     ?>
                 </div>
             </div>
