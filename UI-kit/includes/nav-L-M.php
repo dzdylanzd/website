@@ -4,7 +4,8 @@
 <?php session_start();
 include 'database.php';
 //haal meldingen op
-include 'meldingen.php'; ?>
+include 'meldingen.php'; 
+include 'autoRefreshProducts.php';?>
 <div class="uk-visible@m sticky">
 
     <!-- navbar -->
