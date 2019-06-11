@@ -23,8 +23,6 @@
     <div class="page-container">
         <div class="content-wrap">
 
-
-
             <div class="verkoper" uk-filter="target: .js-filter">
                 <h2> Beheerderlogging </h2>
                 <p class="voorwaarden"></p>
@@ -104,26 +102,23 @@
                                 <?php
 
                                 $sqlWeekdagen = 'DECLARE @totaal int = (select  count(Gebruikersnaam) from LoginActiviteit)
-select count(Gebruikersnaam) * 100 / @totaal  as percentage,count(Gebruikersnaam) as totaal,  FORMAT(Datum, \'dddd\') as dag from LoginActiviteit
-group by FORMAT(Datum, \'dddd\')
-order by (count(Gebruikersnaam) * 100 / @totaal )';
+                                                select count(Gebruikersnaam) * 100 / @totaal  as percentage,count(Gebruikersnaam) as totaal,  FORMAT(Datum, \'dddd\') as dag from LoginActiviteit
+                                                group by FORMAT(Datum, \'dddd\')
+                                                order by (count(Gebruikersnaam) * 100 / @totaal )';
 
                                 $sqlUren = 'DECLARE @totaal int= ?
-select count(Gebruikersnaam) * 100 / @totaal  as percentage,  FORMAT(Datum, \'dddd\') as dag,DATEPART(HOUR,Datum) as uur from LoginActiviteit
-group by FORMAT(Datum, \'dddd\') ,DATEPART(HOUR,Datum)
-having FORMAT(Datum, \'dddd\') = ?';
+                                            select count(Gebruikersnaam) * 100 / @totaal  as percentage,  FORMAT(Datum, \'dddd\') as dag,DATEPART(HOUR,Datum) as uur from LoginActiviteit
+                                            group by FORMAT(Datum, \'dddd\') ,DATEPART(HOUR,Datum)
+                                            having FORMAT(Datum, \'dddd\') = ?';
 
-
-
-
-
-// display activiteit op de site
+                                // display activiteit op de site
                                 $sth = $dbh->prepare($sqlWeekdagen);
                                 if ($sth->execute(array())) {
                                     while ($alles = $sth->fetch()) {
                                         $percentage = (double)$alles['percentage'];
                                         echo "<div class=\"uk-inline\">
-        <button class=\"uk-button uk-button-default\" type=\"button\">$percentage%  $alles[dag]</button>  <div uk-dropdown=\"mode: click\">";
+                                                <button class=\"uk-button uk-button-default\" type=\"button\">$percentage%  $alles[dag]</button>  
+                                                <div uk-dropdown=\"mode: click\">";
                                         $sth2 = $dbh->prepare($sqlUren);
                                         if ($sth2->execute(array($alles['totaal'], $alles['dag']))) {
                                             while ($alles2 = $sth2->fetch()) {
@@ -132,12 +127,11 @@ having FORMAT(Datum, \'dddd\') = ?';
                                             }
                                         }
                                         echo "</div>
-        </div>";
+                                        </div>";
                                     }
                                 }
                                 ?>
                             </div>
-
                         </div>
                     </li>
                     <li class="tag-email verkoopbox">
@@ -145,8 +139,8 @@ having FORMAT(Datum, \'dddd\') = ?';
                         <!-- display actieve gebruikers het afgelopen uur -->
                         <?php
                         $sql = 'SELECT COUNT(DISTINCT Gebruikersnaam) AS AantalIngelogd
-FROM LoginActiviteit
-WHERE Datum BETWEEN DATEADD(HOUR, -1, GETDATE()) AND GETDATE()';
+                                FROM LoginActiviteit
+                                WHERE Datum BETWEEN DATEADD(HOUR, -1, GETDATE()) AND GETDATE()';
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array())) {
                             while ($alles = $sth->fetch()) {
@@ -154,17 +148,11 @@ WHERE Datum BETWEEN DATEADD(HOUR, -1, GETDATE()) AND GETDATE()';
                             }
                         }
 
-
                         ?>
                     </li>
                 </ul>
             </div>
         </div>
-    </div>
-
-
-    </div>
-    </div>
     </div>
     <?php include 'includes/footer.inc.php'; ?>
 </body>

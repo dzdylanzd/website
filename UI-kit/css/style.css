@@ -414,7 +414,8 @@ td, th {
 }
 
 .geenborder {
-  border-right: none;
+  border-style: none;
+  border: none;
 }
 
 .countdown-getal-klein {

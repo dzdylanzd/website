@@ -87,16 +87,11 @@ if ($sth->execute(array($_SESSION['PID']))) {
 ?>
 <h2>Vorige biedingen</h2>
 <div class="uk-flex scrollbox Vorige-Bieder uk-visible@m">
-
-
-
-
-
     <table class="uk-width-1-1">
         <tr>
-            <th class="uk-width-1-3"><h3>Naam</h3></th>
-            <th class="uk-width-1-3"><h3>Bod</h3></th>
-            <th class="uk-width-1-3" class="geenborder"><h3>Datum</h3></th>
+            <th class="uk-width-1-3 geenborder"><h3>Naam</h3></th>
+            <th class="uk-width-1-3 geenborder"><h3>Bod</h3></th>
+            <th class="uk-width-1-3 geenborder"><h3>Datum</h3></th>
         </tr>
         <?php echo $text ?>
     </table>
@@ -105,8 +100,8 @@ if ($sth->execute(array($_SESSION['PID']))) {
     <table>
         <tr>
             <th><h3>Naam</h3></th>
-            <th ><h3>Bod</h3></th>
-            <th><h3>Datum</h3></th>
+            <th><h3>Bod</h3></th>
+            <th class="geenborder"><h3>Datum</h3></th>
         </tr>
         <?php echo $text ?>
     </table>

@@ -52,6 +52,20 @@
                         klikt op 'Mijn gegevens', kan u al uw gegevens vinden. Onderaan de pagina vindt u een knop om uw account definitief te verwijderen.
                     </p>
                 </div>
+                <div class="registreerbox">
+                    <h3><i> Hoe kan ik een gebruiker rapporteren? </i></h3>
+                    <p class="witte-tekst margin-lr text-align-left"> Houdt een gebruiker zich niet aan de regels, of heeft u een reden waarom
+                        u vindt dat zijn account geblokkeerd / gecorrigeerd moet worden? Neem dan contact met ons op en stuur de gebruikersnaam / e-mailadres
+                        van desbetreffende gebruiker naar: info@eenmaalandermaal.com
+                    </p>
+                </div>
+                <div class="registreerbox">
+                    <h3><i> Hoe kan ik een veiling rapporteren? </i></h3>
+                    <p class="witte-tekst margin-lr text-align-left"> Houdt een gebruiker zich niet aan de regels, of heeft u een reden waarom
+                        u vindt dat zijn veiling geblokkeerd / gecorrigeerd moet worden? Neem dan contact met ons op en stuur de naam van de veiling, en gebruikersnaam / e-mailadres
+                        van desbetreffende veilingeigenaar naar: info@eenmaalandermaal.com
+                    </p>
+                </div>
             </div>
         </div>
     </div>
