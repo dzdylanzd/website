@@ -35,7 +35,7 @@
                 <!-- telefoonnummer toevoegen form -->
                 <form method="post" action="includes\telefoonNummerToevoegen.inc.php">
                     <label class="registreerlabel" for="telefoonNummer"><h3>Telefoonnummer toevoegen</h3></label><br>
-                    <input class="uk-input input-registratie" type="number" id="telefoonNummer" name="telefoonNummer" placeholder="Vul hier uw telefoonnummer in">
+                    <input class="uk-input input-registratie" type="text" id="telefoonNummer" name="telefoonNummer" placeholder="Vul hier uw telefoonnummer in">
                     <button type="submit" name="submit" class="uk-button input-registratie">Telefoonnummer toevoegen</button>
                 </form>
             </div>
