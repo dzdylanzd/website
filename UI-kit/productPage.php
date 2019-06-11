@@ -305,7 +305,7 @@
                         $sth = $dbh->prepare($sql);
                         if ($sth->execute(array($_GET["ID"]))) {
                             while ($alles = $sth->fetch()) {
-                                echo "<h4 class=\"verkoop-Email\"> Emailadres: $alles[Mailadres]</h4>";
+                                echo "<br><br><h4 class=\"verkoop-Email\"> Emailadres: $alles[Mailadres]</h4>";
                             }
                         }
 
