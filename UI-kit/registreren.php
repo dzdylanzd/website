@@ -74,7 +74,7 @@ if (!isset($_SESSION["gevalideert"])) {
                         echo '<p class="errors">Onverwachte error, probeer het opnieuw';
                 }
             }
-            ?>
+            ?>l
             <div class="uk-flex-center uk-flex-column">
                 <div class="registreren">
                     <h2>Registreren</h2>
