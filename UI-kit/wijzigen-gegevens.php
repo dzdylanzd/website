@@ -106,7 +106,7 @@
                             if ($sth->execute(array($gebruikersnaam))) {
                                 while ($row = $sth->fetch()) {
                                     echo "   <label class=\"registreerlabel\" for=\"telefoonnummer\">Telefoonnummer</label><br>
-                            <input class=\"uk-input input-registratie\" type=\"number\" id=\"telefoonnummer\" name=\"telefoonnummer\" value=\"";
+                            <input class=\"uk-input input-registratie\" type=\"text\" id=\"telefoonnummer\" name=\"telefoonnummer\" value=\"";
                                     echo $row['Telefoonnummer'];
                                     echo "\"><br>";
                                 }
