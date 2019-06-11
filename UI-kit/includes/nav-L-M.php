@@ -4,8 +4,8 @@
 <?php session_start();
 include 'database.php';
 //haal meldingen op
-include 'meldingen.php'; 
-include 'autoRefreshProducts.php';?>
+include 'meldingen.php';
+include 'autoRefreshProducts.php'; ?>
 <div class="uk-visible@m sticky">
 
     <!-- navbar -->
@@ -34,7 +34,9 @@ include 'autoRefreshProducts.php';?>
 
                         <div class="uk-inline">
                             <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit" "></button>
-                            <input class="uk-input uk-form-width-large " value="<?php if(isset($_SESSION['search'] )){ echo$_SESSION['search'] ;} ?>" type="text" name="search" placeholder="Waar bent u naar op zoek?">
+                            <input class=" uk-input uk-form-width-large " value=" <?php if (isset($_SESSION['search'])) {
+                                                                                        echo $_SESSION['search'];
+                                                                                    } ?>" type="text" name="search" placeholder="Waar bent u naar op zoek?">
                         </div>
                     </form>
                 </div>
@@ -152,9 +154,6 @@ include 'autoRefreshProducts.php';?>
                     ?>
     </nav>
 </div>
-
-
-
 
 
 
