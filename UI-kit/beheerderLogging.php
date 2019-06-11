@@ -141,7 +141,7 @@ having FORMAT(Datum, \'dddd\') = ?';
                         </div>
                     </li>
                     <li class="tag-email verkoopbox">
-                        <h3>aantal actieve gebruikers</h3>
+                        <h3>Aantal actieve gebruikers</h3>
                         <!-- display actieve gebruikers het afgelopen uur -->
                         <?php
                         $sql = 'SELECT COUNT(DISTINCT Gebruikersnaam) AS AantalIngelogd
