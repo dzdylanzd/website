@@ -1,11 +1,11 @@
 <?php
 include "database.php";
 session_start();
-if(isset($_SESSION["Email"])){
-$Mailadres = $_SESSION["Email"];
-$sql = "SELECT * FROM VerificatiecodeEmail WHERE Mailadres = ?"; 
-if ($sth = $dbh->prepare($sql)) {
-  if ($sth->execute(array($Mailadres))) {
+if (isset($_SESSION["Email"])) {
+  $Mailadres = $_SESSION["Email"];
+  $sql = "SELECT * FROM VerificatiecodeEmail WHERE Mailadres = ?";
+  if ($sth = $dbh->prepare($sql)) {
+    if ($sth->execute(array($Mailadres))) {
       while ($code = $sth->fetch()) {
         //check of de code niet meer valide is
         if ($code['DatumEinde']  < date("Y-m-d H:i:s")) {
@@ -31,7 +31,7 @@ if ($sth = $dbh->prepare($sql)) {
 
     $_SESSION["gevalideert"] = true;
   }
-// } else {
-//   header("Location: ../email-Bevestiging.php?error=voerEmailIn");
-//   exit();
-// }
+} else {
+  header("Location: ../email-Bevestiging.php?error=voerEmailIn");
+  exit();
+}
