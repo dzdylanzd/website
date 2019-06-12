@@ -38,7 +38,10 @@
                         echo '<p class="errors"> Het ingevoerde e-mailadres is incorrect.</p>';
                     } else if ($_GET['error'] == "succes") {
                         echo '<p class="succes"> Er is een code naar uw e-mailadres verzonden. </p>';
+                    } else if ($_GET['error'] == "voerEmailIn") {
+                        echo '<p class="succes"> U moet uw email invoeren. </p>';
                     } 
+                    
                 }
                 ?>
                 <div class="registreren">

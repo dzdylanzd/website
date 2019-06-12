@@ -260,4 +260,4 @@
   <?php include 'includes/footer.inc.php'; ?>
 </body>
 
-</html>
+</html> 

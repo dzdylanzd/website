@@ -1,7 +1,7 @@
 <?php
 include "database.php";
 session_start();
-if(!isset($_SESSION["Email"])){
+if(isset($_SESSION["Email"])){
 $Mailadres = $_SESSION["Email"];
 $sql = "SELECT * FROM VerificatiecodeEmail WHERE Mailadres = ?"; 
 if ($sth = $dbh->prepare($sql)) {
