@@ -8,30 +8,30 @@ if ($sth = $dbh->prepare($sql)) {
   if ($sth->execute(array($Mailadres))) {
       while ($code = $sth->fetch()) {
         //check of de code niet meer valide is
-        if($code['DatumEinde']  < date("Y-m-d H:i:s")){
-         
+        if ($code['DatumEinde']  < date("Y-m-d H:i:s")) {
+
 
           header("Location: ../email-Bevestiging.php?error=codeNietMeerGeldig");
           exit();
         }
         // check of code klopt
-        if($code['VerificatiecodeEmail'] != $_POST['bevestigingscode']){
+        if ($code['VerificatiecodeEmail'] != $_POST['bevestigingscode']) {
           header("Location: ../email-Bevestiging.php?error=foutecode");
           exit();
+        }
       }
-    } 
+    }
   }
-}
-//check of veld leeg is
-if (empty($_POST['bevestigingscode'])) {
-  header("Location: ../email-Bevestiging.php?error=leegveld");
-  exit();
-} else {
-  header("location: ../registreren.php");
+  //check of veld leeg is
+  if (empty($_POST['bevestigingscode'])) {
+    header("Location: ../email-Bevestiging.php?error=leegveld");
+    exit();
+  } else {
+    header("location: ../registreren.php");
 
-  $_SESSION["gevalideert"] = true;
-}
-}else{
-  header("Location: ../email-Bevestiging.php?error=voerEmailIn");
-          exit();
-}
+    $_SESSION["gevalideert"] = true;
+  }
+// } else {
+//   header("Location: ../email-Bevestiging.php?error=voerEmailIn");
+//   exit();
+// }
