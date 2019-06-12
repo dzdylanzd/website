@@ -28,13 +28,20 @@ include 'autoRefreshProducts.php'; ?>
                         $fromSearchAction = "zoeken.php";
                     }
 
+                      // zet zoek
+                      if (isset($_POST['search'])) {
+                        $_SESSION['search'] = $_POST['search'];
+                    } else if (!isset($_SESSION['search'])) {
+                        $_SESSION['search'] = "";
+                    }
+
                     ?>
                     <!-- zoek balk -->
                     <form method="post" action="<?php echo $fromSearchAction; ?>">
 
                         <div class="uk-inline">
                             <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit" "></button>
-                            <input class=" uk-input uk-form-width-large " value=" <?php if (isset($_SESSION['search'])) {
+                            <input class=" uk-input uk-form-width-large " value="<?php if (isset($_SESSION['search'])) {
                                                                                         echo $_SESSION['search'];
                                                                                     } ?>" type="text" name="search" placeholder="Waar bent u naar op zoek?">
                         </div>
@@ -194,13 +201,21 @@ include 'autoRefreshProducts.php'; ?>
                 } else {
                     $fromSearchAction = "zoeken.php";
                 }
+                  // zet zoek
+                  if (isset($_POST['search'])) {
+                    $_SESSION['search'] = $_POST['search'];
+                } else if (!isset($_SESSION['search'])) {
+                    $_SESSION['search'] = "";
+                }
                 ?>
                 <!-- nav bar -->
                 <form method="post" action="<?php echo $fromSearchAction; ?>">
 
                     <div class="uk-inline">
                         <button class="uk-form-icon uk-form-icon-flip" uk-icon="icon: search" type="Submit"></button>
-                        <input class="uk-input uk-form-width-medium" type="text" name="search" placeholder="Waar bent u naar op zoek?">
+                        <input class="uk-input uk-form-width-medium" type="text" name="search" value="<?php if (isset($_SESSION['search'])) {
+                                                                                        echo $_SESSION['search'];
+                                                                                    } ?>" placeholder="Waar bent u naar op zoek?">
                     </div>
                 </form>
             </div>

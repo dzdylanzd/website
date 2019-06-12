@@ -231,12 +231,7 @@
 
 
 
-                    // zet zoek
-                    if (isset($_POST['search'])) {
-                        $_SESSION['search'] = $_POST['search'];
-                    } else if (!isset($_SESSION['search'])) {
-                        $_SESSION['search'] = "";
-                    }
+                  
 
 
 
