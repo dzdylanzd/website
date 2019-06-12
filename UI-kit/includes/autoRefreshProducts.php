@@ -1,7 +1,7 @@
 
                     <?php
 
-                    $sql12 = "select * from Voorwerp where LooptijdEinde < getdate() and IsVeilingGesloten = 0";
+                    $sql12 = "select * from Voorwerp where LooptijdEinde < getdate() and IsVeilingGesloten = 0 and Geblokkeerd = 0";
                     if ($sth12 = $dbh->prepare($sql12)) {
                         if ($sth12->execute(array())) {
                             if ($alles = $sth12->fetch()) {

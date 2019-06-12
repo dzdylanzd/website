@@ -8,6 +8,10 @@ $sqlUpdates = "UPDATE Voorwerp
 SET Koper = 'Onbekend'
 WHERE Koper = ?
 
+update Voorwerp
+Set Geblokkeerd = 1
+where Gebruiker = ?
+
 UPDATE Voorwerp
 SET Verkoper = 'Onbekend'
 WHERE Verkoper = ?
@@ -20,7 +24,7 @@ DELETE FROM VerificatiecodeEmail
 WHERE Mailadres = ?";
 // verwijder en update tabbelen om gebruiker te verwijderen
 if ($sth = $dbh->prepare($sqlUpdates)) {
-    if ($sth->execute(array($gebruiker,$gebruiker,$gebruiker,$email))) {
+    if ($sth->execute(array($gebruiker,$gebruiker,$gebruiker,$gebruiker,$email))) {
     }
 }
 
