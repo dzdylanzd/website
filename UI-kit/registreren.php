@@ -47,7 +47,7 @@ if (!isset($_SESSION["gevalideert"])) {
                         echo '<p class="errors">De wachtwoorden komen niet overeen</p>';
                         break;
                     case 5:
-                        echo '<p class="errors">Een of meerdere invoervelden bevatten teveel tekens</p>';
+                        echo '<p class="errors">Een of meerdere invoervelden bevat te veel tekens</p>';
                         break;
                     case 6:
                         echo '<p class="errors">De gebruikersnaam bevat een speciaal teken</p>';
