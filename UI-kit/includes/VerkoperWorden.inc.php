@@ -40,7 +40,7 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
         }
     } else if (isset($_POST['bank']) && isset($_POST['rekeningnummer'])) {
 
-        if (empty($_POST['bank']) || empty($rekeningnummer)) {
+        if (empty($_POST['bank']) || empty($_POST['rekeningnummer'])) {
             header("location: ../VerkoperWorden.php?errorVerkoper=leegVeld");
             exit();
         }
