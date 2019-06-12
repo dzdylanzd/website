@@ -107,7 +107,7 @@
                                             }
 
                                             // Haal het huidige bod op
-                                            $sqlBod = 'SELECT BodBedrag FROM Bod WHERE Voorwerp = ?';
+                                            $sqlBod = 'SELECT BodBedrag FROM Bod WHERE Voorwerp = ? order by BodDagTijd desc';
                                             if ($sthBod = $dbh->prepare($sqlBod)) {
                                                 if ($sthBod->execute(array($voorwerpnummer))) {
                                                     while ($rowBod = $sthBod->fetch()) {
@@ -118,7 +118,7 @@
                                             }
 
                                             // Haal het bod van de gebruiker op
-                                            $sqlBodGebruiker = 'SELECT BodBedrag FROM Bod WHERE Gebruiker = ? and Voorwerp = ?';
+                                            $sqlBodGebruiker = 'SELECT top 1 BodBedrag FROM Bod WHERE Gebruiker = ? and Voorwerp = ? order by BodDagTijd desc';
                                             if ($sthBodGebruiker = $dbh->prepare($sqlBodGebruiker)) {
                                                 if ($sthBodGebruiker->execute(array($gebruikersnaam,$voorwerpnummer))) {
                                                     while ($rowBodGebruiker = $sthBodGebruiker->fetch()) {

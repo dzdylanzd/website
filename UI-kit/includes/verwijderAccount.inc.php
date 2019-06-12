@@ -8,9 +8,6 @@ $sqlUpdates = "UPDATE Voorwerp
 SET Koper = 'Onbekend'
 WHERE Koper = ?
 
-update Voorwerp
-Set Geblokkeerd = 1
-where Gebruiker = ?
 
 UPDATE Voorwerp
 SET Verkoper = 'Onbekend'
