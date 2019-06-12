@@ -1,7 +1,7 @@
 <?php
 include "database.php";
 session_start();
-
+if(!isset($_SESSION["Email"])){
 $Mailadres = $_SESSION["Email"];
 $sql = "SELECT * FROM VerificatiecodeEmail WHERE Mailadres = ?"; 
 if ($sth = $dbh->prepare($sql)) {
@@ -30,4 +30,8 @@ if (empty($_POST['bevestigingscode'])) {
   header("location: ../registreren.php");
 
   $_SESSION["gevalideert"] = true;
+}
+}else{
+  header("Location: ../email-Bevestiging.php?error=voerEmailIn");
+          exit();
 }
