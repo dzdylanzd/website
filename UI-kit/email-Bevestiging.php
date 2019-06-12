@@ -47,8 +47,8 @@
                 <form method="post" action="zendMail.php">
                     <div class="registreerbox">
                         <h3>E-mail bevestiging</h3>
-                        <p>Beste bezoeker,<br> Voordat u een gebruiker aan kunt maken moet u eerst uw e-mail adres bevestigen. <br>
-                            Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken.
+                        <p>Beste bezoeker,<br> Voordat u een gebruiker aan kunt maken moet u eerst uw e-mailadres bevestigen. <br>
+                            Dit doet u door uw e-mail op te geven en op 'E-mail bevestigen' te klikken.
                         </p>
                         <label for="emailbevestiging">E-mail:</label><br>
                         <input class="uk-input input-registratie" placeholder="maximaal 60 tekens" type="email" name="emailbevestiging" id="emailbevestiging">
