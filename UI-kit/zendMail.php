@@ -115,7 +115,9 @@ $headers .= 'From: <info@eenmaalandermaal.nl>' . "\r\n";
 // stuur mail
 if (empty($_POST['emailbevestiging'])) {
     header("Location: email-Bevestiging.php?error=legeEmail");
+    exit();
 } else {
-    mail($to, $subject, $message, $headers);
+    if(mail($to, $subject, $message, $headers)){
     header("Location: email-Bevestiging.php?error=succes");
+}
 }

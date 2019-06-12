@@ -575,6 +575,10 @@ background-color: #739F65;
     flex-direction: column;
     width: 93%;
   }
+  .knop-nieuwe-veiling {
+   
+    width: 92%;
+  }
   .veilingbox {
     width: 100%;
     margin-left: 50px;

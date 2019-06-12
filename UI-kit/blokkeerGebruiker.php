@@ -49,7 +49,7 @@
                             while ($row = $sth->fetch()) {
                                 $geblokkeerdeGebruiker = $row['Gebruikersnaam'];
                                 echo '<ul>';
-                                echo '<li>'. $geblokkeerdeGebruiker.'</li>';
+                                echo '<li class="noDots">'. $geblokkeerdeGebruiker.'</li>';
                                 echo '</ul>';
                             }
                         }

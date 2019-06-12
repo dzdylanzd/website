@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 require_once('database.php');
 
@@ -7,6 +9,42 @@ $productid =  $_SESSION['PID'];
 $bod =  $_POST['bod'];
 $gebruiker =  $_SESSION['userId'];
 $bodTijd = date("Y-m-d H:i:s");
+
+
+$sql = "SELECT top 1 * from Bod where Voorwerp = ? order by BodBedrag desc";
+$sql2 = "SELECT StartPrijs FROM Voorwerp WHERE VoorwerpNummer = ?";
+if ($sth = $dbh->prepare($sql2)) {
+    if ($sth->execute(array($_GET["ID"]))) {
+        while ($row = $sth->fetch()) {
+            $minimumVerhoging = $row['StartPrijs'];
+            $bod =  $minimumVerhoging;
+        }
+    }
+}
+
+// haal minimum bod op
+if ($sth = $dbh->prepare($sql)) {
+    if ($sth->execute(array($_GET["ID"]))) {
+        while ($row = $sth->fetch()) {
+            $bod = $row['BodBedrag'];
+            if ($bod <= 50) {
+                $minimumVerhoging = $row['BodBedrag'] + 0.5;
+            } else if ($bod > 50 && $bod <= 500) {
+                $minimumVerhoging = $row['BodBedrag'] + 1;
+            } else if ($bod > 500 && $bod <= 1000) {
+                $minimumVerhoging =  $row['BodBedrag'] + 5;
+            } else if ($bod > 1000 && $bod <= 5000) {
+                $minimumVerhoging =  $bod + 10;
+            } else {
+                $minimumVerhoging =  $row['BodBedrag'] + 50;
+            }
+        }
+    }
+}
+$_SESSION['minimumVerhoging'] = $minimumVerhoging;
+
+
+
 
 //als je niet bent ingelogd mag je niet bieden
 if (!isset($_SESSION['userId'])) {
