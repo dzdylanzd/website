@@ -40,7 +40,7 @@
                     <div class=" witte-tekst registreerbox ">
                         <h3>Wachtwoord vergeten</h3>
                         <p>Beste bezoeker,<br> Voordat u uw wachtwoord kunt wijzigen, moet u uw e-mailadres ingeven. <br>
-                            Dit doet u door uw e-mail in te geven en op 'E-mail bevestigen' te klikken. Ook moet u uw antwoord op de beveiligingsvraag ingeven.
+                            Dit doet u door uw e-mail en uw antwoord op de beveiligingsvraag in te geven.
                         </p>
                         <label for="wachtwoordVergetenEmail">E-mail:</label><br>
                         <input class="uk-input input-registratie" type="email" name="wachtwoordVergetenEmail" id="wachtwoordVergetenEmail"><br>

@@ -25,9 +25,9 @@ if ($pwdCheck) {
     }
 }
 // bepaal voor en achternaam
-$sql = 'SELECT * FROM Gebruiker WHERE Gebruikersnaam = ?';
+$sql = 'SELECT * FROM Gebruiker WHERE Mailadres = ?';
 if ($sth = $dbh->prepare($sql)) {
-    if ($sth->execute(array($gebruikersnaam))) {
+    if ($sth->execute(array($to))) {
         while ($row = $sth->fetch()) {
             $voorletter = substr($row['Voornaam'], 0, 1);
             $achternaam = $row['Achternaam'];
