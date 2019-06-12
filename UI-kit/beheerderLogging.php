@@ -73,7 +73,7 @@
                         if ($sth->execute(array())) {
                             while ($alles = $sth->fetch()) {
 
-                                $sqlVerdacht .= "or Titel like '% $alles[Item] %' ";
+                                $sqlVerdacht .= "or Titel like '%$alles[Item]%' ";
                             }
                         }
                         // display verdachte gebruikers

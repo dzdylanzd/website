@@ -112,14 +112,15 @@
                                                 if ($sthBod->execute(array($voorwerpnummer))) {
                                                     while ($rowBod = $sthBod->fetch()) {
                                                         $huidigbod = $rowBod['BodBedrag'];
+                                                       
                                                     }
                                                 }
                                             }
 
                                             // Haal het bod van de gebruiker op
-                                            $sqlBodGebruiker = 'SELECT BodBedrag FROM Bod WHERE Gebruiker = ?';
+                                            $sqlBodGebruiker = 'SELECT BodBedrag FROM Bod WHERE Gebruiker = ? and Voorwerp = ?';
                                             if ($sthBodGebruiker = $dbh->prepare($sqlBodGebruiker)) {
-                                                if ($sthBodGebruiker->execute(array($gebruikersnaam))) {
+                                                if ($sthBodGebruiker->execute(array($gebruikersnaam,$voorwerpnummer))) {
                                                     while ($rowBodGebruiker = $sthBodGebruiker->fetch()) {
                                                         $bodGebruiker = $rowBodGebruiker['BodBedrag'];
                                                     }
