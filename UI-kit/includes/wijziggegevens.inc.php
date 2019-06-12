@@ -4,7 +4,6 @@ include('database.php');
 // haal gegevens op
 $voornaam = $_POST['voornaam'];
 $Achternaam = $_POST["achternaam"];
-$Telefoonnummer = $_POST['telefoonnummer'];
 $StraatHuisnummer = $_POST['adres1'];
 $Postcode = $_POST['postcode'];
 $Plaatsnaam = $_POST['plaats'];
@@ -73,9 +72,6 @@ if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty(
 } else if (($voorkeur1 == $voorkeur2 || $voorkeur1 == $voorkeur3) || ($voorkeur2 == $voorkeur3)){
     header("location: ../wijzigen-gegevens.php?error=11");
     exit();
-}else if (strlen($telefoonnummer) < 8) {
-    header("location: ../wijzigen-gegevens.php?error=8");
-    exit();
 } else if (!filter_var($Mailadres, FILTER_VALIDATE_EMAIL)) {
     header("location: ../wijzigen-gegevens.php?error=2");
     exit();
@@ -99,11 +95,7 @@ if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty(
                     if ($sth2->execute(array($gebruikersnaam))) {
                         if ($sth3 = $dbh->prepare($sql3)) {
                             if ($sth3->execute(array($voorkeur1, $gebruikersnaam, $voorkeur2, $gebruikersnaam, $voorkeur3, $gebruikersnaam))) {
-                                // if ($sth4 = $dbh->prepare($sql4)) {
-                                //     if ($sth4->execute(array($Telefoonnummer,$gebruikersnaam))) {
-
-                                //      }
-                                // }
+                            
 
                                 header("location: ../index.php");
                                 exit();
@@ -122,7 +114,7 @@ if (empty($voornaam) || empty($Achternaam) || empty($StraatHuisnummer) || empty(
                 if ($sth2->execute(array($gebruikersnaam))) {
                     if ($sth3 = $dbh->prepare($sql3)) {
                         if ($sth3->execute(array($voorkeur1, $gebruikersnaam, $voorkeur2, $gebruikersnaam, $voorkeur3, $gebruikersnaam))) {
-                            header("location: ../index.php");
+                            header("location: ../wijzigen-gegevens.php");
                             exit();
                         } else {
                             header("location: ../wijzigen-gegevens.php?error=7");
