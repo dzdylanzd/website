@@ -32,7 +32,6 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
                     exit();
                 }
             }
-            $rekeningnummer = $_POST['rekeningnummer'];
         } catch (PDOException $e) {
             $error = $e->getMessage();
             header("location: ../VerkoperWorden.php?error=$error");
@@ -45,7 +44,7 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
             exit();
         }
         // check rekening nummer lengte
-        else if (strlen($rekeningnummer) < 16) {
+        else if (strlen($_POST['rekeningnummer']) < 16) {
             header("location: ../VerkoperWorden.php?errorVerkoper=teKortBank");
             exit();
         }
@@ -55,7 +54,7 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
     $rekeningnummer = $_POST['rekeningnummer'];
     $identificatieMethode = "Post";
     // voeg toe aan 
-    $sql2 = "INSERT  INTO Verkoper( Gebruiker, ControleOptie, Bank, Bankrekening) VALUES (?, ?, ?, ?)";
+    $sql2 = "INSERT INTO Verkoper( Gebruiker, ControleOptie, Bank, Bankrekening) VALUES (?, ?, ?, ?)";
     $sql1 = 'UPDATE Gebruiker SET SoortGebruiker = ? WHERE Gebruikersnaam = ?';
     try {
         $query = $dbh->prepare($sql1);
