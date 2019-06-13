@@ -43,7 +43,7 @@
                     $isVeilingGesloten = 0;
 
                     // Haal titel, looptijd en voorwerpnummer op
-                    $sql = 'SELECT * FROM Voorwerp WHERE Verkoper = ?';
+                    $sql = 'SELECT * FROM Voorwerp WHERE Verkoper = ? ';
                     if ($sth = $dbh->prepare($sql)) {
                         if ($sth->execute(array($gebruikersnaam))) {
                             while ($row = $sth->fetch()) {
@@ -111,6 +111,7 @@
                                 if ($sthBod = $dbh->prepare($sqlBod)) {
                                     if ($sthBod->execute(array($voorwerpnummer))) {
                                         while ($rowBod = $sthBod->fetch()) {
+                                            $huidigbod = 0;
                                             $huidigbod = $rowBod['BodBedrag'];
                                         }
                                     }
