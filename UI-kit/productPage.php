@@ -287,7 +287,7 @@
                                             }
                                         }
                                         $_SESSION['minimumVerhoging'] = $minimumVerhoging;
-                                        echo " <input class=\"uk-input Bod-Veld\" type=\"number\" min=\"$minimumVerhoging\" max=\"10000000\" step=\"0.01\" name=\"bod\" placeholder=\"bod .....\">";
+                                        echo " <input class=\"uk-input Bod-Veld\" type=\"number\" min=\"$minimumVerhoging\"  step=\"0.01\" name=\"bod\" placeholder=\"bod .....\">";
                                         ?>
                                 </div>
                                 <div class="uk-button uk-width-1-3@s uk-wdith-1-1">
