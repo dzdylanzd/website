@@ -4,7 +4,12 @@ require_once('database.php');
 $gebruiker =  $_SESSION['userId'];
 $email = $_SESSION['userUid'];
 $sql = 'delete Gebruiker where Gebruikersnaam = ?';
-$sqlUpdates = "UPDATE Voorwerp
+$sqlUpdates = "
+UPDATE Voorwerp
+set IsVeilingGesloten = 1
+where Verkoper = ?
+
+UPDATE Voorwerp
 SET Koper = 'Onbekend'
 WHERE Koper = ?
 

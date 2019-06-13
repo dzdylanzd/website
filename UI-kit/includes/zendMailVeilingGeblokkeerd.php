@@ -1,11 +1,11 @@
 <?php
 include "database.php";
-session_start();
+
 $gebruikersnaam = 'test';
-$gebruikersnaam = $_SESSION['userId'];
+$gebruikersnaam = $_SESSION['verkoper'];
 
 
-$to = $_SESSION['userUid'];
+$to = $_SESSION['verkoper'];
 
 $subject = "Veiling geblokkeerd - EenmaalAndermaal";
 

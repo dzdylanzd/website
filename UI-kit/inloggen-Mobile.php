@@ -32,6 +32,8 @@
             echo '<p class="errorLogin"> Gelieve alle velden in te vullen. </p>';
         } else if ($_GET['errorLogin'] == "sql") {
             echo '<p class="errorLogin"> De ingevulde gegevens zijn onjuist. </p>';
+        }else if ($_GET['errorLogin'] == "verkeerdwachtwoord") {
+            echo '<p class="errorLogin"> het wachtwoord is onjuist. </p>';
         }
     }
     ?>

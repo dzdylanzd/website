@@ -28,6 +28,7 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
             if ($query->execute(array("V", $Gebruiksernaam))) {
                 $query = $dbh->prepare($sql);
                 if ($query->execute(array($Gebruiksernaam, $identificatieMethode, $creditcard))) {
+                    require_once('zendMailVerkoopaccount.php');
                     header("location: ../index.php");
                     exit();
                 }
