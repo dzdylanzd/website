@@ -1,5 +1,5 @@
 <?php
-
+$koopBedrag = 0;
 // haal koper en koopBedrag op
 $sql = "SELECT top 1 * from bod where Voorwerp = ? order by BodBedrag desc";
 if ($sth = $dbh->prepare($sql)) {
