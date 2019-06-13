@@ -68,7 +68,7 @@ if (isset($_POST['verkoopaccountAanvragen'])) {
         }
     } catch (PDOException $e) {
         $error = $e->getMessage();
-        header("location: ../VerkoperWorden.php?error=$error");
+        header("location: ../VerkoperWorden.php?errorVerkoper0=SQLerror");
         exit();
     }
 } else {

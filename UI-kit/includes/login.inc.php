@@ -20,12 +20,11 @@ if (isset($_POST['login-submit'])) {
         //check of gebruiker bestaat
         $sql = "SELECT * from Gebruiker where Gebruikersnaam = ? ";
         $query = $dbh->prepare($sql);
-        $query->execute(array( $gebruikersnaam));;
+        $query->execute(array($gebruikersnaam));;
         $row = $query->fetch();
         $BestaatGebruiker = $row['Gebruikersnaam'];
         if (!isset($BestaatGebruiker)) {
             if (strpos($_SERVER['HTTP_REFERER'], '?') != false) {
-                
                 header("location: $_SERVER[HTTP_REFERER]&errorLogin=GebruikerBestaatNiet");
                 exit();
             } else {

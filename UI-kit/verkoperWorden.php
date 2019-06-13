@@ -28,6 +28,8 @@
                     echo '<p class="errors">Het ingevulde creditcardnummer is ongeldig</p>';
                 } else if ($errorBericht == 'teKortBank') {
                     echo '<p class="errors">Het ingevulde bankrekeningnummer is te kort</p>';
+                } else if ($errorBericht == 'SQLerror') {
+                    echo '<p class="errors">Er is een fout opgetreden, check of de ingevulde gegevens kloppen</p>';
                 }
             }
             ?>

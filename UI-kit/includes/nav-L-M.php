@@ -69,6 +69,9 @@ include 'autoRefreshProducts.php'; ?>
                             if ($_GET["errorLogin"] == "verkeerdwachtwoord") {
                                 echo "<br> <p class=\"errorLogin\"> Onjuist wachtwoord. </p>";
                             }
+                            if ($_GET["errorLogin"] == "geblokkeerd") {
+                                echo "<br> <p class=\"errorLogin\"> Dit account is geblokkeerd. </p>";
+                            }
                             if ($_GET["errorLogin"] == "sql") {
                                 echo "<br> <p class=\"errorLogin\"> Er is een onverwachte foutmelding opgetreden. Probeer het opnieuw. </p>";
                             }
