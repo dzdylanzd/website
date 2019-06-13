@@ -105,14 +105,15 @@
                                         }
                                     }
                                 }
-
+                                $huidigbod = 0;
                                 // Haal huidig bod op
                                 $sqlBod = 'SELECT * FROM Bod WHERE Voorwerp = ?';
                                 if ($sthBod = $dbh->prepare($sqlBod)) {
                                     if ($sthBod->execute(array($voorwerpnummer))) {
                                         while ($rowBod = $sthBod->fetch()) {
-                                            $huidigbod = 0;
+                                            
                                             $huidigbod = $rowBod['BodBedrag'];
+                                        
                                         }
                                     }
                                 }
